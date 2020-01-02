@@ -1,0 +1,21 @@
+<?php
+$dictionary["Lead"]["fields"]["sugarfield_type"] = array (
+  'required' => false,
+  'name' => 'sugarfield_type',
+  'vname' => 'LBL_SUGARFIELD_TYPE',
+   'type' => 'enum',
+  'massupdate' => 0,
+  'no_default' => false,
+  'options'=>'type_dropdown',
+  'comments' => '',
+  'help' => '',
+  'importable' => 'true',
+  'duplicate_merge' => 'disabled',
+  'duplicate_merge_dom_value' => '0',
+  'audited' => false,
+  'reportable' => true,
+  'unified_search' => true,
+  'merge_filter' => 'disabled',
+  'len' => '255',
+  'size' => '20',
+);
