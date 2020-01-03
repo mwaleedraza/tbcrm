@@ -47,7 +47,7 @@
             right: 0;
             left: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.7);
+            background: wheat;
         }
         #loginform {
             color: #FFF;
@@ -64,12 +64,12 @@
 
 <!-- Start login container -->
 
-<div class="p_login" style="background-color: #ffffff;">
+<div class="p_login" style="">
 
-	<div class="p_login_top">
-	 <! –– 	<a title="Alaserv" href="https://www.alaserv.com/" style='width:100%;background-image: none, url("custom/themes/SuiteP/images/p_login_logo.png");'>Alaserv</a> ––>
+    <!--<div class="p_login_top">
+		<a title="Alaserv" href="https://www.alaserv.com/" style='width:100%;background-image: none, url("custom/themes/SuiteP/images/p_login_logo.png");'>Alaserv</a>
 	</div>
-    
+ -->
     <div class="p_login_middle" style="height:90%;background: url('custom/themes/SuiteP/images/');opacity: 1;top: 0;left: 0;bottom: 0;right: 0;z-index: -1;background-repeat: no-repeat;background-attachment: fixed;background-position: center;background-size: 40%;">
         {if $LOGIN_ERROR_MESSAGE}
             <p align='center' class='error'>{$LOGIN_ERROR_MESSAGE}</p>
@@ -161,12 +161,12 @@
     </div>
     </div>
     
-    <div  style="height:10%;"class="p_login_bottom">
+    {*<div  style="height:10%;"class="p_login_bottom">*}
 
-    		<a id="admin_options">&copy; Supercharged by TechnologyCastle</a>
-            <a id="powered_by">&copy; Powered By TechnologyCastle</a>
+    		{*<a id="admin_options">&copy; Supercharged by TechnologyCastle</a>*}
+            {*<a id="powered_by">&copy; Powered By TechnologyCastle</a>*}
 
-	</div>
+	{*</div>*}
     
 </div>
 <!-- End login container -->
