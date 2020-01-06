@@ -35897,7 +35897,12 @@ body>.le_panel .le_edit,
 .search-module-selector .yui-dt0-col-label .yui-dt-liner {
     overflow: auto
 }
-
+.searchbutton{
+	display: none;
+}
+.alertsButton{
+	display: none;
+}
 #GlobalSearchSettings {
     background-color: transparent
 }

@@ -275,8 +275,7 @@
                         {capture name=extraparams assign=extraparams}parentTab={$group}{/capture}
                         <li class="topnav {if $smarty.foreach.groupList.last}all{/if}">
                             <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
-                            <a href="#" id="grouptab_{$smarty.foreach.groupList.index}" class="dropdown-toggle grouptab"
-                               data-toggle="dropdown">{$group}</a>
+                            <a href="#" id="grouptab_{$smarty.foreach.groupList.index}" class="dropdown-toggle grouptab">{$group}</a>
                             <span class="notCurrentTabRight">&nbsp;</span>
                             <ul class="dropdown-menu" role="menu" {if $smarty.foreach.groupList.last} class="All"{/if}>
                                 {foreach from=$modules.modules item=module key=modulekey}
@@ -408,19 +407,21 @@
                             </li>
                         {/if}
                     {/foreach}
-                    <li class="topnav overflow-toggle-menu">
-                        <span class="notCurrentTabLeft">&nbsp;</span>
-                        <span class="dropdown-toggle headerlinks notCurrentTab"><a href="#">{$APP.LBL_MORE}</a></span>
-                        <span class="notCurrentTabRight">&nbsp;</span>
-                        <ul id="overflow-menu" class="dropdown-menu" role="menu">
-                            <!--nav items without actions -->
-                            {foreach from=$modules.extra item=submodulename key=submodule}
-                                <li class="topnav without-actions">
-                                    <span class=" notCurrentTab"> <a href="{sugar_link module=$submodule link_only=1 extraparams=$extraparams}">{$submodulename}</a> </span>
-                                </li>
-                            {/foreach}
-                        </ul>
-                    </li>
+                    {if count($moduleExtraMenu) > 0}
+                        <li class="topnav overflow-toggle-menu">
+                            <span class="notCurrentTabLeft">&nbsp;</span>
+                            <span class="dropdown-toggle headerlinks notCurrentTab"><a href="#">{$APP.LBL_MORE}</a></span>
+                            <span class="notCurrentTabRight">&nbsp;</span>
+                            <ul id="overflow-menu" class="dropdown-menu" role="menu">
+                                <!--nav items without actions -->
+                                {foreach from=$modules.extra item=submodulename key=submodule}
+                                    <li class="topnav without-actions">
+                                        <span class=" notCurrentTab"> <a href="{sugar_link module=$submodule link_only=1 extraparams=$extraparams}">{$submodulename}</a> </span>
+                                    </li>
+                                {/foreach}
+                            </ul>
+                        </li>
+                    {/if}
                 </ul>
                 <div class="hidden hidden-actions"></div>
                 {* Hide nav items when the window size is too small to display them *}
@@ -455,10 +456,11 @@
                                 $navItems.last().prependTo('#overflow-menu');
                                 $navItems.splice(-1,1);
                             }
-
-                            navItemMoreLeft = $('.navbar-horizontal-fluid .overflow-toggle-menu').offset().left;
-                            navOverflowWidth = $('#overflow-menu').width();
-                            offset = navItemMoreLeft + navItemMoreWidth - navOverflowWidth;
+                            if(typeof $navItemMoreLeft !== "undefined") {
+                                navItemMoreLeft = $('.navbar-horizontal-fluid .overflow-toggle-menu').offset().left;
+                                navOverflowWidth = $('#overflow-menu').width();
+                                offset = navItemMoreLeft + navItemMoreWidth - navOverflowWidth;
+                            }
                         };
                         $(window).resize(windowResize);
                         windowResize();
@@ -471,7 +473,7 @@
         <!-- Right side of the main navigation -->
         <div class="mobile-bar">
             <ul id="toolbar" class="toolbar">
-              <!--   <li id="quickcreatetop" class="create dropdown nav navbar-nav quickcreatetop">
+                <li id="quickcreatetop" class="create dropdown nav navbar-nav quickcreatetop">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         {$APP.LBL_CREATE_BUTTON_LABEL}<span class="suitepicon suitepicon-action-caret"></span>
                     </a>
@@ -482,16 +484,17 @@
                         <li><a href="index.php?module=Leads&action=EditView&return_module=Leads&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Leads" label="LBL_MODULE_NAME"}</a></li>
                         <li><a href="index.php?module=Documents&action=EditView&return_module=Documents&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Documents" label="LBL_MODULE_NAME"}</a></li>
                         <li><a href="index.php?module=Calls&action=EditView&return_module=Calls&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Calls" label="LBL_MODULE_NAME"}</a></li>
-                        <li><a href="index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Tasks" label="LBL_MODULE_NAME"}</a></li> -->
+                        <li><a href="index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Tasks" label="LBL_MODULE_NAME"}</a></li>
                     </ul>
                 </li>
                 <li id="" class="dropdown nav navbar-nav navbar-search">
-                    <button id="search1button" class="dropdown-toggle btn btn-default searchbutton suitepicon suitepicon-action-search" data-toggle="dropdown" aria-expanded="true">
+                    <!-- <button id="searchbutton" class="dropdown-toggle btn btn-default searchbutton suitepicon suitepicon-action-search" data-toggle="dropdown" aria-expanded="true">
                     </button>
+                    -->
                     <div class="dropdown-menu" role="menu" aria-labelledby="searchbutton">
                         <form id="searchformdropdown" class="searchformdropdown" name='UnifiedSearch' action='index.php'
                               onsubmit='return SUGAR.unifiedSearchAdvanced.checkUsaAdvanced()'>
-                            <input type="hidden" class="form-control" name="action" value="UnifiedSearch">
+                            {search_controller}
                             <input type="hidden" class="form-control" name="module" value="Home">
                             <input type="hidden" class="form-control" name="search_form" value="false">
                             <input type="hidden" class="form-control" name="advanced" value="false">
@@ -515,7 +518,7 @@
                 <li>
                     <form id="searchform" class="navbar-form searchform" name='UnifiedSearch' action='index.php'
                           onsubmit='return SUGAR.unifiedSearchAdvanced.checkUsaAdvanced()'>
-                        <input type="hidden" class="form-control" name="action" value="UnifiedSearch">
+                        {search_controller}
                         <input type="hidden" class="form-control" name="module" value="Home">
                         <input type="hidden" class="form-control" name="search_form" value="false">
                         <input type="hidden" class="form-control" name="advanced" value="false">
@@ -553,7 +556,7 @@
         </div>
         <div class="tablet-bar">
             <ul id="toolbar" class="toolbar">
-               <!--  <li id="quickcreatetop" class="create dropdown nav navbar-nav quickcreatetop">
+                <li id="quickcreatetop" class="create dropdown nav navbar-nav quickcreatetop">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         {$APP.LBL_CREATE_BUTTON_LABEL}<span class="suitepicon suitepicon-action-caret"></span>
                     </a>
@@ -564,16 +567,17 @@
                         <li><a href="index.php?module=Leads&action=EditView&return_module=Leads&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Leads" label="LBL_MODULE_NAME"}</a></li>
                         <li><a href="index.php?module=Documents&action=EditView&return_module=Documents&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Documents" label="LBL_MODULE_NAME"}</a></li>
                         <li><a href="index.php?module=Calls&action=EditView&return_module=Calls&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Calls" label="LBL_MODULE_NAME"}</a></li>
-                        <li><a href="index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Tasks" label="LBL_MODULE_NAME"}</a></li> -->
+                        <li><a href="index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Tasks" label="LBL_MODULE_NAME"}</a></li>
                     </ul>
                 </li>
                 <li id="" class="dropdown nav navbar-nav navbar-search">
-                    <button id="search1button" class="dropdown-toggle btn btn-default searchbutton suitepicon suitepicon-action-search" data-toggle="dropdown" aria-expanded="true">
+                   <!-- <button id="searchbutton" class="dropdown-toggle btn btn-default searchbutton suitepicon suitepicon-action-search" data-toggle="dropdown" aria-expanded="true">
                     </button>
+                    -->
                     <div class="dropdown-menu" role="menu" aria-labelledby="searchbutton">
                         <form id="searchformdropdown" class="searchformdropdown" name='UnifiedSearch' action='index.php'
                               onsubmit='return SUGAR.unifiedSearchAdvanced.checkUsaAdvanced()'>
-                            <input type="hidden" class="form-control" name="action" value="UnifiedSearch">
+                            {search_controller}
                             <input type="hidden" class="form-control" name="module" value="Home">
                             <input type="hidden" class="form-control" name="search_form" value="false">
                             <input type="hidden" class="form-control" name="advanced" value="false">
@@ -590,7 +594,7 @@
                 <li>
                     <form id="searchform" class="navbar-form searchform" name='UnifiedSearch' action='index.php'
                           onsubmit='return SUGAR.unifiedSearchAdvanced.checkUsaAdvanced()'>
-                        <input type="hidden" class="form-control" name="action" value="UnifiedSearch">
+                        {search_controller}
                         <input type="hidden" class="form-control" name="module" value="Home">
                         <input type="hidden" class="form-control" name="search_form" value="false">
                         <input type="hidden" class="form-control" name="advanced" value="false">
@@ -636,7 +640,7 @@
         </div>
         <div class="desktop-bar">
             <ul id="toolbar" class="toolbar">
-                <!-- <li id="quickcreatetop" class="create dropdown nav navbar-nav quickcreatetop">
+                <li id="quickcreatetop" class="create dropdown nav navbar-nav quickcreatetop">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         {$APP.LBL_CREATE_BUTTON_LABEL}<span class="suitepicon suitepicon-action-caret"></span>
                     </a>
@@ -649,14 +653,15 @@
                         <li><a href="index.php?module=Calls&action=EditView&return_module=Calls&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Calls" label="LBL_MODULE_NAME"}</a></li>
                         <li><a href="index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView">{$APP.LBL_QUICK_CREATE}{sugar_translate module="Tasks" label="LBL_MODULE_NAME"}</a></li>
                     </ul>
-                </li> -->
+                </li>
                 <li id="" class="dropdown nav navbar-nav navbar-search">
-                    <button id="search1button" class="dropdown-toggle btn btn-default searchbutton suitepicon suitepicon-action-search" data-toggle="dropdown" aria-expanded="true">
+                   <!-- <button id="searchbutton" class="dropdown-toggle btn btn-default searchbutton suitepicon suitepicon-action-search" data-toggle="dropdown" aria-expanded="true">
                     </button>
+                    -->
                     <div class="dropdown-menu" role="menu" aria-labelledby="searchbutton">
                         <form id="searchformdropdown" class="searchformdropdown" name='UnifiedSearch' action='index.php'
                               onsubmit='return SUGAR.unifiedSearchAdvanced.checkUsaAdvanced()'>
-                            <input type="hidden" class="form-control" name="action" value="UnifiedSearch">
+                            {search_controller}
                             <input type="hidden" class="form-control" name="module" value="Home">
                             <input type="hidden" class="form-control" name="search_form" value="false">
                             <input type="hidden" class="form-control" name="advanced" value="false">
@@ -673,7 +678,7 @@
                 <li>
                     <form id="searchform" class="navbar-form searchform" name='UnifiedSearch' action='index.php'
                           onsubmit='return SUGAR.unifiedSearchAdvanced.checkUsaAdvanced()'>
-                        <input type="hidden" class="form-control" name="action" value="UnifiedSearch">
+                        {search_controller}
                         <input type="hidden" class="form-control" name="module" value="Home">
                         <input type="hidden" class="form-control" name="search_form" value="false">
                         <input type="hidden" class="form-control" name="advanced" value="false">
@@ -725,10 +730,10 @@
     <div id='sidebar_container' class="container-fluid sidebar_container">
 
         <a id="buttontoggle" class="buttontoggle"><span></span></a>
-                
-             <div {if $smarty.cookies.sidebartoggle == 'collapsed'}style="display:none"{/if}
+
+        <div {if $smarty.cookies.sidebartoggle|default:'' == 'collapsed'}style="display:none"{/if}
              class="sidebar">
-                
+
                 <div id="actionMenuSidebar" class="actionMenuSidebar">
                     {foreach from=$moduleTopMenu item=module key=name name=moduleList}
                         {if $name == $MODULE_TAB}
@@ -755,7 +760,7 @@
                         {/if}
                     {/foreach}
                 </div>
-                
+
                 <div id="recentlyViewedSidebar" class="recentlyViewedSidebar">
                     {if is_array($recentRecords) && count($recentRecords) > 0}
                     <h2 class="recent_h3">{$APP.LBL_LAST_VIEWED}</h2>
