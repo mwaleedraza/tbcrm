@@ -1,2 +1,2 @@
 <?php
-$mod_strings['LBL_SUGARFIELD_AMOUNT'] = 'Amount:';
+$mod_strings['LBL_SUGARFIELD_AMOUNT'] = 'Estimate Amount:';
