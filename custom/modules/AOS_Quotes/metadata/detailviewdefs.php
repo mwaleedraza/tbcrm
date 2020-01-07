@@ -27,7 +27,41 @@ array (
           array (
             'customCode' => '<input type="button" class="button" onClick="showPopup(\'email\');return false;" value="{$MOD.LBL_EMAIL_QUOTE}">',
           ),
-        
+          7 =>
+          array(
+            'customCode' => '<input type="submit" class="button" onClick="this.form.action.value=\'createOpportunity\';" value="{$MOD.LBL_CREATE_OPPORTUNITY}">',
+            'sugar_html' =>
+            array(
+              'type' => 'submit',
+              'value' => '{$MOD.LBL_CREATE_OPPORTUNITY}',
+              'htmlOptions' =>
+              array(
+                'class' => 'button',
+                'id' => 'create_contract_button',
+                'title' => '{$MOD.LBL_CREATE_OPPORTUNITY}',
+                'onclick' => 'this.form.action.value=\'createOpportunity\';',
+                'name' => 'Create Opportunity',
+              ),
+            ),
+          ),
+          8 =>
+          array(
+            'customCode' => '<input type="submit" class="button" onClick="this.form.action.value=\'createContract\';" value="{$MOD.LBL_CREATE_CONTRACT}">',
+            'sugar_html' =>
+            array(
+              'type' => 'submit',
+              'value' => '{$MOD.LBL_CREATE_CONTRACT}',
+              'htmlOptions' =>
+              array(
+                'class' => 'button',
+                'id' => 'create_contract_button',
+                'title' => '{$MOD.LBL_CREATE_CONTRACT}',
+                'onclick' => 'this.form.action.value=\'createContract\';',
+                'name' => 'Create Contract',
+              ),
+            ),
+          ),
+
           9 =>
           array (
             'customCode' => '<input type="submit" class="button" onClick="this.form.action.value=\'converToInvoice\';" value="{$MOD.LBL_CONVERT_TO_INVOICE}">',

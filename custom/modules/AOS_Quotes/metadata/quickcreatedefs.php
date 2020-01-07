@@ -64,11 +64,7 @@ array (
             ),
             'label' => 'LBL_NAME',
           ),
-          1 => 
-          array (
-            'name' => 'opportunity',
-            'label' => 'LBL_OPPORTUNITY',
-          ),
+          1 => '',
         ),
         1 => 
         array (
@@ -161,7 +157,11 @@ array (
               'initial_filter' => '&account_name="+this.form.{$fields.billing_account.name}.value+"',
             ),
           ),
-          1 => '',
+          1 => 
+          array (
+            'name' => 'rfq_ref',
+            'label' => 'LBL_RFQ',
+          ),
         ),
         2 => 
         array (
@@ -195,6 +195,57 @@ array (
             'label' => 'LBL_SHIPPING_ADDRESS_STREET',
           ),
         ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'payment',
+            'comment' => '',
+            'label' => 'LBL_PAYMENT',
+          ),
+          1 => 
+          array (
+            'name' => 'po_to_v',
+            'label' => 'LBL_PO_TO_V',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'status',
+            'comment' => '',
+            'label' => 'LBL_STATUS',
+          ),
+          1 => 
+          array (
+            'name' => 'condition_c',
+            'label' => 'LBL_CONDITION',
+          ),
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'user_name',
+            'label' => 'LBL_USER_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'medium',
+            'comment' => '',
+            'label' => 'LBL_MEDIUM',
+          ),
+        ),
+        6 => 
+        array (
+          0 => 
+          array (
+            'name' => 'lead_name',
+            'label' => 'LBL_LEAD_NAME',
+          ),
+          1 => '',
+        ),
       ),
       'lbl_line_items' => 
       array (
@@ -202,24 +253,15 @@ array (
         array (
           0 => 
           array (
-            'name' => 'currency_id',
-            'studio' => 'visible',
-            'label' => 'LBL_CURRENCY',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
             'name' => 'line_items',
             'label' => 'LBL_LINE_ITEMS',
           ),
         ),
-        2 => 
+        1 => 
         array (
           0 => '',
         ),
-        3 => 
+        2 => 
         array (
           0 => 
           array (
@@ -227,7 +269,7 @@ array (
             'label' => 'LBL_TOTAL_AMT',
           ),
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -235,7 +277,7 @@ array (
             'label' => 'LBL_DISCOUNT_AMOUNT',
           ),
         ),
-        5 => 
+        4 => 
         array (
           0 => 
           array (
@@ -243,7 +285,7 @@ array (
             'label' => 'LBL_SUBTOTAL_AMOUNT',
           ),
         ),
-        6 => 
+        5 => 
         array (
           0 => 
           array (
@@ -258,7 +300,7 @@ array (
             ),
           ),
         ),
-        7 => 
+        6 => 
         array (
           0 => 
           array (
@@ -266,7 +308,7 @@ array (
             'label' => 'LBL_SHIPPING_TAX_AMT',
           ),
         ),
-        8 => 
+        7 => 
         array (
           0 => 
           array (
@@ -274,7 +316,7 @@ array (
             'label' => 'LBL_TAX_AMOUNT',
           ),
         ),
-        9 => 
+        8 => 
         array (
           0 => 
           array (
