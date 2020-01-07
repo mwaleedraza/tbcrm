@@ -1,0 +1,6 @@
+<?php
+// created: 2020-01-07 13:28:40
+$mod_strings = array (
+  'LBL_SURVEYRESPONSES_ACCOUNTS_FROM_ACCOUNTS_TITLE' => 'Our Company',
+  'LBL_SURVEYRESPONSES_CONTACTS_FROM_CONTACTS_TITLE' => 'Vendor',
+);

@@ -1,5 +1,28 @@
 <?php
-// created: 2019-12-27 08:02:06
+// created: 2020-01-07 13:28:45
 $mod_strings = array (
   'LBL_EDITVIEW_PANEL1' => 'Leads Products',
+  'LNK_NEW_LEAD' => 'Create Client',
+  'LNK_LEAD_LIST' => 'View Clients',
+  'LNK_IMPORT_VCARD' => 'Create Client From vCard',
+  'LNK_IMPORT_LEADS' => 'Import Clients',
+  'LBL_LIST_FORM_TITLE' => 'Client List',
+  'LBL_SEARCH_FORM_TITLE' => 'Client Search',
+  'LBL_REPORTS_TO' => 'Reports To:',
+  'LBL_CONTACTS' => 'Vendors',
+  'LBL_ACCOUNT' => 'Our Company',
+  'LBL_LEADS' => 'Leads',
+  'LBL_LIST_MY_LEADS' => 'My Clients',
+  'LBL_CONTACT_ID' => 'Vendor ID',
+  'LBL_CONVERTED_CONTACT' => 'Converted Vendor:',
+  'LBL_ACCOUNT_DESCRIPTION' => 'Our Company Description',
+  'LBL_ACCOUNT_ID' => 'Our Company ID',
+  'LBL_ACCOUNT_NAME' => 'Our Company Name:',
+  'LBL_LIST_ACCOUNT_NAME' => 'Our Company Name',
+  'LBL_CONVERTED_ACCOUNT' => 'Converted Our Company:',
+  'LNK_SELECT_ACCOUNTS' => ' OR Select Our Company',
+  'LNK_NEW_ACCOUNT' => 'Create Our Company',
+  'LBL_LEAD_SOURCE' => 'Client Source:',
+  'LBL_LEAD_SOURCE_DESCRIPTION' => 'Client Source Description:',
+  'LBL_MODULE_NAME' => 'Clients',
 );
