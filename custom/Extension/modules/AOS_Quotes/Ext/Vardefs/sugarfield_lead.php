@@ -26,16 +26,16 @@ $dictionary['AOS_Quotes']['fields']['lead_name'] =  array(
             'source' => 'non-db',
             'required' => true,
         );
-$dictionary['AOS_Quotes']['fields']['Leads'] =  array(
+$dictionary['AOS_Quotes']['fields']['leads'] =  array(
             'name' => 'leads',
             'type' => 'link',
-            'relationship' => 'quotes_leads',
+            'relationship' => 'leads_aos_quotes',
             'module' => 'Leads',
-            'bean_name' => 'Leads',
+            'bean_name' => 'Lead',
             'source' => 'non-db',
             'vname' => 'LBL_LEADS',
         );
-$dictionary['AOS_Quotes']['relationships']['quotes_leads'] =  array(
+$dictionary['AOS_Quotes']['relationships']['leads_aos_quotes'] =  array(
 		    'lhs_module' => 'Leads',
 		    'lhs_table' => 'leads',
 		    'lhs_key' => 'id',
