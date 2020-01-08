@@ -1,16 +1,22 @@
 {literal}
 <script type="text/javascript">
+	$(document).ready(function(){
+	  $("button").click(function(){
+		$("p").slideToggle();
+	  });
+	});
     var rowIndex=0;
     function addProducts(pro_name_val,pro_id_val){
       $('#pro_tbl').append('<tr id="row'+rowIndex+'"><td><input value="'+pro_name_val+'" type="text" id="pro_name_'+rowIndex+'" name="pro_name_'+rowIndex+'" placeholder="Search Product " class="sqsEnabled form-control" autocomplete="off"/><input type="hidden" value="'+pro_id_val+'" id="pro_id_'+rowIndex+'" name="pro_id_'+rowIndex+'" placeholder="Search Product " class="form-control" /></td><td><button type="button" name="remove" id="'+rowIndex+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-
-      customSqs(rowIndex);
-      SUGAR.util.doWhen(
-  		"typeof(sqs_objects) != 'undefined' && typeof(sqs_objects['EditView_Leads_pro_'+i]) != 'undefined'",
-  		enableQS(false)
-      );
-        rowIndex++;
-      $('#product_count').val(rowIndex);
+	  setTimeout(function(){
+		SUGAR.util.doWhen(
+		"typeof(sqs_objects) != 'undefined' && typeof(sqs_objects['EditView_pro_name_'+rowIndex]) != 'undefined'",
+		enableQS(false)
+		);
+		customSqs(rowIndex);
+		rowIndex++;
+		$('#product_count').val(rowIndex);
+	  }, 2000);
     }
     function customSqs(prodln){
       sqs_objects["pro_name_" + prodln] = {
@@ -32,7 +38,7 @@
         // "post_onblur_function": "formatListPrice(" + prodln + ");",
         "no_match_text": "No Match"
       };
-	     // enableQS(false);
+	   enableQS(false);
     }
     $(document).on('click', '.btn_remove', function(){
       var button_id = $(this).attr("id");
