@@ -1,9 +1,9 @@
 
 <h2>Products</h2>
-<table class="table table-bordered" id="pro_tbl">
-  <tr>
-    <th>Product Name :</th>
-  </tr>
+<table class="table table-bordered detail" id="pro_tbl">
+<tr>
+  <th>Product Title</th>
+</tr>
 {foreach from=$PRODUCTLIST_DETAILS key=index item=line_item}
 
 <tr>

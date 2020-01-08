@@ -19,7 +19,7 @@ array (
           0 => 'SAVE',
           1 => 'CANCEL',
         ),
-        'footerTpl' => 'custom/modules/Leads/custom.tpl',
+        'footerTpl' => 'custom/modules/Leads/tpls/productsEditView.tpl',
       ),
       'maxColumns' => '2',
       'widths' => 

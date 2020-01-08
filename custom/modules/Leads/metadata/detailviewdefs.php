@@ -100,7 +100,7 @@ array(
           ),
         ),
         'headerTpl' => 'modules/Leads/tpls/DetailViewHeader.tpl',
-        'footerTpl' => 'custom/modules/Leads/detailview.tpl',
+        'footerTpl' => 'custom/modules/Leads/tpls/productsDetailView.tpl',
       ),
       'maxColumns' => '2',
       'widths' =>
