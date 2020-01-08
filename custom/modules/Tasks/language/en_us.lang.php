@@ -1,11 +1,11 @@
 <?php
-// created: 2020-01-07 13:28:45
+// created: 2020-01-08 12:55:05
 $mod_strings = array (
-  'LBL_CASE' => 'Support Ticketing',
-  'LBL_CONTACT_NAME' => 'Vendor Name ',
-  'LBL_CONTACT' => 'Vendor:',
+  'LBL_CASE' => 'Ticket',
+  'LBL_CONTACT_NAME' => 'Client Name ',
+  'LBL_CONTACT' => 'Client:',
   'LBL_ACCOUNT' => 'Our Company',
-  'LBL_LEADS' => 'Clients',
-  'LBL_CONTACT_ID' => 'Vendor ID:',
-  'LBL_CONTACT_PHONE' => 'Vendor Phone:',
+  'LBL_LEADS' => 'Sales',
+  'LBL_CONTACT_ID' => 'Client ID:',
+  'LBL_CONTACT_PHONE' => 'Client Phone:',
 );

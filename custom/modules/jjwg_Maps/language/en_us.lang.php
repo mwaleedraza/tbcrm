@@ -1,8 +1,8 @@
 <?php
-// created: 2020-01-07 13:28:39
+// created: 2020-01-08 12:55:05
 $mod_strings = array (
-  'LBL_CASES' => 'Support Ticketing',
+  'LBL_CASES' => 'Ticket',
   'LBL_ACCOUNTS' => 'Our Company',
-  'LBL_CONTACTS' => 'Vendors',
-  'LBL_LEADS' => 'Clients',
+  'LBL_CONTACTS' => 'Clients',
+  'LBL_LEADS' => 'Sales',
 );

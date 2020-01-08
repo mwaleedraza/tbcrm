@@ -1,8 +1,8 @@
 <?php
-// created: 2020-01-07 13:28:39
+// created: 2020-01-08 12:55:05
 $mod_strings = array (
   'LBL_CONTRACT_ACCOUNT' => 'Our Company',
-  'LBL_CONTACT' => 'Vendor',
+  'LBL_CONTACT' => 'Client',
   'LBL_ACCOUNTS' => 'Our Company',
-  'LBL_CONTACTS' => 'Vendors',
+  'LBL_CONTACTS' => 'Clients',
 );

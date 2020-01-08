@@ -1,10 +1,10 @@
 <?php
-// created: 2020-01-07 13:28:39
+// created: 2020-01-08 12:55:05
 $mod_strings = array (
   'LBL_BILLING_ACCOUNT' => 'Vendor/Client',
-  'LBL_BILLING_CONTACT' => 'Vendor',
-  'LBL_LEAD_NAME' => 'Client Name',
+  'LBL_BILLING_CONTACT' => 'Client',
+  'LBL_LEAD_NAME' => 'Lead Name',
   'LBL_ACCOUNTS' => 'Our Company',
-  'LBL_CONTACTS' => 'Vendors',
-  'LBL_LEADS' => 'Clients',
+  'LBL_CONTACTS' => 'Clients',
+  'LBL_LEADS' => 'Sales',
 );
