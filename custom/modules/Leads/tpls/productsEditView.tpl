@@ -1,9 +1,7 @@
 {literal}
 <script type="text/javascript">
     var rowIndex=0;
-    debugger;
     function addProducts(pro_name_val,pro_id_val){
-        debugger;
       $('#pro_tbl').append('<tr id="row'+rowIndex+'"><td><input value="'+pro_name_val+'" type="text" id="pro_name_'+rowIndex+'" name="pro_name_'+rowIndex+'" placeholder="Search Product " class="sqsEnabled form-control" autocomplete="off"/><input type="hidden" value="'+pro_id_val+'" id="pro_id_'+rowIndex+'" name="pro_id_'+rowIndex+'" placeholder="Search Product " class="form-control" /></td><td><button type="button" name="remove" id="'+rowIndex+'" class="btn btn-danger btn_remove">X</button></td></tr>');
 
       customSqs(rowIndex);
@@ -13,7 +11,6 @@
       );
         rowIndex++;
       $('#product_count').val(rowIndex);
-
     }
     function customSqs(prodln){
       sqs_objects["pro_name_" + prodln] = {
