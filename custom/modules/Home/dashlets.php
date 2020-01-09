@@ -7,3 +7,7 @@ $defaultDashlets =array (
   'MyAccountsDashlet' => 'Accounts',
   'MyLeadsDashlet' => 'Leads',
 );
+$defaultDashlets = array_reverse($defaultDashlets, true);
+unset($defaultDashlets);
+$defaultDashlets['MyLeadsDashlet'] = 'Leads';
+$defaultDashlets['MyAccountsDashlet'] = 'Accounts';
