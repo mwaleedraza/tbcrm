@@ -5,7 +5,7 @@ if (!defined('sugarEntry') || !sugarEntry) {
 }
 class ContactsViewDetail extends ViewDetail{
     public function display(){
-        unset($this->dv->defs['templateMeta']['form']['buttons'][4])
+        unset($this->dv->defs['templateMeta']['form']['buttons'][4]);
         parent::display();
     }
 }
