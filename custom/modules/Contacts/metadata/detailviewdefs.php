@@ -129,17 +129,12 @@ array (
           'file' => 'modules/Contacts/Contact.js',
         ),
       ),
-      'useTabs' => true,
+      'useTabs' => false,
       'tabDefs' => 
       array (
         'LBL_CONTACT_INFORMATION' => 
         array (
-          'newTab' => true,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_PANEL_ADVANCED' => 
-        array (
-          'newTab' => true,
+          'newTab' => false,
           'panelDefault' => 'expanded',
         ),
       ),
@@ -152,19 +147,59 @@ array (
         array (
           0 => 
           array (
-            'name' => 'serial_no',
-            'label' => 'LBL_SERIAL_NO',
+            'name' => 'first_name',
+            'comment' => 'First name of the contact',
+            'label' => 'LBL_FIRST_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'last_name',
+            'comment' => 'Last name of the contact',
+            'label' => 'LBL_LAST_NAME',
           ),
         ),
         1 => 
         array (
           0 => 
           array (
-            'name' => 'company_name',
-            'label' => 'LBL_COMPANY_NAME',
+            'name' => 'email1',
+            'studio' => 'false',
+            'label' => 'LBL_EMAIL_ADDRESS',
+          ),
+          1 => 
+          array (
+            'name' => 'phone_mobile',
+            'label' => 'LBL_MOBILE_PHONE',
           ),
         ),
         2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'phone_other',
+            'comment' => 'Other phone number for the contact',
+            'label' => 'LBL_OTHER_PHONE',
+          ),
+          1 => 
+          array (
+            'name' => 'phone_work',
+            'label' => 'LBL_OFFICE_PHONE',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'company_name',
+            'label' => 'LBL_COMPANY_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'designation_name',
+            'label' => 'LBL_DESIGNATION_NAME',
+          ),
+        ),
+        4 => 
         array (
           0 => 
           array (
@@ -177,7 +212,34 @@ array (
             'label' => 'LBL_TYPE',
           ),
         ),
-        3 => 
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'ntn_number',
+            'label' => 'LBL_NTN_NUMBER',
+          ),
+          1 => 
+          array (
+            'name' => 'gst_number',
+            'label' => 'LBL_GST_NUMBER',
+          ),
+        ),
+        6 => 
+        array (
+          0 => 
+          array (
+            'name' => 'assigned_user_name',
+            'label' => 'LBL_ASSIGNED_TO_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'description',
+            'comment' => 'Full text of the note',
+            'label' => 'LBL_DESCRIPTION',
+          ),
+        ),
+        7 => 
         array (
           0 => 
           array (
@@ -200,73 +262,20 @@ array (
             ),
           ),
         ),
-        4 => 
+        8 => 
         array (
           0 => 
           array (
-            'name' => 'phone_work',
-            'label' => 'LBL_OFFICE_PHONE',
-          ),
-        ),
-        5 => 
-        array (
-          0 => 
-          array (
-            'name' => 'ntn_number',
-            'label' => 'LBL_NTN_NUMBER',
+            'name' => 'date_entered',
+            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
+            'label' => 'LBL_DATE_ENTERED',
           ),
           1 => 
           array (
-            'name' => 'gst_number',
-            'label' => 'LBL_GST_NUMBER',
+            'name' => 'date_modified',
+            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
+            'label' => 'LBL_DATE_MODIFIED',
           ),
-        ),
-      ),
-      'LBL_PANEL_ADVANCED' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'full_name',
-            'studio' => 
-            array (
-              'listview' => false,
-            ),
-            'label' => 'LBL_NAME',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'designation_name',
-            'label' => 'LBL_DESIGNATION_NAME',
-          ),
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'phone_mobile',
-            'label' => 'LBL_MOBILE_PHONE',
-          ),
-          1 => 
-          array (
-            'name' => 'phone_other',
-            'comment' => 'Other phone number for the contact',
-            'label' => 'LBL_OTHER_PHONE',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'email1',
-            'studio' => 'false',
-            'label' => 'LBL_EMAIL_ADDRESS',
-          ),
-          1 => '',
         ),
       ),
     ),

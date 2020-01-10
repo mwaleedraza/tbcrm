@@ -44,16 +44,6 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_PANEL_ADVANCED' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_PANEL_ASSIGNMENT' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
       ),
     ),
     'panels' => 
@@ -62,31 +52,27 @@ array (
       array (
         0 => 
         array (
-          0 => 
-          array (
-            'name' => 'first_name',
-            'customCode' => '{html_options name="salutation" id="salutation" options=$fields.salutation.options selected=$fields.salutation.value}&nbsp;<input name="first_name"  id="first_name" size="25" maxlength="25" type="text" value="{$fields.first_name.value}">',
-          ),
-        ),
-        1 => 
-        array (
           0 => 'last_name',
           1 => 
-          array (
-            'name' => 'sugarfield_amount',
-            'label' => 'LBL_SUGARFIELD_AMOUNT',
-          ),
-        ),
-        2 => 
-        array (
-          0 => 
           array (
             'name' => 'contacts_name',
             'label' => 'LBL_CONTACTS_NAME',
           ),
-          1 => '',
         ),
-        3 => 
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'sugarfield_amount',
+            'label' => 'LBL_SUGARFIELD_AMOUNT',
+          ),
+          1 => 
+          array (
+            'name' => 'sugarfield_type',
+            'label' => 'LBL_SUGARFIELD_TYPE',
+          ),
+        ),
+        2 => 
         array (
           0 => 
           array (
@@ -99,69 +85,20 @@ array (
             'label' => 'LBL_SUGARFIELD_CLOSUREDATE',
           ),
         ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'sugarfield_type',
-            'label' => 'LBL_SUGARFIELD_TYPE',
-          ),
-        ),
-        5 => 
+        3 => 
         array (
           0 => 
           array (
             'name' => 'sugarfield_responsible',
             'label' => 'LBL_SUGARFIELD_RESPONSIBLE',
           ),
-          1 => 'website',
-        ),
-        6 => 
-        array (
-          0 => 
-          array (
-            'name' => 'primary_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'primary',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
-            ),
-          ),
           1 => 
           array (
-            'name' => 'alt_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'alt',
-              'copy' => 'primary',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
-            ),
+            'name' => 'assigned_user_name',
+            'label' => 'LBL_ASSIGNED_TO',
           ),
         ),
-        7 => 
-        array (
-          0 => 
-          array (
-            'name' => 'sugarfield_nextaction',
-            'label' => 'LBL_SUGARFIELD_NEXTACTION',
-          ),
-        ),
-        8 => 
-        array (
-          0 => 'description',
-        ),
-      ),
-      'LBL_PANEL_ADVANCED' => 
-      array (
-        0 => 
+        4 => 
         array (
           0 => 
           array (
@@ -170,15 +107,13 @@ array (
           ),
           1 => 'lead_source',
         ),
-      ),
-      'LBL_PANEL_ASSIGNMENT' => 
-      array (
-        0 => 
+        5 => 
         array (
-          0 => 
+          0 => 'description',
+          1 => 
           array (
-            'name' => 'assigned_user_name',
-            'label' => 'LBL_ASSIGNED_TO',
+            'name' => 'sugarfield_nextaction',
+            'label' => 'LBL_SUGARFIELD_NEXTACTION',
           ),
         ),
       ),

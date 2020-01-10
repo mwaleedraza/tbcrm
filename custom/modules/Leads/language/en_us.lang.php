@@ -1,5 +1,5 @@
 <?php
-// created: 2020-01-08 12:55:05
+// created: 2020-01-10 14:33:35
 $mod_strings = array (
   'LBL_EDITVIEW_PANEL1' => 'Leads Products',
   'LNK_NEW_LEAD' => 'Create Sale',
@@ -10,19 +10,21 @@ $mod_strings = array (
   'LBL_SEARCH_FORM_TITLE' => 'Sale Search',
   'LBL_REPORTS_TO' => 'Reports To:',
   'LBL_CONTACTS' => 'Clients',
-  'LBL_ACCOUNT' => 'Our Company',
+  'LBL_ACCOUNT' => 'Company',
   'LBL_LEADS' => 'Leads',
   'LBL_LIST_MY_LEADS' => 'My Sales',
   'LBL_CONTACT_ID' => 'Client ID',
   'LBL_CONVERTED_CONTACT' => 'Converted Client:',
-  'LBL_ACCOUNT_DESCRIPTION' => 'Our Company Description',
-  'LBL_ACCOUNT_ID' => 'Our Company ID',
-  'LBL_ACCOUNT_NAME' => 'Our Company Name:',
-  'LBL_LIST_ACCOUNT_NAME' => 'Our Company Name',
-  'LBL_CONVERTED_ACCOUNT' => 'Converted Our Company:',
-  'LNK_SELECT_ACCOUNTS' => ' OR Select Our Company',
-  'LNK_NEW_ACCOUNT' => 'Create Our Company',
+  'LBL_ACCOUNT_DESCRIPTION' => 'Company Description',
+  'LBL_ACCOUNT_ID' => 'Company ID',
+  'LBL_ACCOUNT_NAME' => 'Company Name:',
+  'LBL_LIST_ACCOUNT_NAME' => 'Company Name',
+  'LBL_CONVERTED_ACCOUNT' => 'Converted Company:',
+  'LNK_SELECT_ACCOUNTS' => ' OR Select Company',
+  'LNK_NEW_ACCOUNT' => 'Create Company',
   'LBL_LEAD_SOURCE' => 'Sale Source:',
   'LBL_LEAD_SOURCE_DESCRIPTION' => 'Sale Source Description:',
   'LBL_MODULE_NAME' => 'Sales',
+  'LBL_LAST_NAME' => 'Title',
+  'LBL_LIST_NAME' => 'Title',
 );

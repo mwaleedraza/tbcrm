@@ -38,11 +38,6 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_PANEL_ADVANCED' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
       ),
     ),
     'panels' => 
@@ -53,11 +48,58 @@ array (
         array (
           0 => 
           array (
-            'name' => 'company_name',
-            'label' => 'LBL_COMPANY_NAME',
+            'name' => 'first_name',
+            'customCode' => '{html_options name="salutation" id="salutation" options=$fields.salutation.options selected=$fields.salutation.value}&nbsp;<input name="first_name"  id="first_name" size="25" maxlength="25" type="text" value="{$fields.first_name.value}">',
+          ),
+          1 => 
+          array (
+            'name' => 'last_name',
           ),
         ),
         1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'email1',
+            'studio' => 'false',
+            'label' => 'LBL_EMAIL_ADDRESS',
+          ),
+          1 => 
+          array (
+            'name' => 'phone_mobile',
+            'comment' => 'Mobile phone number of the contact',
+            'label' => 'LBL_MOBILE_PHONE',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'phone_other',
+            'comment' => 'Other phone number for the contact',
+            'label' => 'LBL_OTHER_PHONE',
+          ),
+          1 => 
+          array (
+            'name' => 'phone_work',
+            'comment' => 'Work phone number of the contact',
+            'label' => 'LBL_OFFICE_PHONE',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'company_name',
+            'label' => 'LBL_COMPANY_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'designation_name',
+            'label' => 'LBL_DESIGNATION_NAME',
+          ),
+        ),
+        4 => 
         array (
           0 => 
           array (
@@ -70,7 +112,33 @@ array (
             'label' => 'LBL_TYPE',
           ),
         ),
-        2 => 
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'ntn_number',
+            'label' => 'LBL_NTN_NUMBER',
+          ),
+          1 => 
+          array (
+            'name' => 'gst_number',
+            'label' => 'LBL_GST_NUMBER',
+          ),
+        ),
+        6 => 
+        array (
+          0 => 
+          array (
+            'name' => 'assigned_user_name',
+            'label' => 'LBL_ASSIGNED_TO_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'description',
+            'label' => 'LBL_DESCRIPTION',
+          ),
+        ),
+        7 => 
         array (
           0 => 
           array (
@@ -99,77 +167,6 @@ array (
               'maxlength' => 150,
             ),
           ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'phone_work',
-            'comment' => 'Work phone number of the contact',
-            'label' => 'LBL_OFFICE_PHONE',
-          ),
-          1 => '',
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'ntn_number',
-            'label' => 'LBL_NTN_NUMBER',
-          ),
-          1 => 
-          array (
-            'name' => 'gst_number',
-            'label' => 'LBL_GST_NUMBER',
-          ),
-        ),
-      ),
-      'LBL_PANEL_ADVANCED' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'first_name',
-            'customCode' => '{html_options name="salutation" id="salutation" options=$fields.salutation.options selected=$fields.salutation.value}&nbsp;<input name="first_name"  id="first_name" size="25" maxlength="25" type="text" value="{$fields.first_name.value}">',
-          ),
-          1 => 
-          array (
-            'name' => 'last_name',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'designation_name',
-            'label' => 'LBL_DESIGNATION_NAME',
-          ),
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'phone_mobile',
-            'comment' => 'Mobile phone number of the contact',
-            'label' => 'LBL_MOBILE_PHONE',
-          ),
-          1 => 
-          array (
-            'name' => 'phone_other',
-            'comment' => 'Other phone number for the contact',
-            'label' => 'LBL_OTHER_PHONE',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'email1',
-            'studio' => 'false',
-            'label' => 'LBL_EMAIL_ADDRESS',
-          ),
-          1 => '',
         ),
       ),
     ),

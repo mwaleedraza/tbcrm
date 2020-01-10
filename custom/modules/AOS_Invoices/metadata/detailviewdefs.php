@@ -87,11 +87,6 @@ array (
         ),
         1 => 
         array (
-          0 => '',
-          1 => '',
-        ),
-        2 => 
-        array (
           0 => 
           array (
             'name' => 'quote_number',
@@ -103,7 +98,7 @@ array (
             'label' => 'LBL_QUOTE_DATE',
           ),
         ),
-        3 => 
+        2 => 
         array (
           0 => 
           array (
@@ -116,7 +111,7 @@ array (
             'label' => 'LBL_INVOICE_DATE',
           ),
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -129,7 +124,7 @@ array (
             'label' => 'LBL_STATUS',
           ),
         ),
-        5 => 
+        4 => 
         array (
           0 => 
           array (
@@ -144,22 +139,18 @@ array (
             'label' => 'LBL_DELIVERY_NOTE',
           ),
         ),
-        6 => 
-        array (
-          0 => 
-          array (
-            'name' => 'description',
-            'label' => 'LBL_DESCRIPTION',
-          ),
-        ),
-        7 => 
+        5 => 
         array (
           0 => 
           array (
             'name' => 'user_name',
             'label' => 'LBL_USER_NAME',
           ),
-          1 => '',
+          1 => 
+          array (
+            'name' => 'description',
+            'label' => 'LBL_DESCRIPTION',
+          ),
         ),
       ),
       'LBL_INVOICE_TO' => 
@@ -171,38 +162,10 @@ array (
             'name' => 'billing_account',
             'label' => 'LBL_BILLING_ACCOUNT',
           ),
-          1 => '',
-        ),
-        1 => 
-        array (
-          0 => 
+          1 => 
           array (
             'name' => 'billing_contact',
             'label' => 'LBL_BILLING_CONTACT',
-          ),
-          1 => '',
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'billing_address_street',
-            'label' => 'LBL_BILLING_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'billing',
-            ),
-          ),
-          1 => 
-          array (
-            'name' => 'shipping_address_street',
-            'label' => 'LBL_SHIPPING_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'shipping',
-            ),
           ),
         ),
       ),

@@ -56,8 +56,10 @@ array (
         array (
           0 => 
           array (
-            'name' => 'case_number',
-            'type' => 'readonly',
+            'name' => 'name',
+            'displayParams' => 
+            array (
+            ),
           ),
           1 => '',
         ),
@@ -68,6 +70,7 @@ array (
             'name' => 'ticket_no',
             'label' => 'LBL_TICKET_NO',
           ),
+          1 => 'status',
         ),
         2 => 
         array (
@@ -86,43 +89,32 @@ array (
         array (
           0 => 
           array (
-            'name' => 'description',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 'status',
-          1 => '',
-        ),
-        5 => 
-        array (
-          0 => 
-          array (
             'name' => 'closure_date',
             'label' => 'LBL_CLOSURE_DATE',
           ),
-          1 => '',
-        ),
-        6 => 
-        array (
-          0 => 
+          1 => 
           array (
             'name' => 'internal',
             'studio' => 'visible',
             'label' => 'LBL_INTERNAL',
           ),
         ),
-        7 => 
+        4 => 
         array (
-          0 => 
+          0 => 'account_name',
+          1 => 
           array (
             'name' => 'case_update_form',
             'studio' => 'visible',
           ),
         ),
-        8 => 
+        5 => 
         array (
           0 => 'assigned_user_name',
+          1 => 
+          array (
+            'name' => 'description',
+          ),
         ),
       ),
     ),

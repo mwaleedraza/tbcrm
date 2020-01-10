@@ -1,23 +1,12 @@
 <?php
-$module_name = 'AOS_Quotes';
-$_object_name = 'aos_quotes';
+$module_name = 'AOS_Invoices';
+$_object_name = 'aos_invoices';
 $viewdefs [$module_name] = 
 array (
-  'EditView' => 
+  'QuickCreate' => 
   array (
     'templateMeta' => 
     array (
-      'includes' => 
-      array (
-        0 => 
-        array (
-          'file' => 'custom/modules/AOS_Quotes/lead_name.js',
-        ),
-        1 => 
-        array (
-          'file' => 'custom/modules/AOS_Quotes/fetchLeadProduct.js',
-        ),
-      ),
       'form' => 
       array (
         'buttons' => 
@@ -43,12 +32,12 @@ array (
       'useTabs' => false,
       'tabDefs' => 
       array (
-        'LBL_ACCOUNT_INFORMATION' => 
+        'LBL_PANEL_OVERVIEW' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_ADDRESS_INFORMATION' => 
+        'LBL_INVOICE_TO' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
@@ -62,7 +51,7 @@ array (
     ),
     'panels' => 
     array (
-      'lbl_account_information' => 
+      'LBL_PANEL_OVERVIEW' => 
       array (
         0 => 
         array (
@@ -77,24 +66,38 @@ array (
           ),
           1 => 
           array (
-            'name' => 'stage',
-            'label' => 'LBL_STAGE',
+            'name' => 'number',
+            'label' => 'LBL_INVOICE_NUMBER',
+            'customCode' => '{$fields.number.value}',
           ),
         ),
         1 => 
         array (
           0 => 
           array (
-            'name' => 'expiration',
-            'label' => 'LBL_EXPIRATION',
+            'name' => 'quote_number',
+            'label' => 'LBL_QUOTE_NUMBER',
           ),
           1 => 
           array (
-            'name' => 'invoice_status',
-            'label' => 'LBL_INVOICE_STATUS',
+            'name' => 'quote_date',
+            'label' => 'LBL_QUOTE_DATE',
           ),
         ),
         2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'due_date',
+            'label' => 'LBL_DUE_DATE',
+          ),
+          1 => 
+          array (
+            'name' => 'invoice_date',
+            'label' => 'LBL_INVOICE_DATE',
+          ),
+        ),
+        3 => 
         array (
           0 => 
           array (
@@ -103,25 +106,20 @@ array (
           ),
           1 => 
           array (
-            'name' => 'term',
-            'label' => 'LBL_TERM',
+            'name' => 'status',
+            'label' => 'LBL_STATUS',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
-            'name' => 'approval_status',
-            'label' => 'LBL_APPROVAL_STATUS',
-          ),
-          1 => 
-          array (
-            'name' => 'approval_issue',
-            'label' => 'LBL_APPROVAL_ISSUE',
+            'name' => 'description',
+            'label' => 'LBL_DESCRIPTION',
           ),
         ),
       ),
-      'lbl_address_information' => 
+      'LBL_INVOICE_TO' => 
       array (
         0 => 
         array (
@@ -145,11 +143,7 @@ array (
               'shippingKey' => 'shipping',
             ),
           ),
-          1 => 
-          array (
-            'name' => 'lead_name',
-            'label' => 'LBL_LEAD_NAME',
-          ),
+          1 => '',
         ),
         1 => 
         array (
@@ -162,52 +156,38 @@ array (
               'initial_filter' => '&account_name="+this.form.{$fields.billing_account.name}.value+"',
             ),
           ),
-          1 => 
-          array (
-            'name' => 'rfq_ref',
-            'label' => 'LBL_RFQ',
-          ),
+          1 => '',
         ),
         2 => 
         array (
           0 => 
           array (
-            'name' => 'payment',
-            'comment' => '',
-            'label' => 'LBL_PAYMENT',
+            'name' => 'billing_address_street',
+            'hideLabel' => true,
+            'type' => 'address',
+            'displayParams' => 
+            array (
+              'key' => 'billing',
+              'rows' => 2,
+              'cols' => 30,
+              'maxlength' => 150,
+            ),
+            'label' => 'LBL_BILLING_ADDRESS_STREET',
           ),
           1 => 
           array (
-            'name' => 'po_to_v',
-            'label' => 'LBL_PO_TO_V',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'status',
-            'comment' => '',
-            'label' => 'LBL_STATUS',
-          ),
-          1 => 
-          array (
-            'name' => 'condition_c',
-            'label' => 'LBL_CONDITION',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'user_name',
-            'label' => 'LBL_USER_NAME',
-          ),
-          1 => 
-          array (
-            'name' => 'medium',
-            'comment' => '',
-            'label' => 'LBL_MEDIUM',
+            'name' => 'shipping_address_street',
+            'hideLabel' => true,
+            'type' => 'address',
+            'displayParams' => 
+            array (
+              'key' => 'shipping',
+              'copy' => 'billing',
+              'rows' => 2,
+              'cols' => 30,
+              'maxlength' => 150,
+            ),
+            'label' => 'LBL_SHIPPING_ADDRESS_STREET',
           ),
         ),
       ),
@@ -217,11 +197,24 @@ array (
         array (
           0 => 
           array (
+            'name' => 'currency_id',
+            'studio' => 'visible',
+            'label' => 'LBL_CURRENCY',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
             'name' => 'line_items',
             'label' => 'LBL_LINE_ITEMS',
           ),
         ),
-        1 => 
+        2 => 
+        array (
+          0 => '',
+        ),
+        3 => 
         array (
           0 => 
           array (
@@ -229,7 +222,7 @@ array (
             'label' => 'LBL_TOTAL_AMT',
           ),
         ),
-        2 => 
+        4 => 
         array (
           0 => 
           array (
@@ -237,7 +230,7 @@ array (
             'label' => 'LBL_DISCOUNT_AMOUNT',
           ),
         ),
-        3 => 
+        5 => 
         array (
           0 => 
           array (
@@ -245,7 +238,7 @@ array (
             'label' => 'LBL_SUBTOTAL_AMOUNT',
           ),
         ),
-        4 => 
+        6 => 
         array (
           0 => 
           array (
@@ -260,7 +253,7 @@ array (
             ),
           ),
         ),
-        5 => 
+        7 => 
         array (
           0 => 
           array (
@@ -268,7 +261,7 @@ array (
             'label' => 'LBL_SHIPPING_TAX_AMT',
           ),
         ),
-        6 => 
+        8 => 
         array (
           0 => 
           array (
@@ -276,7 +269,7 @@ array (
             'label' => 'LBL_TAX_AMOUNT',
           ),
         ),
-        7 => 
+        9 => 
         array (
           0 => 
           array (

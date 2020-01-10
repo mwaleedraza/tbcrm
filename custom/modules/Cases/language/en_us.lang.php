@@ -1,5 +1,5 @@
 <?php
-// created: 2020-01-08 12:55:05
+// created: 2020-01-10 14:37:34
 $mod_strings = array (
   'LNK_NEW_CASE' => 'Create Ticket',
   'LNK_CASE_LIST' => 'View Tickets',
@@ -8,13 +8,14 @@ $mod_strings = array (
   'LBL_SEARCH_FORM_TITLE' => 'Ticket Search',
   'LBL_LIST_MY_CASES' => 'My Open Tickets',
   'LBL_MODULE_NAME' => 'Tickets',
-  'LBL_ACCOUNT_NAME' => 'Our Company Name:',
-  'LBL_ACCOUNT_ID' => 'Our Company ID',
+  'LBL_ACCOUNT_NAME' => 'Company Name:',
+  'LBL_ACCOUNT_ID' => 'Company ID',
   'LBL_CONTACT_CREATED_BY_NAME' => 'Created by contact',
   'LBL_CONTACT_NAME' => 'Client Name',
   'LBL_CONTACT_CREATED_BY' => 'Created by',
   'LBL_CONTACTS' => 'Clients',
-  'LBL_ACCOUNT' => 'Our Company',
+  'LBL_ACCOUNT' => 'Company',
   'LBL_CONTACTS_SUBPANEL_TITLE' => 'Clients',
-  'LBL_LIST_ACCOUNT_NAME' => 'Our Company Name',
+  'LBL_LIST_ACCOUNT_NAME' => 'Company Name',
+  'LBL_CASE_NUMBER' => 'Ticket  Number:',
 );

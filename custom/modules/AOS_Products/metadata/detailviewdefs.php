@@ -1,5 +1,6 @@
 <?php
-$viewdefs ['Cases'] = 
+$module_name = 'AOS_Products';
+$viewdefs [$module_name] = 
 array (
   'DetailView' => 
   array (
@@ -12,7 +13,6 @@ array (
           0 => 'EDIT',
           1 => 'DUPLICATE',
           2 => 'DELETE',
-          3 => 'FIND_DUPLICATES',
         ),
       ),
       'maxColumns' => '2',
@@ -32,7 +32,7 @@ array (
       'useTabs' => false,
       'tabDefs' => 
       array (
-        'LBL_CASE_INFORMATION' => 
+        'DEFAULT' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
@@ -41,88 +41,78 @@ array (
     ),
     'panels' => 
     array (
-      'lbl_case_information' => 
+      'default' => 
       array (
         0 => 
         array (
           0 => 
           array (
             'name' => 'name',
-            'label' => 'LBL_SUBJECT',
+            'label' => 'LBL_NAME',
           ),
           1 => 
           array (
-            'name' => 'case_number',
-            'label' => 'LBL_CASE_NUMBER',
+            'name' => 'currency_id',
+            'studio' => 'visible',
+            'label' => 'LBL_CURRENCY',
           ),
         ),
         1 => 
         array (
           0 => 
           array (
-            'name' => 'ticket_no',
-            'label' => 'LBL_TICKET_NO',
+            'name' => 'aos_product_category_name',
+            'label' => 'LBL_AOS_PRODUCT_CATEGORYS_NAME',
           ),
-          1 => 'status',
+          1 => 
+          array (
+            'name' => 'type',
+            'label' => 'LBL_TYPE',
+          ),
         ),
         2 => 
         array (
           0 => 
           array (
-            'name' => 'contact_name',
-            'label' => 'LBL_CONTACT_NAME',
+            'name' => 'cost',
+            'label' => 'LBL_COST',
           ),
           1 => 
           array (
-            'name' => 'product_name',
-            'label' => 'LBL_PRODUCT_NAME',
+            'name' => 'price',
+            'label' => 'LBL_PRICE',
           ),
         ),
         3 => 
         array (
           0 => 
           array (
-            'name' => 'closure_date',
-            'label' => 'LBL_CLOSURE_DATE',
-          ),
-          1 => 
-          array (
-            'name' => 'internal',
-            'studio' => 'visible',
-            'label' => 'LBL_INTERNAL',
+            'name' => 'description',
+            'label' => 'LBL_DESCRIPTION',
           ),
         ),
         4 => 
         array (
-          0 => 'account_name',
+          0 => 
+          array (
+            'name' => 'date_entered',
+            'comment' => 'Date record created',
+            'label' => 'LBL_DATE_ENTERED',
+          ),
           1 => 
           array (
-            'name' => 'case_update_form',
-            'studio' => 'visible',
-            'label' => 'LBL_CASE_UPDATE_FORM',
+            'name' => 'date_modified',
+            'comment' => 'Date record last modified',
+            'label' => 'LBL_DATE_MODIFIED',
           ),
         ),
         5 => 
         array (
           0 => 
           array (
-            'name' => 'assigned_user_name',
-            'label' => 'LBL_ASSIGNED_TO',
-          ),
-          1 => 'description',
-        ),
-        6 => 
-        array (
-          0 => 
-          array (
-            'name' => 'date_entered',
-            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
-          ),
-          1 => 
-          array (
-            'name' => 'date_modified',
-            'label' => 'LBL_DATE_MODIFIED',
-            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
+            'name' => 'product_image',
+            'label' => 'LBL_PRODUCT_IMAGE',
+            'customCode' => '<img src="{$fields.product_image.value}"/>',
           ),
         ),
       ),

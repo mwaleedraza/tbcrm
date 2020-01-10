@@ -167,11 +167,7 @@ array (
               'shippingKey' => 'shipping',
             ),
           ),
-          1 => '',
-        ),
-        1 => 
-        array (
-          0 => 
+          1 => 
           array (
             'name' => 'billing_contact',
             'label' => 'LBL_BILLING_CONTACT',
@@ -179,39 +175,6 @@ array (
             array (
               'initial_filter' => '&account_name="+this.form.{$fields.billing_account.name}.value+"',
             ),
-          ),
-          1 => '',
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'billing_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'billing',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
-            ),
-            'label' => 'LBL_BILLING_ADDRESS_STREET',
-          ),
-          1 => 
-          array (
-            'name' => 'shipping_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'shipping',
-              'copy' => 'billing',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
-            ),
-            'label' => 'LBL_SHIPPING_ADDRESS_STREET',
           ),
         ),
       ),

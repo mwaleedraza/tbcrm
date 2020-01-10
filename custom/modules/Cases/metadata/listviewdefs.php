@@ -1,6 +1,13 @@
 <?php
 $listViewDefs ['Cases'] = 
 array (
+  'NAME' => 
+  array (
+    'width' => '25%',
+    'label' => 'LBL_LIST_SUBJECT',
+    'link' => true,
+    'default' => true,
+  ),
   'CASE_NUMBER' => 
   array (
     'width' => '5%',

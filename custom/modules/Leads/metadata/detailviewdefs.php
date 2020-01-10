@@ -100,22 +100,12 @@ array (
           'file' => 'modules/Leads/Lead.js',
         ),
       ),
-      'useTabs' => true,
+      'useTabs' => false,
       'tabDefs' => 
       array (
         'LBL_CONTACT_INFORMATION' => 
         array (
-          'newTab' => true,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_PANEL_ADVANCED' => 
-        array (
-          'newTab' => true,
-          'panelDefault' => 'expanded',
-        ),
-        'LBL_PANEL_ASSIGNMENT' => 
-        array (
-          'newTab' => true,
+          'newTab' => false,
           'panelDefault' => 'expanded',
         ),
       ),
@@ -128,118 +118,85 @@ array (
         array (
           0 => 
           array (
-            'name' => 'full_name',
-            'label' => 'LBL_NAME',
+            'name' => 'last_name',
+            'comment' => 'Last name of the contact',
+            'label' => 'LBL_LAST_NAME',
           ),
-          1 => 'phone_work',
+          1 => 
+          array (
+            'name' => 'contacts_name',
+            'label' => 'LBL_CONTACTS_NAME',
+          ),
         ),
         1 => 
         array (
           0 => 
           array (
-            'name' => 'contacts_name',
-            'label' => 'LBL_CONTACTS_NAME',
-          ),
-          1 => '',
-        ),
-        2 => 
-        array (
-          0 => 'title',
-          1 => 'phone_mobile',
-        ),
-        3 => 
-        array (
-          0 => 'department',
-          1 => 'phone_fax',
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'account_name',
-          ),
-          1 => 'website',
-        ),
-        5 => 
-        array (
-          0 => 
-          array (
-            'name' => 'primary_address_street',
-            'label' => 'LBL_PRIMARY_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'primary',
-            ),
+            'name' => 'sugarfield_amount',
+            'label' => 'LBL_SUGARFIELD_AMOUNT',
           ),
           1 => 
           array (
-            'name' => 'alt_address_street',
-            'label' => 'LBL_ALTERNATE_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'alt',
-            ),
+            'name' => 'sugarfield_type',
+            'label' => 'LBL_SUGARFIELD_TYPE',
           ),
         ),
-        6 => 
-        array (
-          0 => 'email1',
-        ),
-        7 => 
-        array (
-          0 => 'description',
-        ),
-        8 => 
+        2 => 
         array (
           0 => 
+          array (
+            'name' => 'sugarfield_priority',
+            'label' => 'LBL_SUGARFIELD_PRIORITY',
+          ),
+          1 => 
+          array (
+            'name' => 'sugarfield_closuredate',
+            'label' => 'LBL_SUGARFIELD_CLOSUREDATE',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'sugarfield_responsible',
+            'label' => 'LBL_SUGARFIELD_RESPONSIBLE',
+          ),
+          1 => 
           array (
             'name' => 'assigned_user_name',
             'label' => 'LBL_ASSIGNED_TO',
           ),
         ),
-      ),
-      'LBL_PANEL_ADVANCED' => 
-      array (
-        0 => 
-        array (
-          0 => 'status',
-          1 => 'lead_source',
-        ),
-        1 => 
-        array (
-          0 => 'status_description',
-          1 => 'lead_source_description',
-        ),
-        2 => 
-        array (
-          0 => 'opportunity_amount',
-          1 => 'refered_by',
-        ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
-            'name' => 'campaign_name',
-            'label' => 'LBL_CAMPAIGN',
+            'name' => 'sugarfield_status',
+            'label' => 'LBL_SUGARFIELD_status',
+          ),
+          1 => 'lead_source',
+        ),
+        5 => 
+        array (
+          0 => 'description',
+          1 => 
+          array (
+            'name' => 'sugarfield_nextaction',
+            'label' => 'LBL_SUGARFIELD_NEXTACTION',
           ),
         ),
-      ),
-      'LBL_PANEL_ASSIGNMENT' => 
-      array (
-        0 => 
+        6 => 
         array (
           0 => 
+          array (
+            'name' => 'date_entered',
+            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
+          ),
+          1 => 
           array (
             'name' => 'date_modified',
             'label' => 'LBL_DATE_MODIFIED',
             'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
-          ),
-          1 => 
-          array (
-            'name' => 'date_entered',
-            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
           ),
         ),
       ),
