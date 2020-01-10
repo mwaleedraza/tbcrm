@@ -11,11 +11,19 @@ array (
       array (
         0 => 
         array (
+<<<<<<< HEAD
           'file' => 'custom/modules/AOS_Quotes/lead_name.js',
+=======
+          'file' => 'custom/modules/AOS_Quotes/quotes.js',
+>>>>>>> ba144332b5da39a1b8be78a38c0d89402fced3e6
         ),
         1 => 
         array (
           'file' => 'custom/modules/AOS_Quotes/fetchLeadProduct.js',
+        ),
+        2 =>
+        array (
+          'file' => 'custom/modules/AOS_Quotes/lead_name.js',
         ),
       ),
       'form' => 
