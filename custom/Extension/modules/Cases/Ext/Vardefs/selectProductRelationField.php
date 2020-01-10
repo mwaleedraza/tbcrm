@@ -11,7 +11,6 @@ $dictionary['Case']['fields']['product_id'] =  array(
 		    'reportable' => false,
 		    'audited' => true,
 		    'duplicate_merge' => 'disabled',
-		    'required' => true,
         );
 $dictionary['Case']['fields']['product_name'] =  array(
             'name' => 'product_name',

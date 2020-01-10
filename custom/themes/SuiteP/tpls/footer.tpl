@@ -58,8 +58,8 @@
                 <p>{$COPYRIGHT}</p>
             </div>
             <div id="copyrightbuttons" class="footer_left">
-                <a id="admin_options">&copy; Supercharged by TechnologyCastle</a>
-                <a id="powered_by">&copy; Powered By TechnologyCastle</a>
+               <!-- <a id="admin_options">&copy; Supercharged by TechnologyCastle</a> -->
+               <!-- <a id="powered_by">&copy; Powered By TechnologyCastle</a> -->
             </div>
         </div>
     	<div class="footer_right">

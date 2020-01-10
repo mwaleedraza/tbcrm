@@ -11,7 +11,6 @@ $dictionary['Case']['fields']['contact_id'] =  array(
 		    'reportable' => false,
 		    'audited' => true,
 		    'duplicate_merge' => 'disabled',
-		    'required' => true,
         );
 $dictionary['Case']['fields']['contact_name'] =  array(
             'name' => 'contact_name',
