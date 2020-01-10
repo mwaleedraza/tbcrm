@@ -1,5 +1,6 @@
-{literal}
+
 <script type="text/javascript">
+{literal}
 	$(document).ready(function(){
 	  $("button").click(function(){
 		$("p").slideToggle();
@@ -16,7 +17,7 @@
 		customSqs(rowIndex);
 		rowIndex++;
 		$('#product_count').val(rowIndex);
-	  }, 2000);
+	}, 20);
     }
     function customSqs(prodln){
       sqs_objects["pro_name_" + prodln] = {
@@ -44,8 +45,9 @@
       var button_id = $(this).attr("id");
       $('#row'+button_id+'').remove();
     });
+		{/literal}
 </script>
-{/literal}
+
 
 <h1>Select Products</h1>
 <table class="table table-bordered" id="pro_tbl" name="pro_tbl">
