@@ -12,12 +12,14 @@ array (
         0 =>
         array (
           'file' => 'custom/modules/AOS_Quotes/quotes.js',
-          'file' => 'custom/modules/AOS_Quotes/lead_name.js',
-          // 'file' => 'custom/modules/AOS_Quotes/fetchLeadProduct.js',
         ),
         1 =>
         array (
           'file' => 'custom/modules/AOS_Quotes/fetchLeadProduct.js',
+        ),
+        2 =>
+        array (
+          'file' => 'custom/modules/AOS_Quotes/lead_name.js',
         ),
       ),
       'form' =>
