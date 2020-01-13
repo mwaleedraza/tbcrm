@@ -5,7 +5,7 @@ if (!defined('sugarEntry') || !sugarEntry) {
 }
 
 require_once 'modules/AOS_Quotes/views/view.detail.php';
-class customViewDetail extends ViewDetail{
+class customAOS_QuotesViewDetail extends AOS_QuotesViewDetail{
     public function __construct(){
         parent::__construct();
     }
@@ -14,8 +14,4 @@ class customViewDetail extends ViewDetail{
         unset($this->dv->defs['templateMeta']['form']['buttons'][8]);
         parent::display();
     }
-
-
-
-
 }
