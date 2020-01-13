@@ -501,7 +501,7 @@
                                 <input type="text" class="form-control query_string" name="query_string" id="query_string"
                                        placeholder="{$APP.LBL_SEARCH_BUTTON}..." value="{$SEARCH}"/>
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button>
+                               <!-- <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button> -->
                             </span>
                             </div>
                         </form>
@@ -525,7 +525,7 @@
                             <input type="text" class="form-control query_string " name="query_string" id="query_string"
                                    placeholder="{$APP.LBL_SEARCH}..." value="{$SEARCH}"/>
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button>
+                       <!-- <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button> -->
                     </span>
                         </div>
                     </form>
@@ -583,7 +583,7 @@
                                 <input type="text" class="form-control query_string" name="query_string" id="query_string"
                                        placeholder="{$APP.LBL_SEARCH}..." value="{$SEARCH}"/>
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button>
+                              <!--  <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button> -->
                             </span>
                             </div>
                         </form>
@@ -600,7 +600,7 @@
                             <input type="text" class="form-control query_string" name="query_string" id="query_string"
                                    placeholder="{$APP.LBL_SEARCH}..." value="{$SEARCH}"/>
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button>
+                       <!-- <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button> -->
                     </span>
                         </div>
                     </form>
@@ -683,7 +683,7 @@
                             <input type="text" class="form-control query_string" name="query_string" id="query_string"
                                    placeholder="{$APP.LBL_SEARCH}..." value="{$SEARCH}"/>
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button>
+                       <!-- <button type="submit" class="btn btn-default suitepicon suitepicon-action-search"></button> -->
                     </span>
                         </div>
                     </form>

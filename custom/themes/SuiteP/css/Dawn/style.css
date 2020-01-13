@@ -24,6 +24,9 @@ html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
 }
+#query_string{
+    display: none;
+}
 #quickcreatetop {
     display: none;
 }

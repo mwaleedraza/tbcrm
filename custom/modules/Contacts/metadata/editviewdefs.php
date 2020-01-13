@@ -168,6 +168,16 @@ array (
             ),
           ),
         ),
+        8 => 
+        array (
+          0 => 
+          array (
+            'name' => 'phone_fax',
+            'comment' => 'Contact fax number',
+            'label' => 'LBL_FAX_PHONE',
+          ),
+          1 => '',
+        ),
       ),
     ),
   ),
