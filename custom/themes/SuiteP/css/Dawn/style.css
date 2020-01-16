@@ -35894,7 +35894,21 @@ body>.le_panel .le_edit,
     padding: 10px;
     margin-right: 0
 }
-
+.listViewButtons{
+	display: none;
+}
+.glyphicon.glyphicon-th-list{
+	display: none;
+}
+.clickMenu.selectmenu.SugarActionMenu.columnsFilterLink.listViewLinkButton.listViewLinkButton_top{
+	display: none;
+}
+.clickMenu.selectmenu.SugarActionMenu.columnsFilterLink.listViewLinkButton.listViewLinkButton_bottom{
+	display: none;
+}
+#massassign_form{
+	display: none;
+}
 .search-module-selector .view tr {
     padding: 0
 }
@@ -35908,6 +35922,7 @@ body>.le_panel .le_edit,
 .alertsButton{
 	display: none;
 }
+.
 #GlobalSearchSettings {
     background-color: transparent
 }
