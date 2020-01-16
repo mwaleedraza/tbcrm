@@ -12,6 +12,6 @@
            $contact_leads = $newbean->leads->getBeans();
            $sales_count = count($contact_leads);
            date_default_timezone_set('Asia/Karachi');
-           $date = date('d/m/Y h:i:s a', time());
-            print_r($count."-XYZ- ".$date." - ".$sales_count);
+           $date = date('dmY', time());
+            print_r($count."-XYZ-".$date."-".$sales_count);
         }
