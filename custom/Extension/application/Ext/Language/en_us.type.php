@@ -2,7 +2,7 @@
 
 $app_list_strings['type_dropdown'] = array(
   '' => '',
-  'New PO' => 'New PO',
+  'PO' => 'PO',
   'Renewal' => 'Renewal'
 );
 ?>
