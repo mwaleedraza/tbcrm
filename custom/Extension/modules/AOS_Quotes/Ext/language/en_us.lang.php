@@ -25,6 +25,8 @@ $mod_strings = array(
   'LBL_PRODUCT_DISCOUNT_AMOUNT_USDOLLAR' => 'Margin Amount (Default Currency)',
   'LBL_MEDIUM' => 'Medium',
   'LBL_LEAD_NAME' => 'Sale',
+  'LBL_REFERENCE_NUMBER' => 'Reference Number',
+
 
 
 

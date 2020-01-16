@@ -255,6 +255,15 @@ array (
             'label' => 'LBL_RFQ',
           ),
         ),
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'referencenumber',
+            'label' => 'LBL_REFERENCE_NUMBER',
+          ),
+          1 => '',
+        ),
       ),
       'lbl_line_items' => 
       array (

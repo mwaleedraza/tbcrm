@@ -11,9 +11,16 @@ if (window.location.href.indexOf('lead_id') > -1){
             if (data !=null){
               var first_name = dataArr[0].first_name;
               var last_name = dataArr[0].last_name;
+              if(first_name != null & last_name !=null){
               $("#lead_name").val(first_name+' '+last_name);
               $("#lead_id").val(dataArr[0].id);
              }
+             else {
+               $("#lead_name").val(last_name);
+               $("#lead_id").val(dataArr[0].id);
+
+             }
+           }
            }
          });
   }

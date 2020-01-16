@@ -12,6 +12,7 @@ $(document).ready(function(){
           $("#product_product_list_price"+i).val(dataArr[i].price);
           $("#product_product_id"+i).val(dataArr[i].id);
           $("#product_product_qty"+i).val('1');
+          calculateLine(i,"product_");
           }
       }
     }
