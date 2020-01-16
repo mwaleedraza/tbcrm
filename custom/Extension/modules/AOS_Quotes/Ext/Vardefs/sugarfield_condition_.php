@@ -4,6 +4,7 @@ $dictionary["AOS_Quotes"]["fields"]["condition_c"] = array (
   'label' => 'LBL_CONDITION',
   'type' => 'bool',
   'module' => 'AOS_Quotes',
+  'massupdate'=>false,
 
 );
 ?>
