@@ -122,6 +122,10 @@ $this->fontdata = array(
         'I' => "DejaVuSansMono-Oblique.ttf",
         'BI' => "DejaVuSansMono-BoldOblique.ttf",
         ),
+    "calibri" => array(
+        'R' => "Calibri.ttf",
+        'I' => "Calibri.ttf",
+    ),
 
 
 /* OCR-B font for Barcodes */
@@ -198,7 +202,6 @@ $this->fontdata = array(
         'BI' => "XB Zar BdIt.ttf",
         'unAGlyphs' => true,
         ),
-
 
 
 
@@ -300,3 +303,4 @@ $this->serif_fonts = array('dejavuserifcondensed','dejavuserif','freeserif','lib
 $this->mono_fonts = array('dejavusansmono','freemono','liberationmono','courier', 'mono','monospace','ocrb','ocr-b','lucidaconsole',
                 'couriernew','monotypecorsiva'
 );
+
