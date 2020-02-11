@@ -17,7 +17,7 @@ class customLeadsViewEdit extends LeadsViewEdit{
       	$row = $db->fetchByAssoc($lineItmensRS);
       	$lineItmensArray[] = $row;
       }
-        $this->ss->assign("PRODUCTLIST_DETAILS", $lineItmensArray );
+        $this->ss->assign("PRODUCTLIST_DETAILS", $lineItmensArray ); // this will assign data to a tpl 
         parent::display();
     }
 }
