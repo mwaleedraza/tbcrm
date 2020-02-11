@@ -1,6 +1,17 @@
 <?php
-$app_list_strings['record_type_display']['Cases']='Support Ticketing';
-$app_list_strings['parent_type_display']['Cases']='Support Ticketing';
+$app_list_strings['record_type_display']['Cases']='Support Ticketing';
+
+
+
+
+
+
+$app_list_strings['parent_type_display']['Cases']='Support Ticketing';
+
+
+
+
+
 $app_list_strings['record_type_display_notes']['Cases']='Support Ticketing';
 $app_list_strings['moduleList']['Contacts']='Clients';
 $app_list_strings['moduleList']['Cases']='Tickets';
@@ -16,3 +27,5 @@ $app_list_strings['moduleListSingular']['Accounts']='Company';
 $app_list_strings['record_type_display']['Accounts']='Company';
 $app_list_strings['parent_type_display']['Accounts']='Company';
 $app_list_strings['record_type_display_notes']['Accounts']='Company';
+
+$app_strings['LBL_SUITE_DASHBOARD'] = 'Dashboard';
