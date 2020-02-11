@@ -134,7 +134,7 @@ ul.dashboardTabList li a {
 	text-transform: uppercase;
 }
 
-ul.dashboardTabList li a:hover {text-decoration: none;}
+ul.dashboardTabList li a:hover {text-decoration: block;}
 
 ul.dashboardTabList li span.glyphicon-remove {font-size:12px;position:absolute;top:0;}
 
