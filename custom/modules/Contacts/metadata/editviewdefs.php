@@ -103,6 +103,15 @@ array (
         array (
           0 => 
           array (
+            'name' => 'quotenumber',
+            'label' => 'LBL_QUOTE_NUMBER',
+          ),
+          1 => '',
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
             'name' => 'industry_vertical',
             'label' => 'LBL_IND_VERTICAL',
           ),
@@ -112,7 +121,7 @@ array (
             'label' => 'LBL_TYPE',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -125,7 +134,7 @@ array (
             'label' => 'LBL_GST_NUMBER',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -138,7 +147,7 @@ array (
             'label' => 'LBL_DESCRIPTION',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (
@@ -168,7 +177,7 @@ array (
             ),
           ),
         ),
-        8 => 
+        9 => 
         array (
           0 => 
           array (

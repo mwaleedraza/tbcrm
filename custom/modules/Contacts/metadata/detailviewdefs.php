@@ -190,6 +190,15 @@ array (
         array (
           0 => 
           array (
+            'name' => 'quotenumber',
+            'label' => 'LBL_QUOTE_NUMBER',
+          ),
+          1 => '',
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
             'name' => 'company_name',
             'label' => 'LBL_COMPANY_NAME',
           ),
@@ -199,7 +208,7 @@ array (
             'label' => 'LBL_DESIGNATION_NAME',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -212,7 +221,7 @@ array (
             'label' => 'LBL_TYPE',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -225,7 +234,7 @@ array (
             'label' => 'LBL_GST_NUMBER',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -239,7 +248,7 @@ array (
             'label' => 'LBL_DESCRIPTION',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (
@@ -262,7 +271,7 @@ array (
             ),
           ),
         ),
-        8 => 
+        9 => 
         array (
           0 => 
           array (

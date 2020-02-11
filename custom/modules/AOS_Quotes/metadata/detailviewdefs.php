@@ -262,6 +262,20 @@ array (
             'name' => 'referencenumber',
             'label' => 'LBL_REFERENCE_NUMBER',
           ),
+          1 => 
+          array (
+            'name' => 'ourfirm',
+            'comment' => '',
+            'label' => 'LBL_OURFIRM',
+          ),
+        ),
+        6 => 
+        array (
+          0 => 
+          array (
+            'name' => 'pdftext',
+            'label' => 'LBL_PDFTEXT',
+          ),
           1 => '',
         ),
       ),
