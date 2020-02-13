@@ -28,6 +28,7 @@ $mod_strings = array(
   'LBL_REFERENCE_NUMBER' => 'Reference Number',
   'LBL_PDFTEXT' => 'PDF Text',
   'LBL_OURFIRM' => 'Our Firm',
+  'LBL_YOUR_REFERENCE_NUMBER' => 'Your Reference Number',
   
 
 

@@ -223,9 +223,8 @@ array (
           ),
           1 => 
           array (
-            'name' => 'ourfirm',
-            'comment' => '',
-            'label' => 'LBL_OURFIRM',
+            'name' => 'yourreferencenumber',
+            'label' => 'LBL_YOUR_REFERENCE_NUMBER',
           ),
         ),
         6 => 
@@ -235,7 +234,12 @@ array (
             'name' => 'pdftext',
             'label' => 'LBL_PDFTEXT',
           ),
-          1 => '',
+          1 => 
+          array (
+            'name' => 'ourfirm',
+            'comment' => '',
+            'label' => 'LBL_OURFIRM',
+          ),
         ),
       ),
       'lbl_line_items' => 
