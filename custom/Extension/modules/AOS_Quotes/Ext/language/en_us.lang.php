@@ -26,6 +26,9 @@ $mod_strings = array(
   'LBL_MEDIUM' => 'Medium',
   'LBL_LEAD_NAME' => 'Sale',
   'LBL_REFERENCE_NUMBER' => 'Reference Number',
+  'LBL_PDFTEXT' => 'PDF Text',
+  'LBL_OURFIRM' => 'Our Firm',
+  
 
 
 

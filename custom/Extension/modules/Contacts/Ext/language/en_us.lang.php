@@ -8,4 +8,5 @@ $mod_strings = array (
    'LBL_GST_NUMBER' => 'GST',
    'LBL_COMPANY_NAME' => 'Company Name',
    'LBL_DESIGNATION_NAME' => 'Designation',
+   'LBL_QUOTE_NUMBER' => 'Quote Number',
 );

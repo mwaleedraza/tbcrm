@@ -53,18 +53,23 @@ array (
         0 => 
         array (
           0 => 'last_name',
+          1 => 
+          array (
+            'name' => 'accept_status_name',
+            'label' => 'LBL_LIST_ACCEPT_STATUS',
+          ),
         ),
         1 => 
         array (
           0 => 
           array (
-            'name' => 'contacts_name',
-            'label' => 'LBL_CONTACTS_NAME',
+            'name' => 'accounts_name',
+            'label' => 'LBL_ACCOUNTS_NAME',
           ),
           1 => 
           array (
-            'name' => 'accounts_name',
-            'label' => 'LBL_ACCOUNTS_NAME',
+            'name' => 'contacts_name',
+            'label' => 'LBL_CONTACTS_NAME',
           ),
         ),
         2 => 
