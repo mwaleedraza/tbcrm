@@ -1,5 +1,5 @@
 <?php
-// created: 2020-01-08 12:55:05
+// created: 2020-02-11 08:03:01
 $mod_strings = array (
-  'LBL_CONTACT' => 'Client',
+  'LBL_CONTACT' => 'Contact',
 );

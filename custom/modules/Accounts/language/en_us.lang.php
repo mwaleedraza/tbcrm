@@ -1,5 +1,5 @@
 <?php
-// created: 2020-01-10 14:33:35
+// created: 2020-02-11 08:03:03
 $mod_strings = array (
   'LBL_CASES' => 'Ticket',
   'LBL_CASES_SUBPANEL_TITLE' => 'Tickets',
@@ -12,9 +12,9 @@ $mod_strings = array (
   'LBL_SEARCH_FORM_TITLE' => 'Company Search',
   'LBL_MEMBER_OF' => 'Member of:',
   'LBL_MEMBERS' => 'Members',
-  'LBL_CONTACTS' => 'Clients',
+  'LBL_CONTACTS' => 'Contacts',
   'LBL_LEADS' => 'Sales',
-  'LBL_CONTACTS_SUBPANEL_TITLE' => 'Clients',
+  'LBL_CONTACTS_SUBPANEL_TITLE' => 'Contacts',
   'LBL_LEADS_SUBPANEL_TITLE' => 'Sales',
   'LBL_MEMBER_ORG_SUBPANEL_TITLE' => 'Member Organizations',
   'LBL_HOMEPAGE_TITLE' => 'My Companies',
