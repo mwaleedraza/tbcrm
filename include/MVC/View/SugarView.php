@@ -751,6 +751,12 @@ class SugarView
                 $ss->assign('lock_homepage', true);
             }
             $ss->assign("groupTabs", $groupTabs);
+//non-upgrade save by hamza for disabling visited tab in every main menu drop down
+            $visibleTabs = $groupTabs;
+            foreach($visibleTabs as $k => $v)
+            unset($visibleTabs[$k]['modules'][$moduleTab]);
+            $ss->assign("groupTabs",$visibleTabs);
+
             $ss->assign("shortcutTopMenu", $shortcutTopMenu);
             $ss->assign('USE_GROUP_TABS', $usingGroupTabs);
 
