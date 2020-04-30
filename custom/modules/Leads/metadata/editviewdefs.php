@@ -72,7 +72,7 @@ array (
           array (
             'name' => 'company_name',
             'label' => 'LBL_COMPANYNAME',
-            'customCode' => '{$SEARCHCOMPANY_HTML}',
+            'customCode' => '{$ACCOUNT_HTML}',
             'widths' => '100%',
           ),
           1 => 
