@@ -66,3 +66,6 @@
         addProducts(pname,pid);
     </script>
 {/foreach}
+
+
+

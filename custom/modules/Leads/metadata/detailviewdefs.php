@@ -132,8 +132,7 @@ array (
         array (
           0 => 
           array (
-            'name' => 'accounts_name',
-            'label' => 'LBL_ACCOUNTS_NAME',
+            'name' => 'account_name',
           ),
           1 => 
           array (

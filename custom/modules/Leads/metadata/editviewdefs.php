@@ -5,6 +5,13 @@ array (
   array (
     'templateMeta' => 
     array (
+      'includes' => 
+      array (
+        0 => 
+        array (
+          'file' => 'custom/modules/Leads/company.js',
+        ),
+      ),
       'form' => 
       array (
         'hidden' => 
@@ -63,8 +70,10 @@ array (
         array (
           0 => 
           array (
-            'name' => 'accounts_name',
-            'label' => 'LBL_ACCOUNTS_NAME',
+            'name' => 'company_name',
+            'label' => 'LBL_COMPANYNAME',
+            'customCode' => '{$SEARCHCOMPANY_HTML}',
+            'widths' => '100%',
           ),
           1 => 
           array (
@@ -76,55 +85,63 @@ array (
         array (
           0 => 
           array (
-            'name' => 'sugarfield_amount',
-            'label' => 'LBL_SUGARFIELD_AMOUNT',
+            'name' => 'sugarfield_type',
+            'label' => 'LBL_SUGARFIELD_TYPE',
           ),
           1 => 
           array (
-            'name' => 'sugarfield_type',
-            'label' => 'LBL_SUGARFIELD_TYPE',
+            'name' => 'sugarfield_priority',
+            'label' => 'LBL_SUGARFIELD_PRIORITY',
           ),
         ),
         3 => 
         array (
           0 => 
           array (
-            'name' => 'sugarfield_priority',
-            'label' => 'LBL_SUGARFIELD_PRIORITY',
+            'name' => 'contact_dropdown',
+            'label' => 'LBL_CONTACTDROPDOWN',
           ),
           1 => 
           array (
-            'name' => 'sugarfield_closuredate',
-            'label' => 'LBL_SUGARFIELD_CLOSUREDATE',
+            'name' => 'related_contacts',
+            'label' => 'LBL_RELATED_CONTACTS',
           ),
         ),
         4 => 
         array (
           0 => 
           array (
-            'name' => 'alt_address_postalcode',
-            'comment' => 'Postal code for alternate address',
-            'label' => 'LBL_ALT_ADDRESS_POSTALCODE',
+            'name' => 'sugarfield_closuredate',
+            'label' => 'LBL_SUGARFIELD_CLOSUREDATE',
           ),
           1 => 
           array (
-            'name' => 'assigned_user_name',
-            'label' => 'LBL_ASSIGNED_TO',
+            'name' => 'alt_address_postalcode',
+            'comment' => 'Postal code for alternate address',
+            'label' => 'LBL_ALT_ADDRESS_POSTALCODE',
           ),
         ),
         5 => 
         array (
           0 => 
           array (
+            'name' => 'assigned_user_name',
+            'label' => 'LBL_ASSIGNED_TO',
+          ),
+          1 => 
+          array (
             'name' => 'sugarfield_status',
             'label' => 'LBL_SUGARFIELD_status',
           ),
-          1 => 'lead_source',
         ),
         6 => 
         array (
-          0 => 'description',
-          1 => 
+          0 => 'lead_source',
+          1 => 'description',
+        ),
+        7 => 
+        array (
+          0 => 
           array (
             'name' => 'sugarfield_nextaction',
             'label' => 'LBL_SUGARFIELD_NEXTACTION',
