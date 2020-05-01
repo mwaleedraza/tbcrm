@@ -100,6 +100,8 @@ array (
           array (
             'name' => 'contact_dropdown',
             'label' => 'LBL_CONTACTDROPDOWN',
+            'customCode' => '{$CLIENT_HTML}',
+            'widths' => '100%',
           ),
           1 => 
           array (

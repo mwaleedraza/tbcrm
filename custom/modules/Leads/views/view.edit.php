@@ -31,7 +31,7 @@ class customLeadsViewEdit extends LeadsViewEdit{
         while($rows = $db->fetchByAssoc($account)){
             array_push($accountsArr,$rows);
         }
-
+        
         $this->ss->assign("ACCOUNTS_DATA", $accountsArr );
         $accountTPL = $this->ss->fetch("custom/modules/Leads/tpls/searchCompanyField.tpl");
         $this->ss->assign("ACCOUNT_HTML", $accountTPL );

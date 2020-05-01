@@ -90,8 +90,8 @@ array (
         array (
           0 => 
           array (
-            'name' => 'company_name',
-            'label' => 'LBL_COMPANY_NAME',
+            'name' => 'accounts_name',
+            'label' => 'LBL_ACCOUNTS_NAME',
           ),
           1 => 
           array (
