@@ -21,15 +21,6 @@ array (
     'label' => 'LBL_LIST_STATUS',
     'default' => true,
   ),
-  'CONTACTS_NAME' => 
-  array (
-    'type' => 'relate',
-    'link' => true,
-    'label' => 'LBL_CONTACTS_NAME',
-    'id' => 'CONTACTS_ID',
-    'width' => '10%',
-    'default' => true,
-  ),
   'SUGARFIELD_AMOUNT' => 
   array (
     'type' => 'number',
@@ -84,6 +75,15 @@ array (
   array (
     'width' => '10%',
     'label' => 'LBL_ALT_ADDRESS_COUNTRY',
+    'default' => false,
+  ),
+  'CONTACTS_NAME' => 
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'label' => 'LBL_CONTACTS_NAME',
+    'id' => 'CONTACTS_ID',
+    'width' => '10%',
     'default' => false,
   ),
   'ALT_ADDRESS_STREET' => 

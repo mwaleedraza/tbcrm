@@ -75,11 +75,6 @@ array (
             'customCode' => '{$ACCOUNT_HTML}',
             'widths' => '100%',
           ),
-          1 => 
-          array (
-            'name' => 'contacts_name',
-            'label' => 'LBL_CONTACTS_NAME',
-          ),
         ),
         2 => 
         array (
@@ -98,21 +93,6 @@ array (
         array (
           0 => 
           array (
-            'name' => 'contact_dropdown',
-            'label' => 'LBL_CONTACTDROPDOWN',
-            'customCode' => '{$CLIENT_HTML}',
-            'widths' => '100%',
-          ),
-          1 => 
-          array (
-            'name' => 'related_contacts',
-            'label' => 'LBL_RELATED_CONTACTS',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
             'name' => 'sugarfield_closuredate',
             'label' => 'LBL_SUGARFIELD_CLOSUREDATE',
           ),
@@ -123,7 +103,7 @@ array (
             'label' => 'LBL_ALT_ADDRESS_POSTALCODE',
           ),
         ),
-        5 => 
+        4 => 
         array (
           0 => 
           array (
@@ -136,12 +116,12 @@ array (
             'label' => 'LBL_SUGARFIELD_status',
           ),
         ),
-        6 => 
+        5 => 
         array (
           0 => 'lead_source',
           1 => 'description',
         ),
-        7 => 
+        6 => 
         array (
           0 => 
           array (

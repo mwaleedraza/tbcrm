@@ -28,4 +28,5 @@ $mod_strings = array (
   'LBL_LAST_NAME' => 'Title',
   'LBL_LIST_NAME' => 'Title',
   'LBL_CONTACTS_NAME' => 'Contact Name:',
+  'LBL_COMPANYNAME' => 'Company Name:',
 );

@@ -11,20 +11,18 @@
 
 <!-- Company dropdown -->
 <select id="account_id" name="account_id">
-  <option></option>
+  <option>-- Select Company--</option>
   {foreach from=$ACCOUNTS_DATA key=index item=data}
     <option value="{$data.id}">{$data.name}</option>
   {/foreach}
 </select>
 
 
-<!-- Use to set an option selected in the First dropdown -->
-<select id='user_selected'>
-  <option value=''>-- Select User--</option>
-  <option value='yogesh'>Yogesh Singh</option>
-  <option value='sonarika'>Sonarika Bhadoria</option>
-  <option value='anil'>Anil Singh</option>
-  <option value='akilesh'>Akilesh Sahu</option>	
+<!-- Client (contact) dropdown -->
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select Client:</b> 
+<select id='contacts_id' name="contacts_id">
+  <option value=''>-- Select Client--</option>
 </select>
 
 
@@ -34,46 +32,37 @@
 
       // Initialize Select2
       $('#account_id').select2();
-      $('#user_selected').select2();
+      $('#contacts_id').select2();
       $("#account_id").change(function(){
         var account_id = $('#account_id').val();
 
-          var data = {
-              'id': account_id
-          };
+        var data = {
+        'id': account_id
+        };
 
         $.ajax({
-            type: 'POST',
-            url: 'index.php?module=Leads&action=GetRelatedContacts&sugar_body_only=true',
-            data: data,
-            contentType: 'application/x-www-form-urlencoded',
-            dataType: 'text',
-            async: true,
+          type: 'POST',
+          url: 'index.php?module=Leads&action=GetRelatedContacts&sugar_body_only=true',
+          data: data,
+          contentType: 'application/x-www-form-urlencoded',
+          dataType: 'text',
+          async: true,
           success: function(data) {
-
-              var data= $.parseJSON(data);
-              debugger;
-
-
-              $('#user_selected').append('<option value="">0000</option>');
-
+            var data= $.parseJSON(data);
+            $.each(data, function(i,item){
+            $('#contacts_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+            });
           },
-            error: function (request, status, errorThrown) {
-                console.log(request + ' ' + status + ' ' + errorThrown);
-                debugger;
-            }
+          error: function (request, status, errorThrown) {
+            console.log(request + ' ' + status + ' ' + errorThrown);
+          }
         });
       });
 
       // Set option selected onchange
-    $('#user_selected').change(function(){
-    var value = $(this).val();
-
-    // Set selected
-    $('#account_id').val(value);
-    $('#sel_users').select2().trigger('change');
-
-    });
+      $('#contacts_id').change(function(){
+      var value = $(this).val();
+      });
     });
   </script>
 
