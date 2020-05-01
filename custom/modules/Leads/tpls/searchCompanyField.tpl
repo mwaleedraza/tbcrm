@@ -37,24 +37,31 @@
       $('#user_selected').select2();
       $("#account_id").change(function(){
         var account_id = $('#account_id').val();
-        alert(account_id);
+
+          var data = {
+              'id': account_id
+          };
 
         $.ajax({
-          url: 'index.php?module=Leads&action=GetRelatedContacts&sugar_body_only=true&id='+account_id,
-          //dataType: "json",
-          // datatype: 'JSON',
+            type: 'POST',
+            url: 'index.php?module=Leads&action=GetRelatedContacts&sugar_body_only=true',
+            data: data,
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'text',
+            async: true,
           success: function(data) {
-            debugger;
-            alert(data.length);
-            alert(data['0']);
 
-            $('#user_selected').append('<option value="">0000</option>');
+              var data= $.parseJSON(data);
+              debugger;
 
-            debugger;
-            //$("#contact_dropdown").html(s);  
-            // var dataArr=JSON.parse(data);
-            //alert(dataArr);
-          }
+
+              $('#user_selected').append('<option value="">0000</option>');
+
+          },
+            error: function (request, status, errorThrown) {
+                console.log(request + ' ' + status + ' ' + errorThrown);
+                debugger;
+            }
         });
       });
 
