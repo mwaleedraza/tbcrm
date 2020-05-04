@@ -31,6 +31,14 @@ class customLeadsViewEdit extends LeadsViewEdit{
         while($rows = $db->fetchByAssoc($account)){
             array_push($accountsArr,$rows);
         }
+        // if($this->bean->id != ""){
+        //     echo "<script>
+        //     $( document ).ready(function() {
+        //         $(\"#account_id option[value='technobiz']\").attr(\"selected\", \"true\");
+                
+        // });
+        //        </script>";        
+        // }
         
         $this->ss->assign("ACCOUNTS_DATA", $accountsArr );
         $accountTPL = $this->ss->fetch("custom/modules/Leads/tpls/searchCompanyField.tpl");

@@ -29,13 +29,19 @@
 {literal}
   <script type="text/javascript">
     $(document).ready(function(){
-
+      
       // Initialize Select2
       $('#account_id').select2();
       $('#contacts_id').select2();
       $("#account_id").change(function(){
         var account_id = $('#account_id').val();
-
+        
+        //to change the selected option (not working)
+        var sel = document.getElementById("account_id");
+        var text= sel.options[sel.selectedIndex].text;
+        alert(text);
+        $("#account_id option:contains("+text+")").attr('selected', 'selected');
+    
         var data = {
         'id': account_id
         };
@@ -49,6 +55,8 @@
           async: true,
           success: function(data) {
             var data= $.parseJSON(data);
+            $("#contacts_id option").remove();
+            $('#contacts_id').append('<option value=""></option>');
             $.each(data, function(i,item){
             $('#contacts_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
             });
@@ -65,5 +73,4 @@
       });
     });
   </script>
-
 {/literal}
