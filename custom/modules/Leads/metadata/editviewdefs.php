@@ -7,10 +7,7 @@ array (
     array (
       'includes' => 
       array (
-        0 => 
-        array (
-          'file' => 'custom/modules/Leads/company.js',
-        ),
+
       ),
       'form' => 
       array (
