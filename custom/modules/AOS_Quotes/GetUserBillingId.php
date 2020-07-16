@@ -7,9 +7,7 @@ global $timedate;
 $id = $_REQUEST['id'];
 $bean = BeanFactory::getBean('Contacts', $_REQUEST['id']);
 $aos =  BeanFactory::getBean('AOS_Quotes', '587bddb1-e112-3294-dc9b-5f102c94c592');
-echo "<pre>";
-print_r($aos);
-die();
+
 if ($bean->load_relationship('aos_quotes')) {
     $relatedBeans = $bean->aos_quotes->getBeans();
     $result = $bean->quotenumber;
