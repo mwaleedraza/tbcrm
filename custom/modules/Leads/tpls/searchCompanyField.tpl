@@ -38,13 +38,7 @@
     });
     function makeContactsDD(){
         var account_id = $('#account_id').val();
-
-        //to change the selected option (not working)
-        var sel = document.getElementById("account_id");
-        var text= sel.options[sel.selectedIndex].text;
-
-        $("#account_id option:contains("+text+")").attr('selected', 'selected');
-
+        
         var data = {
             'id': account_id
         };

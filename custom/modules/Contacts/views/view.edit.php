@@ -60,8 +60,9 @@ class ContactsViewEdit extends ViewEdit
      */
     public function display()
     {
-        $bean = BeanFactory::getBean('Contacts',$_REQUEST['id']);
-        if($bean->quotenumber != '0' && $bean->quotenumber!=''){
+        global $db;
+        $bean = BeanFactory::getBean('Contacts', $_REQUEST['id']);
+        if ($bean->quotenumber != '0' && $bean->quotenumber != '') {
             echo "<script>  
             $(document).ready(function() {
                 document.getElementById(\"quotenumber\").readOnly = true;
@@ -69,9 +70,11 @@ class ContactsViewEdit extends ViewEdit
             </script>";
         }
         $this->ev->process();
-        if (!empty($_REQUEST['contact_name']) && !empty($_REQUEST['contact_id'])
+        if (
+            !empty($_REQUEST['contact_name']) && !empty($_REQUEST['contact_id'])
             && $this->ev->fieldDefs['report_to_name']['value'] == ''
-            && $this->ev->fieldDefs['reports_to_id']['value'] == '') {
+            && $this->ev->fieldDefs['reports_to_id']['value'] == ''
+        ) {
             $this->ev->fieldDefs['report_to_name']['value'] = $_REQUEST['contact_name'];
             $this->ev->fieldDefs['reports_to_id']['value'] = $_REQUEST['contact_id'];
         }
@@ -101,6 +104,23 @@ class ContactsViewEdit extends ViewEdit
             echo '</script>';
         }
 
+        /*
+            Getting all accounts to assign to tpl
+        */
+
+        $accountsArr = array();
+        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0");
+        while ($rows = $db->fetchByAssoc($account)) {
+            array_push($accountsArr, $rows);
+        }
+
+        $this->ss->assign("ACCOUNTS_DATA", $accountsArr);
+        $this->ss->assign("BEAN", $this->bean);
+        $accountTPL = $this->ss->fetch("custom/modules/Contacts/tpls/searchCompanyField.tpl");
+        $this->ss->assign("ACCOUNT_HTML", $accountTPL);
         echo $this->ev->display($this->showTitle);
+
+
+        // parent::display();
     }
 }

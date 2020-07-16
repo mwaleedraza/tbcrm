@@ -67,12 +67,34 @@ array (
     'width' => '10%',
     'default' => true,
   ),
-  'COMPANY_NAME' => 
+  'ACCOUNT_NAME' => 
   array (
-    'type' => 'varchar',
-    'label' => 'LBL_COMPANY_NAME',
-    'width' => '10%',
+    'width' => '34%',
+    'label' => 'LBL_LIST_ACCOUNT_NAME',
+    'module' => 'Accounts',
+    'id' => 'ACCOUNT_ID',
+    'link' => true,
+    'contextMenu' => 
+    array (
+      'objectType' => 'sugarAccount',
+      'metaData' => 
+      array (
+        'return_module' => 'Contacts',
+        'return_action' => 'ListView',
+        'module' => 'Accounts',
+        'parent_id' => '{$ACCOUNT_ID}',
+        'parent_name' => '{$ACCOUNT_NAME}',
+        'account_id' => '{$ACCOUNT_ID}',
+        'account_name' => '{$ACCOUNT_NAME}',
+      ),
+    ),
     'default' => true,
+    'sortable' => true,
+    'ACLTag' => 'ACCOUNT',
+    'related_fields' => 
+    array (
+      0 => 'account_id',
+    ),
   ),
   'EMAIL1' => 
   array (
@@ -122,35 +144,6 @@ array (
     'label' => 'LBL_DO_NOT_CALL',
     'default' => false,
   ),
-  'ACCOUNT_NAME' => 
-  array (
-    'width' => '34%',
-    'label' => 'LBL_LIST_ACCOUNT_NAME',
-    'module' => 'Accounts',
-    'id' => 'ACCOUNT_ID',
-    'link' => true,
-    'contextMenu' => 
-    array (
-      'objectType' => 'sugarAccount',
-      'metaData' => 
-      array (
-        'return_module' => 'Contacts',
-        'return_action' => 'ListView',
-        'module' => 'Accounts',
-        'parent_id' => '{$ACCOUNT_ID}',
-        'parent_name' => '{$ACCOUNT_NAME}',
-        'account_id' => '{$ACCOUNT_ID}',
-        'account_name' => '{$ACCOUNT_NAME}',
-      ),
-    ),
-    'default' => false,
-    'sortable' => true,
-    'ACLTag' => 'ACCOUNT',
-    'related_fields' => 
-    array (
-      0 => 'account_id',
-    ),
-  ),
   'PHONE_HOME' => 
   array (
     'width' => '10%',
@@ -167,6 +160,13 @@ array (
   array (
     'width' => '10%',
     'label' => 'LBL_OTHER_PHONE',
+    'default' => false,
+  ),
+  'COMPANY_NAME' => 
+  array (
+    'type' => 'varchar',
+    'label' => 'LBL_COMPANY_NAME',
+    'width' => '10%',
     'default' => false,
   ),
   'PHONE_FAX' => 
