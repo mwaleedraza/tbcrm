@@ -106,6 +106,8 @@ array (
           array (
             'name' => 'assigned_user_name',
             'label' => 'LBL_ASSIGNED_TO',
+            'customCode' => '{$USER_HTML}',
+            'widths' => '100%',
           ),
           1 => 
           array (

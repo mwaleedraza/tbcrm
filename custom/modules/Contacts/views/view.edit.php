@@ -118,9 +118,22 @@ class ContactsViewEdit extends ViewEdit
         $this->ss->assign("BEAN", $this->bean);
         $accountTPL = $this->ss->fetch("custom/modules/Contacts/tpls/searchCompanyField.tpl");
         $this->ss->assign("ACCOUNT_HTML", $accountTPL);
-        echo $this->ev->display($this->showTitle);
+        // echo $this->ev->display($this->showTitle);
+        /*
+            Getting all users to assign to tpl
+        */
+        $usersArr = array();
+        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0");
+        while ($rows = $db->fetchByAssoc($user)) {
+            array_push($usersArr, $rows);
+        }
+
+        $this->ss->assign("USERS_DATA", $usersArr);
+        $this->ss->assign("BEAN", $this->bean);
+        $userTPL = $this->ss->fetch("custom/modules/Contacts/tpls/searchAssignedUserField.tpl");
+        $this->ss->assign("USER_HTML", $userTPL);
 
 
-        // parent::display();
+        parent::display();
     }
 }

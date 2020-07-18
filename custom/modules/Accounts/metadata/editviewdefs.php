@@ -137,6 +137,8 @@ array (
           array (
             'name' => 'assigned_user_name',
             'label' => 'LBL_ASSIGNED_TO',
+            'customCode' => '{$USER_HTML}',
+            'widths' => '100%',
           ),
         ),
       ),
@@ -154,7 +156,12 @@ array (
         ),
         2 => 
         array (
-          0 => 'parent_name',
+          0 => 
+          array (
+            'name' => 'parent_name',
+            'customCode' => '{$ACCOUNT_HTML}',
+            'widths' => '100%',
+          ),
         ),
       ),
     ),

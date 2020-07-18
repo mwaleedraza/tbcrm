@@ -45,6 +45,19 @@ class customLeadsViewEdit extends LeadsViewEdit{
 				CurrentContactId='$contacts_id';
 			}); 
 		</script>";
+        /*
+            Getting all users to assign to tpl
+        */
+        $usersArr = array();
+        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0");
+        while ($rows = $db->fetchByAssoc($user)) {
+            array_push($usersArr, $rows);
+        }
+
+        $this->ss->assign("USERS_DATA", $usersArr);
+        $this->ss->assign("BEAN", $this->bean);
+        $userTPL = $this->ss->fetch("custom/modules/Leads/tpls/searchAssignedUserField.tpl");
+        $this->ss->assign("USER_HTML", $userTPL);
         parent::display();
     }
 }

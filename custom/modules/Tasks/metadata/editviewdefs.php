@@ -103,11 +103,18 @@ array (
           array (
             'name' => 'contact_name',
             'label' => 'LBL_CONTACT_NAME',
+            'customCode' => '{$CONTACT_HTML}',
+            'widths' => '100%',
           ),
         ),
         3 => 
         array (
-          0 => 'assigned_user_name',
+          0 => 
+          array (
+            'name' => 'assigned_user_name',
+            'customCode' => '{$USER_HTML}',
+            'widths' => '100%',
+          ),
           1 => 
           array (
             'name' => 'priority',

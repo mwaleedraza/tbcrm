@@ -109,9 +109,14 @@ array (
             'name' => 'assigned_user_name',
             'label' => 'LBL_ASSIGNED_TO',
           ),
-          1 => 'description',
+          1 => '',
         ),
         6 => 
+        array (
+          0 => 'description',
+          1 => '',
+        ),
+        7 => 
         array (
           0 => 
           array (
