@@ -103,6 +103,8 @@ array (
           array (
             'name' => 'assigned_user_name',
             'label' => 'LBL_ASSIGNED_TO_NAME',
+            'customCode' => '{$USER_HTML}',
+            'widths' => '100%',
           ),
           1 => 
           array (
@@ -139,6 +141,8 @@ array (
           array (
             'name' => 'user_name',
             'label' => 'LBL_USER_NAME',
+            'customCode' => '{$USERVERIFIED_HTML}',
+            'widths' => '100%',
           ),
           1 => '',
         ),
@@ -151,6 +155,8 @@ array (
           array (
             'name' => 'billing_account',
             'label' => 'LBL_BILLING_ACCOUNT',
+            'customCode' => '{$ACCOUNT_HTML}',
+            'widths' => '100%',
             'displayParams' => 
             array (
               'key' => 
@@ -171,6 +177,8 @@ array (
           array (
             'name' => 'billing_contact',
             'label' => 'LBL_BILLING_CONTACT',
+            'customCode' => '{$CONTACT_HTML}',
+            'widths' => '100%',
             'displayParams' => 
             array (
               'initial_filter' => '&account_name="+this.form.{$fields.billing_account.name}.value+"',
