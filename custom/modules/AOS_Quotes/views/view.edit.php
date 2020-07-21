@@ -18,7 +18,7 @@ class customAOS_QuotesViewEdit extends AOS_QuotesViewEdit
             Getting all leads to assign to tpl
         */
         $leadArr = array();
-        $lead = $db->query("SELECT `id`,`last_name` FROM `leads` WHERE deleted = 0");
+        $lead = $db->query("SELECT `id`,`first_name`,`last_name` FROM `leads` WHERE deleted = 0");
         while ($rows = $db->fetchByAssoc($lead)) {
             array_push($leadArr, $rows);
         }
@@ -27,11 +27,18 @@ class customAOS_QuotesViewEdit extends AOS_QuotesViewEdit
         $leadTPL = $this->ss->fetch("custom/modules/AOS_Quotes/tpls/searchLeadField.tpl");
         $this->ss->assign("LEAD_HTML", $leadTPL);
 
+        $lead_id = $this->bean->lead_id;
+        echo "<script>
+			$(document).ready(function() {
+                CurrentLeadId='$lead_id';
+			}); 
+        </script>";
+
         /*
             Getting all users to assign to tpl
         */
         $userArr = array();
-        $users = $db->query("SELECT `id`,`user_name` FROM `users` WHERE deleted = 0");
+        $users = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0");
         while ($rows = $db->fetchByAssoc($users)) {
             array_push($userArr, $rows);
         }
@@ -39,6 +46,20 @@ class customAOS_QuotesViewEdit extends AOS_QuotesViewEdit
         // $this->ss->assign("BEAN", $this->bean);
         $userTPL = $this->ss->fetch("custom/modules/AOS_Quotes/tpls/searchUserField.tpl");
         $this->ss->assign("USER_HTML", $userTPL);
+
+        /*
+            Getting all assigned User to assign to tpl
+        */
+
+        $assignedUser = array();
+        $assignUser = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0");
+        while ($rows = $db->fetchByAssoc($assignUser)) {
+            array_push($assignedUser, $rows);
+        }
+        $this->ss->assign("ASSIGNEDUSER_DATA", $assignedUser);
+        // $this->ss->assign("BEAN", $this->bean);
+        $userTPL = $this->ss->fetch("custom/modules/AOS_Quotes/tpls/searchAssignedUserField.tpl");
+        $this->ss->assign("ASSIGNEDUSER_HTML", $userTPL);
 
         /*
             Getting all accounts to assign to tpl

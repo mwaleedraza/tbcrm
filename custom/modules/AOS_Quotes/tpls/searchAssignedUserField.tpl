@@ -2,26 +2,27 @@
   <link rel="stylesheet" type="text/css" href="custom/modules/AOS_Quotes/app-assets/vendors/css/forms/selects/select2.css">
   <script src="custom/modules/AOS_Quotes/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
   <script>
-    function setDDVal (field_id,field_val){
-    $('#'+field_id).val(field_val).trigger('change');
+  function setDDVal (field_id,field_val){
+      $('#'+field_id).val(field_val).trigger('change');
     }
   </script>
 {/literal}
-<!-- User dropdown -->
-<select id="user_id" name="user_id">
+
+<!-- Users dropdown -->
+<select id="assigned_user_id" name="assigned_user_id">
   <option>-- Select User--</option>
-  {foreach from=$USER_DATA key=index item=data}
+  {foreach from=$ASSIGNEDUSER_DATA key=index item=data}
     <option value="{$data.id}">{$data.first_name} {$data.last_name}</option>
   {/foreach}
-  <script> setDDVal('user_id','{$BEAN->user_id}') ;</script>
+  <script> setDDVal('assigned_user_id','{$BEAN->assigned_user_id}') ;</script>
 </select>
+
 {literal}
   <script type="text/javascript">
     $(document).ready(function(){
       // Initialize Select2
-      $('#user_id').select2();
-     
+      $('#assigned_user_id').select2();
+      
     });
-    
   </script>
 {/literal}

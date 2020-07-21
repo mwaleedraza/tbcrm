@@ -1,7 +1,6 @@
 {literal}
-  <script src="custom/modules/AOS_Quotes/app-assets/vendors/jquery-3.3.1.min.js" type="text/javascript"></script>
-  <link rel="stylesheet" type="text/css" href="custom/modules/AOS_Quotes/app-assets/vendors/select2/dist/css/select2.min.css">
-  <script src="custom/modules/AOS_Quotes/app-assets/vendors/select2/dist/js/select2.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="custom/modules/AOS_Quotes/app-assets/vendors/css/forms/selects/select2.css">
+  <script src="custom/modules/AOS_Quotes/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
   <script>
     function setDDVal (field_id,field_val){
     $('#'+field_id).val(field_val).trigger('change');
@@ -60,7 +59,7 @@
                     $('#billing_contact_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
                 });
                 if(CurrentBillingContactId !='')
-                  setDDVal('billing_contact_id',CurrentBillingContactId);                 
+                  $('#billing_contact_id').val(CurrentBillingContactId);                 
             },
             error: function (request, status, errorThrown) {
                 console.log(request + ' ' + status + ' ' + errorThrown);

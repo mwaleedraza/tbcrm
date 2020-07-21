@@ -21,6 +21,10 @@ $viewdefs[$module_name] =
           array(
             'file' => 'custom/modules/AOS_Quotes/lead_name.js',
           ),
+          3 =>
+          array(
+            'file' => 'custom/modules/AOS_Quotes/companyClient.js',
+          ),
         ),
         'form' =>
         array(
@@ -104,6 +108,8 @@ $viewdefs[$module_name] =
             array(
               'name' => 'assigned_user_name',
               'label' => 'LBL_ASSIGNED_TO_NAME',
+              'customCode' => '{$ASSIGNEDUSER_HTML}',
+              'widths' => '100%',
             ),
             1 =>
             array(
@@ -161,15 +167,15 @@ $viewdefs[$module_name] =
           ),
           1 =>
           array(
-            0 =>
-            array(
-              'name' => 'billing_contact',
-              'label' => 'LBL_BILLING_CONTACT',
-              'displayParams' =>
-              array(
-                'initial_filter' => '&account_name="+this.form.{$fields.billing_account.name}.value+"',
-              ),
-            ),
+            // 0 =>
+            // array(
+            //   'name' => 'billing_contact',
+            //   'label' => 'LBL_BILLING_CONTACT',
+            //   'displayParams' =>
+            //   array(
+            //     'initial_filter' => '&account_name="+this.form.{$fields.billing_account.name}.value+"',
+            //   ),
+            // ),
             1 =>
             array(
               'name' => 'rfq_ref',
