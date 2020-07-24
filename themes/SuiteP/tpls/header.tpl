@@ -43,7 +43,7 @@
 
 {if $AUTHENTICATED}
     <div id="ajaxHeader">
-        {include file="themes/SuiteP/tpls/_headerModuleList.tpl"}
+        {include file="custom/themes/SuiteP/tpls/_headerModuleList.tpl"}
     </div>
 {/if}
 {literal}
