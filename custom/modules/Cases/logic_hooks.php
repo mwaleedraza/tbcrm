@@ -22,6 +22,7 @@ $hook_array['after_retrieve'][] = Array(10, 'Filter HTML', 'modules/AOP_Case_Upd
 $hook_array['after_relationship_delete'] = Array(); 
 $hook_array['after_relationship_delete'][] = Array(77, 'deleteRelationship', 'modules/Cases/CasesJjwg_MapsLogicHook.php','CasesJjwg_MapsLogicHook', 'deleteRelationship'); 
 
-
+$hook_array['process_record'] = Array(); 
+$hook_array['process_record'][] = Array(78, 'htmlToText', 'custom/modules/Cases/htmlToText.php','htmlToText', 'htmlToTextMethod'); 
 
 ?>
