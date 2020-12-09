@@ -64,22 +64,13 @@ array (
             'name' => 'type',
             'label' => 'LBL_TYPE',
           ),
-          1 => '',
-        ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'cost',
-            'label' => 'LBL_COST',
-          ),
           1 => 
           array (
-            'name' => 'price',
-            'label' => 'LBL_PRICE',
+            'name' => 'contacts_name',
+            'label' => 'LBL_CONTACTS_NAME',
           ),
         ),
-        3 => 
+        2 => 
         array (
           0 => 
           array (
@@ -87,7 +78,7 @@ array (
             'label' => 'LBL_DESCRIPTION',
           ),
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -102,7 +93,7 @@ array (
             'label' => 'LBL_DATE_MODIFIED',
           ),
         ),
-        5 => 
+        4 => 
         array (
           0 => 
           array (

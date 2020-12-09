@@ -195,3 +195,10 @@ $viewdefs['Contacts'] =
       ),
     ),
   );;
+
+  $viewdefs['AOS_Quotes']['EditView']['templateMeta']['includes'] =
+    array (
+        array (
+        'file' => 'custom/modules/Contacts/js/newjs.js',
+        ),
+    );

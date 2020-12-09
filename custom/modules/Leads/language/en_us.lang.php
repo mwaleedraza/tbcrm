@@ -1,7 +1,7 @@
 <?php
-// created: 2020-02-11 08:03:05
+// created: 2020-12-08 06:28:54
 $mod_strings = array (
-  'LBL_EDITVIEW_PANEL1' => 'Leads Products',
+  'LBL_EDITVIEW_PANEL1' => 'Add Products',
   'LNK_NEW_LEAD' => 'Create Sale',
   'LNK_LEAD_LIST' => 'View Sales',
   'LNK_IMPORT_VCARD' => 'Create Sale From vCard',

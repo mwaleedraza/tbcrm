@@ -4,22 +4,34 @@ if (!defined('sugarEntry')|| !sugarEntry){
 }
 class Save{
   public function SaveAll(&$bean, $event, $arguments){
-	 global $db;
-	$db->query('delete from tc_leads_products where lead_id="'.$bean->id.'"');
-    $product_count = $_REQUEST['product_count'];
-    for($i=0; $i<$product_count; $i++){
-      if($product_count == '1'){
-        $product_id = $_REQUEST['pro_id_'.$i];
-        $bean->singleproductname=$product_id;
-        }
-      $module='tc_leads_products';
-      $bean1 = BeanFactory::newBean($module);
-      $bean1->lead_id=$bean->id;
-      $bean1->aos_product_id=$_REQUEST['pro_id_'.$i];
-	    if($_REQUEST['pro_id_'.$i]!=''){
-		    $bean1->save();
-        }
+    global $db;
+    $productArr = $_REQUEST['product_id'];
+    $lead_id = $db->query("SELECT count(id) as count FROM tc_leads_products WHERE deleted = 0 AND lead_id = '".$bean->id."' ");
+    $row = $db->fetchByAssoc($lead_id);
+
+    
+    if($row['count'] >= 1){
+      $db->query("DELETE FROM tc_leads_products WHERE lead_id = '".$bean->id."' ");
+      for($i=0;$i<count($productArr);$i++){
+        $productBean = BeanFactory::newBean('tc_leads_products');
+        $productBean->aos_product_id = $productArr[$i];
+        $productBean->lead_id = $bean->id;
+        $productBean->save();
+      }
     }
-  }
+    else{
+      for($i=0;$i<count($productArr);$i++){
+        $productBean = BeanFactory::newBean('tc_leads_products');
+        $productBean->aos_product_id = $productArr[$i];
+        $productBean->lead_id = $bean->id;
+        $productBean->save();
+      }
+    }
+      
+      
+
+    }
+  
+
 }
 ?>

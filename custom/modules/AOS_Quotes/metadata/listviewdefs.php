@@ -1,10 +1,11 @@
 <?php
 $listViewDefs ['AOS_Quotes'] = 
 array (
-  'NUMBER' => 
+  'REFERENCENUMBER' => 
   array (
-    'width' => '5%',
-    'label' => 'LBL_LIST_NUM',
+    'type' => 'varchar',
+    'label' => 'LBL_REFERENCE_NUMBER',
+    'width' => '10%',
     'default' => true,
   ),
   'NAME' => 

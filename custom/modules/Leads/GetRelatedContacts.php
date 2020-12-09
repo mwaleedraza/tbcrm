@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 if (! defined ( 'sugarEntry' )){
     define ( 'sugarEntry', true );
@@ -31,6 +31,6 @@ while($rows = $db->fetchByAssoc($leads)){
 
 }
 echo json_encode($array);
-session_write_close ();
+// session_write_close ();
 
 

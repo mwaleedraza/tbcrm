@@ -2,11 +2,11 @@
 
 $app_list_strings['status_dropdown'] = array(
   '' => '',
-  'Proposal' => 'Proposal',
-  'Negotiation' => 'Negotiation',
-  'Need Realization' => 'Need Realization',
   'Need Identification' => 'Need Identification',
+  'Need Realization' => 'Need Realization',
+  'Proposal' => 'Proposal',
   'RFP/Tender' => 'RFP/Tender',
+  'Negotiation' => 'Negotiation',
   'PO Won' => 'PO Won',
   'Dead' => 'Dead'
 );

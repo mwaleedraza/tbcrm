@@ -3,7 +3,6 @@ if (!defined('sugarEntry') || !sugarEntry) {
     die('Not A Valid Entry Point');
 }
 
-
 class AOS_ProductsViewEdit extends ViewEdit
 {
     public function __construct()
@@ -28,7 +27,7 @@ class AOS_ProductsViewEdit extends ViewEdit
 
     public function display()
     {   
-        global $app_strings,$sugar_config;
+        global $db,$app_strings,$sugar_config;
 
         isset($this->bean->product_image) ? $image = $this->bean->product_image : $image = '';
 
@@ -50,6 +49,36 @@ class AOS_ProductsViewEdit extends ViewEdit
 		</span>';
 
         $this->ss->assign('PRODUCT_IMAGE', $html);
+
+
+        $contactArr = array();
+        $contact_id = $this->bean->contacts_id;
+        echo "<script>
+                $(document).ready(function(){
+                    currentVendor = '$contact_id';
+                });
+            </script>";
+        $contact = $db->query("SELECT `id`,`first_name`,`last_name` FROM `contacts` WHERE deleted = 0 AND type_drop_down = 'Vendor'");
+        while ($contactrows = $db->fetchByAssoc($contact)) {
+            array_push($contactArr, $contactrows);
+        }
+    
+
+        $this->ss->assign("CONTACT_DATA", $contactArr);
+        
+        $addVendorTPL = $this->ss->fetch("custom/modules/AOS_Products/tpls/addVendor.tpl");
+        $this->ss->assign("VENDOR_HTML", $addVendorTPL);
+        $this->ss->assign("BEAN", $this->bean);
+        
+        // echo "<script>YAHOO.util.Event.onDOMReady(function(){
+        //     YAHOO.util.Event.addListener('name', 'change', function () {
+        //     var id = $('#name').val();
+        //     alert(id);
+            
+        //     });
+        //     });</script>";
+
+
         parent::display();
     }
 }

@@ -170,6 +170,19 @@ array (
         array (
           0 => 
           array (
+            'name' => 'maturity_percentage',
+            'label' => 'LBL_MATURITY_PERCENTAGE',
+          ),
+          1 => 
+          array (
+            'name' => 'sale_amount',
+            'label' => 'LBL_SALE_AMOUNT',
+          ),
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
             'name' => 'alt_address_postalcode',
             'comment' => 'Postal code for alternate address',
             'label' => 'LBL_ALT_ADDRESS_POSTALCODE',
@@ -180,7 +193,7 @@ array (
             'label' => 'LBL_ASSIGNED_TO',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -189,7 +202,7 @@ array (
           ),
           1 => 'lead_source',
         ),
-        6 => 
+        7 => 
         array (
           0 => 'description',
           1 => 

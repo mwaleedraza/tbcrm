@@ -7,7 +7,6 @@ array (
     array (
       'includes' => 
       array (
-
       ),
       'form' => 
       array (
@@ -90,6 +89,19 @@ array (
         array (
           0 => 
           array (
+            'name' => 'maturity_percentage',
+            'label' => 'LBL_MATURITY_PERCENTAGE',
+          ),
+          1 => 
+          array (
+            'name' => 'sale_amount',
+            'label' => 'LBL_SALE_AMOUNT',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
             'name' => 'sugarfield_closuredate',
             'label' => 'LBL_SUGARFIELD_CLOSUREDATE',
           ),
@@ -100,7 +112,7 @@ array (
             'label' => 'LBL_ALT_ADDRESS_POSTALCODE',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -115,12 +127,21 @@ array (
             'label' => 'LBL_SUGARFIELD_status',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 'lead_source',
-          1 => 'description',
+          1 => 
+          array (
+            'name' => 'approx',
+            'label' => 'LBL_APPROX',
+          ),
         ),
-        6 => 
+        7 => 
+        array (
+          0 => 'description',
+          1 => '',
+        ),
+        8 => 
         array (
           0 => 
           array (
@@ -133,3 +154,4 @@ array (
   ),
 );
 ;
+?>

@@ -86,6 +86,11 @@ array (
         ),
         2 => 
         array (
+          0 => 'account_type',
+          1 => '',
+        ),
+        3 => 
+        array (
           0 => 
           array (
             'name' => 'email1',
@@ -93,7 +98,7 @@ array (
             'label' => 'LBL_EMAIL',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -123,7 +128,7 @@ array (
             ),
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -131,7 +136,7 @@ array (
             'label' => 'LBL_DESCRIPTION',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -146,8 +151,7 @@ array (
       array (
         0 => 
         array (
-          0 => 'account_type',
-          1 => 'industry',
+          0 => 'industry',
         ),
         1 => 
         array (

@@ -20,9 +20,9 @@
 
 <!-- Client (contact) dropdown -->
 
-<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select Client:</b> 
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select Contact:</b> 
 <select id='contacts_id' name="contacts_id">
-  <option value=''>-- Select Client--</option>
+  <option value=''>-- Select Contact--</option>
 </select>
 
 {literal}
@@ -57,8 +57,9 @@
                 $.each(data, function(i,item){
                     $('#contacts_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
                 });
-                if(CurrentContactId!='')
+                if(CurrentContactId!=''){
                     setDDVal('contacts_id',CurrentContactId);
+                }
             },
             error: function (request, status, errorThrown) {
                 console.log(request + ' ' + status + ' ' + errorThrown);

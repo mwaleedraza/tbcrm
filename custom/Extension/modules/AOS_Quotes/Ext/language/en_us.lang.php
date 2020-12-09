@@ -29,6 +29,7 @@ $mod_strings = array(
   'LBL_PDFTEXT' => 'PDF Text',
   'LBL_OURFIRM' => 'Our Firm',
   'LBL_YOUR_REFERENCE_NUMBER' => 'Your Reference Number',
+  'LBL_PER_UNIT_COST' => 'Per Unit Cost'
   
 
 

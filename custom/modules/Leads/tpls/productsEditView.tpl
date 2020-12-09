@@ -1,71 +1,75 @@
-
-<script type="text/javascript">
 {literal}
-	$(document).ready(function(){
-	  $("button").click(function(){
-		$("p").slideToggle();
-	  });
-	});
-    var rowIndex=0;
-    function addProducts(pro_name_val,pro_id_val){
-      $('#pro_tbl').append('<tr id="row'+rowIndex+'"><td><input value="'+pro_name_val+'" type="text" id="pro_name_'+rowIndex+'" name="pro_name_'+rowIndex+'" placeholder="Search Product " class="sqsEnabled form-control" autocomplete="off"/><input type="hidden" value="'+pro_id_val+'" id="pro_id_'+rowIndex+'" name="pro_id_'+rowIndex+'" placeholder="Search Product " class="form-control" /></td><td><button type="button" name="remove" id="'+rowIndex+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-	  setTimeout(function(){
-		SUGAR.util.doWhen(
-		"typeof(sqs_objects) != 'undefined' && typeof(sqs_objects['EditView_pro_name_'+rowIndex]) != 'undefined'",
-		enableQS(false)
-		);
-		customSqs(rowIndex);
-		rowIndex++;
-		$('#product_count').val(rowIndex);
-	}, 20);
-    }
-    function customSqs(prodln){
-      sqs_objects["pro_name_" + prodln] = {
-        "form": "EditView",
-        "method": "query",
-        "modules": ["AOS_Products"],
-        "group": "or",
-        "field_list": ["name", "id"],
-        "populate_list": ["pro_name_" + prodln, "pro_id_" + prodln],
-        "required_list": ["pro_id_" + prodln],
-        "conditions": [{
-        "name": "name",
-        "op": "like_custom",
-        "end": "%",
-        "value": ""
-        }],
-        "order": "name",
-        "limit": "30",
-        // "post_onblur_function": "formatListPrice(" + prodln + ");",
-        "no_match_text": "No Match"
-      };
-	   enableQS(false);
-    }
-    $(document).on('click', '.btn_remove', function(){
-      var button_id = $(this).attr("id");
-      $('#row'+button_id+'').remove();
-    });
-		{/literal}
-</script>
-
+  <link rel="stylesheet" type="text/css" href="custom/modules/Leads/app-assets/vendors/css/forms/selects/select2.css">
+  <script src="custom/modules/Leads/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script>
+        function setDDVal (field_id,field_val){
+          $('#'+field_id).val(field_val).trigger('change');
+      }
+    </script>
+{/literal}
 
 <h1>Select Products</h1>
-<table class="table table-bordered" id="pro_tbl" name="pro_tbl">
-  <tbody>
-  <tr>
-      <td><button type="button" name="add_pro" id="add_pro" class="btn btn-success" onclick="addProducts('','');">Add Product</button></td>
-  </tr>
-</tbody>
-</table>
-<input type="hidden" name="product_count" id="product_count" value="">
+<!-- Vendor (contact) DropDown -->
+<label>Select Vendor</label>:
+<select style="width:200px" id="contact_id" name="contact_id">
+  {foreach from=$VENDOR_DATA key=id item=data}
+    <option value="{$data.id}">{$data.first_name} {$data.last_name}</option>
+  {/foreach}
+  <script> setDDVal('contact_id','{$BEAN->contact_id}');</script>
+</select>
 
-{foreach from=$PRODUCTLIST_DETAILS key=index item=line_item}
-    <script>
-        pid = '{$line_item.id}';
-        pname='{$line_item.name}';
-        addProducts(pname,pid);
-    </script>
-{/foreach}
+<!-- Product Select -->
+<label style="margin-left:10%;">Products</label>
+<select id="product_id" name="product_id[]" style="width:200px" multiple="mutliple">
 
 
+</select>
 
+
+{literal}
+  <script type="text/javascript">
+    $(document).ready(function(){
+      // Initialize Select2
+      $('#contact_id').select2();
+     $('#product_id').select2({
+        tags:true,
+     });
+     
+      $("#contact_id").change(function(){
+        makePoductDD();
+      });  
+      makePoductDD();
+    });
+    function makePoductDD(){
+      var contact_id = $('#contact_id').val();
+        
+        var data = {
+            'id': contact_id
+        };
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?module=Leads&action=GetProducts&sugar_body_only=true',
+            data: data,
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'text',
+            async: true,
+            success: function(data) {
+                var data= $.parseJSON(data);
+                $("#product_id option").remove();
+                $.each(data, function(i,item){
+                    $('#product_id').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+                });
+                var currentProducts = []; //ProductArray
+                for (var i = 0; i < CurrentProductId.length; i++){
+                    currentProducts.push(CurrentProductId[i].id);
+                }
+                    setDDVal('product_id',currentProducts);
+              },
+            error: function (request, status, errorThrown) {
+                console.log(request + ' ' + status + ' ' + errorThrown);
+            }
+        });
+    }
+
+  </script>
+{/literal}
