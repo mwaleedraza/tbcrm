@@ -203,6 +203,12 @@
                 </li>
                 <li class="topnav">
                     <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
+                            <a href="index.php?module=AOS_Products" id="grouptab_0" class="dropdown-toggle grouptab">Products</a>
+                            <span class="notCurrentTabRight">&nbsp;</span>
+                        </span>
+                </li>
+                <li class="topnav">
+                    <span class="notCurrentTabLeft">&nbsp;</span><span class="notCurrentTab">
                             <a href="index.php?module=AOS_PDF_Templates" id="grouptab_0" class="dropdown-toggle grouptab">PDF Templates</a>
                             <span class="notCurrentTabRight">&nbsp;</span>
                         </span>
