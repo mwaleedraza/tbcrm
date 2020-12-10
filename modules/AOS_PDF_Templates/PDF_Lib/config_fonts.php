@@ -123,8 +123,10 @@ $this->fontdata = array(
         'BI' => "DejaVuSansMono-BoldOblique.ttf",
         ),
     "calibri" => array(
-        'R' => "Calibri.ttf",
-        'I' => "Calibri.ttf",
+        'R' => "Calibri-Regular.ttf",
+        'I' => "Calibri-Italic.ttf",
+        'B' => "Calibri-Bold.ttf",
+        'BI' => "Calibri-Bold-Italic.tff"
     ),
 
 
