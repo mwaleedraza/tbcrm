@@ -12128,13 +12128,13 @@ footer.collapsedSidebar {
         visibility: hidden
     }
     .desktop-toolbar {
-        width: 70%
+        width: 90%
     }
     .desktop-bar {
         display: inline-block;
         visibility: visible;
         text-align: right;
-        width: 28%;
+        width: 10%;
         float: right;
         padding-right: 0.5%
     }
@@ -12390,10 +12390,10 @@ footer.collapsedSidebar {
         color: #dc940d
     }
     .desktop-toolbar {
-        width: 60%
+        width: 70%
     }
     .desktop-bar {
-        width: 39%;
+        width: 30%;
         padding-top: 10px
     }
     .navbar-form.searchform .input-group-btn {

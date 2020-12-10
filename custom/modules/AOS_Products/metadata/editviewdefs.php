@@ -6,12 +6,12 @@ array (
   array (
     'templateMeta' => 
     array (
-      'includes' =>
+      'includes' => 
+      array (
+        0 => 
         array (
-          0 =>
-          array (
-           'file' => 'custom/modules/AOS_Products/js/checkProductDuplication.js',
-         ),
+          'file' => 'modules/AOS_Products/js/products.js',
+        ),
       ),
       'maxColumns' => '2',
       'widths' => 
@@ -31,13 +31,6 @@ array (
       array (
         'enctype' => 'multipart/form-data',
         'headerTpl' => 'modules/AOS_Products/tpls/EditViewHeader.tpl',
-      ),
-      'includes' => 
-      array (
-        0 => 
-        array (
-          'file' => 'modules/AOS_Products/js/products.js',
-        ),
       ),
       'useTabs' => false,
       'tabDefs' => 
@@ -76,8 +69,8 @@ array (
           ),
           1 => 
           array (
-            'name' => 'contacts_name',
-            'label' => 'LBL_CONTACTS_NAME',
+            'name' => 'accounts_name',
+            'label' => 'LBL_ACCOUNTS_NAME',
             'customCode' => '{$VENDOR_HTML}',
           ),
         ),
@@ -100,14 +93,6 @@ array (
       ),
     ),
   ),
-);;
-
-
-// $viewdefs['AOS_Products']['EditView']['templateMeta']['includes'] =
-//     array (
-//         array (
-//         'file' => 'custom/modules/Contacts/js/checkProductDuplication.js',
-//         ),
-//     );
-
+);
+;
 ?>

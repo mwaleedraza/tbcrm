@@ -126,7 +126,11 @@ $this->fontdata = array(
         'R' => "Calibri-Regular.ttf",
         'I' => "Calibri-Italic.ttf",
         'B' => "Calibri-Bold.ttf",
+<<<<<<< HEAD
         'BI' => "Calibri-Bold-Italic.tff"
+=======
+        'BI' => "Calibri-Bold-Italic.ttf"
+>>>>>>> 132ac66d7e09d0251c5b0aec55cfbc13cd5968c7
     ),
 
 
