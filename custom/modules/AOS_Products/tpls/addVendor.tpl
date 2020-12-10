@@ -8,20 +8,20 @@
   </script>
 {/literal}
 
-<!-- Contact dropdown -->
-<select id="contacts_id" name="contacts_id">
-  {foreach from=$CONTACT_DATA key=index item=data}
-    <option value="{$data.id}">{$data.first_name} {$data.last_name}</option>
+<!-- Vendor (Company) dropdown -->
+<select id="accounts_id" name="accounts_id">
+  {foreach from=$ACCOUNT_DATA key=index item=data}
+    <option value="{$data.id}">{$data.name}</option>
   {/foreach}
-  <script> setDDVal('contacts_id','{$BEAN->contacts_id}') ;</script>
+  <script> setDDVal('accounts_id','{$BEAN->accounts_id}') ;</script>
 </select>
 
 {literal}
   <script>
     $(document).ready(function(){
-      $('#contacts_id').select2();
+      $('#accounts_id').select2();
       if(currentVendor!=''){
-          setDDVal('contacts_id',currentVendor);
+          setDDVal('accounts_id',currentVendor);
       }
     });
   </script>

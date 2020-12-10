@@ -51,20 +51,20 @@ class AOS_ProductsViewEdit extends ViewEdit
         $this->ss->assign('PRODUCT_IMAGE', $html);
 
 
-        $contactArr = array();
-        $contact_id = $this->bean->contacts_id;
+        $accountArr = array();
+        $account_id = $this->bean->accounts_id;
         echo "<script>
                 $(document).ready(function(){
-                    currentVendor = '$contact_id';
+                    currentVendor = '$account_id';
                 });
             </script>";
-        $contact = $db->query("SELECT `id`,`first_name`,`last_name` FROM `contacts` WHERE deleted = 0 AND type_drop_down = 'Vendor'");
-        while ($contactrows = $db->fetchByAssoc($contact)) {
-            array_push($contactArr, $contactrows);
+        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0 AND account_type = 'Vendor'");
+        while ($accountRows = $db->fetchByAssoc($account)) {
+            array_push($accountArr, $accountRows);
         }
     
 
-        $this->ss->assign("CONTACT_DATA", $contactArr);
+        $this->ss->assign("ACCOUNT_DATA", $accountArr);
         
         $addVendorTPL = $this->ss->fetch("custom/modules/AOS_Products/tpls/addVendor.tpl");
         $this->ss->assign("VENDOR_HTML", $addVendorTPL);

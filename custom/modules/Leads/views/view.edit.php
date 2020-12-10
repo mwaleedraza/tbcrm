@@ -36,7 +36,7 @@ class customLeadsViewEdit extends LeadsViewEdit{
        */
 
         $vendorsArr = array();
-        $vendors = $db->query("SELECT `id`, `first_name`, `last_name` FROM `contacts` WHERE deleted = 0 AND type_drop_down = 'Vendor'");
+        $vendors = $db->query("SELECT `id`, `name` FROM `accounts` WHERE deleted = 0 AND account_type = 'Vendor'");
         while($fetchVendors = $db->fetchByAssoc($vendors)){
             array_push($vendorsArr, $fetchVendors);
         }

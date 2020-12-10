@@ -9,13 +9,13 @@
 {/literal}
 
 <h1>Select Products</h1>
-<!-- Vendor (contact) DropDown -->
 <label>Select Vendor</label>:
-<select style="width:200px" id="contact_id" name="contact_id">
-  {foreach from=$VENDOR_DATA key=id item=data}
-    <option value="{$data.id}">{$data.first_name} {$data.last_name}</option>
+<!-- Vendor (Company) dropdown -->
+<select id="accounts_id" name="accounts_id">
+  {foreach from=$VENDOR_DATA key=index item=data}
+    <option value="{$data.id}">{$data.name}</option>
   {/foreach}
-  <script> setDDVal('contact_id','{$BEAN->contact_id}');</script>
+  <script> setDDVal('accounts_id','{$BEAN->accounts_id}') ;</script>
 </select>
 
 <!-- Product Select -->
@@ -30,21 +30,21 @@
   <script type="text/javascript">
     $(document).ready(function(){
       // Initialize Select2
-      $('#contact_id').select2();
+      $('#accounts_id').select2();
      $('#product_id').select2({
         tags:true,
      });
      
-      $("#contact_id").change(function(){
+      $("#accounts_id").change(function(){
         makePoductDD();
       });  
       makePoductDD();
     });
     function makePoductDD(){
-      var contact_id = $('#contact_id').val();
+      var accounts_id = $('#accounts_id').val();
         
         var data = {
-            'id': contact_id
+            'id': accounts_id
         };
         $.ajax({
             type: 'POST',

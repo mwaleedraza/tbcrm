@@ -66,8 +66,8 @@ array (
           ),
           1 => 
           array (
-            'name' => 'contacts_name',
-            'label' => 'LBL_CONTACTS_NAME',
+            'name' => 'accounts_name',
+            'label' => 'LBL_ACCOUNTS_NAME',
           ),
         ),
         2 => 

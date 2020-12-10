@@ -11,7 +11,7 @@ $id = $_REQUEST['id'];
 // $array=[];
 $array = array();
 
-$getProduct_query = "SELECT * FROM `aos_products` WHERE contacts_id= '".$id."' AND deleted = 0 ";
+$getProduct_query = "SELECT * FROM `aos_products` WHERE accounts_id= '".$id."' AND deleted = 0 ";
 $products = $db-> query($getProduct_query);
 while($fetchProducts = $db->fetchByAssoc($products)){
     // $name = $fetchProducts['name'];
