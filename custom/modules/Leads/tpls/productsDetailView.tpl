@@ -6,7 +6,7 @@
 </tr>
 {foreach from=$PRODUCTLIST_DETAILS key=id item=data}
   <tr>
-    <td>{$data.name}</td>
+    <td><a href="index.php?module=AOS_Products&action=DetailView&record={$data.id}">{$data.name}</a></td>
   </tr>
 {/foreach}
 </table>
