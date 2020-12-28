@@ -8,7 +8,6 @@ $(document).ready(function () {
     datatype: 'JSON',
     success: function (data) {
       var dataArr = JSON.parse(data);
-      debugger;
       if (data != null) {
         for (var lineNum = 0; lineNum < dataArr.length; lineNum++) {
           insertProductLine("product_group" + lineNum, lineNum);

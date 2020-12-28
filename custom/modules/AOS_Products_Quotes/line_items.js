@@ -43,7 +43,7 @@ $(document).ready(function () {
   document.querySelectorAll('.button.primary').forEach(item => {
     item.addEventListener('click', event => {
       //handle click
-      setTimeout(function () { window.location = "index.php?module=AOS_Quotes&action=ListView"; }, 3000);
+      setTimeout(function () { window.location.href = "index.php?module=AOS_Quotes&action=ListView"; }, 3000);
 
     })
   });
@@ -1000,7 +1000,6 @@ function getProductOption(lineId) {
   var productData, prodIndex;
   $('.product_name').select2();
   if (window.location.href.indexOf("lead_id") > -1) {
-    debugger;
     $.ajax({
       type: 'GET',
       async: false,
