@@ -9,21 +9,24 @@
 {/literal}
 
 <!-- Company dropdown -->
-<select id="billing_account_id" name="billing_account_id">
-  <option>-- Select Company--</option>
-  {foreach from=$BILLING_ACCOUNT_DATA key=index item=data}
-    <option value="{$data.id}">{$data.name}</option>
-  {/foreach}
-  <script> setDDVal('billing_account_id','{$BEAN->billing_account_id}') ;</script>
-</select>
+<div class="col-md-6">
+  <select id="billing_account_id" name="billing_account_id">
+    <option>-- Select Company--</option>
+    {foreach from=$BILLING_ACCOUNT_DATA key=index item=data}
+      <option value="{$data.id}">{$data.name}</option>
+    {/foreach}
+    <script> setDDVal('billing_account_id','{$BEAN->billing_account_id}') ;</script>
+  </select>
+</div>
 
 
 <!-- Client (contact) dropdown -->
-
-<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Client:</b> 
-<select id='billing_contact_id' name="billing_contact_id">
-  <option value=''>-- Select Client--</option>
-</select>
+<div class="col-md-6">
+  <b>Client:</b>
+  <select id='billing_contact_id' name="billing_contact_id">
+    <option value=''>-- Select Client--</option>
+  </select>
+</div>
 
 
 {literal}

@@ -36,7 +36,18 @@
  * reasonably feasible for technical reasons, the Appropriate Legal Notices must
  * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
+  // <link rel="stylesheet" type="text/css" href="custom/modules/AOS_Quotes/app-assets/vendors/css/forms/selects/select2.css">
+  // <script src="custom/modules/AOS_Quotes/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+$(document).ready(function () {
+  $.getScript('custom/modules/AOS_Products_Quotes/app-assets/vendors/js/forms/select/select2.full.min.js');
+  document.querySelectorAll('.button.primary').forEach(item => {
+    item.addEventListener('click', event => {
+      //handle click
+      setTimeout(function () { window.location = "index.php?module=AOS_Quotes&action=ListView"; }, 3000);
 
+    })
+  });
+});
 var lineno;
 var prodln = 0;
 var servln = 0;
@@ -158,13 +169,16 @@ function insertProductLine(tableid, groupid) {
   a.innerHTML = "<input type='text' name='product_product_qty[" + prodln + "]' id='product_product_qty" + prodln + "'  value='' title='' tabindex='116' onblur='Quantity_format2Number(" + prodln + ");calculateLine(" + prodln + ",\"product_\");' class='product_qty'>";
 
   var b = x.insertCell(1);
-  b.innerHTML = "<input class='sqsEnabled product_name' autocomplete='off' type='text' name='product_name[" + prodln + "]' id='product_name" + prodln + "' maxlength='50' value='' title='' tabindex='116' value=''><input type='hidden' name='product_product_id[" + prodln + "]' id='product_product_id" + prodln + "'  maxlength='50' value=''>";
+  // b.innerHTML = "<input class='sqsEnabled product_name' autocomplete='off' type='text' name='product_name[" + prodln + "]' id='product_name" + prodln + "' maxlength='50' value='' title='' tabindex='116' value=''><input type='hidden' name='product_product_id[" + prodln + "]' id='product_product_id" + prodln + "'  maxlength='50' value=''>";
+  b.innerHTML = "<select style='width: 200px;' onchange='setProductValue("+prodln+");' class='product_name'  name='product_name[" + prodln + "]' id='product_name" + prodln + "'></select><input type='hidden' name='product_product_id[" + prodln + "]' id='product_product_id" + prodln + "'  maxlength='50' value=''>";
+
+  getProductOption(prodln);
 
   var b1 = x.insertCell(2);
   // b1.innerHTML = "<input class='sqsEnabled product_part_number' autocomplete='off' type='text' name='product_part_number[" + prodln + "]' id='product_part_number" + prodln + "' maxlength='50' value='' title='' tabindex='116' value=''>";
 
   var b2 = x.insertCell(3);
-  b2.innerHTML = "<button title='" + SUGAR.language.get('app_strings', 'LBL_SELECT_BUTTON_TITLE') + "' accessKey='" + SUGAR.language.get('app_strings', 'LBL_SELECT_BUTTON_KEY') + "' type='button' tabindex='116' class='button product_part_number_button' value='" + SUGAR.language.get('app_strings', 'LBL_SELECT_BUTTON_LABEL') + "' name='btn1' onclick='openProductPopup(" + prodln + ");'><span class=\"suitepicon suitepicon-action-select\"></span></button>";
+  // b2.innerHTML = "<button title='" + SUGAR.language.get('app_strings', 'LBL_SELECT_BUTTON_TITLE') + "' accessKey='" + SUGAR.language.get('app_strings', 'LBL_SELECT_BUTTON_KEY') + "' type='button' tabindex='116' class='button product_part_number_button' value='" + SUGAR.language.get('app_strings', 'LBL_SELECT_BUTTON_LABEL') + "' name='btn1' onclick='openProductPopup(" + prodln + ");'><span class=\"suitepicon suitepicon-action-select\"></span></button>";
 
   var c = x.insertCell(4);
   c.innerHTML = "<input type='text' name='product_product_list_price[" + prodln + "]' id='product_product_list_price" + prodln + "' maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_list_price'><input type='hidden' name='product_product_cost_price[" + prodln + "]' id='product_product_cost_price" + prodln + "' value=''  />";
@@ -979,4 +993,61 @@ function check_form(formname) {
   if (typeof(siw) != 'undefined' && siw && typeof(siw.selectingSomething) != 'undefined' && siw.selectingSomething)
     return false;
   return validate_form(formname, '');
+}
+
+//Fetching products for lineitem product dropdown
+function getProductOption(lineId) {
+  var productData, prodIndex;
+  $('.product_name').select2();
+  if (window.location.href.indexOf("lead_id") > -1) {
+    debugger;
+    $.ajax({
+      type: 'GET',
+      async: false,
+      url: 'index.php?module=AOS_Products_Quotes&action=getLeadQuoteProducts&sugar_body_only=true',
+      contentType: 'application/x-www-form-urlencoded',
+      success: function (data) {
+        productData = $.parseJSON(data);
+        $("#product_name" + lineId + " option").remove();
+        $("#product_name" + lineId).append('<option value=""></option>');
+        for (prodIndex = 0; prodIndex < productData.length; prodIndex++) {
+          $("#product_name" + lineId).append('<option value="' + productData[prodIndex].id + '">' + productData[prodIndex].name + '</option>');
+        }
+      },
+      error: function (request, status, errorThrown) {
+        console.log(request + ' ' + status + ' ' + errorThrown);
+      }
+    });
+  }
+  else {
+    $.ajax({
+      type: 'GET',
+      url: 'index.php?module=AOS_Products_Quotes&action=getLeadQuoteProducts&sugar_body_only=true',
+      contentType: 'application/x-www-form-urlencoded',
+      success: function (data) {
+        productData = $.parseJSON(data);
+        $("#product_name" + lineId + " option").remove();
+        $("#product_name" + lineId).append('<option value=""></option>');
+        for (prodIndex = 0; prodIndex < productData.length; prodIndex++) {
+          $("#product_name" + lineId).append('<option value="' + productData[prodIndex].id + '">' + productData[prodIndex].name + '</option>');
+        }
+        for (var setProd = 0; setProd < CurrentProductId.length; setProd++) {
+          setDDVal('product_name' + setProd, CurrentProductId[setProd].product_id);
+        }
+      },
+      error: function (request, status, errorThrown) {
+        console.log(request + ' ' + status + ' ' + errorThrown);
+      }
+    });
+  }
+}
+
+//Assingnig value to hidden input field
+function setProductValue(lineId) {
+  var selectedProductVal = $("#product_name" + lineId+" option:selected").val();
+  $('#product_product_id' + lineId).val(selectedProductVal);
+}
+
+function setDDVal(field_id, field_val) {
+  $('#'+field_id).val(field_val).trigger('change');
 }

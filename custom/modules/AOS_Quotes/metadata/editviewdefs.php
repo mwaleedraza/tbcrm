@@ -157,15 +157,19 @@ array (
               'shippingKey' => 'shipping',
             ),
           ),
-          1 => 
+        ),
+        1 => 
+        array (
+          0 => 
           array (
             'name' => 'lead_name',
             'label' => 'LBL_LEAD_NAME',
             'customCode' => '{$LEAD_HTML}',
             'widths' => '100%',
           ),
+          1 => '',
         ),
-        1 => 
+        2 => 
         array (
           0 => 
           array (
@@ -173,7 +177,7 @@ array (
             'label' => 'LBL_RFQ',
           ),
         ),
-        2 => 
+        3 => 
         array (
           0 => 
           array (
@@ -187,7 +191,7 @@ array (
             'label' => 'LBL_PO_TO_V',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -201,7 +205,7 @@ array (
             'label' => 'LBL_CONDITION',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -217,7 +221,7 @@ array (
             'label' => 'LBL_MEDIUM',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -230,7 +234,7 @@ array (
             'label' => 'LBL_YOUR_REFERENCE_NUMBER',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -324,11 +328,20 @@ array (
         array (
           0 => 
           array (
+            'name' => 'pra_tax',
+            'label' => 'LBL_PRA_TAX',
+          ),
+          1 => '',
+        ),
+        9 => 
+        array (
+          0 => 
+          array (
             'name' => 'tax_amount',
             'label' => 'LBL_TAX_AMOUNT',
           ),
         ),
-        9 => 
+        10 => 
         array (
           0 => 
           array (

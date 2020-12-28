@@ -117,6 +117,20 @@ class AOS_InvoicesViewEdit extends ViewEdit
         $this->ss->assign("USERVERIFIED_HTML", $userVerifiedTPL);
         // echo $this->ev->display($this->showTitle);
 
+        $productParentId = $this->bean->id;
+        $productArr = array();
+        $products = $db->query("SELECT `product_id` FROM `aos_products_quotes` WHERE parent_id = '".$productParentId."' AND deleted = 0");
+        while ($rows = $db->fetchByAssoc($products)) {
+            array_push($productArr, $rows);
+        }
+        $productArr = json_encode($productArr);
+        echo "<script>
+			$(document).ready(function() {
+                CurrentProductId= JSON.parse('".$productArr."'); //ProductObject
+                
+			}); 
+        </script>";
+
         parent::display();
     }
 }

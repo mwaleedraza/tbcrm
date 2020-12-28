@@ -83,6 +83,38 @@ class customAOS_QuotesViewEdit extends AOS_QuotesViewEdit
 			}); 
         </script>";
 
+        // Setting ProductsValue in line_item.js
+        $productParentId = $this->bean->id;
+        $productArr = array();
+        $products = $db->query("SELECT `product_id` FROM `aos_products_quotes` WHERE parent_id = '".$productParentId."' AND deleted = 0");
+        while ($rows = $db->fetchByAssoc($products)) {
+            array_push($productArr, $rows);
+        }
+        $productArr = json_encode($productArr);
+        echo "<script>
+			$(document).ready(function() {
+                CurrentProductId= JSON.parse('".$productArr."'); //ProductObject
+                
+			}); 
+        </script>";
+        
+        //Setting Product From Product to Quote
+        $quoteLeadId = $this->bean->lead_id;
+        $leadQuoteProdArr = array();
+        $leadProd = $db->query("SELECT * FROM `tc_leads_products` WHERE lead_id = '".$quoteLeadId."' AND deleted = 0");
+        while($fetchProdId = $db->fetchByAssoc($leadProd)){
+             $prodList = $db->query("SELECT `id`, `name` FROM `aos_products` WHERE id = '".$fetchProdId['aos_products_id']."' AND deleted=0");
+             $prodListArr = $db->fetchByAssoc($prodList);
+             array_push($leadQuoteProdArr,$prodListArr);
+        }
+        $leadQuoteProdArr = json_encode($leadQuoteProdArr);
+        echo "<script>
+			$(document).ready(function() {
+                CurrentLeadProductsId= JSON.parse('".$leadQuoteProdArr."'); //ProductObject
+                
+			}); 
+        </script>";
+
         parent::display();
     }
 }

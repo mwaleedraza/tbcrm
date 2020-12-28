@@ -13,5 +13,5 @@ $mod_strings = array (
   'LBL_PO_TO_V' => 'PO To V',
   'LBL_PDFTEXT' => 'PDF Text',
   'LBL_OURFIRM' => 'Our Firm',
-
+  'LBL_LEAD_ID' => 'Sales'
 );
