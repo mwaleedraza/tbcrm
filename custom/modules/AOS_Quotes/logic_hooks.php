@@ -6,5 +6,5 @@ $hook_array = Array();
 
 // position, file, function 
 $hook_array['process_record'] = Array(); 
-$hook_array['process_record'][] = Array(1, 'changeProductIdToName', 'custom/modules/AOS_Quotes/changeProductIdToName.php','changeProductIdToNameClass', 'changeProductIdToNameMethod'); 
+$hook_array['process_record'][] = Array(78, 'changeProductIdToName', 'custom/modules/AOS_Quotes/changeProductIdToName.php','changeProductIdToNameClass', 'changeProductIdToNameMethod'); 
 ?>
