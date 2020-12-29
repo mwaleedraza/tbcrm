@@ -39,14 +39,20 @@
   // <link rel="stylesheet" type="text/css" href="custom/modules/AOS_Quotes/app-assets/vendors/css/forms/selects/select2.css">
   // <script src="custom/modules/AOS_Quotes/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
 $(document).ready(function () {
+  
   $.getScript('custom/modules/AOS_Products_Quotes/app-assets/vendors/js/forms/select/select2.full.min.js');
-  document.querySelectorAll('.button.primary').forEach(item => {
+  document.querySelectorAll('#SAVE').forEach(item => {
     item.addEventListener('click', event => {
       //handle click
-      setTimeout(function () { window.location.href = "index.php?module=AOS_Quotes&action=ListView"; }, 3000);
-
+      if (window.location.href.indexOf("AOS_Quotes") > -1) {
+        setTimeout(function () { window.location.href = "index.php?module=AOS_Quotes&action=ListView"; }, 2000);
+      }
+      else if(window.location.href.indexOf("AOS_Invoices") > -1) { 
+        setTimeout(function () { window.location.href = "index.php?module=AOS_Invoices&action=ListView"; }, 2000);
+      }
     })
   });
+
 });
 var lineno;
 var prodln = 0;
