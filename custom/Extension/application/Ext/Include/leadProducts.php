@@ -4,4 +4,5 @@ $beanList['tc_leads_products'] = 'tc_leads_products';
 $beanFiles['tc_leads_products'] = 'modules/tc_leads_products/tc_leads_products.php';
 $moduleList[] = 'tc_leads_products';
 
+
 ?>

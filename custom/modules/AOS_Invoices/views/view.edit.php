@@ -119,17 +119,22 @@ class AOS_InvoicesViewEdit extends ViewEdit
 
         $productParentId = $this->bean->id;
         $productArr = array();
-        $products = $db->query("SELECT `product_id` FROM `aos_products_quotes` WHERE parent_id = '".$productParentId."' AND deleted = 0");
+        $products = $db->query("SELECT * FROM `aos_products_quotes` WHERE parent_id = '".$productParentId."' AND deleted = 0");
         while ($rows = $db->fetchByAssoc($products)) {
             array_push($productArr, $rows);
         }
         $productArr = json_encode($productArr);
         echo "<script>
-			$(document).ready(function() {
-                CurrentProductId= JSON.parse('".$productArr."'); //ProductObject
-                
-			}); 
+        productIdInvoices= JSON.parse('".$productArr."'); 
         </script>";
+
+        // Setting Tax Values
+        $parent_id = $_REQUEST['record'];
+        $moduleName = $_REQUEST['module'];
+        echo "<script>
+                parentId = '".$parent_id."';
+                moduleName = '".$moduleName."';
+            </script>";
 
         parent::display();
     }

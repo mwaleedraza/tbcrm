@@ -17,8 +17,9 @@ class customAOS_QuotesViewEdit extends AOS_QuotesViewEdit
         /*
             Getting all leads to assign to tpl
         */
+        // die($_REQUEST['record']);
         $leadArr = array();
-        $lead = $db->query("SELECT `id`,`first_name`,`last_name` FROM `leads` WHERE deleted = 0");
+        $lead = $db->query("SELECT `id`,`first_name`,`last_name` FROM `leads` WHERE deleted = 0 ");
         while ($rows = $db->fetchByAssoc($lead)) {
             array_push($leadArr, $rows);
         }
@@ -86,34 +87,24 @@ class customAOS_QuotesViewEdit extends AOS_QuotesViewEdit
         // Setting ProductsValue in line_item.js
         $productParentId = $this->bean->id;
         $productArr = array();
-        $products = $db->query("SELECT `product_id` FROM `aos_products_quotes` WHERE parent_id = '".$productParentId."' AND deleted = 0");
+        $products = $db->query("SELECT * FROM `aos_products_quotes` WHERE parent_id = '".$productParentId."' AND deleted = 0");
         while ($rows = $db->fetchByAssoc($products)) {
             array_push($productArr, $rows);
         }
         $productArr = json_encode($productArr);
         echo "<script>
 			$(document).ready(function() {
-                CurrentProductId= JSON.parse('".$productArr."'); //ProductObject
-                
+                productIdQuotes= JSON.parse('".$productArr."'); //ProductObject
 			}); 
         </script>";
-        
-        //Setting Product From Product to Quote
-        $quoteLeadId = $this->bean->lead_id;
-        $leadQuoteProdArr = array();
-        $leadProd = $db->query("SELECT * FROM `tc_leads_products` WHERE lead_id = '".$quoteLeadId."' AND deleted = 0");
-        while($fetchProdId = $db->fetchByAssoc($leadProd)){
-             $prodList = $db->query("SELECT `id`, `name` FROM `aos_products` WHERE id = '".$fetchProdId['aos_products_id']."' AND deleted=0");
-             $prodListArr = $db->fetchByAssoc($prodList);
-             array_push($leadQuoteProdArr,$prodListArr);
-        }
-        $leadQuoteProdArr = json_encode($leadQuoteProdArr);
+
+        // Setting Tax Values in line_item.js
+        $parent_id = $_REQUEST['record'];
+        $moduleName = $_REQUEST['module'];
         echo "<script>
-			$(document).ready(function() {
-                CurrentLeadProductsId= JSON.parse('".$leadQuoteProdArr."'); //ProductObject
-                
-			}); 
-        </script>";
+                parentId = '".$parent_id."';
+                moduleName = '".$moduleName."';
+            </script>";
 
         parent::display();
     }

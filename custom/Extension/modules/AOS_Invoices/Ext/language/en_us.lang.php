@@ -26,6 +26,13 @@ $mod_strings = array(
   'LBL_MEDIUM' => 'Medium',
   'LBL_DELIVERY_NOTE' => 'Delivery Note',
   'LBL_PAYMENT_STATUS' => 'Payment Status',
+  'LBL_PRODUCT_TAX_TYPE' => 'Tax Type',
+  'LBL_VAT_AMT' => 'WHT',
+  'LBL_GST_PERCENTAGE' => 'GST',
+  'LBL_PRA_PERCENTAGE' => 'PRA',
+  'LBL_SERVICE_PRA_PERCENTAGE' => 'PRA',
+  'LBL_GST_CUSTOM_PERCENTAGE' => 'Custom GST',
+  'LBL_PRA_CUSTOM_PERCENTAGE' => 'Custom PRA',
 
 
 

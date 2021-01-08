@@ -30,11 +30,13 @@ $mod_strings = array(
   'LBL_OURFIRM' => 'Our Firm',
   'LBL_YOUR_REFERENCE_NUMBER' => 'Your Reference Number',
   'LBL_PER_UNIT_COST' => 'Per Unit Cost',
-  'LBL_PRA_TAX' => 'PRA Tax'
+  'LBL_PRA_TAX' => 'PRA Tax',
+  'LBL_PRODUCT_TAX_TYPE' => 'Tax Type',
+  'LBL_VAT_AMT' => 'WHT',
+  'LBL_GST_PERCENTAGE' => 'GST',
+  'LBL_PRA_PERCENTAGE' => 'PRA',
+  'LBL_SERVICE_PRA_PERCENTAGE' => 'PRA',
+  'LBL_GST_CUSTOM_PERCENTAGE' => 'Custom GST',
+  'LBL_PRA_CUSTOM_PERCENTAGE' => 'Custom PRA',
   
-
-
-
-
-
 );
