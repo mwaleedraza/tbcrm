@@ -50,8 +50,7 @@ function display_lines($focus, $field, $value, $view)
             $html .= "</div>";
         }
         $html .= '<input type="hidden" name="vathidden" id="vathidden" value="'.get_select_options_with_id($app_list_strings['vat_list'], '').'">
-                  <input type="hidden" name="discounthidden" id="discounthidden" value="'.get_select_options_with_id($app_list_strings['discount_list'], '').'">';
-                  
+				  <input type="hidden" name="discounthidden" id="discounthidden" value="'.get_select_options_with_id($app_list_strings['discount_list'], '').'">';
         if ($focus->id != '') {
             require_once('modules/AOS_Products_Quotes/AOS_Products_Quotes.php');
             require_once('modules/AOS_Line_Item_Groups/AOS_Line_Item_Groups.php');
@@ -179,9 +178,9 @@ function display_lines($focus, $field, $value, $view)
 
                     $product .= "<td class='tabDetailViewDF' style='text-align: right; padding:2px;'>".currency_format_number($line_item->product_unit_price, $params)."</td>";
                     if ($locale->getPrecision()) {
-                        $product .= "<td class='tabDetailViewDF' style='text-align: right; padding:2px;'>".rtrim(rtrim(format_number($line_item->gst_percentage), '0'), $sep[1])."%</td>";
+                        $product .= "<td class='tabDetailViewDF' style='text-align: right; padding:2px;'>".rtrim(rtrim(format_number($line_item->vat), '0'), $sep[1])."%</td>";
                     } else {
-                        $product .= "<td class='tabDetailViewDF' style='text-align: right; padding:2px;'>".format_number($line_item->gst_percentage)."%</td>";
+                        $product .= "<td class='tabDetailViewDF' style='text-align: right; padding:2px;'>".format_number($line_item->vat)."%</td>";
                     }
                     $product .= "<td class='tabDetailViewDF' style='text-align: right; padding:2px;'>".currency_format_number($line_item->vat_amt, $params)."</td>";
                     $product .= "<td class='tabDetailViewDF' style='text-align: right; padding:2px;'>".currency_format_number($line_item->product_total_price, $params)."</td>";

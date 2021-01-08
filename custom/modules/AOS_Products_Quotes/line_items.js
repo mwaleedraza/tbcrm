@@ -48,7 +48,7 @@ $(document).ready(function () {
         setTimeout(function () { window.location.href = "index.php?module=AOS_Quotes&action=ListView"; }, 700);
       }
       else if (moduleName == 'AOS_Invoices') {
-        setTimeout(function () { window.location.href = "index.php?module=AOS_Invoices&action=ListView"; }, 700);
+        setTimeout(function () { window.location.href = "index.php?module=AOS_Invoices&action=ListView"; }, 400);
       }
     });
   });
@@ -232,13 +232,13 @@ function insertProductLine(tableid, groupid) {
   l.innerHTML = "<select style='display:none;width:100px' type='text' name='product_gst_percentage[" + prodln + "]'  id='product_gst_percentage" + prodln + "' '>" + gst_dropdown + "</select>"
 
   var o = x.insertCell(9);
-  o.innerHTML = "<input style='display:none;width:100px;position: relative;float: right;margin-left: 5px;margin-top: 0px;' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' type='number'  min='1' max='100' name='product_gst_custom_percentage[" + prodln + "]' id='product_gst_custom_percentage" + prodln + "' placeholder='Custom GST'>"
+  o.innerHTML = "<input style='display:none;width:100px;position: relative;float: right;margin-right: 8px;margin-left: 5px;margin-top: 0px;' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' type='number'  min='1' max='100' name='product_gst_custom_percentage[" + prodln + "]' id='product_gst_custom_percentage" + prodln + "' placeholder='Custom GST'>"
 
   var m = x.insertCell(10);
   m.innerHTML = "<select style='display:none;width:100px;' type='text' name='product_pra_percentage[" + prodln + "]' id='product_pra_percentage" + prodln + "' >" + pra_dropdown + "</select>";
 
   var n = x.insertCell(11);
-  n.innerHTML = "<input  style='display:none;width:100px;position: relative;float: right;margin-left: 5px;margin-top: 0px;' onblur='calculateLine(" + prodln + ",\"product_\");' type='number' min='1' max='100' name='product_pra_custom_percentage[" + prodln + "]' id='product_pra_custom_percentage" + prodln + "' placeholder='Custom PRA'>"
+  n.innerHTML = "<input  style='display:none;width:100px;position: relative;float: right;margin-right: 8px;margin-left: 5px;margin-top: 0px;' onblur='calculateLine(" + prodln + ",\"product_\");' type='number' min='1' max='100' name='product_pra_custom_percentage[" + prodln + "]' id='product_pra_custom_percentage" + prodln + "' placeholder='Custom PRA'>"
 
   var f = x.insertCell(12);
   f.innerHTML = "<input type='text' name='product_vat_amt[" + prodln + "]' id='product_vat_amt" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_vat_amt_text'>";
@@ -409,23 +409,25 @@ function insertServiceLine(tableid, groupid) {
   }
   var g = x.insertCell(4);
   g.innerHTML = "<select style='width:100px;' type='text' name='service_pra_percentage[" + servln + "]' id='service_pra_percentage" + servln + "' >" + pra_dropdown + "</select>";
-  g.innerHTML += "<input  style='width:100px;position: relative;float: right;margin-left: 103px;margin-top: -29px;' onblur='calculateLine(" + servln + ",\"service_\");' type='number' min='1' max='100' name='service_pra_custom_percentage[" + servln + "]' id='service_pra_custom_percentage" + servln + "' placeholder='Custom PRA'>"
+
+  var f = x.insertCell(5);
+  f.innerHTML = "<input  style='width:100px;position: relative;float: right;margin-left: 5px;margin-right: 8px;margin-top: 0px;' onblur='calculateLine(" + servln + ",\"service_\");' type='number' min='1' max='100' name='service_pra_custom_percentage[" + servln + "]' id='service_pra_custom_percentage" + servln + "' placeholder='Custom PRA'>"
 
 
-  var c = x.insertCell(5);
+  var c = x.insertCell(6);
   c.innerHTML = "<input type='text' name='service_vat_amt[" + servln + "]' id='service_vat_amt" + servln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='service_vat_text'>";
   // c.innerHTML += "<select tabindex='116' name='service_vat[" + servln + "]' id='service_vat" + servln + "' onchange='calculateLine(" + servln + ",\"service_\");' class='service_vat_select'>" + vat_hidden + "</select>";
   if (typeof currencyFields !== 'undefined'){
     currencyFields.push("service_vat_amt" + servln);
   }
 
-  var e = x.insertCell(6);
+  var e = x.insertCell(7);
   e.innerHTML = "<input type='text' name='service_product_total_price[" + servln + "]' id='service_product_total_price" + servln + "' maxlength='50' value='' title='' tabindex='116' readonly='readonly' class='service_total_price'><input type='hidden' name='service_group_number[" + servln + "]' id='service_group_number" + servln + "' value='"+ groupid +"'>";
 
   if (typeof currencyFields !== 'undefined'){
     currencyFields.push("service_product_total_price" + servln);
   }
-  var f = x.insertCell(7);
+  var f = x.insertCell(8);
   f.innerHTML = "<input type='hidden' name='service_deleted[" + servln + "]' id='service_deleted" + servln + "' value='0'><input type='hidden' name='service_id[" + servln + "]' id='service_id" + servln + "' value=''><button type='button' class='button service_delete_line' id='service_delete_line" + servln + "' value='" + SUGAR.language.get(module_sugar_grp1, 'LBL_REMOVE_PRODUCT_LINE') + "' tabindex='116' onclick='markLineDeleted(" + servln + ",\"service_\")'><span class=\"suitepicon suitepicon-action-clear\"></span></button><br>";
 
   addAlignedLabels(servln, 'service');
@@ -547,15 +549,19 @@ function insertServiceHeader(tableid){
   h.style.color = "rgb(68,68,68)";
   h.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_SERVICE_PRA_PERCENTAGE');
 
-  var e = x.insertCell(5);
+  var g = x.insertCell(5);
+  g.style.color = "rgb(68,68,68)";
+  g.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_SERVICE_PRA_CUSTOM_PERCENTAGE');
+
+  var e = x.insertCell(6);
   e.style.color="rgb(68,68,68)";
   e.innerHTML=SUGAR.language.get(module_sugar_grp1, 'LBL_VAT_AMT');
 
-  var f = x.insertCell(6);
+  var f = x.insertCell(7);
   f.style.color="rgb(68,68,68)";
   f.innerHTML=SUGAR.language.get(module_sugar_grp1, 'LBL_TOTAL_PRICE');
 
-  var g = x.insertCell(7);
+  var g = x.insertCell(8);
   g.style.color="rgb(68,68,68)";
   g.innerHTML='&nbsp;';
 }
