@@ -78,11 +78,20 @@ array (
         array (
           0 => 
           array (
+            'name' => 'sku',
+            'label' => 'LBL_SKU',
+          ),
+          1 => '',
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
             'name' => 'description',
             'label' => 'LBL_DESCRIPTION',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
