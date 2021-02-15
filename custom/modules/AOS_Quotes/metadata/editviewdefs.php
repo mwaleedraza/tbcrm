@@ -25,8 +25,16 @@ array (
         array (
           'file' => 'custom/modules/AOS_Quotes/companyClient.js',
         ),
+        4 => 
+        array (
+          'file' => 'custom/modules/AOS_Quotes/showPoRecieved.js',
+        ),
       ),
       'form' => 
+      array (
+        'enctype' => 'multipart/form-data',
+      ),
+      0 => 
       array (
         'buttons' => 
         array (
@@ -62,6 +70,11 @@ array (
           'panelDefault' => 'expanded',
         ),
         'LBL_LINE_ITEMS' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+        'LBL_EDITVIEW_PANEL1' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
@@ -104,6 +117,16 @@ array (
         ),
         2 => 
         array (
+          0 => '',
+          1 => 
+          array (
+            'name' => 'filename',
+            'comment' => 'File name associated with the note (attachment)',
+            'label' => 'LBL_FILENAME',
+          ),
+        ),
+        3 => 
+        array (
           0 => 
           array (
             'name' => 'assigned_user_name',
@@ -117,7 +140,7 @@ array (
             'label' => 'LBL_TERM',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -175,6 +198,11 @@ array (
           array (
             'name' => 'rfq_ref',
             'label' => 'LBL_RFQ',
+          ),
+          1 => 
+          array (
+            'name' => 'prev_quote_no',
+            'label' => 'LBL_PREV_QUOTE_NO',
           ),
         ),
         3 => 
@@ -248,6 +276,15 @@ array (
             'label' => 'LBL_OURFIRM',
           ),
         ),
+        8 => 
+        array (
+          0 => 
+          array (
+            'name' => 'quote_version',
+            'label' => 'LBL_QUOTE_VERSION',
+          ),
+          1 => '',
+        ),
       ),
       'lbl_line_items' => 
       array (
@@ -261,15 +298,29 @@ array (
         ),
         1 => 
         array (
+          0 => '',
+          1 => '',
+        ),
+      ),
+      'lbl_editview_panel1' => 
+      array (
+        0 => 
+        array (
           0 => 
           array (
             'name' => 'currency_id',
             'studio' => 'visible',
             'label' => 'LBL_CURRENCY',
           ),
-          1 => '',
+          1 => 
+          array (
+            'name' => 'currency_rate',
+            'label' => 'LBL_CURRENCY_RATE',
+            'customCode' => '{$CURRENCY_DETAILS}',
+            'widths' => '100%',
+          ),
         ),
-        2 => 
+        1 => 
         array (
           0 => 
           array (
@@ -277,7 +328,7 @@ array (
             'label' => 'LBL_TOTAL_AMT',
           ),
         ),
-        3 => 
+        2 => 
         array (
           0 => 
           array (
@@ -285,7 +336,7 @@ array (
             'label' => 'LBL_DISCOUNT_AMOUNT',
           ),
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -293,7 +344,7 @@ array (
             'label' => 'LBL_PER_UNIT_COST',
           ),
         ),
-        5 => 
+        4 => 
         array (
           0 => 
           array (
@@ -301,7 +352,7 @@ array (
             'label' => 'LBL_SUBTOTAL_AMOUNT',
           ),
         ),
-        6 => 
+        5 => 
         array (
           0 => 
           array (
@@ -316,7 +367,7 @@ array (
             ),
           ),
         ),
-        7 => 
+        6 => 
         array (
           0 => 
           array (
@@ -324,24 +375,7 @@ array (
             'label' => 'LBL_SHIPPING_TAX_AMT',
           ),
         ),
-        8 => 
-        array (
-          0 => 
-          array (
-            'name' => 'pra_tax',
-            'label' => 'LBL_PRA_TAX',
-          ),
-          1 => '',
-        ),
-        9 => 
-        array (
-          0 => 
-          array (
-            'name' => 'tax_amount',
-            'label' => 'LBL_TAX_AMOUNT',
-          ),
-        ),
-        10 => 
+        7 => 
         array (
           0 => 
           array (

@@ -34,6 +34,10 @@ $mod_strings = array(
   'LBL_SERVICE_PRA_CUSTOM_PERCENTAGE' => 'Custom PRA',
   'LBL_GST_CUSTOM_PERCENTAGE' => 'Custom GST',
   'LBL_PRA_CUSTOM_PERCENTAGE' => 'Custom PRA',
+  'LBL_WHT_CUSTOM' => 'Custom WHT',
+  'LBL_LIST_PRICE' => 'Sale Price',
+  'LBL_SERVICE_LIST_PRICE' => 'Sale Price',
+  'LBL_SUB_PRODUCTS' => 'Sub Products',
 
 
 

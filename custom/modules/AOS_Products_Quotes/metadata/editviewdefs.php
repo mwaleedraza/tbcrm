@@ -51,6 +51,15 @@ array (
         array (
           0 => 
           array (
+            'name' => 'sub_products',
+            'label' => 'LBL_SUB_PRODUCTS',
+          ),
+          1 => '',
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
             'name' => 'product_cost_price',
             'label' => 'LBL_PRODUCT_COST_PRICE',
           ),
@@ -60,7 +69,7 @@ array (
             'label' => 'LBL_PRODUCT_LIST_PRICE',
           ),
         ),
-        2 => 
+        3 => 
         array (
           0 => 
           array (
@@ -73,7 +82,7 @@ array (
             'label' => 'LBL_VAT',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -86,7 +95,7 @@ array (
             'label' => 'LBL_GST_PERCENTAGE',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -99,7 +108,7 @@ array (
             'label' => 'LBL_VAT_AMT',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -108,7 +117,7 @@ array (
           ),
           1 => '',
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -121,7 +130,7 @@ array (
             'label' => 'LBL_FLEX_RELATE',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (
@@ -129,7 +138,7 @@ array (
             'label' => 'LBL_DESCRIPTION',
           ),
         ),
-        8 => 
+        9 => 
         array (
           0 => 
           array (

@@ -1,8 +1,6 @@
 <?php
-// created: 2020-02-11 08:03:01
+// created: 2021-01-25 12:19:48
 $mod_strings = array (
-  'LBL_BILLING_ACCOUNT' => 'Related Company',
-  'LBL_BILLING_CONTACT' => 'Contact',
   'LBL_BILLING_ACCOUNT' => 'Company',
   'LBL_BILLING_CONTACT' => 'Client',
   'LBL_LEAD_NAME' => 'Lead Name',
@@ -13,5 +11,6 @@ $mod_strings = array (
   'LBL_PO_TO_V' => 'PO To V',
   'LBL_PDFTEXT' => 'PDF Text',
   'LBL_OURFIRM' => 'Our Firm',
-  'LBL_LEAD_ID' => 'Sales'
+  'LBL_LEAD_ID' => 'Sales',
+  'LBL_EDITVIEW_PANEL1' => 'Our Costing',
 );

@@ -44,20 +44,40 @@ class customLeadsViewEdit extends LeadsViewEdit{
         $product_id=$this->bean->products_id;
         
         $productArr = array();
+        $subProductsArr = array();
+        $sub_subProductsArr = array();
         $lead_id = $this->bean->id;
-            $leadProductId = $db->query("SELECT aos_product_id FROM `tc_leads_products`  WHERE  deleted = 0 AND lead_id= '".$lead_id."' ");
+            $leadProductId = $db->query("SELECT aos_product_id, sub_product_id, sub_sub_product_id FROM `tc_leads_products`  WHERE  deleted = 0 AND lead_id= '".$lead_id."' ");
             while($ProductId = $db->fetchByAssoc($leadProductId)){
+                // Products
                 $relatedProducts = $db->query("SELECT `id` FROM `aos_products` WHERE id = '".$ProductId['aos_product_id']."' ");
                 $products = $db->fetchByAssoc($relatedProducts);
                 array_push($productArr, $products);
+
+                // Sub Products
+                $relatedSubProducts = $db->query("SELECT `id` FROM `tc_sub_products` WHERE id = '".$ProductId['sub_product_id']."' ");
+                $subProducts = $db->fetchByAssoc($relatedSubProducts);
+                array_push($subProductsArr, $subProducts);
+
+                // Sub Sub Products
+                $relatedSub_subProducts = $db->query("SELECT `id` FROM `tc_sub_products` WHERE id = '".$ProductId['sub_sub_product_id']."' ");
+                $sub_subProducts = $db->fetchByAssoc($relatedSub_subProducts);
+                array_push($sub_subProductsArr, $sub_subProducts);
             }
+            // print_r($productArr);
+            // print_r($subProductsArr);
+            // print_r($sub_subProductsArr);
+            // die();
             $this->ss->assign("PRODUCT_ARRAY", $products);
             $productArr = json_encode($productArr);
+            $subProductsArr = json_encode($subProductsArr);
+            $sub_subProductsArr = json_encode($sub_subProductsArr);
         echo "<script>
-			$(document).ready(function() {
+                CurrentVendorId = '".$this->bean->accounts_id."';
                 CurrentProductId= JSON.parse('".$productArr."'); //ProductObject
-                
-			}); 
+                CurrentSubProductId= JSON.parse('".$subProductsArr."'); //SubProductObject
+                CurrentSub_subProductId= JSON.parse('".$sub_subProductsArr."'); //SubSubProductObject
+			
 		</script>";
         $this->ss->assign("BEAN", $this->bean);
 ////////////////////

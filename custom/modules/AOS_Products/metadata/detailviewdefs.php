@@ -7,6 +7,9 @@ array (
     'templateMeta' => 
     array (
       'form' => 
+      array(
+        'footerTpl' => 'custom/modules/AOS_Products/tpls/subProducts.tpl'
+      ),
       array (
         'buttons' => 
         array (

@@ -78,7 +78,6 @@ class AOS_ProductsViewEdit extends ViewEdit
         //     });
         //     });</script>";
 
-
         parent::display();
     }
 }

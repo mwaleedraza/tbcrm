@@ -105,7 +105,26 @@ class customAOS_QuotesViewEdit extends AOS_QuotesViewEdit
                 parentId = '".$parent_id."';
                 moduleName = '".$moduleName."';
             </script>";
+        
+            // Quote Version Updating
+        if(!empty($this->bean->fetched_row)){
+            echo '<script>
+            setTimeout(function(){
+                var quoteVer = document.getElementById("quote_version").value;
+                quoteVer = parseInt(quoteVer) + 1;
+                var refNumber = $("#referencenumber").val();
+                var newVersion = refNumber.split("V");
+                newVersion[1] = "V"+quoteVer;
+                $("#referencenumber").val(newVersion[0]+newVersion[1]);
+                $("#quote_version").val(quoteVer);
+            }, 2000);
+                
+            </script>';    
+        }
 
+        $currencyTPL = $this->ss->fetch("custom/modules/AOS_Quotes/tpls/currencyRateDetails.tpl");
+        $this->ss->assign("CURRENCY_DETAILS", $currencyTPL);
+        
         parent::display();
     }
 }
