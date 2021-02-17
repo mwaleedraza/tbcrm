@@ -13,7 +13,20 @@ $(document).ready(function () {
           insertProductLine("product_group" + lineNum, lineNum);
           $('#product_name'+lineNum).val(dataArr[lineNum].id).trigger('change');
           $("#product_product_qty" + lineNum).val('1');
-          $("#product_sub_products" + lineNum).val(dataArr[lineNum].sub_product+" > "+dataArr[lineNum].sub_sub_product);
+
+          // Setting Sub Products
+          if (dataArr[lineNum].sub_product == '' || dataArr[lineNum].sub_product == null) {
+            $("#product_sub_products" + lineNum).val('');
+          }
+          else {
+            if (dataArr[lineNum].sub_sub_product == '' || dataArr[lineNum].sub_sub_product == null) {
+              $("#product_sub_products" + lineNum).val(dataArr[lineNum].sub_product);
+            }
+            else {
+              $("#product_sub_products" + lineNum).val(dataArr[lineNum].sub_product+" > "+dataArr[lineNum].sub_sub_product);
+            }
+          }
+
           calculateLine(lineNum, "product_");
         }
       }

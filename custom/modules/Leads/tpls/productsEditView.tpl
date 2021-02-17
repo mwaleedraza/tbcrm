@@ -5,7 +5,6 @@
     <script>
         function setDDVal (field_id,field_val){
           $('#'+field_id).val(field_val).trigger('change');
-          debugger;
       }
     </script>
     <style>
@@ -120,7 +119,7 @@
                 //var currentProducts = []; //ProductArray
                 //if(CurrentContactId!=''){
                 //  setDDVal('product_id'+fieldId+'',CurrentContactId[fieldId].id);
-                //  debugger;
+                //  
                 //}
               },
             error: function (request, status, errorThrown) {
