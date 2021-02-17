@@ -136,7 +136,7 @@
         
         $.ajax({
             type: 'POST',
-            url: 'index.php?module=Leads&action=GetSubProducts&sugar_body_only=true',
+            url: 'index.php?module=Leads&action=getSubProducts&sugar_body_only=true',
             data: data,
             contentType: 'application/x-www-form-urlencoded',
             dataType: 'text',
@@ -171,7 +171,7 @@
       
       $.ajax({
           type: 'POST',
-          url: 'index.php?module=Leads&action=GetSubProducts&sugar_body_only=true',
+          url: 'index.php?module=Leads&action=getSubProducts&sugar_body_only=true',
           data: data,
           contentType: 'application/x-www-form-urlencoded',
           dataType: 'text',
