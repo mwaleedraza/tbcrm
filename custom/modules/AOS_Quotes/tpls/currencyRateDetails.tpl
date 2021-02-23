@@ -18,8 +18,8 @@
         function getCurrencyDetails(){
             $('#currency_rate').val('');
             $('#curr_rate_ref_link').val('');
-            var currency = $("#currency_id_select").val();
-            if (currency == '84a72924-24e5-87b3-48bb-600eac4cd8a9' || currency == '85944da1-4774-114d-fcb7-600eacbbc797' || currency == 'e3849805-0b1e-6f46-fd95-600eac01a876'){
+            var currency = $("#currency_id_select").find(':selected').text();
+            if (currency == 'US Dollars : $' || currency == 'Great Britain Ponds : £' || currency == 'Euro : €'){
                 $('div[data-label = "LBL_CURRENCY_RATE"]').parent().show();
             }
             else{
