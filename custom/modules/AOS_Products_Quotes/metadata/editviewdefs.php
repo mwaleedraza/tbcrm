@@ -151,6 +151,19 @@ array (
             'label' => 'LBL_SERVICE_PRA_CUSTOM_PERCENTAGE',
           ),
         ),
+        10 => 
+        array (
+          0 => 
+          array (
+            'name' => 'sub_sub_products_name',
+            'label' => 'LBL_SUB_SUB_PRODUCTS_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'sub_products_name',
+            'label' => 'LBL_SUB_PRODUCTS_NAME',
+          ),
+        ),
       ),
     ),
   ),

@@ -201,11 +201,12 @@ function insertProductLine(tableid, groupid) {
 
   var q = x.insertCell(2);
   q.style.padding = "0px 5px";
-  q.innerHTML = "<select tabindex='116' onchange='sub_SubProductDD(" + prodln + ")' id='product_sub_products" + prodln + "' name='product_sub_products[" + prodln + "]' style='margin-right:5px;width:220px' class='sub_products'></select>";
+  q.innerHTML = "<select tabindex='116' onchange='sub_SubProductDD(" + prodln + "); saveSubProductName("+prodln+");' id='product_sub_products" + prodln + "' name='product_sub_products[" + prodln + "]' style='margin-right:5px;width:220px' class='sub_products'></select><input type='hidden' id='product_sub_product_name"+prodln +"' name='product_sub_product_name["+prodln +"]' maxlength='50' value=''>";
   $('.sub_products').select2();
+
   var r = x.insertCell(3);
   r.style.padding = "0px 5px";
-  r.innerHTML = "<select tabindex='116' id='product_sub_sub_products" + prodln + "' name='product_sub_sub_products[" + prodln + "]' style='margin-right:5px;width:220px' class='sub_sub_products'></select>";
+  r.innerHTML = "<select tabindex='116' onchange=' saveSub_SubProductName("+prodln+");' id='product_sub_sub_products" + prodln + "' name='product_sub_sub_products[" + prodln + "]' style='margin-right:5px;width:220px' class='sub_sub_products'></select><input type='hidden' id='product_sub_sub_product_name"+prodln +"' name='product_sub_sub_product_name["+prodln +"]' maxlength='50' value=''>";
   $('.sub_sub_products').select2();
 
 
@@ -1874,4 +1875,15 @@ function checkCustomTaxes(ln) {
   else {
     $("#service_pra_percentage" + ln).css({ "pointer-events": "auto", "filter": "" });
   }
+}
+
+
+function saveSubProductName(prodNum) {
+  var productName = $("#product_sub_products" + prodNum).find(':selected').text();
+  $('#product_sub_product_name' + prodNum).val(productName);
+}
+
+function saveSub_SubProductName(prodNum) {
+  var productName = $("#product_sub_sub_products" + prodNum).find(':selected').text();
+  $('#product_sub_sub_product_name'+prodNum).val(productName);
 }
