@@ -7,6 +7,10 @@ array (
   array (
     'templateMeta' => 
     array (
+      'form' => 
+      array (
+        'enctype' => 'multipart/form-data',
+      ),
       'includes' => 
       array (
         0 => 
@@ -29,10 +33,6 @@ array (
         array (
           'file' => 'custom/modules/AOS_Quotes/showPoRecieved.js',
         ),
-      ),
-      'form' => 
-      array (
-        'enctype' => 'multipart/form-data',
       ),
       0 => 
       array (

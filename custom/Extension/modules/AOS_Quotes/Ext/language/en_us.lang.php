@@ -46,4 +46,7 @@ $mod_strings = array(
   'LBL_PREV_QUOTE_NO' => 'Previous Quote No.',
   'LBL_CURRENCY_RATE' => 'Currency Rate Details',
   'LBL_SUB_PRODUCTS' => 'Sub Products',
+  'LBL_SUB_SUB_PRODUCTS' => 'Sub-Sub Products',
+  'LBL_SUB_PRODUCT_NAME' => 'Sub Products Name',
+  'LBL_SUB_SUB_PRODUCT_NAME' => 'Sub-Sub Products Name',
 );

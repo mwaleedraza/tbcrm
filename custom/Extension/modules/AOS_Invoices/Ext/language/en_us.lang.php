@@ -38,8 +38,7 @@ $mod_strings = array(
   'LBL_LIST_PRICE' => 'Sale Price',
   'LBL_SERVICE_LIST_PRICE' => 'Sale Price',
   'LBL_SUB_PRODUCTS' => 'Sub Products',
-
-
-
-
+  'LBL_SUB_SUB_PRODUCTS' => 'Sub-Sub Products', 
+  'LBL_SUB_PRODUCT_NAME' => 'Sub Product Name', 
+  'LBL_SUB_SUB_PRODUCT_NAME' => 'Sub-Sub Products Name',
 );
