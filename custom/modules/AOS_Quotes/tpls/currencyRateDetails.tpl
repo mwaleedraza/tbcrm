@@ -19,7 +19,7 @@
             $('#currency_rate').val('');
             $('#curr_rate_ref_link').val('');
             var currency = $("#currency_id_select").find(':selected').text();
-            if (currency == 'US Dollars : $' || currency == 'Great Britain Ponds : £' || currency == 'Euro : €'){
+            if (currency == 'US Dollars : $' || currency == 'Great Britain Ponds : £' || currency == 'Pound : £' || currency == 'Euro : €'){
                 $('div[data-label = "LBL_CURRENCY_RATE"]').parent().show();
             }
             else{

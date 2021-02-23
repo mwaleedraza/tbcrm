@@ -47,7 +47,7 @@ $(document).ready(function () {
       //handle click
       if (moduleName == 'AOS_Quotes') {
 
-        setTimeout(function () { window.location.href = "index.php?module=AOS_Quotes&action=ListView"; }, 700);
+        setTimeout(function () { window.location.href = "index.php?module=AOS_Quotes&action=ListView"; }, 400);
       }
       else if (moduleName == 'AOS_Invoices') {
         setTimeout(function () { window.location.href = "index.php?module=AOS_Invoices&action=ListView"; }, 400);
