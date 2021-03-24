@@ -42,6 +42,11 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
+        'LBL_EDITVIEW_PANEL1' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
         'LBL_LINE_ITEMS' => 
         array (
           'newTab' => false,
@@ -186,7 +191,7 @@ array (
           ),
         ),
       ),
-      'lbl_line_items' => 
+      'lbl_editview_panel1' => 
       array (
         0 => 
         array (
@@ -196,6 +201,36 @@ array (
             'studio' => 'visible',
             'label' => 'LBL_CURRENCY',
           ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'currency_rate',
+            'label' => 'LBL_CURRENCY_RATE',
+          ),
+          1 => 
+          array (
+            'name' => 'curr_rate_ref_link',
+            'label' => 'LBL_CURR_RATE_REF_LINK',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'ourcost_profit_margin',
+            'label' => 'LBL_OURCOST_PROFIT_MARGIN',
+          ),
+          1 => '',
+        ),
+      ),
+      'lbl_line_items' => 
+      array (
+        0 => 
+        array (
+          0 => '',
+          1 => '',
         ),
         1 => 
         array (

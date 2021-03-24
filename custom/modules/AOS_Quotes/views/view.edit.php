@@ -25,6 +25,14 @@ class customAOS_QuotesViewEdit extends AOS_QuotesViewEdit
         }
         $this->ss->assign("LEAD_DATA", $leadArr);
         $this->ss->assign("BEAN", $this->bean);
+
+        $currency_rate = $this->bean->currency_rate;
+        $curr_rate_ref_link = $this->bean->curr_rate_ref_link;
+        echo "<script>
+                            
+            var getCurrencyRate = '$currency_rate';
+            var getCurrencyLink = '$curr_rate_ref_link';
+        </script>";
         $leadTPL = $this->ss->fetch("custom/modules/AOS_Quotes/tpls/searchLeadField.tpl");
         $this->ss->assign("LEAD_HTML", $leadTPL);
 

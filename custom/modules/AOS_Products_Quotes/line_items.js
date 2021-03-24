@@ -68,10 +68,38 @@ $(document).ready(function () {
     }
   });
 
+  
 
 
 
+
+  // displaying currency options
+  $('div[data-label = "LBL_CURRENCY_RATE"]').parent().hide();
+    $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().hide();
+
+    getCurrencyDetails();
+    
+    $("#currency_id_select").on("change", function () {
+        getCurrencyDetails();
+    });
+  
+  $('#currency_rate').val(getCurrencyRate);
+  $('#curr_rate_ref_link').val(getCurrencyLink);
 });
+
+function getCurrencyDetails(){
+  var currency = $("#currency_id_select").find(':selected').text();
+  if (currency == 'US Dollars : $' || currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
+      $('div[data-label = "LBL_CURRENCY_RATE"]').parent().show();
+      $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().show();
+  }
+  else {
+      $('div[data-label = "LBL_CURRENCY_RATE"]').parent().hide();
+      $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().hide();
+      $('#currency_rate').val('');
+      $('#curr_rate_ref_link').val('');
+  }
+}
 
 var lineno;
 var prodln = 0;
@@ -838,8 +866,8 @@ function calculateLine(ln, key) {
   
     var baseCost = $('#' + key + 'base_cost' + ln).val();
     if (curr_rate <= '0' || curr_rate == '') {
-      
       var defaultValue = baseCost * 1;
+      
       $("#" + key + "per_unit_cost" + ln).val(format2Number(defaultValue));
     }
     else {

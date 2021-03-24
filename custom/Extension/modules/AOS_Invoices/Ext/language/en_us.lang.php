@@ -42,4 +42,8 @@ $mod_strings = array(
   'LBL_SUB_PRODUCT_NAME' => 'Sub Product Name', 
   'LBL_SUB_SUB_PRODUCT_NAME' => 'Sub-Sub Products Name',
   'LBL_PER_UNIT_COST' => 'Per Unit Cost',
+  'LBL_BASE_COST' => 'Base Cost',
+  'LBL_OURCOST_PROFIT_MARGIN' => 'Profit Margin (%)',
+  'LBL_CURRENCY_RATE' => 'Currency Rate',
+  'LBL_CURR_RATE_REF_LINK' => 'Currency Rate(Ref. Link)',
 );
