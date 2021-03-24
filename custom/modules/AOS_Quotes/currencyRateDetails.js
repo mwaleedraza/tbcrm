@@ -16,7 +16,7 @@ function getCurrencyDetails(){
     $('#currency_rate').val('');
     $('#curr_rate_ref_link').val('');
     var currency = $("#currency_id_select").find(':selected').text();
-    if (currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
+    if (currency == 'US Dollars : $' || currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
         $('div[data-label = "LBL_CURRENCY_RATE"]').parent().show();
         $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().show();
     }
