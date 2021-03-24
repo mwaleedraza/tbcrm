@@ -33,6 +33,10 @@ array (
         array (
           'file' => 'custom/modules/AOS_Quotes/showPoRecieved.js',
         ),
+        5 => 
+        array (
+          'file' => 'custom/modules/AOS_Quotes/currencyRateDetails.js',
+        ),
       ),
       0 => 
       array (
@@ -65,6 +69,11 @@ array (
           'panelDefault' => 'expanded',
         ),
         'LBL_ADDRESS_INFORMATION' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+        'LBL_EDITVIEW_PANEL2' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
@@ -286,6 +295,40 @@ array (
           1 => '',
         ),
       ),
+      'lbl_editview_panel2' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'currency_id',
+            'studio' => 'visible',
+            'label' => 'LBL_CURRENCY',
+          ),
+          1 => '',
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'currency_rate',
+            'label' => 'LBL_CURRENCY_RATE',
+          ),
+          1 => 
+          array (
+            'name' => 'curr_rate_ref_link',
+            'label' => 'LBL_CURR_RATE_REF_LINK',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'ourcost_profit_margin',
+            'label' => 'LBL_OURCOST_PROFIT_MARGIN',
+          ),
+        ),
+      ),
       'lbl_line_items' => 
       array (
         0 => 
@@ -308,27 +351,11 @@ array (
         array (
           0 => 
           array (
-            'name' => 'currency_id',
-            'studio' => 'visible',
-            'label' => 'LBL_CURRENCY',
-          ),
-          1 => 
-          array (
-            'name' => 'currency_rate',
-            'label' => 'LBL_CURRENCY_RATE',
-            'customCode' => '{$CURRENCY_DETAILS}',
-            'widths' => '100%',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
             'name' => 'total_amt',
             'label' => 'LBL_TOTAL_AMT',
           ),
         ),
-        2 => 
+        1 => 
         array (
           0 => 
           array (
@@ -336,15 +363,12 @@ array (
             'label' => 'LBL_DISCOUNT_AMOUNT',
           ),
         ),
-        3 => 
+        2 => 
         array (
-          0 => 
-          array (
-            'name' => 'per_unit_cost',
-            'label' => 'LBL_PER_UNIT_COST',
-          ),
+          0 => '',
+          1 => '',
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -352,7 +376,7 @@ array (
             'label' => 'LBL_SUBTOTAL_AMOUNT',
           ),
         ),
-        5 => 
+        4 => 
         array (
           0 => 
           array (
@@ -367,7 +391,7 @@ array (
             ),
           ),
         ),
-        6 => 
+        5 => 
         array (
           0 => 
           array (
@@ -375,7 +399,7 @@ array (
             'label' => 'LBL_SHIPPING_TAX_AMT',
           ),
         ),
-        7 => 
+        6 => 
         array (
           0 => 
           array (

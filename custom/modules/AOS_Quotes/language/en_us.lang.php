@@ -1,5 +1,5 @@
 <?php
-// created: 2021-01-25 12:19:48
+// created: 2021-03-02 10:58:20
 $mod_strings = array (
   'LBL_BILLING_ACCOUNT' => 'Company',
   'LBL_BILLING_CONTACT' => 'Client',
@@ -12,5 +12,6 @@ $mod_strings = array (
   'LBL_PDFTEXT' => 'PDF Text',
   'LBL_OURFIRM' => 'Our Firm',
   'LBL_LEAD_ID' => 'Sales',
-  'LBL_EDITVIEW_PANEL1' => 'Our Costing',
+  'LBL_EDITVIEW_PANEL1' => 'Client Costing',
+  'LBL_EDITVIEW_PANEL2' => 'Our Costing',
 );

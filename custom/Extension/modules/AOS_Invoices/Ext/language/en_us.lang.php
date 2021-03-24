@@ -41,4 +41,5 @@ $mod_strings = array(
   'LBL_SUB_SUB_PRODUCTS' => 'Sub-Sub Products', 
   'LBL_SUB_PRODUCT_NAME' => 'Sub Product Name', 
   'LBL_SUB_SUB_PRODUCT_NAME' => 'Sub-Sub Products Name',
+  'LBL_PER_UNIT_COST' => 'Per Unit Cost',
 );
