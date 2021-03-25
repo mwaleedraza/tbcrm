@@ -109,6 +109,7 @@ var group_ids = {};
 
 // currency_rate calcution
 $("#currency_rate").blur(function () {
+  debugger;
   $('.per_unit_cost').focus();
   $('.per_unit_cost').blur();
 });
@@ -856,7 +857,7 @@ function calculateLine(ln, key) {
 
   //Currency Calculation
   var currency = $("#currency_id_select").find(':selected').text();
-  if (currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
+  if (currency == 'US Dollars : $' || currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
     var curr_rate = $('#currency_rate').val();
     var perUnitCost = unformat2Number($("#" + key + "per_unit_cost" + ln).val());
     if ($('#' + key + 'base_cost' + ln).val() == '') {
