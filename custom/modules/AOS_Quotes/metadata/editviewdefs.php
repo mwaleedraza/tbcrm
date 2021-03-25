@@ -33,10 +33,6 @@ array (
         array (
           'file' => 'custom/modules/AOS_Quotes/showPoRecieved.js',
         ),
-        5 => 
-        array (
-          'file' => 'custom/modules/AOS_Quotes/currencyRateDetails.js',
-        ),
       ),
       0 => 
       array (
