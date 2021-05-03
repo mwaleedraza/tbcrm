@@ -129,6 +129,19 @@ array (
         array (
           0 => 
           array (
+            'name' => 'ntn_number',
+            'label' => 'LBL_NTN_NUMBER',
+          ),
+          1 => 
+          array (
+            'name' => 'gst_number',
+            'label' => 'LBL_GST_NUMBER',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
             'name' => 'billing_address_street',
             'label' => 'LBL_BILLING_ADDRESS',
             'type' => 'address',
@@ -148,7 +161,7 @@ array (
             ),
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -157,7 +170,7 @@ array (
             'label' => 'LBL_DESCRIPTION',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
