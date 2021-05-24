@@ -55,10 +55,10 @@ global $current_user;
 global $sugar_flavor;
 
 $curr_user_id = $current_user->id;
-if ($curr_user_id != "1") {
-            // if (!is_admin($current_user) && !is_admin_for_any_module($current_user)) {
-            sugar_die("Unauthorized access to administration.");
-            // }
+if ($current_user->is_admin != '1') {
+    // if (!is_admin($current_user) && !is_admin_for_any_module($current_user)) {
+    sugar_die("Unauthorized access to administration.");
+    // }
 }
 
 
@@ -83,16 +83,17 @@ $group = array();
 $sugar_smarty = new Sugar_Smarty();
 $values_3_tab = array();
 $admin_group_header_tab = array();
-$j=0;
+$j = 0;
 
-foreach ($admin_group_header as $key=>$values) {
+foreach ($admin_group_header as $key => $values) {
     $module_index = array_keys($values[3]);
     $addedHeaderGroups = array();
-    foreach ($module_index as $mod_key=>$mod_val) {
+    foreach ($module_index as $mod_key => $mod_val) {
         if (
-        (!isset($addedHeaderGroups[$values[0]]))) {
-            $admin_group_header_tab[]=$values;
-            $group_header_value=get_form_header(translate($values[0], 'Administration'), $values[1], $values[2]);
+            (!isset($addedHeaderGroups[$values[0]]))
+        ) {
+            $admin_group_header_tab[] = $values;
+            $group_header_value = get_form_header(translate($values[0], 'Administration'), $values[1], $values[2]);
             $group[$j][0] = '<h3>' . translate($values[0]) . '</h3>';
             $addedHeaderGroups[$values[0]] = 1;
             if (isset($values[4])) {
@@ -100,10 +101,10 @@ foreach ($admin_group_header as $key=>$values) {
             } else {
                 $group[$j][2] = '';
             }
-            $colnum=0;
-            $i=0;
+            $colnum = 0;
+            $i = 0;
             $fix = array_keys($values[3]);
-            if (count($values[3])>1) {
+            if (count($values[3]) > 1) {
 
                 //////////////////
                 $tmp_array = $values[3];
@@ -114,43 +115,43 @@ foreach ($admin_group_header as $key=>$values) {
                         $return_array[$key] = $value[$key];
                     }
                 }
-                $values_3_tab[]= $return_array;
+                $values_3_tab[] = $return_array;
                 $mod = $return_array;
             } else {
                 $mod = $values[3][$fix[0]];
-                $values_3_tab[]= $mod;
+                $values_3_tab[] = $mod;
             }
 
-            foreach ($mod as $link_idx =>$admin_option) {
+            foreach ($mod as $link_idx => $admin_option) {
                 if (!empty($GLOBALS['admin_access_control_links']) && in_array($link_idx, $GLOBALS['admin_access_control_links'])) {
                     continue;
                 }
-                $colnum+=1;
+                $colnum += 1;
                 $icons[$j][$i] = isset($admin_option[4]) ? $admin_option[4] : 'default';
                 $url[$j][$i] = $admin_option[3];
                 $label = translate($admin_option[1], 'Administration');
                 if (!empty($admin_option['additional_label'])) {
-                    $label.= ' '. $admin_option['additional_label'];
+                    $label .= ' ' . $admin_option['additional_label'];
                 }
 
-                $label_tab[$j][$i]= $label;
+                $label_tab[$j][$i] = $label;
                 $id_tab[$j][$i] = $link_idx;
-                
-                $description[$j][$i]= translate($admin_option[2], 'Administration');
+
+                $description[$j][$i] = translate($admin_option[2], 'Administration');
 
                 if (($colnum % 2) == 0) {
-                    $tab[$j][$i]= ($colnum % 2);
+                    $tab[$j][$i] = ($colnum % 2);
                 } else {
-                    $tab[$j][$i]= 10;
+                    $tab[$j][$i] = 10;
                 }
-                $i+=1;
+                $i += 1;
             }
 
             //if the loop above ends with an odd entry add a blank column.
             if (($colnum % 2) != 0) {
-                $tab[$j][$i]= 10;
+                $tab[$j][$i] = 10;
             }
-            $j+=1;
+            $j += 1;
         }
     }
 }
