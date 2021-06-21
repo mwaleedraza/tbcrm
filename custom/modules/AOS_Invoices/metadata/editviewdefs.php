@@ -217,12 +217,7 @@ array (
         ),
         2 => 
         array (
-          0 => 
-          array (
-            'name' => 'ourcost_profit_margin',
-            'label' => 'LBL_OURCOST_PROFIT_MARGIN',
-          ),
-          1 => '',
+          0 => '',
         ),
       ),
       'lbl_line_items' => 

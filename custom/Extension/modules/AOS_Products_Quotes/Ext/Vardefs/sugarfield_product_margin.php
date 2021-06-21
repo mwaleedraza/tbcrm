@@ -1,7 +1,7 @@
 <?php
-$dictionary["AOS_Quotes"]["fields"]["ourcost_profit_margin"] = array (
-	'name' => 'ourcost_profit_margin',
-	'vname' => 'LBL_OURCOST_PROFIT_MARGIN',
+$dictionary["AOS_Products_Quotes"]["fields"]["product_margin"] = array (
+	'name' => 'product_margin',
+	'vname' => 'LBL_PRODUCT_MARGIN',
 	'type' => 'varchar',
 	'required' => false,
 	'massupdate' => 0,

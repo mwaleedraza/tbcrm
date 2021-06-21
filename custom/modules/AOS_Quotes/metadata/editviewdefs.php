@@ -316,14 +316,6 @@ array (
             'label' => 'LBL_CURR_RATE_REF_LINK',
           ),
         ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'ourcost_profit_margin',
-            'label' => 'LBL_OURCOST_PROFIT_MARGIN',
-          ),
-        ),
       ),
       'lbl_line_items' => 
       array (

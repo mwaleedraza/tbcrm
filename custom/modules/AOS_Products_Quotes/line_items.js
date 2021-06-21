@@ -57,21 +57,16 @@ $(document).ready(function () {
   });
 
   //Validating profit margin value
-  $("#ourcost_profit_margin").on("blur", function () {
-    var profitVal = $(this).val();
-    if (!(profitVal > 0 && profitVal < 100)) {
-      alert('Enter profit margin between 0 and 100');
-    }
-    else {
-      $('.per_unit_cost').focus();
-      $('.per_unit_cost').blur();
-    }
-  });
-
-  
-
-
-
+  // $("#ourcost_profit_margin").on("blur", function () {
+  //   var profitVal = $(this).val();
+  //   if (!(profitVal > 0 && profitVal < 100)) {
+  //     alert('Enter profit margin between 0 and 100');
+  //   }
+  //   else {
+  //     $('.per_unit_cost').focus();
+  //     $('.per_unit_cost').blur();
+  //   }
+  // });
 
   // displaying currency options
   $('div[data-label = "LBL_CURRENCY_RATE"]').parent().hide();
@@ -80,7 +75,9 @@ $(document).ready(function () {
     getCurrencyDetails();
     
     $("#currency_id_select").on("change", function () {
-        getCurrencyDetails();
+      getCurrencyDetails();
+      $('.per_unit_cost').focus();
+      $('.per_unit_cost').blur();
     });
   
   $('#currency_rate').val(getCurrencyRate);
@@ -99,6 +96,9 @@ function getCurrencyDetails(){
       $('#currency_rate').val('');
       $('#curr_rate_ref_link').val('');
   }
+
+  //line_item table overflow control
+  $("div[field=line_items]").css({ "overflow-x": "auto" });
 }
 
 var lineno;
@@ -109,7 +109,7 @@ var group_ids = {};
 
 // currency_rate calcution
 $("#currency_rate").blur(function () {
-  debugger;
+  
   $('.per_unit_cost').focus();
   $('.per_unit_cost').blur();
 });
@@ -227,6 +227,7 @@ function insertProductLine(tableid, groupid) {
   // };
 
   tablebody = document.createElement("tbody");
+  tablebody.style = 'margin-top: 20px;';
   tablebody.id = "product_body" + prodln;
   document.getElementById(tableid).appendChild(tablebody);
 
@@ -245,12 +246,12 @@ function insertProductLine(tableid, groupid) {
 
   var q = x.insertCell(2);
   q.style.padding = "0px 5px";
-  q.innerHTML = "<select tabindex='116' onchange='sub_SubProductDD(" + prodln + "); saveSubProductName("+prodln+");' id='product_sub_products" + prodln + "' name='product_sub_products[" + prodln + "]' style='margin-right:5px;width:220px' class='sub_products'></select><input type='hidden' id='product_sub_product_name"+prodln +"' name='product_sub_product_name["+prodln +"]' maxlength='50' value=''>";
+  q.innerHTML = "<select tabindex='116' onchange='sub_SubProductDD(" + prodln + "); saveSubProductName("+prodln+");' id='product_sub_products" + prodln + "' name='product_sub_products[" + prodln + "]' style='margin-right:5px;width:180px' class='sub_products'></select><input type='hidden' id='product_sub_product_name"+prodln +"' name='product_sub_product_name["+prodln +"]' maxlength='50' value=''>";
   $('.sub_products').select2();
 
   var r = x.insertCell(3);
   r.style.padding = "0px 5px";
-  r.innerHTML = "<select tabindex='116' onchange=' saveSub_SubProductName("+prodln+");' id='product_sub_sub_products" + prodln + "' name='product_sub_sub_products[" + prodln + "]' style='margin-right:5px;width:220px' class='sub_sub_products'></select><input type='hidden' id='product_sub_sub_product_name"+prodln +"' name='product_sub_sub_product_name["+prodln +"]' maxlength='50' value=''>";
+  r.innerHTML = "<select tabindex='116' onchange=' saveSub_SubProductName("+prodln+");' id='product_sub_sub_products" + prodln + "' name='product_sub_sub_products[" + prodln + "]' style='margin-right:5px;width:180px' class='sub_sub_products'></select><input type='hidden' id='product_sub_sub_product_name"+prodln +"' name='product_sub_sub_product_name["+prodln +"]' maxlength='50' value=''>";
   $('.sub_sub_products').select2();
 
 
@@ -269,8 +270,13 @@ function insertProductLine(tableid, groupid) {
     currencyFields.push("product_per_unit_cost" + prodln);
   }
 
-  var c = x.insertCell(7);
-  c.innerHTML = "<input type='text' name='product_product_list_price[" + prodln + "]' id='product_product_list_price" + prodln + "' maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_list_price'><input type='hidden' name='product_product_cost_price[" + prodln + "]' id='product_product_cost_price" + prodln + "' value=''  />";
+  var prod_margin = x.insertCell(7);
+  prod_margin.style.padding = "0px 5px";
+  prod_margin.innerHTML = "<input style='width: 80px;' type='text' name='product_product_margin[" + prodln + "]' id='product_product_margin" + prodln + "' maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_product_margin'>";
+
+
+  var c = x.insertCell(8);
+  c.innerHTML = "<input type='text' name='product_product_list_price[" + prodln + "]' id='product_product_list_price" + prodln + "' maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_list_price' readonly><input type='hidden' name='product_product_cost_price[" + prodln + "]' id='product_product_cost_price" + prodln + "' value=''  />";
 
   if (typeof currencyFields !== 'undefined'){
 
@@ -279,55 +285,71 @@ function insertProductLine(tableid, groupid) {
 
   }
 
-  var d = x.insertCell(8);
+  var d = x.insertCell(9);
   d.innerHTML = "<input type='text' name='product_product_discount[" + prodln + "]' id='product_product_discount" + prodln + "'  maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_discount_text'><input type='hidden' name='product_product_discount_amount[" + prodln + "]' id='product_product_discount_amount" + prodln + "' value=''  />";
   d.innerHTML += "<select tabindex='116' name='product_discount[" + prodln + "]' id='product_discount" + prodln + "' onchange='calculateLine(" + prodln + ",\"product_\");' class='product_discount_amount_select'>" + discount_hidden + "</select>";
 
-  var e = x.insertCell(9);
+  var e = x.insertCell(10);
   e.innerHTML = "<input type='text' name='product_product_unit_price[" + prodln + "]' id='product_product_unit_price" + prodln + "' maxlength='50' value='' title='' tabindex='116' readonly='readonly' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_unit_price' hidden>";
 
   if (typeof currencyFields !== 'undefined'){
     currencyFields.push("product_product_unit_price" + prodln);
   }
 
-  var k = x.insertCell(10);
+  var k = x.insertCell(11);
   // k.innerHTML = "<input type='text' name='product_tax_type[" + prodln + "]' id='product_tax_type" + prodln + "'  maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_tax_type'><input type='hidden' name='product_product_tax_type[" + prodln + "]' id='product_product_tax_type" + prodln + "' value=''  />";
   k.innerHTML = "<select onchange='setTaxType(" + prodln + "); calculateLine(" + prodln + ", \"product_\");' tabindex='116' name='product_product_tax_type[" + prodln + "]' id='product_tax_type" + prodln + "' class='product_tax_type_select'>" + tax_type_hidden + "</select>";
 
 
-  var l = x.insertCell(11);
+  var l = x.insertCell(12);
   l.innerHTML = "<select style='display:none;width:100px' type='text' name='product_gst_percentage[" + prodln + "]'  id='product_gst_percentage" + prodln + "' '>" + gst_dropdown + "</select>"
 
-  var o = x.insertCell(12);
+  var o = x.insertCell(13);
   o.innerHTML = "<input style='display:none;width:100px;position: relative;float: right;margin-right: 8px;margin-left: 5px;margin-top: 0px;' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' type='number'  min='1' max='100' name='product_gst_custom_percentage[" + prodln + "]' id='product_gst_custom_percentage" + prodln + "' placeholder='Custom GST'>"
 
-  var m = x.insertCell(13);
+  var m = x.insertCell(14);
   m.innerHTML = "<select style='display:none;width:100px;' type='text' name='product_pra_percentage[" + prodln + "]' id='product_pra_percentage" + prodln + "' >" + pra_dropdown + "</select>";
 
-  var n = x.insertCell(14);
+  var n = x.insertCell(15);
   n.innerHTML = "<input  style='display:none;width:100px;position: relative;float: right;margin-right: 8px;margin-left: 5px;margin-top: 0px;' onblur='calculateLine(" + prodln + ",\"product_\");' type='number' min='1' max='100' name='product_pra_custom_percentage[" + prodln + "]' id='product_pra_custom_percentage" + prodln + "' placeholder='Custom PRA'>"
 
-  var f = x.insertCell(15);
-  f.innerHTML = "<input type='text' name='product_vat_amt[" + prodln + "]' id='product_vat_amt" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_vat_amt_text' hidden>"
-  f.innerHTML += "<select type='text' style='width:100px;' name='product_wht_amt[" + prodln + "]' id='product_wht_amt" + prodln + "' maxlength='250' value='' title='' class='product_wht_amt_text'>" + wht_dropdown + "</select>";
+  var f = x.insertCell(16);
+  f.innerHTML = "<select type='text' style='width:100px;' name='product_wht_amt[" + prodln + "]' id='product_wht_amt" + prodln + "' maxlength='250' value='' title='' class='product_wht_amt_text'>" + wht_dropdown + "</select>";
 
   if (typeof currencyFields !== 'undefined') {
     currencyFields.push("product_vat_amt" + prodln);
   }
 
-  var p = x.insertCell(16);
+  var p = x.insertCell(17);
   p.style.padding = "0px 5px";
   p.innerHTML = "<input tabindex='116' style='width:100px;' name='product_wht_custom[" + prodln + "]' id='product_wht_custom" + prodln + "' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_wht_custom' placeholder='Custom WHT'>";
 
 
 
-  var g = x.insertCell(17);
+  var g = x.insertCell(18);
   g.innerHTML = "<input type='text' style='width:100px;' name='product_product_total_price[" + prodln + "]' id='product_product_total_price" + prodln + "' maxlength='50' value='' title='' tabindex='116' readonly='readonly' class='product_total_price'><input type='hidden' name='product_group_number[" + prodln + "]' id='product_group_number" + prodln + "' value='" + groupid + "'>";
 
   if (typeof currencyFields !== 'undefined'){
     currencyFields.push("product_product_total_price" + prodln);
   }
-  var h = x.insertCell(18);
+
+  var p2 = x.insertCell(19);
+  p2.style = 'padding: 0px 5px; border-left: 2px solid #555;';
+  p2.innerHTML = "<input style='width:100px;' type='text' name='product_vat_amt[" + prodln + "]' id='product_vat_amt" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_vat_amt'>";
+
+  var p3 = x.insertCell(20);
+  p3.style = 'padding: 0px 5px;';
+  p3.innerHTML = "<input style='width:100px;' type='text' name='product_product_price_after_tax[" + prodln + "]' id='product_product_price_after_tax" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_price_after_tax'>";
+
+  var p4 = x.insertCell(21);
+  p4.style = 'padding: 0px 5px;';
+  p4.innerHTML = "<input style='width:100px;' type='text' name='product_product_profit_margin[" + prodln + "]' id='product_product_profit_margin" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_profit_margin'>";
+
+  var p5 = x.insertCell(22);
+  p5.style = 'padding: 0px 5px;';
+  p5.innerHTML = "<input style='width:100px;' type='text' name='product_product_profit_margin_pkr[" + prodln + "]' id='product_product_profit_margin_pkr" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_profit_margin_pkr'>";
+
+  var h = x.insertCell(23);
   h.innerHTML = "<input type='hidden' name='product_currency[" + prodln + "]' id='product_currency" + prodln + "' value=''><input type='hidden' name='product_deleted[" + prodln + "]' id='product_deleted" + prodln + "' value='0'><input type='hidden' name='product_id[" + prodln + "]' id='product_id" + prodln + "' value=''><button type='button' id='product_delete_line" + prodln + "' class='button product_delete_line' value='" + SUGAR.language.get(module_sugar_grp1, 'LBL_REMOVE_PRODUCT_LINE') + "' tabindex='116' onclick='markLineDeleted(" + prodln + ",\"product_\")'><span class=\"suitepicon suitepicon-action-clear\"></span></button><br>";
 
 
@@ -558,57 +580,84 @@ function insertProductHeader(tableid){
   // per_unit.style.padding = "0px 10px";
   per_unit.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_PER_UNIT_COST');
 
-  var c = x.insertCell(6);
+  var prod_margin = x.insertCell(6);
+  prod_margin.style.color = "rgb(68,68,68)";
+  prod_margin.style.padding = "0px 5px";
+  prod_margin.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_PRODUCT_MARGIN');
+
+  var c = x.insertCell(7);
   c.style.color="rgb(68,68,68)";
   c.innerHTML=SUGAR.language.get(module_sugar_grp1, 'LBL_LIST_PRICE');
 
-  var d = x.insertCell(7);
+  var d = x.insertCell(8);
   d.style.color="rgb(68,68,68)";
   d.innerHTML=SUGAR.language.get(module_sugar_grp1, 'LBL_DISCOUNT_AMT');
 
-  var e = x.insertCell(8);
+  var e = x.insertCell(9);
   e.style.color="rgb(68,68,68)";
   // e.innerHTML=SUGAR.language.get(module_sugar_grp1, 'LBL_UNIT_PRICE');
   
-  var k = x.insertCell(9);
+  var k = x.insertCell(10);
   k.style.color = "rgb(68,68,68)";
   k.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_PRODUCT_TAX_TYPE');
 
-  var l = x.insertCell(10);
+  var l = x.insertCell(11);
   l.style.color = "rgb(68,68,68)";
   l.style.padding = "0px 10px";
   l.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_GST_PERCENTAGE');
 
-  var n = x.insertCell(11);
+  var n = x.insertCell(12);
   n.style.color = "rgb(68,68,68)";
   n.style.padding = "0px 10px";
   n.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_GST_CUSTOM_PERCENTAGE');
 
-  var m = x.insertCell(12);
+  var m = x.insertCell(13);
   m.style.color = "rgb(68,68,68)";
   m.style.padding = "0px 10px";
   m.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_PRA_PERCENTAGE');
 
-  var n = x.insertCell(13);
+  var n = x.insertCell(14);
   n.style.color = "rgb(68,68,68)";
   n.style.padding = "0px 10px";
   n.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_PRA_CUSTOM_PERCENTAGE');
 
 
-  var f = x.insertCell(14);
+  var f = x.insertCell(15);
   f.style.color="rgb(68,68,68)";
   f.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_VAT_AMT');
 
-  var i = x.insertCell(15);
+  var i = x.insertCell(16);
   i.style.color = "rgb(68,68,68)";
   i.style.padding = "0px 10px";
   i.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_WHT_CUSTOM');
 
-  var g = x.insertCell(16);
+  var g = x.insertCell(17);
   g.style.color="rgb(68,68,68)";
-  g.innerHTML=SUGAR.language.get(module_sugar_grp1, 'LBL_TOTAL_PRICE');
+  g.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_TOTAL_PRICE');
 
-  var h = x.insertCell(17);
+  var p2 = x.insertCell(18);
+  p2.style.color="rgb(68,68,68)";
+  p2.style.padding="0px 5px";
+  p2.style.borderLeft="2px solid #555";
+  p2.innerHTML = 'Tax';
+  
+  var p3 = x.insertCell(19);
+  p3.style.color="rgb(68,68,68)";
+  p3.style.padding="0px 5px";
+  p3.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_PRODUCT_PRICE_AFTER_TAX');
+  
+  var p4 = x.insertCell(20);
+  p4.style.color="rgb(68,68,68)";
+  p4.style.padding="0px 5px";
+  p4.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_PRODUCT_PROFIT_MARGIN');
+  
+  var p5 = x.insertCell(21);
+  p5.style.color="rgb(68,68,68)";
+  p5.style.padding="0px 5px";
+  p5.innerHTML = SUGAR.language.get(module_sugar_grp1, 'LBL_PRODUCT_PROFIT_MARGIN_PKR');
+  
+
+  var h = x.insertCell(22);
   h.style.color = "rgb(68,68,68)";
   h.innerHTML = '&nbsp;';
 }
@@ -880,16 +929,19 @@ function calculateLine(ln, key) {
   }
   
   // Margin Profit Calculations
-  var profitMargin = $("#ourcost_profit_margin").val();
+  var profitMargin = $("#" + key + "product_margin" + ln).val();
   var per_unit_cost = $("#" + key + "per_unit_cost" + ln).val();
   per_unit_cost = unformat2Number(per_unit_cost);
+  
   if (profitMargin >= 0 && profitMargin <= 100) {
     if (profitMargin == 0) {
+      
       $("#" + key + "product_list_price" + ln).val(format2Number(per_unit_cost));
     }
     else {
       profitMargin = profitMargin / 100;
       var productSalePrice = per_unit_cost / (1 - profitMargin);
+      
       $("#" + key + "product_list_price" + ln).val(format2Number(productSalePrice));
     }
   }
@@ -976,7 +1028,7 @@ function calculateLine(ln, key) {
 
   var totalWht, totalWhtCstm;
   var totalvat;
-
+  
   // taxation for product line
   if (key == 'product_' && taxType != '') {
     if (taxType == 'GST') {
@@ -1293,7 +1345,7 @@ function calculateLine(ln, key) {
       }
     }
   }
-
+  
   // taxation for service line
   if (key == 'service_') {
     var listPrice = $("#" + key + "product_list_price" + ln).val();
@@ -1358,15 +1410,46 @@ function calculateLine(ln, key) {
   //   productTotalPrice=productTotalPrice + totalvat;
   // }
 
-
+  
   if (totalvat) {
+    
     document.getElementById(key + 'vat_amt' + ln).value = format2Number(totalvat);
+    
   }
   else {
     document.getElementById(key + 'vat_amt' + ln).value = format2Number(0);
   }
   document.getElementById(key + 'product_unit_price' + ln).value = format2Number(productUnitPrice);
   document.getElementById(key + 'product_total_price' + ln).value = format2Number(productTotalPrice);
+
+  // profit table values
+  var priceAfterTax, profitMarginVal, marginInPKR;
+  if (key == "product_") {
+    if (typeof productTotalPrice != 'undefined' && typeof totalvat != 'undefined') {
+      
+      var costToCompany = +unformat2Number(document.getElementById(key + 'per_unit_cost' + ln).value);
+      
+      priceAfterTax = productTotalPrice - totalvat; // price after tax = total_price - tatal tax;
+      profitMarginVal = priceAfterTax - (costToCompany * productQty); // profit_margin = price_after_tax - (cost_to_company * product_qty)
+      
+      // setting calculated values
+      document.getElementById(key + "product_price_after_tax" +ln).value = format2Number(priceAfterTax);
+      document.getElementById(key + "product_profit_margin" + ln).value = format2Number(profitMarginVal);
+      
+      var selected_currency = $('#currency_id_select').find(':selected').html();
+      if (selected_currency != 'Rupees: Rs') {
+        let currency_rate = +document.getElementById('currency_rate').value;
+        if (currency_rate == '') {
+          document.getElementById(key + 'product_profit_margin_pkr' + ln).removeAttribute('readonly');
+          document.getElementById(key + 'product_profit_margin_pkr' + ln).value = '';
+        } else {
+          document.getElementById(key + 'product_profit_margin_pkr' + ln).setAttribute('readonly', 'readonly');
+          document.getElementById(key + 'product_profit_margin_pkr' + ln).value = format2Number(profitMarginVal);
+        }
+      }
+    }
+     
+  }
   var groupid = 0;
   if(enable_groups){
     groupid = document.getElementById(key + 'group_number' + ln).value;
