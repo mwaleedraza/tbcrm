@@ -316,6 +316,15 @@ array (
             'label' => 'LBL_CURR_RATE_REF_LINK',
           ),
         ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'convert_currency',
+            'label' => 'LBL_CONVERT_CURRENCY',
+          ),
+          1 => '',
+        ),
       ),
       'lbl_line_items' => 
       array (

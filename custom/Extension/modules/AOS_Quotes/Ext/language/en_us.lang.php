@@ -58,4 +58,5 @@ $mod_strings = array(
   'LBL_PRODUCT_PRICE_AFTER_TAX' => 'Price After Tax',
   'LBL_PRODUCT_PROFIT_MARGIN' => 'Profit Margin',
   'LBL_PRODUCT_PROFIT_MARGIN_PKR' => 'Profit Margin in PKR',
+  'LBL_CONVERT_CURRENCY' => 'Convert Currency',
 );

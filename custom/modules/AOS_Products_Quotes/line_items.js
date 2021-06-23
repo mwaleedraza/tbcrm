@@ -70,8 +70,8 @@ $(document).ready(function () {
 
   // displaying currency options
   $('div[data-label = "LBL_CURRENCY_RATE"]').parent().hide();
-    $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().hide();
-
+  $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().hide();
+  $('div[data-label = "LBL_CONVERT_CURRENCY"]').parent().hide();
     getCurrencyDetails();
     
     $("#currency_id_select").on("change", function () {
@@ -82,17 +82,26 @@ $(document).ready(function () {
   
   $('#currency_rate').val(getCurrencyRate);
   $('#curr_rate_ref_link').val(getCurrencyLink);
+  $('#convert_currency').change(function () {
+  
+  $('.per_unit_cost').focus();
+  $('.per_unit_cost').blur();
+});
 });
 
 function getCurrencyDetails(){
   var currency = $("#currency_id_select").find(':selected').text();
   if (currency == 'US Dollars : $' || currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
       $('div[data-label = "LBL_CURRENCY_RATE"]').parent().show();
-      $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().show();
+    $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().show();
+    $('div[data-label = "LBL_CONVERT_CURRENCY"]').parent().show();
+    $('#convertCurrencyDiv').css('display', 'inline-block');
   }
   else {
       $('div[data-label = "LBL_CURRENCY_RATE"]').parent().hide();
       $('div[data-label = "LBL_CURR_RATE_REF_LINK"]').parent().hide();
+      $('div[data-label = "LBL_CONVERT_CURRENCY"]').parent().hide();
+    $('#convertCurrencyDiv').css('display', 'none');
       $('#currency_rate').val('');
       $('#curr_rate_ref_link').val('');
   }
@@ -107,12 +116,16 @@ var servln = 0;
 var groupn = 0;
 var group_ids = {};
 
-// currency_rate calcution
+// to update marginInPKR field
 $("#currency_rate").blur(function () {
-  
   $('.per_unit_cost').focus();
   $('.per_unit_cost').blur();
 });
+// $('#convert_currency').on("change", function () {
+//   
+//   $('.per_unit_cost').focus();
+//   $('.per_unit_cost').blur();
+// });
 
 // $("#product_per_unit_cost" + prodln).on('change', function () {
 //   var newPerUnitCost = $(this).val();
@@ -905,27 +918,45 @@ function calculateLine(ln, key) {
   }
 
   //Currency Calculation
-  var currency = $("#currency_id_select").find(':selected').text();
-  if (currency == 'US Dollars : $' || currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
-    var curr_rate = $('#currency_rate').val();
-    var perUnitCost = unformat2Number($("#" + key + "per_unit_cost" + ln).val());
-    if ($('#' + key + 'base_cost' + ln).val() == '') {
-      $('#' + key + 'base_cost' + ln).val(perUnitCost);
-      
+  var conversionRateCheck = $('#convert_currency').is(':checked');
+  if (conversionRateCheck) {
+    
+    var currency = $("#currency_id_select").find(':selected').text();
+    if (currency == 'US Dollars : $' || currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
+      var curr_rate = $('#currency_rate').val();
+      var perUnitCost = unformat2Number($("#" + key + "per_unit_cost" + ln).val());
+      if ($('#' + key + 'base_cost' + ln).val() == '') {
+        $('#' + key + 'base_cost' + ln).val(perUnitCost);
+        
+      }
+    
+      var baseCost = $('#' + key + 'base_cost' + ln).val();
+      if (curr_rate <= '0' || curr_rate == '') {
+        var defaultValue = baseCost * 1;
+        
+        $("#" + key + "per_unit_cost" + ln).val(format2Number(defaultValue));
+      }
+      else {
+        var convertedVal = baseCost * curr_rate;
+        
+        $("#" + key + "per_unit_cost" + ln).val(format2Number(convertedVal));
+      }
+    
     }
-  
-    var baseCost = $('#' + key + 'base_cost' + ln).val();
-    if (curr_rate <= '0' || curr_rate == '') {
+  }
+  else {
+    var currency = $("#currency_id_select").find(':selected').text();
+    if (currency == 'US Dollars : $' || currency == 'US Dollar : $' || currency == 'Great Britain Ponds : £' || currency == 'Pounds : £' || currency == 'Euro : €') {
+      var curr_rate = $('#currency_rate').val();
+      var perUnitCost = unformat2Number($("#" + key + "per_unit_cost" + ln).val());
+      if ($('#' + key + 'base_cost' + ln).val() == '') {
+        $('#' + key + 'base_cost' + ln).val(perUnitCost);
+        
+      }
+      var baseCost = $('#' + key + 'base_cost' + ln).val();
       var defaultValue = baseCost * 1;
-      
       $("#" + key + "per_unit_cost" + ln).val(format2Number(defaultValue));
     }
-    else {
-      var convertedVal = baseCost * curr_rate;
-      
-      $("#" + key + "per_unit_cost" + ln).val(format2Number(convertedVal));
-    }
-  
   }
   
   // Margin Profit Calculations
@@ -1444,7 +1475,13 @@ function calculateLine(ln, key) {
           document.getElementById(key + 'product_profit_margin_pkr' + ln).value = '';
         } else {
           document.getElementById(key + 'product_profit_margin_pkr' + ln).setAttribute('readonly', 'readonly');
-          document.getElementById(key + 'product_profit_margin_pkr' + ln).value = format2Number(profitMarginVal);
+          if (conversionRateCheck) {
+            document.getElementById(key + 'product_profit_margin_pkr' + ln).value = format2Number(profitMarginVal);
+          }
+          else {
+            marginInPKR = profitMarginVal * currency_rate;
+            document.getElementById(key + 'product_profit_margin_pkr' + ln).value = format2Number(marginInPKR);
+          }
         }
       }
     }

@@ -217,7 +217,11 @@ array (
         ),
         2 => 
         array (
-          0 => '',
+          0 => 
+          array (
+            'name' => 'convert_currency',
+            'label' => 'LBL_CONVERT_CURRENCY',
+          ),
         ),
       ),
       'lbl_line_items' => 
