@@ -11,7 +11,7 @@ $dictionary['Task']['fields']['accounts_id'] =  array(
 		    'reportable' => false,
 		    'audited' => true,
 		    'duplicate_merge' => 'disabled',
-		    'required' => true,
+		    'required' => false,
         );
 $dictionary['Task']['fields']['accounts_name'] =  array(
             'name' => 'accounts_name',
