@@ -50,11 +50,6 @@ array (
             'name' => 'name',
             'label' => 'LBL_SUBJECT',
           ),
-          1 => 
-          array (
-            'name' => 'case_number',
-            'label' => 'LBL_CASE_NUMBER',
-          ),
         ),
         1 => 
         array (

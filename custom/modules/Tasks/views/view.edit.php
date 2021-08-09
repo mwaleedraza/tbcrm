@@ -65,16 +65,18 @@ class TasksViewEdit extends ViewEdit
         /*
             Getting all contacts/clients to assign to tpl
         */
-        $contactsArr = array();
-        $contact = $db->query("SELECT `id`,`last_name`,`first_name` FROM `contacts` WHERE deleted = 0");
-        while ($rows = $db->fetchByAssoc($contact)) {
-            array_push($contactsArr, $rows);
+        $accountsArr = array();
+        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0");
+        while ($rows = $db->fetchByAssoc($account)) {
+            array_push($accountsArr, $rows);
         }
 
-        $this->ss->assign("CONTACTS_DATA", $contactsArr);
+        $this->ss->assign("ACCOUNTS_DATA", $accountsArr);
         $this->ss->assign("BEAN", $this->bean);
         $contactTPL = $this->ss->fetch("custom/modules/Tasks/tpls/searchContactField.tpl");
+        $accountTPL = $this->ss->fetch("custom/modules/Tasks/tpls/searchAccountField.tpl");
         $this->ss->assign("CONTACT_HTML", $contactTPL);
+        $this->ss->assign("ACCOUNT_HTML", $accountTPL);
         /*
             Getting all users to assign to tpl
         */
@@ -88,6 +90,10 @@ class TasksViewEdit extends ViewEdit
         $this->ss->assign("BEAN", $this->bean);
         $userTPL = $this->ss->fetch("custom/modules/Tasks/tpls/searchAssignedUserField.tpl");
         $this->ss->assign("USER_HTML", $userTPL);
+
+        echo "<script>
+                CurrentContact = '".$this->bean->contact_id."';
+            </script>";
         // echo $this->ev->display($this->showTitle);
 
         parent::display();

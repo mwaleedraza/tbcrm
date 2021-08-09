@@ -5,6 +5,7 @@ $mod_strings = array(
     'LBL_NEXT_ACTION' => 'Next Action',
     'LBL_COMMENT' => 'Comment',
     'LBL_CLOSURE_DATE' => 'Closure Date',
+    'LBL_ACCOUNTS_NAME' => 'Accounts',
     );
 
 

@@ -8,12 +8,6 @@ array (
     'link' => true,
     'default' => true,
   ),
-  'CASE_NUMBER' => 
-  array (
-    'width' => '5%',
-    'label' => 'LBL_LIST_NUMBER',
-    'default' => true,
-  ),
   'TICKET_NO' => 
   array (
     'type' => 'int',

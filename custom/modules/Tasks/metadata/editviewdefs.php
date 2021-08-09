@@ -99,6 +99,17 @@ array (
               'required' => true,
             ),
           ),
+          1 => '',
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'accounts_name',
+            'label' => 'LBL_ACCOUNTS_NAME',
+            'customCode' => '{$ACCOUNT_HTML}',
+            'widths' => '100%',
+          ),
           1 => 
           array (
             'name' => 'contact_name',
@@ -107,7 +118,7 @@ array (
             'widths' => '100%',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -124,7 +135,7 @@ array (
             ),
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -136,7 +147,7 @@ array (
             'label' => 'LBL_NEXT_ACTION',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (

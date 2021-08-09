@@ -117,6 +117,19 @@ class CasesViewEdit extends ViewEdit
         $this->ss->assign("USER_HTML", $userTPL);
         // echo $this->ev->display($this->showTitle);
 
+        if($this->bean->ticket_no == '' || $this->bean->ticket_no == 0){
+            $recordCount = $db->query("SELECT COUNT(*) as count FROM cases");
+            $rowCount = $db->fetchByAssoc($recordCount);
+            $ticketNo = $rowCount['count'] + 1;
+            echo "<script>
+                    var ticketNo = ".$ticketNo.";
+                    $(document).ready(function(){
+                        $('#ticket_no').val(ticketNo);
+                        $('#ticket_no').prop('readonly', true);
+                    });
+                </script>";
+        }
+
         parent::display();
     }
 }
