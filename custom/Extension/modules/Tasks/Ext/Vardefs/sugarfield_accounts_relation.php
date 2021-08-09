@@ -24,7 +24,7 @@ $dictionary['Task']['fields']['accounts_name'] =  array(
             'isnull' => 'true',
             'module' => 'Accounts',
             'source' => 'non-db',
-            'required' => true,
+            'required' => false,
         );
 $dictionary['Task']['fields']['account_task'] =  array(
             'name' => 'account_task',
