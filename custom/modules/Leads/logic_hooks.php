@@ -11,4 +11,7 @@ $hook_array['before_save'][] = Array(77, 'updateGeocodeInfo', 'modules/Leads/Lea
 $hook_array['after_save'] = Array();
 $hook_array['after_save'][] = Array(77, 'updateRelatedMeetingsGeocodeInfo', 'modules/Leads/LeadsJjwg_MapsLogicHook.php','LeadsJjwg_MapsLogicHook', 'updateRelatedMeetingsGeocodeInfo');
 $hook_array['after_save'][] = Array(78, 'save','custom/modules/Leads/beforeSave.php','Save','SaveAll');
+
+$hook_array['process_record'] = Array();
+$hook_array['process_record'][] = Array(79, 'Highlight overdue sales', 'custom/modules/Leads/highlightOverdueSales.php','highlightOverdueSales', 'highlightOverdueSalesMethod');
 ?>

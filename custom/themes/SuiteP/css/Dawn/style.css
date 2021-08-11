@@ -35920,7 +35920,10 @@ body>.le_panel .le_edit,
 	display: none;
 }
 .alertsButton{
-	display: none;
+	/*display: none;*/
+        position: relative;
+        top: 6px;
+        left: -10px;
 }
 .
 #GlobalSearchSettings {
