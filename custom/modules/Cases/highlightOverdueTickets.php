@@ -6,10 +6,12 @@ class highlightOverdueTickets
 {
     function highlightOverdueTicketsMethod(&$bean, $event, $arguments)
     {
-        $currentDate = date('Y-m-d');
-        $due_date = date("Y-m-d", strtotime($bean->closure_date) );
-        if($due_date < $currentDate){
-            $bean->closure_date = '<div style="border: 1px solid red">'.$bean->closure_date.'</div>';
+        if($bean->closure_date != ''){
+            $currentDate = date('Y-m-d');
+            $due_date = date("Y-m-d", strtotime($bean->closure_date) );
+            if($due_date < $currentDate){
+                $bean->closure_date = '<div style="border: 1px solid red">'.$bean->closure_date.'</div>';
+            }
         }
     }
 }
