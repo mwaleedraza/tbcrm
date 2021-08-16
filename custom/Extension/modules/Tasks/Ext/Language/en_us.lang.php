@@ -6,6 +6,8 @@ $mod_strings = array(
     'LBL_COMMENT' => 'Comment',
     'LBL_CLOSURE_DATE' => 'Closure Date',
     'LBL_ACCOUNTS_NAME' => 'Company Name',
+    'LBL_OVERDUE_CRON_JOB' => 'Overdue Alarm',
+    'LBL_RENEWAL' => 'Renewal Date',
     );
 
 

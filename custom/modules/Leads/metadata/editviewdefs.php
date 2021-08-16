@@ -149,6 +149,15 @@ array (
             'label' => 'LBL_SUGARFIELD_NEXTACTION',
           ),
         ),
+        9 => 
+        array (
+          0 => 
+          array (
+            'name' => 'renewal',
+            'label' => 'LBL_RENEWAL',
+          ),
+          1 => '',
+        ),
       ),
     ),
   ),

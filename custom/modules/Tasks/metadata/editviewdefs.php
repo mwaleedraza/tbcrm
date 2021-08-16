@@ -160,6 +160,15 @@ array (
             'label' => 'LBL_CLOSURE_DATE',
           ),
         ),
+        7 => 
+        array (
+          0 => 
+          array (
+            'name' => 'renewal',
+            'label' => 'LBL_RENEWAL',
+          ),
+          1 => '',
+        ),
       ),
     ),
   ),
