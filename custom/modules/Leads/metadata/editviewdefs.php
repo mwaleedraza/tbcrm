@@ -138,10 +138,19 @@ array (
         ),
         7 => 
         array (
-          0 => 'description',
+          0 => 
+          array (
+            'name' => 'sugarfield_amount',
+            'label' => 'LBL_SUGARFIELD_AMOUNT',
+          ),
           1 => '',
         ),
         8 => 
+        array (
+          0 => 'description',
+          1 => '',
+        ),
+        9 => 
         array (
           0 => 
           array (
@@ -149,7 +158,7 @@ array (
             'label' => 'LBL_SUGARFIELD_NEXTACTION',
           ),
         ),
-        9 => 
+        10 => 
         array (
           0 => 
           array (

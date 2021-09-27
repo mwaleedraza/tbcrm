@@ -362,18 +362,31 @@ array (
         ),
         2 => 
         array (
-          0 => '',
-          1 => '',
-        ),
-        3 => 
-        array (
           0 => 
           array (
             'name' => 'subtotal_amount',
             'label' => 'LBL_SUBTOTAL_AMOUNT',
           ),
         ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'tax_amount',
+            'label' => 'LBL_TAX_AMOUNT',
+          ),
+          1 => '',
+        ),
         4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'subtotal_tax_amount',
+            'label' => 'LBL_SUBTOTAL_TAX_AMOUNT',
+          ),
+          1 => '',
+        ),
+        5 => 
         array (
           0 => 
           array (
@@ -388,7 +401,7 @@ array (
             ),
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -396,7 +409,7 @@ array (
             'label' => 'LBL_SHIPPING_TAX_AMT',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (

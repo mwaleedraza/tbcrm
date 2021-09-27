@@ -47,26 +47,6 @@ array (
     'width' => '10%',
     'default' => true,
   ),
-  'PHONE_MOBILE' => 
-  array (
-    'width' => '10%',
-    'label' => 'LBL_MOBILE_PHONE',
-    'default' => true,
-  ),
-  'INDUSTRY_VERTICAL' => 
-  array (
-    'type' => 'enum',
-    'label' => 'LBL_IND_VERTICAL',
-    'width' => '10%',
-    'default' => true,
-  ),
-  'TYPE_DROP_DOWN' => 
-  array (
-    'type' => 'enum',
-    'label' => 'LBL_TYPE',
-    'width' => '10%',
-    'default' => true,
-  ),
   'ACCOUNT_NAME' => 
   array (
     'width' => '34%',
@@ -96,6 +76,26 @@ array (
       0 => 'account_id',
     ),
   ),
+  'TYPE_DROP_DOWN' => 
+  array (
+    'type' => 'enum',
+    'label' => 'LBL_TYPE',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'INDUSTRY_VERTICAL' => 
+  array (
+    'type' => 'enum',
+    'label' => 'LBL_IND_VERTICAL',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'PHONE_MOBILE' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_MOBILE_PHONE',
+    'default' => true,
+  ),
   'EMAIL1' => 
   array (
     'width' => '15%',
@@ -103,21 +103,6 @@ array (
     'sortable' => false,
     'link' => true,
     'customCode' => '{$EMAIL1_LINK}',
-    'default' => true,
-  ),
-  'GST_NUMBER' => 
-  array (
-    'type' => 'currency',
-    'label' => 'LBL_GST_NUMBER',
-    'currency_format' => true,
-    'width' => '10%',
-    'default' => true,
-  ),
-  'NTN_NUMBER' => 
-  array (
-    'type' => 'varchar',
-    'label' => 'LBL_NTN_NUMBER',
-    'width' => '10%',
     'default' => true,
   ),
   'PHONE_WORK' => 
@@ -148,6 +133,21 @@ array (
   array (
     'width' => '10%',
     'label' => 'LBL_HOME_PHONE',
+    'default' => false,
+  ),
+  'NTN_NUMBER' => 
+  array (
+    'type' => 'varchar',
+    'label' => 'LBL_NTN_NUMBER',
+    'width' => '10%',
+    'default' => false,
+  ),
+  'GST_NUMBER' => 
+  array (
+    'type' => 'currency',
+    'label' => 'LBL_GST_NUMBER',
+    'currency_format' => true,
+    'width' => '10%',
     'default' => false,
   ),
   'TITLE' => 
