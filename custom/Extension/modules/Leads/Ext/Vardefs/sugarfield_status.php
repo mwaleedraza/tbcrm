@@ -1,9 +1,9 @@
 <?php
-$dictionary["Lead"]["fields"]["sugarfield_status"] = array (
+$dictionary["Lead"]["fields"]["status"] = array (
   'required' => false,
-  'name' => 'sugarfield_status',
-  'vname' => 'LBL_SUGARFIELD_status',
-   'type' => 'enum',
+  'name' => 'status',
+  'vname' => 'LBL_STATUS',
+  'type' => 'enum',
   'massupdate' => 0,
   'no_default' => false,
   'options'=>'status_dropdown',

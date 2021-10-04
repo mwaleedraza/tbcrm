@@ -47,11 +47,10 @@ array (
     'width' => '10%',
     'default' => true,
   ),
-  'SUGARFIELD_STATUS' => 
+  'STATUS' => 
   array (
-    'type' => 'enum',
-    'label' => 'LBL_SUGARFIELD_status',
-    'width' => '10%',
+    'width' => '7%',
+    'label' => 'LBL_LIST_STATUS',
     'default' => true,
   ),
   'DATE_ENTERED' => 
@@ -91,12 +90,6 @@ array (
   array (
     'width' => '10%',
     'label' => 'LBL_ALT_ADDRESS_STREET',
-    'default' => false,
-  ),
-  'STATUS' => 
-  array (
-    'width' => '7%',
-    'label' => 'LBL_LIST_STATUS',
     'default' => false,
   ),
   'ALT_ADDRESS_CITY' => 

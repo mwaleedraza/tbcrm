@@ -195,11 +195,7 @@ array (
         ),
         6 => 
         array (
-          0 => 
-          array (
-            'name' => 'sugarfield_status',
-            'label' => 'LBL_SUGARFIELD_status',
-          ),
+          0 => 'status',
           1 => 'lead_source',
         ),
         7 => 

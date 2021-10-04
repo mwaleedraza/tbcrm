@@ -121,11 +121,7 @@ array (
             'customCode' => '{$USER_HTML}',
             'widths' => '100%',
           ),
-          1 => 
-          array (
-            'name' => 'sugarfield_status',
-            'label' => 'LBL_SUGARFIELD_status',
-          ),
+          1 => 'status',
         ),
         6 => 
         array (
