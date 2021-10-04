@@ -11,9 +11,6 @@
 <!-- Clients dropdown -->
 <select id="contact_id" name="contact_id">
   <option>-- Select Client--</option>
-  {foreach from=$CONTACTS_DATA key=index item=data}
-    <option value="{$data.id}">{$data.first_name} {$data.last_name}</option>
-  {/foreach}
   <script> setDDVal('contact_id','{$BEAN->contact_id}') ;</script>
 </select>
 

@@ -130,6 +130,14 @@ class CasesViewEdit extends ViewEdit
                 </script>";
         }
 
+        $contact_id = '';
+        if($this->bean->contact_id != null) {
+            $contact_id = $this->bean->contact_id;
+        }
+        echo "<script>
+                CurrentCaseContact = '".$contact_id."';
+            </script>";
+
         parent::display();
     }
 }

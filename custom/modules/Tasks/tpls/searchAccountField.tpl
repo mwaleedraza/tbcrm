@@ -7,32 +7,35 @@
     }
 
     function getRelatedContacts(account){
-        var data = { account };
-        $.ajax({
-            url: "index.php?module=Tasks&action=getRelatedContacts&sugar_body_only=true",
-            data: data,
-            type: "GET",
-            success: function(contacts){
-                contacts = JSON.parse(contacts);
-                contactOpt = '<option value="">-- Select Client--</option>';
-                contacts.forEach(function(contact){
-                    contactOpt += '<option value="'+ contact.id +'">'+ contact.first_name +' '+ contact.last_name +'</option>';
-                });
-                $('#contact_id').html(contactOpt);
-                
-                if(CurrentContact != ''){
-                    setDDVal('contact_id',CurrentContact); ;
-                }
-            }
-        })
-
+      var contactOpt = '<option value="">-- Select Client--</option>';
+      if(account == ''){
+        $('#contact_id').html(contactOpt);
+        return 0;
+      }
+      var data = { account };
+      $.ajax({
+          url: "index.php?module=Tasks&action=getRelatedContacts&sugar_body_only=true",
+          data: data,
+          type: "GET",
+          success: function(contacts){
+              contacts = JSON.parse(contacts);
+              contacts.forEach(function(contact){
+                  contactOpt += '<option value="'+ contact.id +'">'+ contact.first_name +' '+ contact.last_name +'</option>';
+              });
+              $('#contact_id').html(contactOpt);
+              
+              if(CurrentContact != ''){
+                  setDDVal('contact_id',CurrentContact); ;
+              }
+          }
+      });
     }
   </script>
 {/literal}
 
 <!-- Accounts dropdown -->
 <select id="accounts_id" name="accounts_id" onchange="getRelatedContacts(this.value)">
-  <option>-- Select Client--</option>
+  <option value="">-- Select Client--</option>
   {foreach from=$ACCOUNTS_DATA key=index item=data}
     <option value="{$data.id}">{$data.name}</option>
   {/foreach}

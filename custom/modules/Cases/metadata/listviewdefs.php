@@ -15,14 +15,19 @@ array (
     'width' => '10%',
     'default' => true,
   ),
-  'CONTACT_NAME' => 
+  'ACCOUNT_NAME' => 
   array (
-    'type' => 'relate',
+    'width' => '20%',
+    'label' => 'LBL_LIST_ACCOUNT_NAME',
+    'module' => 'Accounts',
+    'id' => 'ACCOUNT_ID',
     'link' => true,
-    'label' => 'LBL_CONTACT_NAME',
-    'id' => 'CONTACT_ID',
-    'width' => '10%',
     'default' => true,
+    'ACLTag' => 'ACCOUNT',
+    'related_fields' => 
+    array (
+      0 => 'account_id',
+    ),
   ),
   'PRODUCT_NAME' => 
   array (
@@ -30,14 +35,6 @@ array (
     'link' => true,
     'label' => 'LBL_PRODUCT_NAME',
     'id' => 'PRODUCT_ID',
-    'width' => '10%',
-    'default' => true,
-  ),
-  'DESCRIPTION' => 
-  array (
-    'type' => 'text',
-    'label' => 'LBL_DESCRIPTION',
-    'sortable' => false,
     'width' => '10%',
     'default' => true,
   ),
@@ -74,6 +71,23 @@ array (
     'label' => 'LBL_CLOSURE_DATE',
     'width' => '10%',
     'default' => true,
+  ),
+  'DESCRIPTION' => 
+  array (
+    'type' => 'text',
+    'label' => 'LBL_DESCRIPTION',
+    'sortable' => false,
+    'width' => '10%',
+    'default' => false,
+  ),
+  'CONTACT_NAME' => 
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'label' => 'LBL_CONTACT_NAME',
+    'id' => 'CONTACT_ID',
+    'width' => '10%',
+    'default' => false,
   ),
 );
 ;

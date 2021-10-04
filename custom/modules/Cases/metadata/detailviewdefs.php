@@ -62,6 +62,11 @@ array (
         ),
         2 => 
         array (
+          0 => 'account_name',
+          1 => '',
+        ),
+        3 => 
+        array (
           0 => 
           array (
             'name' => 'contact_name',
@@ -73,7 +78,7 @@ array (
             'label' => 'LBL_PRODUCT_NAME',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -87,17 +92,17 @@ array (
             'label' => 'LBL_INTERNAL',
           ),
         ),
-        4 => 
+        5 => 
         array (
-          0 => 'account_name',
-          1 => 
+          0 => 
           array (
             'name' => 'case_update_form',
             'studio' => 'visible',
             'label' => 'LBL_CASE_UPDATE_FORM',
           ),
+          1 => '',
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -106,12 +111,12 @@ array (
           ),
           1 => '',
         ),
-        6 => 
+        7 => 
         array (
           0 => 'description',
           1 => '',
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (

@@ -11,7 +11,7 @@ class LeadsViewWonLeads extends ViewList
 	public function processSearchForm(){
         global $current_user;
         
-        $this->params['custom_where'] .= ' AND leads.status = "Close Won"';
+        $this->params['custom_where'] .= ' AND leads.sugarfield_status in ("PO Won", "Dead")';
         
 		parent::processSearchForm();
 	}	

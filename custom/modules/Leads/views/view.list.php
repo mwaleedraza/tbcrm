@@ -12,7 +12,7 @@ class LeadsViewList extends ViewList
 
         global $current_user, $db;
 
-        $this->params['custom_where'] .= ' AND leads.status not in ("Close Won")';
+        $this->params['custom_where'] .= ' AND leads.sugarfield_status not in ("PO Won", "Dead")';
 
         parent::processSearchForm();
     }

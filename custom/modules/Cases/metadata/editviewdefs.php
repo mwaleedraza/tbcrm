@@ -76,6 +76,16 @@ array (
         array (
           0 => 
           array (
+            'name' => 'account_name',
+            'label' => 'LBL_ACCOUNT_NAME',
+            'customCode' => '{$ACCOUNT_HTML}',
+            'widths' => '100%',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
             'name' => 'contact_name',
             'label' => 'LBL_CONTACT_NAME',
             'customCode' => '{$CONTACT_HTML}',
@@ -89,7 +99,7 @@ array (
             'widths' => '100%',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -103,13 +113,12 @@ array (
             'label' => 'LBL_INTERNAL',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
-            'name' => 'account_name',
-            'label' => 'LBL_ACCOUNT_NAME',
-            'customCode' => '{$ACCOUNT_HTML}',
+            'name' => 'assigned_user_name',
+            'customCode' => '{$USER_HTML}',
             'widths' => '100%',
           ),
           1 => 
@@ -117,16 +126,6 @@ array (
             'name' => 'case_update_form',
             'studio' => 'visible',
           ),
-        ),
-        5 => 
-        array (
-          0 => 
-           array (
-            'name' => 'assigned_user_name',
-            'customCode' => '{$USER_HTML}',
-            'widths' => '100%',
-          ),
-          1 => '',
         ),
         6 => 
         array (

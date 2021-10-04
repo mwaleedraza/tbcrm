@@ -110,7 +110,10 @@ array (
             'customCode' => '{$ACCOUNT_HTML}',
             'widths' => '100%',
           ),
-          1 => 
+        ),
+        4 => 
+        array (
+          0 => 
           array (
             'name' => 'contact_name',
             'label' => 'LBL_CONTACT_NAME',
@@ -118,7 +121,7 @@ array (
             'widths' => '100%',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -135,7 +138,7 @@ array (
             ),
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -147,7 +150,7 @@ array (
             'label' => 'LBL_NEXT_ACTION',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -160,7 +163,7 @@ array (
             'label' => 'LBL_CLOSURE_DATE',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (
