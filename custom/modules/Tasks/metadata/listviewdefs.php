@@ -8,6 +8,15 @@ array (
     'width' => '10%',
     'default' => true,
   ),
+  'ACCOUNTS_NAME' => 
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'label' => 'LBL_ACCOUNTS_NAME',
+    'id' => 'ACCOUNTS_ID',
+    'width' => '10%',
+    'default' => true,
+  ),
   'CONTACT_NAME' => 
   array (
     'width' => '20%',

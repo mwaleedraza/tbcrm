@@ -93,6 +93,9 @@ class TasksViewEdit extends ViewEdit
 
         echo "<script>
                 CurrentContact = '".$this->bean->contact_id."';
+                $(document).ready(function(){
+                    $('.datetimecombo_time_section').css({'display':'none'});
+                });
             </script>";
         // echo $this->ev->display($this->showTitle);
 

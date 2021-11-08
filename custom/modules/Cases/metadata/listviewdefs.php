@@ -1,13 +1,6 @@
 <?php
 $listViewDefs ['Cases'] = 
 array (
-  'NAME' => 
-  array (
-    'width' => '25%',
-    'label' => 'LBL_LIST_SUBJECT',
-    'link' => true,
-    'default' => true,
-  ),
   'TICKET_NO' => 
   array (
     'type' => 'int',
@@ -78,6 +71,13 @@ array (
     'label' => 'LBL_DESCRIPTION',
     'sortable' => false,
     'width' => '10%',
+    'default' => false,
+  ),
+  'NAME' => 
+  array (
+    'width' => '25%',
+    'label' => 'LBL_LIST_SUBJECT',
+    'link' => true,
     'default' => false,
   ),
   'CONTACT_NAME' => 

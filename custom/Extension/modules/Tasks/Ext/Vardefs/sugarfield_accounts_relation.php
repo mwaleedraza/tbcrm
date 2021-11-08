@@ -41,7 +41,7 @@ $dictionary['Task']['relationships']['account_task_relation'] =  array(
 		    'lhs_key' => 'id',
 		    'rhs_module' => 'Tasks',
 		    'rhs_table' => 'tasks',
-		    'rhs_key' => 'user_id',
+		    'rhs_key' => 'accounts_id',
 		    'relationship_type' => 'one-to-many'
         );
 

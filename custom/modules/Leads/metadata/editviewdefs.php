@@ -128,25 +128,16 @@ array (
           0 => 'lead_source',
           1 => 
           array (
-            'name' => 'approx',
-            'label' => 'LBL_APPROX',
+            'name' => 'sugarfield_amount',
+            'label' => 'LBL_SUGARFIELD_AMOUNT',
           ),
         ),
         7 => 
         array (
-          0 => 
-          array (
-            'name' => 'sugarfield_amount',
-            'label' => 'LBL_SUGARFIELD_AMOUNT',
-          ),
-          1 => '',
-        ),
-        8 => 
-        array (
           0 => 'description',
           1 => '',
         ),
-        9 => 
+        8 => 
         array (
           0 => 
           array (
@@ -154,7 +145,7 @@ array (
             'label' => 'LBL_SUGARFIELD_NEXTACTION',
           ),
         ),
-        10 => 
+        9 => 
         array (
           0 => 
           array (
