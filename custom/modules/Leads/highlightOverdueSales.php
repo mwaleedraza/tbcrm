@@ -12,6 +12,9 @@ class highlightOverdueSales
             if($due_date < $currentDate){
                 $bean->sugarfield_closuredate = '<div style="border: 1px solid red">'.$due_date.'</div>';
             }
+            else {
+                $bean->sugarfield_closuredate = $due_date;
+            }
         }
     }
 }

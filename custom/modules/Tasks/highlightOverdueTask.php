@@ -12,6 +12,9 @@ class highlightOverdueTask
             if($due_date < $currentDate){
                 $bean->date_due = '<div style="border: 1px solid red">'.$due_date.'</div>';
             }
+            else {
+                $bean->date_due = $due_date;
+            }
         }
     }
 }

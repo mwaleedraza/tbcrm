@@ -12,6 +12,9 @@ class highlightOverdueTickets
             if($due_date < $currentDate){
                 $bean->closure_date = '<div style="border: 1px solid red">'.$due_date.'</div>';
             }
+            else {
+                $bean->closure_date = $due_date;
+            }
         }
     }
 }
