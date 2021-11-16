@@ -76,14 +76,6 @@ array (
     'link' => false,
     'default' => true,
   ),
-  'TIME_DUE' => 
-  array (
-    'width' => '15%',
-    'label' => 'LBL_LIST_DUE_TIME',
-    'sortable' => false,
-    'link' => false,
-    'default' => true,
-  ),
   'SET_COMPLETE' => 
   array (
     'width' => '1%',

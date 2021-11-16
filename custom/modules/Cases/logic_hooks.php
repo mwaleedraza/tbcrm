@@ -25,5 +25,4 @@ $hook_array['after_relationship_delete'][] = Array(77, 'deleteRelationship', 'mo
 $hook_array['process_record'] = Array(); 
 $hook_array['process_record'][] = Array(78, 'htmlToText', 'custom/modules/Cases/htmlToText.php','htmlToText', 'htmlToTextMethod'); 
 $hook_array['process_record'][] = Array(79, 'Highlight overdue tickets', 'custom/modules/Cases/highlightOverdueTickets.php','highlightOverdueTickets', 'highlightOverdueTicketsMethod');
-
 ?>
