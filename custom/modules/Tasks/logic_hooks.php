@@ -14,4 +14,5 @@ $hook_array['after_save'][] = Array(2, 'assignment alert', 'custom/modules/Tasks
 $hook_array['process_record'] = Array();
 $hook_array['process_record'][] = Array(2, 'Highlight overdue tasks', 'custom/modules/Tasks/highlightOverdueTask.php','highlightOverdueTask', 'highlightOverdueTaskMethod');
 $hook_array['process_record'][] = Array(3, 'Change Start Date Format', 'custom/modules/Tasks/changeStartDateFormat.php','changeStartDateFormat', 'changeStartDateFormatMethod');
+$hook_array['process_record'][] = Array(5, 'Date Format in ListView', 'custom/modules/Tasks/formatDate.php','FormatDate', 'formatDateMethod');
 

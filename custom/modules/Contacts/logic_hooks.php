@@ -11,6 +11,9 @@ $hook_array['after_save'] = Array();
 $hook_array['after_save'][] = Array(1, 'Update Portal', 'modules/Contacts/updatePortal.php','updatePortal', 'updateUser'); 
 $hook_array['after_save'][] = Array(77, 'updateRelatedMeetingsGeocodeInfo', 'modules/Contacts/ContactsJjwg_MapsLogicHook.php','ContactsJjwg_MapsLogicHook', 'updateRelatedMeetingsGeocodeInfo'); 
 
+$hook_array['process_record'] = array();
+$hook_array['process_record'][] = Array(80, 'Date Format in ListView', 'custom/modules/Contacts/formatDate.php','FormatDate', 'formatDateMethod');
+
 
 
 ?>

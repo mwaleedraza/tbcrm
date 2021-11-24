@@ -35933,3 +35933,9 @@ body>.le_panel .le_edit,
 #GlobalSearchSettings * {
     border: none
 }
+.datetimecombo_time_section{
+    display: none !important;
+}
+table.dateTime tbody tr:nth-child(2){
+    display: none !important;   
+}

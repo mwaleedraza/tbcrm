@@ -16,6 +16,7 @@ $hook_array['after_relationship_add'][] = Array(77, 'addRelationship', 'modules/
 $hook_array['after_relationship_delete'] = Array(); 
 $hook_array['after_relationship_delete'][] = Array(77, 'deleteRelationship', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php','AccountsJjwg_MapsLogicHook', 'deleteRelationship'); 
 
-
+$hook_array['process_record'] = array();
+$hook_array['process_record'][] = Array(80, 'Date Format in ListView', 'custom/modules/Accounts/formatDate.php','FormatDate', 'formatDateMethod');
 
 ?>
