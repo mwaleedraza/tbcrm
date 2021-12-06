@@ -12,7 +12,7 @@
 <select id="assigned_user_id" name="assigned_user_id">
   <option>-- Select User--</option>
   {foreach from=$USERS_DATA key=index item=data}
-    <option value="{$data.id}">{$data.first_name}</option>
+    <option value="{$data.id}">{$data.last_name}</option>
   {/foreach}
   <script> setDDVal('assigned_user_id','{$BEAN->assigned_user_id}') ;</script>
 </select>
