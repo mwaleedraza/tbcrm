@@ -8,6 +8,7 @@ $app_list_strings['status_dropdown'] = array(
   'RFP/Tender' => 'RFP/Tender',
   'Negotiation' => 'Negotiation',
   'PO Won' => 'PO Won',
-  'Dead' => 'Dead'
+  'Dead' => 'Dead',
+  'Deal Lost' => 'Deal Lost'
 );
 ?>
