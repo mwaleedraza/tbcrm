@@ -314,7 +314,7 @@ function insertProductLine(tableid, groupid) {
 
   var f = x1.insertCell(0);
   f.style = "padding:20px 5px 0px 5px";
-  f.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_wht_amt_label'>"+ SUGAR.language.get(module_sugar_grp1, 'LBL_VAT_AMT') +"</span>";
+  f.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_wht_amt_label'>"+ SUGAR.language.get(module_sugar_grp1, 'LBL_VAT_AMT') +"</span><br>";
   f.innerHTML += "<select type='text' style='width:100px;' name='product_wht_amt[" + prodln + "]' id='product_wht_amt" + prodln + "' maxlength='250' value='' title='' class='product_wht_amt_text' onchange='calculateLine(" + prodln + ",\"product_\");'>" + wht_dropdown + "</select>";
 
   if (typeof currencyFields !== 'undefined') {
