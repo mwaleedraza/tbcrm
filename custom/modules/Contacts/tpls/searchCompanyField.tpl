@@ -13,15 +13,17 @@
           type: "GET",
           data: data,
           success: function(data){
-            address = JSON.parse(data);
-            if(address.length > 0){
-              address.forEach(function(row){
-                $('#primary_address_street').val(row.address_street);
-                $('#primary_address_city').val(row.address_city);
-                $('#primary_address_state').val(row.address_state);
-                $('#primary_address_postalcode').val(row.address_postalcode);
-                $('#primary_address_country').val(row.address_country);
-              });
+            account = JSON.parse(data);
+            $('#phone_work').val(account.phone_office);
+
+            $('#primary_address_street').val(account.billing_address_street);
+            $('#primary_address_city').val(account.billing_address_city);
+            $('#primary_address_state').val(account.billing_address_state);
+            $('#primary_address_postalcode').val(account.billing_address_postalcode);
+            $('#primary_address_country').val(account.billing_address_country);
+
+            if(account.shipping_address_street){
+              $('#alt_checkbox').click();
             }
           }
         })

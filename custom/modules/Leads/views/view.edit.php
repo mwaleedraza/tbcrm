@@ -20,7 +20,7 @@ class customLeadsViewEdit extends LeadsViewEdit{
             Getting all accounts to assign to tpl
         */
         $accountsArr=array();
-        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0");
+        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0 ORDER BY `name` ASC");
         while($accountrows = $db->fetchByAssoc($account)){
             array_push($accountsArr,$accountrows);
         }
@@ -36,7 +36,7 @@ class customLeadsViewEdit extends LeadsViewEdit{
        */
 
         $vendorsArr = array();
-        $vendors = $db->query("SELECT `id`, `name` FROM `accounts` WHERE deleted = 0 AND account_type = 'Vendor'");
+        $vendors = $db->query("SELECT `id`, `name` FROM `accounts` WHERE deleted = 0 AND account_type = 'Vendor' ORDER BY `name` ASC");
         while($fetchVendors = $db->fetchByAssoc($vendors)){
             array_push($vendorsArr, $fetchVendors);
         }

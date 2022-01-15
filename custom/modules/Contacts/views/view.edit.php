@@ -109,7 +109,7 @@ class ContactsViewEdit extends ViewEdit
         */
 
         $accountsArr = array();
-        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0");
+        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE `deleted` = 0 ORDER BY name ASC");
         while ($rows = $db->fetchByAssoc($account)) {
             array_push($accountsArr, $rows);
         }
@@ -123,7 +123,7 @@ class ContactsViewEdit extends ViewEdit
             Getting all users to assign to tpl
         */
         $usersArr = array();
-        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0");
+        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0 ORDER BY `first_name` ASC");
         while ($rows = $db->fetchByAssoc($user)) {
             array_push($usersArr, $rows);
         }

@@ -38,6 +38,13 @@ array (
     'link' => true,
     'default' => true,
   ),
+  'PRIORITY' => 
+  array (
+    'type' => 'enum',
+    'label' => 'LBL_PRIORITY',
+    'width' => '10%',
+    'default' => true,
+  ),
   'ASSIGNED_USER_NAME' => 
   array (
     'width' => '2%',
