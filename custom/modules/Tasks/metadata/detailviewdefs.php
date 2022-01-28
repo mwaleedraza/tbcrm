@@ -125,12 +125,25 @@ array (
         array (
           0 => 
           array (
-            'name' => 'assigned_user_name',
-            'label' => 'LBL_ASSIGNED_TO',
+            'name' => 'accounts_name',
+            'label' => 'LBL_ACCOUNTS_NAME',
           ),
           1 => 'priority',
         ),
         5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'assigned_user_name',
+            'label' => 'LBL_ASSIGNED_TO',
+          ),
+          1 => 
+          array (
+            'name' => 'created_by_name',
+            'label' => 'LBL_CREATED',
+          ),
+        ),
+        6 => 
         array (
           0 => 'description',
           1 => 
@@ -139,7 +152,7 @@ array (
             'label' => 'LBL_NEXT_ACTION',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -152,7 +165,7 @@ array (
             'label' => 'LBL_CLOSURE_DATE',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (
