@@ -1,6 +1,20 @@
 <?php
 $listViewDefs ['Leads'] = 
 array (
+  'SERIAL_NO' => 
+  array (
+    'type' => 'int',
+    'label' => 'LBL_SERIAL_NO',
+    'width' => '10%',
+    'default' => true,
+  ),
+  'SUGARFIELD_PRIORITY' => 
+  array (
+    'type' => 'enum',
+    'label' => 'LBL_SUGARFIELD_PRIORITY',
+    'width' => '10%',
+    'default' => true,
+  ),
   'NAME' => 
   array (
     'width' => '10%',

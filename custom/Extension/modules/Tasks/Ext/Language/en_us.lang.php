@@ -8,6 +8,7 @@ $mod_strings = array(
     'LBL_ACCOUNTS_NAME' => 'Company Name',
     'LBL_OVERDUE_CRON_JOB' => 'Overdue Alarm',
     'LBL_RENEWAL' => 'Renewal Date',
+    'LBL_ASSIGNEDBY_NAME'=>'Assigned By'
     );
 
 

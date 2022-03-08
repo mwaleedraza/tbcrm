@@ -81,10 +81,11 @@ class TasksViewEdit extends ViewEdit
             Getting all users to assign to tpl
         */
         $usersArr = array();
-        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0");
+        $user = $db->query("SELECT id,first_name,last_name FROM users WHERE deleted = 0 ORDER BY first_name ");
         while ($rows = $db->fetchByAssoc($user)) {
             array_push($usersArr, $rows);
         }
+	
 
         $this->ss->assign("USERS_DATA", $usersArr);
         $this->ss->assign("BEAN", $this->bean);

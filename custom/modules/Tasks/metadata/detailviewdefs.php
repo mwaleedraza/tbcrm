@@ -5,6 +5,13 @@ array (
   array (
     'templateMeta' => 
     array (
+      'includes' => 
+      array (
+        0 => 
+        array (
+          'file' => 'custom/modules/Tasks/js/getcurrentuser.js',
+        ),
+      ),
       'form' => 
       array (
         'buttons' => 
@@ -179,6 +186,15 @@ array (
             'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
             'label' => 'LBL_DATE_MODIFIED',
           ),
+        ),
+        9 => 
+        array (
+          0 => 
+          array (
+            'name' => 'assignedby_name',
+            'label' => 'LBL_ASSIGNEDBY_NAME',
+          ),
+          1 => '',
         ),
       ),
     ),

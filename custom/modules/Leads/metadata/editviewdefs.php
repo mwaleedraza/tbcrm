@@ -7,6 +7,10 @@ array (
     array (
       'includes' => 
       array (
+        0 => 
+        array (
+          'file' => 'custom/modules/Leads/js/hidefield.js',
+        ),
       ),
       'form' => 
       array (
@@ -56,11 +60,6 @@ array (
         0 => 
         array (
           0 => 'last_name',
-          1 => 
-          array (
-            'name' => 'accept_status_name',
-            'label' => 'LBL_LIST_ACCEPT_STATUS',
-          ),
         ),
         1 => 
         array (
@@ -89,6 +88,14 @@ array (
         array (
           0 => 
           array (
+            'name' => 'renewal_period',
+            'label' => 'LBL_RENEWAL_PERIOD',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
             'name' => 'maturity_percentage',
             'label' => 'LBL_MATURITY_PERCENTAGE',
           ),
@@ -98,7 +105,7 @@ array (
             'label' => 'LBL_SALE_AMOUNT',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -112,7 +119,7 @@ array (
             'label' => 'LBL_ALT_ADDRESS_POSTALCODE',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -123,7 +130,7 @@ array (
           ),
           1 => 'status',
         ),
-        6 => 
+        7 => 
         array (
           0 => 'lead_source',
           1 => 
@@ -132,12 +139,21 @@ array (
             'label' => 'LBL_SUGARFIELD_AMOUNT',
           ),
         ),
-        7 => 
+        8 => 
+        array (
+          0 => 
+          array (
+            'name' => 'other_source',
+            'comment' => '',
+            'label' => 'LBL_OTHER_SOURCE',
+          ),
+        ),
+        9 => 
         array (
           0 => 'description',
           1 => '',
         ),
-        8 => 
+        10 => 
         array (
           0 => 
           array (
@@ -145,7 +161,7 @@ array (
             'label' => 'LBL_SUGARFIELD_NEXTACTION',
           ),
         ),
-        9 => 
+        11 => 
         array (
           0 => 
           array (

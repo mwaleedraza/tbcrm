@@ -8,6 +8,13 @@ array (
     'width' => '10%',
     'default' => true,
   ),
+  'PRIORITY' => 
+  array (
+    'type' => 'enum',
+    'label' => 'LBL_PRIORITY',
+    'width' => '10%',
+    'default' => true,
+  ),
   'ACCOUNTS_NAME' => 
   array (
     'type' => 'relate',
@@ -36,13 +43,6 @@ array (
     'width' => '40%',
     'label' => 'LBL_LIST_SUBJECT',
     'link' => true,
-    'default' => true,
-  ),
-  'PRIORITY' => 
-  array (
-    'type' => 'enum',
-    'label' => 'LBL_PRIORITY',
-    'width' => '10%',
     'default' => true,
   ),
   'ASSIGNED_USER_NAME' => 
@@ -94,12 +94,6 @@ array (
     array (
       0 => 'status',
     ),
-  ),
-  'DATE_ENTERED' => 
-  array (
-    'width' => '10%',
-    'label' => 'LBL_DATE_ENTERED',
-    'default' => true,
   ),
 );
 ;
