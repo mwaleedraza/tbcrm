@@ -8,6 +8,7 @@ $hook_array['before_save'] = Array();
 $hook_array['after_save'] = Array();
 $hook_array['before_save'][] = Array(1, 'CommentBShook', 'custom/modules/Tasks/CommentBShook.php','CommentBShook', 'main');
 $hook_array['before_save'][] = Array(5, 'update scheduler bit on renewal date change', 'custom/modules/Tasks/changeRenewalFieldsVal.php','changeRenewalFieldsVal', 'changeRenewalFieldsValMethod');
+$hook_array['before_save'][] = Array(5, 'assigned by on save and update', 'custom/modules/Tasks/assigendby.php','assignedbyclass', 'assignedbymethod');
 
 $hook_array['after_save'][] = Array(2, 'assignment alert', 'custom/modules/Tasks/assignAlert.php','assignAlert', 'assignAlertMethod');
 

@@ -155,6 +155,15 @@ array (
         ),
         3 => 
         array (
+          0 => '',
+          1 => 
+          array (
+            'name' => 'renewal_period',
+            'label' => 'LBL_RENEWAL_PERIOD',
+          ),
+        ),
+        4 => 
+        array (
           0 => 
           array (
             'name' => 'sugarfield_priority',
@@ -166,7 +175,7 @@ array (
             'label' => 'LBL_SUGARFIELD_CLOSUREDATE',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -179,7 +188,7 @@ array (
             'label' => 'LBL_SALE_AMOUNT',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -193,12 +202,12 @@ array (
             'label' => 'LBL_ASSIGNED_TO',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 'status',
           1 => 'lead_source',
         ),
-        7 => 
+        8 => 
         array (
           0 => 'description',
           1 => 

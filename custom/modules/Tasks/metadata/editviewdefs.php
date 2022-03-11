@@ -5,6 +5,13 @@ array (
   array (
     'templateMeta' => 
     array (
+      'includes' => 
+      array (
+	      0 => 
+        array (
+          'file' => 'custom/modules/Tasks/js/getcompanycategory.js',
+        ),
+      ),
       'form' => 
       array (
         'hidden' => 

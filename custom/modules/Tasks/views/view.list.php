@@ -12,8 +12,13 @@ class TasksViewList extends ViewList
     {
     
         global $current_user, $db;
-
+ 	$roleBean=new ACLRole();
+        $roles = $roleBean->getUserRoleNames($current_user->id);
         $this->params['custom_where'] .= ' AND tasks.status != "Completed"';
+	if($current_user->is_admin==0)
+	{
+	       $this->params['custom_where'] .= ' AND tasks.assigned_user_id="'.$current_user->id.'"    ';
+	}
         
         parent::processSearchForm();
     }
