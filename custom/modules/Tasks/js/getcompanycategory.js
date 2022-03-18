@@ -12,8 +12,9 @@ $(document).ready(function () {
                 id:id
             },
             success: function (response) {
+                debugger;
                 console.log(response);
-                document.getElementById('category').value=response;
+                document.getElementById('category').value=response.trim();
             }
         });
     }); 

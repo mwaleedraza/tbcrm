@@ -8,6 +8,13 @@ array (
     'width' => '10%',
     'default' => true,
   ),
+  'SUGARFIELD_PRIORITY' => 
+  array (
+    'type' => 'enum',
+    'label' => 'LBL_SUGARFIELD_PRIORITY',
+    'width' => '10%',
+    'default' => true,
+  ),
   'NAME' => 
   array (
     'width' => '10%',
@@ -21,13 +28,6 @@ array (
       1 => 'last_name',
       2 => 'salutation',
     ),
-  ),
-  'SUGARFIELD_PRIORITY' => 
-  array (
-    'type' => 'enum',
-    'label' => 'LBL_SUGARFIELD_PRIORITY',
-    'width' => '10%',
-    'default' => true,
   ),
   'ACCOUNT_NAME' => 
   array (
