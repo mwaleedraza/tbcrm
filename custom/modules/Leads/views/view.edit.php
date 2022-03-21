@@ -95,8 +95,6 @@ class customLeadsViewEdit extends LeadsViewEdit{
         while ($userrows = $db->fetchByAssoc($user)) {
             array_push($usersArr, $userrows);
         }
-        sort($usersArr);
-
         $this->ss->assign("USERS_DATA", $usersArr);
         $this->ss->assign("BEAN", $this->bean);
         $userTPL = $this->ss->fetch("custom/modules/Leads/tpls/searchAssignedUserField.tpl");
