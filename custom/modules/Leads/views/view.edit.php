@@ -91,10 +91,11 @@ class customLeadsViewEdit extends LeadsViewEdit{
             Getting all users to assign to tpl
         */
         $usersArr = array();
-        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0");
+        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0 ORDER BY first_name ASC");
         while ($userrows = $db->fetchByAssoc($user)) {
             array_push($usersArr, $userrows);
         }
+        sort($usersArr);
 
         $this->ss->assign("USERS_DATA", $usersArr);
         $this->ss->assign("BEAN", $this->bean);
