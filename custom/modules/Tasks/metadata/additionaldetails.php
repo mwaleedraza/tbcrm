@@ -46,12 +46,14 @@ require_once "include/utils/additional_details.php";
 
 function additionalDetailsTask($fields, SugarBean $bean = null, $params = array())
 {
-    // var_dump($fields);
     // echo $fields['DESCRIPTION'];
     // echo $fields['DATE_ENTERED'];
     $custom_fields=[
-        'DESCRIPTION'=>$fields['DESCRIPTION'],
         'DATE_ENTERED'=>$fields['DATE_ENTERED'],
-        ];
+        'DESCRIPTION'=>$fields['DESCRIPTION'],
+    ];
+    // var_dump($custom_fields['DATE_ENTERED']);
+
+        // var_dump($custom_fields);
     return additional_details($custom_fields, $bean, $params);
 }
