@@ -3,7 +3,7 @@
     <input id="id" type="hidden" value="{$FIELD.ID}"/>
 {/if}
 
-{if !empty($FIELD.NAME)}
+{* {if !empty($FIELD.NAME)}
     <div>
         <strong>{$MOD.LBL_SUBJECT}</strong>
         <a href="index.php?action=DetailView&module={$MODULE_NAME}&record={$FIELD.ID}">{$FIELD.NAME}</a>
@@ -43,7 +43,7 @@
         <strong>{$MOD.LBL_STATUS}</strong>
         {$FIELD.STATUS}
     </div>
-{/if}
+{/if} *}
 
 {if !empty($FIELD.DESCRIPTION)}
     <div>
