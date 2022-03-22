@@ -53,10 +53,5 @@ function additionalDetailsTask($fields, SugarBean $bean = null, $params = array(
         'DESCRIPTION'=>$fields['DESCRIPTION'],
         'DATE_ENTERED'=>$fields['DATE_ENTERED'],
         ];
-
-
-    //     var_dump($custom_fields);
-    // die;
-
     return additional_details($custom_fields, $bean, $params);
 }
