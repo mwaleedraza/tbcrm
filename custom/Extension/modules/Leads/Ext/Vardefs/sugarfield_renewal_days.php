@@ -1,0 +1,21 @@
+<?php
+$dictionary["Lead"]["fields"]["renewal_days"] = array (
+  'required' => false,
+  'name' => 'renewal_days',
+  'vname' => 'LBL_RENEWAL_DAYS',
+   'type' => 'enum',
+  'massupdate' => 0,
+  'no_default' => false,
+  'options'=>'renewal_days_dom',
+  'comments' => '',
+  'help' => '',
+  'importable' => 'true',
+  'duplicate_merge' => 'disabled',
+  'duplicate_merge_dom_value' => '0',
+  'audited' => false,
+  'reportable' => true,
+  'unified_search' => true,
+  'merge_filter' => 'disabled',
+  'len' => '255',
+  'size' => '20',
+);

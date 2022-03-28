@@ -568,3 +568,4 @@
     <!--End Responsive Sidebar -->
 {/if}
 <!--Start Page content -->
+{include file="custom/modules/Leads/tpls/display_number_row_dropdown.tpl"}

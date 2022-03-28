@@ -118,6 +118,19 @@ array (
         array (
           0 => 
           array (
+            'name' => 'renewal_status',
+            'label' => 'LBL_RENEWAL_STATUS',
+          ),
+          1 => 
+          array (
+            'name' => 'oldlead_name',
+            'label' => 'LBL_OLDLEAD_NAME',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
             'name' => 'last_name',
             'comment' => 'Last name of the contact',
             'label' => 'LBL_LAST_NAME',
@@ -128,7 +141,7 @@ array (
             'label' => 'LBL_LIST_ACCEPT_STATUS',
           ),
         ),
-        1 => 
+        2 => 
         array (
           0 => 
           array (
@@ -140,7 +153,7 @@ array (
             'label' => 'LBL_CONTACTS_NAME',
           ),
         ),
-        2 => 
+        3 => 
         array (
           0 => 
           array (
@@ -153,7 +166,7 @@ array (
             'label' => 'LBL_SUGARFIELD_TYPE',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => '',
           1 => 
@@ -162,7 +175,7 @@ array (
             'label' => 'LBL_RENEWAL_PERIOD',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -175,7 +188,7 @@ array (
             'label' => 'LBL_SUGARFIELD_CLOSUREDATE',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -188,7 +201,7 @@ array (
             'label' => 'LBL_SALE_AMOUNT',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -202,12 +215,12 @@ array (
             'label' => 'LBL_ASSIGNED_TO',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 'status',
           1 => 'lead_source',
         ),
-        8 => 
+        9 => 
         array (
           0 => 'description',
           1 => 

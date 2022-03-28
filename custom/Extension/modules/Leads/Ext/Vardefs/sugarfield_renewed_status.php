@@ -1,0 +1,21 @@
+<?php
+$dictionary["Lead"]["fields"]["renewal_status"] = array (
+  'required' => false,
+  'name' => 'renewal_status',
+  'vname' => 'LBL_RENEWAL_STATUS',
+   'type' => 'enum',
+  'massupdate' => 0,
+  'no_default' => false,
+  'options'=>'renewal_status_dom',
+  'comments' => '',
+  'help' => '',
+  'importable' => 'true',
+  'duplicate_merge' => 'disabled',
+  'duplicate_merge_dom_value' => '0',
+  'audited' => false,
+  'reportable' => true,
+  'unified_search' => true,
+  'merge_filter' => 'disabled',
+  'len' => '255',
+  'size' => '20',
+);
