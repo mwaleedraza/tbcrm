@@ -4,7 +4,7 @@
 $(document).ready(function () {
     debugger;
     let div=document.createElement('div');
-    div.innerHTML='<select name="list_max_entries_per_page" id="list_max_entries_per_page" onchange=change_no_row()><option value="1">1</option><option value="2">2</option><option value="20">20</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option></select>';
+    div.innerHTML='<select name="list_max_entries_per_page" id="list_max_entries_per_page" onchange=change_no_row()><option value="20">20</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option></select>';
     $(div).insertBefore(document.getElementsByClassName('listViewBody'));
     $.ajax({
             type: "POST",
