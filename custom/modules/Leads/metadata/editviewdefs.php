@@ -59,22 +59,9 @@ array (
       array (
         0 => 
         array (
-          0 => 
-          array (
-            'name' => 'renewal_status',
-            'label' => 'LBL_RENEWAL_STATUS',
-          ),
-          1 => 
-          array (
-            'name' => 'oldlead_name',
-            'label' => 'LBL_OLDLEAD_NAME',
-          ),
-        ),
-        1 => 
-        array (
           0 => 'last_name',
         ),
-        2 => 
+        1 => 
         array (
           0 => 
           array (
@@ -84,7 +71,7 @@ array (
             'widths' => '100%',
           ),
         ),
-        3 => 
+        2 => 
         array (
           0 => 
           array (
@@ -97,7 +84,7 @@ array (
             'label' => 'LBL_SUGARFIELD_PRIORITY',
           ),
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -105,7 +92,7 @@ array (
             'label' => 'LBL_RENEWAL_PERIOD',
           ),
         ),
-        5 => 
+        4 => 
         array (
           0 => 
           array (
@@ -118,7 +105,7 @@ array (
             'label' => 'LBL_SALE_AMOUNT',
           ),
         ),
-        6 => 
+        5 => 
         array (
           0 => 
           array (
@@ -132,7 +119,7 @@ array (
             'label' => 'LBL_ALT_ADDRESS_POSTALCODE',
           ),
         ),
-        7 => 
+        6 => 
         array (
           0 => 
           array (
@@ -143,7 +130,7 @@ array (
           ),
           1 => 'status',
         ),
-        8 => 
+        7 => 
         array (
           0 => 'lead_source',
           1 => 
@@ -152,7 +139,7 @@ array (
             'label' => 'LBL_SUGARFIELD_AMOUNT',
           ),
         ),
-        9 => 
+        8 => 
         array (
           0 => 
           array (
@@ -161,12 +148,12 @@ array (
             'label' => 'LBL_OTHER_SOURCE',
           ),
         ),
-        10 => 
+        9 => 
         array (
           0 => 'description',
           1 => '',
         ),
-        11 => 
+        10 => 
         array (
           0 => 
           array (
@@ -174,7 +161,7 @@ array (
             'label' => 'LBL_SUGARFIELD_NEXTACTION',
           ),
         ),
-        12 => 
+        11 => 
         array (
           0 => 
           array (
