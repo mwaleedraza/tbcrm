@@ -7,5 +7,4 @@ require_once('modules/Configurator/Configurator.php');
 
     
     $cfg->handleOverride();
-    
-    echo $cfg->config['list_max_entries_per_page'];
+        echo $cfg->config['list_max_entries_per_page'];

@@ -4,7 +4,7 @@
 $(document).ready(function () {
     debugger;
     let div=document.createElement('div');
-    div.innerHTML='<select name="list_max_entries_per_page" id="list_max_entries_per_page" onchange=change_no_row()><option value="20">20</option><option value="2">2</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option></select>';
+    div.innerHTML='<select name="list_max_entries_per_page" id="list_max_entries_per_page" onchange=change_no_row()><option value="20">20</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option></select>';
     $(div).insertBefore(document.getElementsByClassName('listViewBody'));
     $.ajax({
             type: "POST",
@@ -30,7 +30,7 @@ function change_no_row(){
             success: function (response) {
                 console.log(response);
                 document.getElementById('list_max_entries_per_page').value=response;
-                setTimeout(() => { location.reload() }, 2000);
+                setTimeout(() => { location.reload() }, 3000);
             }
         });
     }
