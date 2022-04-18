@@ -1002,7 +1002,8 @@ function calculateLine(ln, key) {
     }
     else {
       profitMargin = profitMargin / 100;
-      var productSalePrice = per_unit_cost / (1 - profitMargin);
+
+      var productSalePrice = per_unit_cost + (per_unit_cost * profitMargin);
       
       $("#" + key + "product_list_price" + ln).val(format2Number(productSalePrice));
     }
@@ -1137,7 +1138,7 @@ function calculateLine(ln, key) {
           $("#" + key + "gst_percentage" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
 
           let gstPerc = gstCstm / 100;
-          totalGST = productTotalPrice * gstPerc;
+          totalGST = (productTotalPrice  + totalWHT) * gstPerc;
           productTotalPrice = productTotalPrice + totalGST;
         }
         else {
@@ -1149,7 +1150,7 @@ function calculateLine(ln, key) {
         $("#" + key + "gst_percentage" + ln).css({ "pointer-events": "auto", "filter": "" });
 
         let gstPerc = gst / 100;
-        totalGST = productTotalPrice * gstPerc;
+        totalGST = (productTotalPrice + totalWHT) * gstPerc;
         productTotalPrice = productTotalPrice + totalGST;
       }
     }
@@ -1161,7 +1162,7 @@ function calculateLine(ln, key) {
           $("#" + key + "pra_percentage" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
 
           let praPerc = praCstm / 100;
-          totalPRA = productTotalPrice * praPerc;
+          totalPRA = (productTotalPrice + totalWHT) * praPerc;
           productTotalPrice = productTotalPrice + totalPRA;
         }
         else {
@@ -1173,7 +1174,7 @@ function calculateLine(ln, key) {
         $("#" + key + "pra_percentage" + ln).css({ "pointer-events": "auto", "filter": "" });
 
         let praPerc = pra / 100;
-        totalPRA = productTotalPrice * praPerc;
+        totalPRA = (productTotalPrice  + totalWHT) * praPerc;
         productTotalPrice = productTotalPrice + totalPRA;
       }
     }
