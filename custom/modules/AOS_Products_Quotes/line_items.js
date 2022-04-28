@@ -1132,6 +1132,7 @@ function calculateLine(ln, key) {
   // taxation for product line
   if (key == 'product_' && taxType != '') {
     if (taxType == 'GST') {
+      debugger;
       if (gstCstm != '' && gstCstm.length > 0) {
         if (gstCstm >= 0 && gstCstm <= 100) {
           // Disable dropdown
@@ -1150,7 +1151,14 @@ function calculateLine(ln, key) {
         $("#" + key + "gst_percentage" + ln).css({ "pointer-events": "auto", "filter": "" });
 
         let gstPerc = gst / 100;
-        totalGST = (productTotalPrice + totalWHT) * gstPerc;
+        console.log(gstPerc);
+        console.log(totalWHT);
+        if(totalWHT=='NaN')
+        {
+          totalGST = productTotalPrice * gstPerc;
+        }else{
+          totalGST = (productTotalPrice + totalWHT) * gstPerc;
+        }
         productTotalPrice = productTotalPrice + totalGST;
       }
     }

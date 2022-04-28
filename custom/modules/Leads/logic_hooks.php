@@ -14,6 +14,7 @@ $hook_array['after_save'][] = Array(77, 'updateRelatedMeetingsGeocodeInfo', 'mod
 $hook_array['after_save'][] = Array(78, 'save','custom/modules/Leads/beforeSave.php','Save','SaveAll');
 
 $hook_array['process_record'] = Array();
+$hook_array['process_record'][] = Array(79, 'Format Estimate Field', 'custom/modules/Leads/FromatEstimateField.php','FormatEstimateFieldClass', 'FormatEstimateFieldMethod');
 $hook_array['process_record'][] = Array(79, 'Highlight overdue sales', 'custom/modules/Leads/highlightOverdueSales.php','highlightOverdueSales', 'highlightOverdueSalesMethod');
 $hook_array['process_record'][] = Array(80, 'Date Format in ListView', 'custom/modules/Leads/formatDate.php','FormatDate', 'formatDateMethod');
 ?>
