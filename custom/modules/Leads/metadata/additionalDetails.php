@@ -88,9 +88,9 @@ function additionalDetailsLead($fields)
     // if (!empty($fields['PHONE_HOME'])) {
     //     $overlib_string .= '<b>'. $mod_strings['LBL_HOME_PHONE'] . '</b> <span class="phone">' . $fields['PHONE_HOME'] . '</span><br>';
     // }
-    //  if (!empty($fields['SUGARFIELD_TYPE'])) {
-    //      $overlib_string .= '<b>'. $mod_strings['LBL_SUGARFIELD_TYPE'] . '</b>' . $fields['SUGARFIELD_TYPE'] . '<br>';
-    //  }
+     if (!empty($fields['SUGARFIELD_TYPE'])) {
+         $overlib_string .= '<b>'. $mod_strings['LBL_SUGARFIELD_TYPE'] . '</b>' . $fields['SUGARFIELD_TYPE'] . '<br>';
+     }
     if (!empty($fields['DATE_ENTERED'])) {
         $overlib_string .= '<b>'. $mod_strings['LBL_DATE_ENTERED'] . '</b> ' . $fields['DATE_ENTERED'] . '<br>';
     }
