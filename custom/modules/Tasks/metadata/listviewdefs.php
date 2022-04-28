@@ -5,7 +5,7 @@ array (
   array (
     'type' => 'int',
     'label' => 'LBL_SERIAL_NO',
-    'width' => '10%',
+    'width' => '1%',
     'default' => true,
   ),
   'PRIORITY' => 

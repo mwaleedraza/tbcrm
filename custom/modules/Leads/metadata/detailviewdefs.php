@@ -135,11 +135,6 @@ array (
             'comment' => 'Last name of the contact',
             'label' => 'LBL_LAST_NAME',
           ),
-          1 => 
-          array (
-            'name' => 'accept_status_name',
-            'label' => 'LBL_LIST_ACCEPT_STATUS',
-          ),
         ),
         2 => 
         array (

@@ -18,10 +18,10 @@ class LeadsViewList extends ViewList
     }
      function listViewPrepare()
     {
-        if (empty($userPreferenceOrder['orderBy'])) {
-            $_REQUEST['orderBy'] = 'date_entered';
-            $_REQUEST['sortOrder'] = 'DESC';
-        }
+        // if (empty($userPreferenceOrder['orderBy'])) {
+        //     $_REQUEST['orderBy'] = 'date_entered';
+        //     $_REQUEST['sortOrder'] = 'DESC';
+        // }
         parent::listViewPrepare();
     }
 }

@@ -152,6 +152,15 @@ array (
         ),
         6 => 
         array (
+          0 => 
+          array (
+            'name' => 'assignedby_name',
+            'label' => 'LBL_ASSIGNEDBY_NAME',
+          ),
+          1 => '',
+        ),
+        7 => 
+        array (
           0 => 'description',
           1 => 
           array (
@@ -159,7 +168,7 @@ array (
             'label' => 'LBL_NEXT_ACTION',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (
@@ -172,7 +181,7 @@ array (
             'label' => 'LBL_CLOSURE_DATE',
           ),
         ),
-        8 => 
+        9 => 
         array (
           0 => 
           array (
@@ -186,15 +195,6 @@ array (
             'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
             'label' => 'LBL_DATE_MODIFIED',
           ),
-        ),
-        9 => 
-        array (
-          0 => 
-          array (
-            'name' => 'assignedby_name',
-            'label' => 'LBL_ASSIGNEDBY_NAME',
-          ),
-          1 => '',
         ),
       ),
     ),
