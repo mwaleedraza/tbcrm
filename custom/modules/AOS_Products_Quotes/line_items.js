@@ -1099,6 +1099,7 @@ function calculateLine(ln, key) {
 
 
   // adding WHT
+  debugger;
   if (whtCustom !== '') {
     if (whtCustom >= 0 && whtCustom <= 100) {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
@@ -1109,6 +1110,7 @@ function calculateLine(ln, key) {
 
       productTotalPrice = productTotalPrice / whtCustom;
       let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
+      unformat2Number(unitPrice);
       totalWHT = productTotalPrice - unitPrice;
       // productTotalPrice = productTotalPrice.toFixed(2);
     }
@@ -1126,13 +1128,12 @@ function calculateLine(ln, key) {
     productTotalPrice = productTotalPrice / whtPercCalc;
 
     let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
-    totalWHT = productTotalPrice - unitPrice;
+    totalWHT = productTotalPrice - unformat2Number(unitPrice);
   }
   
   // taxation for product line
   if (key == 'product_' && taxType != '') {
     if (taxType == 'GST') {
-      debugger;
       if (gstCstm != '' && gstCstm.length > 0) {
         if (gstCstm >= 0 && gstCstm <= 100) {
           // Disable dropdown
@@ -1153,7 +1154,8 @@ function calculateLine(ln, key) {
         let gstPerc = gst / 100;
         console.log(gstPerc);
         console.log(totalWHT);
-        if(totalWHT=='NaN')
+
+        if(totalWHT==='NaN'||totalWHT=='')
         {
           totalGST = productTotalPrice * gstPerc;
         }else{
