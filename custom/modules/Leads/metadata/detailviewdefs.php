@@ -71,6 +71,10 @@ array (
           array (
             'customCode' => '<input type="button" id="verifyButton" class="verifyButtonContainer" name="verify" value="Create Quotes" onClick="document.location=\'index.php?module=AOS_Quotes&action=EditView&lead_id={$fields.id.value}\'">',
           ),
+          7 => 
+          array (
+            'customCode' => '<input type="button" id="verifyButton" class="verifyButtonContainer" name="verify" value="Create Task" onClick="document.location=\'index.php?module=Tasks&action=EditView&lead_id={$fields.id.value}\'">',
+          ),
           'AOS_GENLET' => 
           array (
             'customCode' => '<input type="button" class="button" onClick="showPopup();" value="{$APP.LBL_PRINT_AS_PDF}">',

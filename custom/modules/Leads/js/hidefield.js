@@ -8,8 +8,6 @@
 		$('div[data-label="LBL_OTHER_SOURCE"]').parent().hide(); 
 			}
  	});
-
-debugger;
 	 $('div[data-label="LBL_RENEWAL_PERIOD"]').parent().hide(); 
 	 $('#sugarfield_type').change(function () { 
 	 debugger;
