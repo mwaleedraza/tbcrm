@@ -1,6 +1,6 @@
 <?php
 $app_list_strings['renewal_period_dom'] = array(
-        'Mothly'=>'Mothly',
+        'Mothly'=>'Monthly',
         'Quarterly'=>'Quarterly',
         'Bi-annual'=>'Bi-annual',
         'Annual'=>'Annual',
