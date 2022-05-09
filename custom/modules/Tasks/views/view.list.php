@@ -12,14 +12,23 @@ class TasksViewList extends ViewList
     {
     
         global $current_user, $db;
- 	$roleBean=new ACLRole();
+ 	    $roleBean=new ACLRole();
         $roles = $roleBean->getUserRoleNames($current_user->id);
         $this->params['custom_where'] .= ' AND tasks.status != "Completed"';
-	if($current_user->is_admin==0)
-	{
-	       $this->params['custom_where'] .= ' AND tasks.assigned_user_id="'.$current_user->id.'"    ';
-	}
-        
+        if($current_user->is_admin==0)
+        {
+            if($roles[0]=='Manager')
+            {
+                require_once 'modules/SecurityGroups/SecurityGroup.php';
+                $group_where = SecurityGroup::getGroupUsersWhere($current_user->id);
+                $group_where= 'SELECT id from users WHERE '.$group_where;
+    
+                $this->params['custom_where'] .= ' AND tasks.assigned_user_id IN (' . $group_where . ') AND tasks.deleted=0 ';
+            }else{
+                $this->params['custom_where'] .= ' AND tasks.assigned_user_id = "'.$current_user->id.'" ';
+                $this->params['custom_where'] .= ' AND tasks.deleted = "0" ';
+            }
+        }
         parent::processSearchForm();
     }
      function listViewPrepare()
