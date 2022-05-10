@@ -5,6 +5,7 @@
       function setDDVal (field_id,field_val){
           $('#'+field_id).val(field_val).trigger('change');
       }
+      
   </script>
 {/literal}
 
