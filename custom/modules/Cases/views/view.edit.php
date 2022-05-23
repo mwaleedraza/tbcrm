@@ -67,7 +67,7 @@ class CasesViewEdit extends ViewEdit
         */
 
         $accountsArr = array();
-        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0");
+        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0 ORDER BY name");
         while ($rows = $db->fetchByAssoc($account)) {
             array_push($accountsArr, $rows);
         }
@@ -80,7 +80,7 @@ class CasesViewEdit extends ViewEdit
             Getting all contacts/clients to assign to tpl
         */
         $contactsArr = array();
-        $contact = $db->query("SELECT `id`,`last_name`,`first_name` FROM `contacts` WHERE deleted = 0");
+        $contact = $db->query("SELECT `id`,`last_name`,`first_name` FROM `contacts` WHERE deleted = 0 ORDER BY last_name");
         while ($rows = $db->fetchByAssoc($contact)) {
             array_push($contactsArr, $rows);
         }
@@ -93,7 +93,7 @@ class CasesViewEdit extends ViewEdit
             Getting all products to assign to tpl
         */
         $productsArr = array();
-        $product = $db->query("SELECT `id`,`name` FROM `aos_products` WHERE deleted = 0");
+        $product = $db->query("SELECT `id`,`name` FROM `aos_products` WHERE deleted = 0 ORDER BY name");
         while ($rows = $db->fetchByAssoc($product)) {
             array_push($productsArr, $rows);
         }
@@ -106,7 +106,7 @@ class CasesViewEdit extends ViewEdit
             Getting all users to assign to tpl
         */
         $usersArr = array();
-        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0");
+        $user = $db->query("SELECT `id`,`first_name`,`last_name` FROM `users` WHERE deleted = 0 ORDER BY last_name");
         while ($rows = $db->fetchByAssoc($user)) {
             array_push($usersArr, $rows);
         }
