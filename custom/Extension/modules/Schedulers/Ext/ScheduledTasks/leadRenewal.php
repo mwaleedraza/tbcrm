@@ -1,7 +1,7 @@
 <?php
 if (!defined('sugarEntry'))
 	define('sugarEntry', true);
-    require_once('phpmalier.php');
+    require_once('include/SugarPHPMailer.php');
 array_push($job_strings, 'leadRenewal');
 
 // scheduler for lead renewal notifications
@@ -81,7 +81,6 @@ while($row = $db -> fetchByAssoc($getLeadsData)):
                     echo '2';
                 }
             }
-            echo $renew_leadbean->id;
         }
     }
 endwhile; 
