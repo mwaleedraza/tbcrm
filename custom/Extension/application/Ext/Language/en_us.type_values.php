@@ -1,6 +1,8 @@
 <?php
 $app_list_strings['type_list_drop_down'] = array(
+    '' => '',
     'Client' => 'Client',
     'Vendor' => 'Vendor',
-    'Distribution' => 'Distribution',
+    'Internal' => 'Internal',
+    'Distributor' => 'Distributor'
 );
