@@ -66,7 +66,7 @@ class TasksViewEdit extends ViewEdit
             Getting all contacts/clients to assign to tpl
         */
         $accountsArr = array();
-        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0");
+        $account = $db->query("SELECT `id`,`name` FROM `accounts` WHERE deleted = 0 ORDER BY name");
         while ($rows = $db->fetchByAssoc($account)) {
             array_push($accountsArr, $rows);
         }
@@ -81,7 +81,7 @@ class TasksViewEdit extends ViewEdit
             Getting all users to assign to tpl
         */
         $usersArr = array();
-        $user = $db->query("SELECT id,first_name,last_name FROM users WHERE deleted = 0 ORDER BY first_name ");
+        $user = $db->query("SELECT id,first_name,last_name FROM users WHERE deleted = 0 ORDER BY last_name ");
         while ($rows = $db->fetchByAssoc($user)) {
             array_push($usersArr, $rows);
         }
