@@ -12,6 +12,7 @@ $hook_array['before_save'][] = Array(79, 'update scheduler bit on renewal date c
 $hook_array['after_save'] = Array();
 $hook_array['after_save'][] = Array(77, 'updateRelatedMeetingsGeocodeInfo', 'modules/Leads/LeadsJjwg_MapsLogicHook.php','LeadsJjwg_MapsLogicHook', 'updateRelatedMeetingsGeocodeInfo');
 $hook_array['after_save'][] = Array(78, 'save','custom/modules/Leads/beforeSave.php','Save','SaveAll');
+$hook_array['after_save'][] = Array(82, 'assignment alert', 'custom/modules/Leads/assignAlert.php','assignAlert', 'assignAlertMethod');
 
 $hook_array['process_record'] = Array();
 $hook_array['process_record'][] = Array(79, 'Format Estimate Field', 'custom/modules/Leads/FromatEstimateField.php','FormatEstimateFieldClass', 'FormatEstimateFieldMethod');
