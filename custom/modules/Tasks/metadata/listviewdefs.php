@@ -83,18 +83,18 @@ array (
     'link' => false,
     'default' => true,
   ),
-  'SET_COMPLETE' => 
-  array (
-    'width' => '1%',
-    'label' => 'LBL_LIST_CLOSE',
-    'link' => true,
-    'sortable' => false,
-    'default' => true,
-    'related_fields' => 
-    array (
-      0 => 'status',
-    ),
-  ),
+  // 'SET_COMPLETE' => 
+  // array (
+  //   'width' => '1%',
+  //   'label' => 'LBL_LIST_CLOSE',
+  //   'link' => true,
+  //   'sortable' => false,
+  //   'default' => true,
+  //   'related_fields' => 
+  //   array (
+  //     0 => 'status',
+  //   ),
+  // ),
 );
 ;
 ?>
