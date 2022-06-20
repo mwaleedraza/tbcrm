@@ -15,33 +15,33 @@ class assignAlert
             if($bean->fetched_row['assigned_user_id'] != $bean->assigned_user_id){
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sale is assigned to you";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Task is assigned to you";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
                 $alertBean->assigned_user_id = $bean->assigned_user_id;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sales is assigned to you";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Task is assigned to you";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
                 $alertBean->assigned_user_id = $bean->created_by;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sales is assigned to you";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Task is assigned to you";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
                 $alertBean->assigned_user_id = $bean->assignedby_id;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
     
                 $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
@@ -51,7 +51,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$assigneduserBean->last_name.',</h3>
-                                <p>You are responsible person for a new Sale <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You are responsible person for a new Tasks <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Task Assignment | TBCRM';
                     
                     $emailObj = new Email();
@@ -79,7 +79,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$createduserBean->last_name.',</h3>
-                                <p>You Created a Sale and it has now been reassigned to '.$createduserBean->last_name.' <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You Created a Task and it has now been reassigned to '.$createduserBean->last_name.' <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Task Assignment | TBCRM';
                     
                     $emailObj = new Email();
@@ -108,7 +108,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$assignedbyuserBean->last_name.',</h3>
-                                <p>You have assigned a Sale to '.$assigneduserBean->last_name.' Sale Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You have assigned a Task to '.$assigneduserBean->last_name.' Task Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Task Assignment | TBCRM';
                     
                     $emailObj = new Email();
@@ -136,8 +136,8 @@ class assignAlert
             if($bean->fetched_row['status'] != $bean->status){
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sale Status has been changed";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Task Status has been changed";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
                 $alertBean->assigned_user_id = $bean->assigned_user_id;
@@ -146,8 +146,8 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sale Status has been changed";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Task Status has been changed";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
                 $alertBean->assigned_user_id = $bean->created_by;
@@ -156,13 +156,13 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sale Status has been changed";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Task Status has been changed";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
                 $alertBean->assigned_user_id = $bean->assignedby_id;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
     
                 $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
@@ -172,7 +172,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$assigneduserBean->last_name.',</h3>
-                                <p>You are responsible person for this Sale its status has been changed <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You are responsible person for this Task its status has been changed <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Status Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -200,7 +200,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$createduserBean->last_name.',</h3>
-                                <p>You Created a Sale and its status has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You Created a Task and its status has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Status Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -229,7 +229,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$assignedbyuserBean->last_name.',</h3>
-                                <p>You have assigned a Sale to '.$assigneduserBean->last_name.' its status has been changed Sale Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You have assigned a Task to '.$assigneduserBean->last_name.' its status has been changed Task Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Status Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -256,33 +256,33 @@ class assignAlert
             if($bean->fetched_row['description'] != $bean->description){
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description changed for this Sale";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Description changed for this Task";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
                 $alertBean->assigned_user_id = $bean->assigned_user_id;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description changed for this Sale";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Description changed for this Task";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
                 $alertBean->assigned_user_id = $bean->created_by;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description changed for this Sale";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Description changed for this Task";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
                 $alertBean->assigned_user_id = $bean->assignedby_id;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
     
                 $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
@@ -292,7 +292,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$assigneduserBean->last_name.',</h3>
-                                <p>You are responsible person for this Sale its Description has been changed <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You are responsible person for this Task its Description has been changed <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Description Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -320,7 +320,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$createduserBean->last_name.',</h3>
-                                <p>You Created a Sale and its Description has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You Created a Task and its Description has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Description Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -349,7 +349,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$assignedbyuserBean->last_name.',</h3>
-                                <p>You have assigned a Sale to '.$assigneduserBean->last_name.' its Description has been changed Sale Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You have assigned a Task to '.$assigneduserBean->last_name.' its Description has been changed Task Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Description Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -377,33 +377,33 @@ class assignAlert
             if($bean->fetched_row['next_action'] != $bean->next_action){
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Next Action changed for this Sale";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Next Action changed for this Task";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
                 $alertBean->assigned_user_id = $bean->assigned_user_id;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Next Action changed for this Sale";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Next Action changed for this Tasks";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
                 $alertBean->assigned_user_id = $bean->created_by;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Next Action changed for this Sale";
-                $alertBean->target_module = 'Leads';
+                $alertBean->description = "Next Action changed for this Task";
+                $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
                 $alertBean->assigned_user_id = $bean->assignedby_id;
                 $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Leads&record=' . $bean->id;
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                 $alertBean->save();
     
                 $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
@@ -413,7 +413,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$assigneduserBean->last_name.',</h3>
-                                <p>You are responsible person for this Sale its Next Action has been changed <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You are responsible person for this Task its Next Action has been changed <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Next Action Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -441,7 +441,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$createduserBean->last_name.',</h3>
-                                <p>You Created a Sale and its Next Action has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You Created a Task and its Next Action has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Next Action Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -470,7 +470,7 @@ class assignAlert
                     $parent_id = $bean->parent_id;
                     $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
                     $body = '<h3>Hi '.$assignedbyuserBean->last_name.',</h3>
-                                <p>You have assigned a Sale to '.$assigneduserBean->last_name.' its Next Action has been changed Sale Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>You have assigned a Task to '.$assigneduserBean->last_name.' its Next Action has been changed Task Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Next Action Change | TBCRM';
                     
                     $emailObj = new Email();
