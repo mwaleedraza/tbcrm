@@ -18,7 +18,7 @@ class assignAlert
                 $assignedbyuserBean = BeanFactory::getBean('Users', $bean->assignedby_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket:$bean->name is assigned to you";
+                $alertBean->description = "Ticket No#:$bean->ticket_no is assigned to you";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
@@ -28,7 +28,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket:$bean->name You Created is Assigned to ".$assigneduserBean->username;
+                $alertBean->description = "Ticket No#:$bean->ticket_no You Created is Assigned to ".$assigneduserBean->username;
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -38,7 +38,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "You Have Assigned a Ticket:$bean->name to ".$assigneduserBean->username;
+                $alertBean->description = "You Have Assigned a Ticket No#:$bean->ticket_no to ".$assigneduserBean->username;
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -131,7 +131,7 @@ class assignAlert
             if($bean->fetched_row['status'] != $bean->status){
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket:$bean->name status has been changed";
+                $alertBean->description = "Ticket No#:$bean->ticket_no status has been changed";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
@@ -141,7 +141,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Status Changed for Ticket:$bean->name you Created";
+                $alertBean->description = "Status Changed for Ticket No#:$bean->ticket_no you Created";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -151,7 +151,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket:$bean->name Status has been changed";
+                $alertBean->description = "Ticket No#:$bean->ticket_no Status has been changed";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -245,7 +245,7 @@ class assignAlert
             if($bean->fetched_row['description'] != $bean->description){
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description change for Ticket:$bean->name";
+                $alertBean->description = "Description change for Ticket No#:$bean->ticket_no";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
@@ -255,7 +255,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description change for Ticket:$bean->name that you created";
+                $alertBean->description = "Description change for Ticket No#:$bean->ticket_no that you created";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -265,7 +265,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description change for this Ticket:$bean->name";
+                $alertBean->description = "Description change for this Ticket No#:$bean->ticket_no";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
