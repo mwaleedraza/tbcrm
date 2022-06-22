@@ -14,9 +14,11 @@ class assignAlert
 
             //alerts and emails for assigned user change
             if($bean->fetched_row['assigned_user_id'] != $bean->assigned_user_id){
+                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
+                $assignedbyuserBean = BeanFactory::getBean('Users', $bean->assignedby_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket is assigned to you";
+                $alertBean->description = "Ticket:$bean->name is assigned to you";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
@@ -26,7 +28,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket is assigned to you";
+                $alertBean->description = "Ticket:$bean->name You Created is Assigned to ".$assigneduserBean->username;
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -36,7 +38,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket is assigned to you";
+                $alertBean->description = "You Have Assigned a Ticket:$bean->name to ".$assigneduserBean->username;
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -45,12 +47,9 @@ class assignAlert
                 $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
                 $alertBean->save();
     
-                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 if($assigneduserBean->email1 != '' || $assigneduserBean->email1 != null){
                     $receiverEmail = $assigneduserBean->email1;
-                    $parent_type = $bean->parent_type;
-                    $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$assigneduserBean->last_name.',</h3>
                                 <p>You are responsible person for a new Ticket <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Ticket Assignment | TBCRM';
@@ -76,9 +75,7 @@ class assignAlert
                 $createduserBean = BeanFactory::getBean('Users', $bean->created_by);
                 if($createduserBean->email1 != '' || $createduserBean->email1 != null){
                     $receiverEmail = $createduserBean->email1;
-                    $parent_type = $bean->parent_type;
-                    $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$createduserBean->last_name.',</h3>
                                 <p>You Created a Ticket and it has now been reassigned to '.$createduserBean->last_name.' <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Ticket Assignment | TBCRM';
@@ -102,12 +99,9 @@ class assignAlert
                     }
                 }
     
-                $assignedbyuserBean = BeanFactory::getBean('Users', $bean->assignedby_id);
                 if($assignedbyuserBean->email1 != '' || $assignedbyuserBean->email1 != null){
                     $receiverEmail = $assignedbyuserBean->email1;
-                    $parent_type = $bean->parent_type;
-                    $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$assignedbyuserBean->last_name.',</h3>
                                 <p>You have assigned a Ticket to '.$assigneduserBean->last_name.' Ticket Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Ticket Assignment | TBCRM';
@@ -137,7 +131,7 @@ class assignAlert
             if($bean->fetched_row['status'] != $bean->status){
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket is assigned to you";
+                $alertBean->description = "Ticket:$bean->name status has been changed";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
@@ -147,7 +141,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket is assigned to you";
+                $alertBean->description = "Status Changed for Ticket:$bean->name you Created";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -157,7 +151,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket is assigned to you";
+                $alertBean->description = "Ticket:$bean->name Status has been changed";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -169,9 +163,7 @@ class assignAlert
                 $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 if($assigneduserBean->email1 != '' || $assigneduserBean->email1 != null){
                     $receiverEmail = $assigneduserBean->email1;
-                    $parent_type = $bean->parent_type;
-                    $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$assigneduserBean->last_name.',</h3>
                                 <p>You are responsible person for this Ticket its status has been changed <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Status Change | TBCRM';
@@ -197,9 +189,7 @@ class assignAlert
                 $createduserBean = BeanFactory::getBean('Users', $bean->created_by);
                 if($createduserBean->email1 != '' || $createduserBean->email1 != null){
                     $receiverEmail = $createduserBean->email1;
-                    $parent_type = $bean->parent_type;
-                    $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$createduserBean->last_name.',</h3>
                                 <p>You Created a Ticket and its status has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Status Change | TBCRM';
@@ -226,9 +216,7 @@ class assignAlert
                 $assignedbyuserBean = BeanFactory::getBean('Users', $bean->assignedby_id);
                 if($assignedbyuserBean->email1 != '' || $assignedbyuserBean->email1 != null){
                     $receiverEmail = $assignedbyuserBean->email1;
-                    $parent_type = $bean->parent_type;
-                    $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$assignedbyuserBean->last_name.',</h3>
                                 <p>You have assigned a Ticket to '.$assigneduserBean->last_name.' its status has been changed Ticket Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Status Change | TBCRM';
@@ -257,7 +245,7 @@ class assignAlert
             if($bean->fetched_row['description'] != $bean->description){
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description change for this Ticket";
+                $alertBean->description = "Description change for Ticket:$bean->name";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
@@ -267,7 +255,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description change for this Ticket";
+                $alertBean->description = "Description change for Ticket:$bean->name that you created";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -277,7 +265,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description change for this Ticket";
+                $alertBean->description = "Description change for this Ticket:$bean->name";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -289,9 +277,7 @@ class assignAlert
                 $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 if($assigneduserBean->email1 != '' || $assigneduserBean->email1 != null){
                     $receiverEmail = $assigneduserBean->email1;
-                    $parent_type = $bean->parent_type;
-                    $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$assigneduserBean->last_name.',</h3>
                                 <p>You are responsible person for this Ticket its Description has been changed <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Description Change | TBCRM';
@@ -317,9 +303,7 @@ class assignAlert
                 $createduserBean = BeanFactory::getBean('Users', $bean->created_by);
                 if($createduserBean->email1 != '' || $createduserBean->email1 != null){
                     $receiverEmail = $createduserBean->email1;
-                    $parent_type = $bean->parent_type;
-                    $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$createduserBean->last_name.',</h3>
                                 <p>You Created a Ticket and its Description has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Description Change | TBCRM';
@@ -348,7 +332,7 @@ class assignAlert
                     $receiverEmail = $assignedbyuserBean->email1;
                     $parent_type = $bean->parent_type;
                     $parent_id = $bean->parent_id;
-                    $taskUrl = $baseUrl."index.php?module=$parent_type&action=DetailView&record=$parent_id";
+                    $taskUrl = $baseUrl."index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$assignedbyuserBean->last_name.',</h3>
                                 <p>You have assigned a Ticket to '.$assigneduserBean->last_name.' its Description has been changed Ticket Link: <strong><a href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
                     $subject = 'Description Change | TBCRM';
