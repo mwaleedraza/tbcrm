@@ -8,7 +8,7 @@ class assignAlert
     function assignAlertMethod(&$bean, $event, $arguments)
     {
         global $db, $sugar_config;
-        $baseUrl = $sugar_config['baseUrl'];
+        $baseUrl = $sugar_config['site_url'];
         // if(!empty($bean->fetched_row))
         // {
 
