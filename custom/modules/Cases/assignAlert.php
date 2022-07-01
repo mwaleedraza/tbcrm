@@ -14,18 +14,18 @@ class assignAlert
 
             //alerts and emails for assigned user change
             if($bean->fetched_row['assigned_user_id'] != $bean->assigned_user_id){
-                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
-                $assignedbyuserBean = BeanFactory::getBean('Users', $bean->assignedby_id);
-                $alertBean = BeanFactory::newBean('Alerts');
-                $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket No#:$bean->ticket_no is assigned to you";
-                $alertBean->target_module = 'Cases';
-                $alertBean->type = 'info';
-                $alertBean->reminder_id = $bean->assigned_user_id;
-                $alertBean->assigned_user_id = $bean->assigned_user_id;
-                $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
-                $alertBean->save();
+                            $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
+                            $assignedbyuserBean = BeanFactory::getBean('Users', $bean->assignedby_id);
+                            $alertBean = BeanFactory::newBean('Alerts');
+                            $alertBean->name = $bean->name;
+                            $alertBean->description = "Ticket No#:$bean->ticket_no is assigned to you";
+                            $alertBean->target_module = 'Cases';
+                            $alertBean->type = 'info';
+                            $alertBean->reminder_id = $bean->assigned_user_id;
+                            $alertBean->assigned_user_id = $bean->assigned_user_id;
+                            $alertBean->is_read = '0';
+                            $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
+                            $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Ticket No#:$bean->ticket_no You Created is Assigned to ".$assigneduserBean->username;
@@ -36,16 +36,16 @@ class assignAlert
                 $alertBean->is_read = '0';
                 $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
                 $alertBean->save();
-                $alertBean = BeanFactory::newBean('Alerts');
-                $alertBean->name = $bean->name;
-                $alertBean->description = "You Have Assigned a Ticket No#:$bean->ticket_no to ".$assigneduserBean->username;
-                $alertBean->target_module = 'Cases';
-                $alertBean->type = 'info';
-                $alertBean->reminder_id = $bean->assignedby_id;
-                $alertBean->assigned_user_id = $bean->assignedby_id;
-                $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
-                $alertBean->save();
+                        $alertBean = BeanFactory::newBean('Alerts');
+                        $alertBean->name = $bean->name;
+                        $alertBean->description = "You Have Assigned a Ticket No#:$bean->ticket_no to ".$assigneduserBean->username;
+                        $alertBean->target_module = 'Cases';
+                        $alertBean->type = 'info';
+                        $alertBean->reminder_id = $bean->assignedby_id;
+                        $alertBean->assigned_user_id = $bean->assignedby_id;
+                        $alertBean->is_read = '0';
+                        $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
+                        $alertBean->save();
     
                 if($assigneduserBean->email1 != '' || $assigneduserBean->email1 != null){
                     $receiverEmail = $assigneduserBean->email1;
@@ -129,6 +129,18 @@ class assignAlert
 
             //alerts and emails for status change
             if($bean->fetched_row['status'] != $bean->status){
+                // assigned by (current user who is editing)
+                $alertBean = BeanFactory::newBean('Alerts');
+                $alertBean->name = $bean->name;
+                $alertBean->description = "you have edited the status of Ticket No#:$bean->ticket_no ";
+                $alertBean->target_module = 'Cases';
+                $alertBean->type = 'info';
+                $alertBean->reminder_id = $bean->assignedby_id;
+                $alertBean->assigned_user_id = $bean->assignedby_id;
+                $alertBean->is_read = '0';
+                $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
+                $alertBean->save();
+                // assigned to
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Ticket No#:$bean->ticket_no status has been changed";
@@ -139,9 +151,10 @@ class assignAlert
                 $alertBean->is_read = '0';
                 $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
                 $alertBean->save();
+                // creted by
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Status Changed for Ticket No#:$bean->ticket_no you Created";
+                $alertBean->description = "Status has been Changed of Ticket No#:$bean->ticket_no you Created";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -149,17 +162,8 @@ class assignAlert
                 $alertBean->is_read = '0';
                 $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
                 $alertBean->save();
-                $alertBean = BeanFactory::newBean('Alerts');
-                $alertBean->name = $bean->name;
-                $alertBean->description = "Ticket No#:$bean->ticket_no Status has been changed";
-                $alertBean->target_module = 'Cases';
-                $alertBean->type = 'info';
-                $alertBean->reminder_id = $bean->assignedby_id;
-                $alertBean->assigned_user_id = $bean->assignedby_id;
-                $alertBean->is_read = '0';
-                $alertBean->url_redirect = 'index.php?action=DetailView&module=Cases&record=' . $bean->id;
-                $alertBean->save();
     
+                // email part of assigned user
                 $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 if($assigneduserBean->email1 != '' || $assigneduserBean->email1 != null){
                     $receiverEmail = $assigneduserBean->email1;
@@ -186,12 +190,13 @@ class assignAlert
                             return false;
                     }
                 }
+                // email part of created by 
                 $createduserBean = BeanFactory::getBean('Users', $bean->created_by);
                 if($createduserBean->email1 != '' || $createduserBean->email1 != null){
                     $receiverEmail = $createduserBean->email1;
                     $taskUrl = $baseUrl."/index.php?module=Cases&action=DetailView&record=$bean->id";
                     $body = '<h3>Hi '.$createduserBean->last_name.',</h3>
-                                <p>You Created a Ticket and its status has been changed <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong></p>';
+                                <p>status has been changed of ticket <strong><a   href="'.$taskUrl.'">"'.$bean->name.'"</a></strong> created by you.</p>';
                     $subject = 'Status Change | TBCRM';
                     
                     $emailObj = new Email();
@@ -212,7 +217,7 @@ class assignAlert
                             echo false;
                     }
                 }
-    
+                // email part of assigned by user id
                 $assignedbyuserBean = BeanFactory::getBean('Users', $bean->assignedby_id);
                 if($assignedbyuserBean->email1 != '' || $assignedbyuserBean->email1 != null){
                     $receiverEmail = $assignedbyuserBean->email1;
@@ -265,7 +270,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description change for this Ticket No#:$bean->ticket_no";
+                $alertBean->description = "Description change for this Ticket No#:$bean->ticket_no that you assigned to ";
                 $alertBean->target_module = 'Cases';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;

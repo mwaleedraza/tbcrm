@@ -14,9 +14,6 @@ class assignAlert
             //alerts and emails for assigned user change
             if($bean->fetched_row['assigned_user_id'] != $bean->assigned_user_id){
                     $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
-                if($bean->assigned_user_id!=$bean->created_by)
-                {
-        
                         $alertBean = BeanFactory::newBean('Alerts');
                         $alertBean->name = $bean->name;
                         $alertBean->description = "Task:$bean->serial_no is assigned to you";
@@ -37,8 +34,6 @@ class assignAlert
                         $alertBean->is_read = '0';
                         $alertBean->url_redirect = 'index.php?action=DetailView&module=Tasks&record=' . $bean->id;
                         $alertBean->save();
-
-                }
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "You have assigned Task:$bean->serial_no to ".$assigneduserBean->username;
@@ -133,6 +128,7 @@ class assignAlert
 
             //alerts and emails for status change
             if($bean->fetched_row['status'] != $bean->status){
+                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Task:$bean->serial_no Status has been changed";
@@ -155,7 +151,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Task:$bean->serial_no which you assigned to user. its Status has been changed";
+                $alertBean->description = "Task:$bean->serial_no which you assigned to $assigneduserBean->user_name. its Status has been changed";
                 $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -247,6 +243,7 @@ class assignAlert
             }
             //alerts and emails for description change
             if($bean->fetched_row['description'] != $bean->description){
+                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Description changed for Task:$bean->serial_no";
@@ -269,7 +266,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description changed for Task:$bean->serial_no";
+                $alertBean->description = "Task:$bean->serial_no that you assigned to  $assigneduserBean->user_name.Description changed.";
                 $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -362,6 +359,7 @@ class assignAlert
 
             //alerts and emails for next_action change
             if($bean->fetched_row['next_action'] != $bean->next_action){
+                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Next Action changed for Task:$bean->serial_no";
@@ -384,7 +382,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Next Action changed for Task:$bean->serial_no";
+                $alertBean->description = "Next Action changed for Task:$bean->serial_no that you assigned to $assigneduserBean->user_name";
                 $alertBean->target_module = 'Tasks';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;

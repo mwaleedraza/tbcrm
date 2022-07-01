@@ -13,6 +13,7 @@ class assignAlert
 
             //alerts and emails for assigned user change
             if($bean->fetched_row['assigned_user_id'] != $bean->assigned_user_id){
+                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Sale is assigned to you";
@@ -25,7 +26,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sales is assigned to you";
+                $alertBean->description = "Sales You Created is Assigned to $assigneduserBean->user_name";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -35,7 +36,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sales is assigned to you";
+                $alertBean->description = "You Assigned a Sale to $assigneduserBean->user_name";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -134,6 +135,7 @@ class assignAlert
 
             //alerts and emails for status change
             if($bean->fetched_row['status'] != $bean->status){
+                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Sale:$bean->serial_no Status has been changed";
@@ -146,7 +148,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sale:$bean->serial_no Status has been changed";
+                $alertBean->description = "Sale:$bean->serial_no You Created. Its Status has been changed";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -156,7 +158,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sale:$bean->serial_no Status has been changed";
+                $alertBean->description = "Sale:$bean->serial_no You Assigned To $assigneduserBean->user_name. Its Status has been changed";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -248,6 +250,7 @@ class assignAlert
             }
             //alerts and emails for description change
             if($bean->fetched_row['description'] != $bean->description){
+                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Description changed for Sale:$bean->serial_no";
@@ -270,7 +273,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Description changed for Sale:$bean->serial_no";
+                $alertBean->description = "Description changed for Sale:$bean->serial_no That You Assigned To $assigneduserBean->user_name";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
@@ -363,6 +366,7 @@ class assignAlert
 
             //alerts and emails for next_action change
             if($bean->fetched_row['next_action'] != $bean->next_action){
+                $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
                 $alertBean->description = "Next Action changed for Sale:$bean->serial_no";
@@ -385,7 +389,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Next Action changed for Sale:$bean->serial_no";
+                $alertBean->description = "Next Action changed for Sale:$bean->serial_no That You Assigned to $assigneduserBean->user_name";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
