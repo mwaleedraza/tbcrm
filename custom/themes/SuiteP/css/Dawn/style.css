@@ -35897,12 +35897,12 @@ body>.le_panel .le_edit,
 .listViewButtons{
 	display: none;
 }
-.glyphicon.glyphicon-th-list{
+/* .glyphicon.glyphicon-th-list{
 	display: none;
 }
 .clickMenu.selectmenu.SugarActionMenu.columnsFilterLink.listViewLinkButton.listViewLinkButton_top{
 	display: none;
-}
+} */
 .clickMenu.selectmenu.SugarActionMenu.columnsFilterLink.listViewLinkButton.listViewLinkButton_bottom{
 	display: none;
 }
