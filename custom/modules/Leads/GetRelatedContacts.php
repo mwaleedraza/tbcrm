@@ -11,7 +11,7 @@ $id = $_REQUEST['id'];
 // $array=[];
 $array = array();
 
-$lead_query = "SELECT * FROM `contacts` WHERE accounts_id= '".$id."' AND deleted = 0 ";
+$lead_query = "SELECT * FROM `contacts` WHERE accounts_id= '".$id."' AND deleted = 0    ORDER BY first_name ASC";
 $leads = $db-> query($lead_query);
 while($rows = $db->fetchByAssoc($leads)){
     $first_name = $rows['first_name'];
