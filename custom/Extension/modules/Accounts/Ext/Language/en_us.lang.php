@@ -7,4 +7,5 @@ if (!defined('sugarEntry') || !sugarEntry) {
 $mod_strings = array(
     'LBL_GST_NUMBER' => 'GST',
     'LBL_NTN_NUMBER' => 'NTN',
+    'LBL_LEADS'=>'Sales',
 );

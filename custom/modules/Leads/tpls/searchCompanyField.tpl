@@ -10,12 +10,12 @@
 {/literal}
 
 <!-- Company dropdown -->
-<select id="account_id" name="account_id">
+<select id="company_id" name="company_id">
   <option>-- Select Company--</option>
   {foreach from=$ACCOUNTS_DATA key=index item=data}
     <option value="{$data.id}">{$data.name}</option>
   {/foreach}
-  <script> setDDVal('account_id','{$BEAN->account_id}') ;</script>
+  <script> setDDVal('company_id','{$BEAN->company_id}') ;</script>
 </select>
 
 
@@ -30,18 +30,18 @@
   <script type="text/javascript">
     $(document).ready(function(){
       // Initialize Select2
-      $('#account_id').select2();
+      $('#company_id').select2();
       $('#contacts_id').select2();
       makeContactsDD();
-      $("#account_id").change(function(){
+      $("#company_id").change(function(){
         makeContactsDD();
       });
     });
     function makeContactsDD(){
-        var account_id = $('#account_id').val();
+        var company_id = $('#company_id').val();
         
         var data = {
-            'id': account_id
+            'id': company_id
         };
 
         $.ajax({

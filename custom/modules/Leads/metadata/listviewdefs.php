@@ -29,15 +29,14 @@ array (
       2 => 'salutation',
     ),
   ),
-  'ACCOUNT_NAME' => 
+  'COMPANY_NAME' => 
   array (
-    'width' => '15%',
-    'label' => 'LBL_LIST_ACCOUNT_NAME',
+    'type' => 'relate',
+    'link' => true,
+    'label' => 'LBL_ACCOUNTS_NAME',
+    'id' => 'COMPANY_ID',
+    'width' => '10%',
     'default' => true,
-    'related_fields' => 
-    array (
-      0 => 'account_id',
-    ),
   ),
   'ASSIGNED_USER_NAME' => 
   array (
@@ -90,6 +89,16 @@ array (
     'width' => '10%',
     'label' => 'LBL_ALT_ADDRESS_COUNTRY',
     'default' => false,
+  ),
+  'ACCOUNT_NAME' => 
+  array (
+    'width' => '15%',
+    'label' => 'LBL_LIST_ACCOUNT_NAME',
+    'default' => false,
+    'related_fields' => 
+    array (
+      0 => 'account_id',
+    ),
   ),
   'CONTACTS_NAME' => 
   array (

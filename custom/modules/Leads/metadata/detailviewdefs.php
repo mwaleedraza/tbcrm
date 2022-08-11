@@ -144,7 +144,8 @@ array (
         array (
           0 => 
           array (
-            'name' => 'account_name',
+            'name' => 'company_name',
+            'label' => 'LBL_ACCOUNTS_NAME',
           ),
           1 => 
           array (
