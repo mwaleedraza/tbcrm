@@ -16,7 +16,7 @@ class assignAlert
                 $assigneduserBean = BeanFactory::getBean('Users', $bean->assigned_user_id);
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sale is assigned to you";
+                $alertBean->description = "Sale:$bean->serial_no is assigned to you";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assigned_user_id;
@@ -26,7 +26,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "Sales You Created is Assigned to $assigneduserBean->user_name";
+                $alertBean->description = "Sales:$bean->serial_no You Created is Assigned to $assigneduserBean->user_name";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->created_by;
@@ -36,7 +36,7 @@ class assignAlert
                 $alertBean->save();
                 $alertBean = BeanFactory::newBean('Alerts');
                 $alertBean->name = $bean->name;
-                $alertBean->description = "You Assigned a Sale to $assigneduserBean->user_name";
+                $alertBean->description = "You Assigned a Sale:$bean->serial_no to $assigneduserBean->user_name";
                 $alertBean->target_module = 'Leads';
                 $alertBean->type = 'info';
                 $alertBean->reminder_id = $bean->assignedby_id;
