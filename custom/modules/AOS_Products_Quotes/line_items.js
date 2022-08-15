@@ -1018,8 +1018,6 @@ function calculateLine(ln, key) {
       $("#" + key + "product_list_price" + ln).val(format2Number(per_unit_cost));
     }
     else {
-      debugger;
-
       profitMarginpercentage =1- (profitMargin / 100);
       profitMargin=(per_unit_cost)/profitMarginpercentage;
       var productSalePrice = profitMargin;
@@ -1123,10 +1121,12 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
 
 
   // adding WHT
+  debugger;
   if (whtCustom !== '') {
     if (whtCustom >= 0 && whtCustom <= 100) {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
       totalWHT = (productTotalPrice * whtCustom) / 100;
+      console.log(totalWHT);
 
       whtCustom = parseFloat(whtCustom);
       whtCustom = (100 - whtCustom) / 100;
@@ -1145,13 +1145,18 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     if (wht === '') {
       return 0;
     }
-    $("#" + key + "wht_amt" + ln).css({ "pointer-events": "auto", "filter": "" });
-    totalWHT = productTotalPrice * (wht / 100);
-    let whtPercCalc = (100 - wht) / 100;
-    productTotalPrice = productTotalPrice / whtPercCalc;
-
-    let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
-    totalWHT = productTotalPrice - unformat2Number(unitPrice);
+    if(wht>0)
+    {
+      $("#" + key + "wht_amt" + ln).css({ "pointer-events": "auto", "filter": "" });
+      debugger;;
+      totalWHT = productQty * $("#" + key + "product_total_price_tax_excl" + ln).val() * (wht / 100);
+      let whtPercCalc = (100 - wht) / 100;
+      productTotalPrice = productTotalPrice / whtPercCalc;
+  
+      let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
+      // totalWHT = productTotalPrice - unformat2Number(unitPrice);
+      document.getElementById(key + 'vat_amt' + ln).value = format2Number(totalWHT);
+    }
   }
   
   // taxation for product line
@@ -1466,15 +1471,15 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
   document.getElementById(key + 'product_unit_price' + ln).value = format2Number(productUnitPrice);
   document.getElementById(key + 'product_total_price' + ln).value = format2Number(productTotalPrice);
   
-  totalvat = totalWHT;
-  if (totalvat) {
+  // totalvat = totalWHT;
+  // if (totalvat) {
     
-    document.getElementById(key + 'vat_amt' + ln).value = format2Number(totalvat);
+  //   document.getElementById(key + 'vat_amt' + ln).value = format2Number(totalvat);
     
-  }
-  else {
-    document.getElementById(key + 'vat_amt' + ln).value = format2Number(0);
-  }
+  // }
+  // else {
+  //   document.getElementById(key + 'vat_amt' + ln).value = format2Number(0);
+  // }
 
   // profit table values
   var priceAfterTax
