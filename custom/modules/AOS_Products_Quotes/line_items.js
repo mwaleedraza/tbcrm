@@ -277,7 +277,7 @@ function insertProductLine(tableid, groupid) {
   var z = tablebody.insertRow(-1);
   var per_unit = z.insertCell(0);
   // per_unit.style = "padding:20px 5px 0px 5px";
-  per_unit.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_per_unit_cost_label'>	Cost to C</span><br>";
+  per_unit.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_per_unit_cost_label'>Unit Cost</span><br>";
   per_unit.innerHTML += "<input style='width: 80px;' type='text' name='product_per_unit_cost[" + prodln + "]' id='product_per_unit_cost" + prodln + "' maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' oninput='setBaseCost(" + prodln + ",\"product_\")' class='per_unit_cost'>";
   per_unit.innerHTML += "<input type='text' name='product_base_cost[" + prodln + "]' id='product_base_cost" + prodln + "' maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' class='base_cost' hidden>";
   per_unit.style.padding = "0px 5px";
