@@ -1121,7 +1121,6 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
 
 
   // adding WHT
-  debugger;
   if (whtCustom !== '') {
     if (whtCustom >= 0 && whtCustom <= 100) {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
@@ -1148,7 +1147,6 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     if(wht>0)
     {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "auto", "filter": "" });
-      debugger;;
       totalWHT = productQty * $("#" + key + "product_total_price_tax_excl" + ln).val() * (wht / 100);
       let whtPercCalc = (100 - wht) / 100;
       productTotalPrice = productTotalPrice / whtPercCalc;
@@ -1165,9 +1163,12 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       if (gstCstm != '' && gstCstm.length > 0) {
         if (gstCstm >= 0 && gstCstm <= 100) {
           // Disable dropdown
+          debugger;
           $("#" + key + "gst_percentage" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
 
           let gstPerc = gstCstm / 100;
+          console.log(key + 'product_total_price' + ln);
+          console.log(unformat2Number(document.getElementById(key + 'product_total_price' + ln).value));
           totalGST = (productTotalPrice  + totalWHT) * gstPerc;
           productTotalPrice = productTotalPrice + totalGST;
         }
@@ -1180,14 +1181,12 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         $("#" + key + "gst_percentage" + ln).css({ "pointer-events": "auto", "filter": "" });
 
         let gstPerc = gst / 100;
-        console.log(gstPerc);
-        console.log(totalWHT);
 
         if(totalWHT==='NaN'||totalWHT=='')
         {
           totalGST = productTotalPrice * gstPerc;
         }else{
-          totalGST = (productTotalPrice + totalWHT) * gstPerc;
+          totalGST = (document.getElementById(key + 'product_list_price' + ln).value) * gstPerc;
         }
         productTotalPrice = productTotalPrice + totalGST;
       }
@@ -1519,8 +1518,8 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       if (typeof pmtAfterWHT != 'undefined' && typeof totalTaxType != 'undefined') {
         prodPrice_lessTaxType = pmtAfterWHT - totalTaxType;
         let prodPerUnitPrice = parseFloat(document.getElementById(key + 'per_unit_cost' + ln).value);
-        profitMarginVal = prodPrice_lessTaxType - prodPerUnitPrice;
-        document.getElementById(key + "product_profit_margin" + ln).value = format2Number(profitMarginVal);
+        // profitMarginVal = prodPrice_lessTaxType - prodPerUnitPrice;
+        // document.getElementById(key + "product_profit_margin" + ln).value = format2Number(profitMarginVal);
 
         var selected_currency = $('#currency_id_select').find(':selected').html();
         if (selected_currency != 'Rupees: Rs') {
@@ -1535,7 +1534,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
             }
             else {
               marginInPKR = profitMarginVal * currency_rate;
-              document.getElementById(key + 'product_profit_margin_pkr' + ln).value = format2Number(marginInPKR);
+              // document.getElementById(key + 'product_profit_margin_pkr' + ln).value = format2Number(marginInPKR);
             }
           }
         }
