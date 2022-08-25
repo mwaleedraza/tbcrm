@@ -1152,6 +1152,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       productTotalPrice = productTotalPrice / whtPercCalc;
   
       let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
+
       // totalWHT = productTotalPrice - unformat2Number(unitPrice);
       document.getElementById(key + 'vat_amt' + ln).value = format2Number(totalWHT);
     }
@@ -1163,12 +1164,11 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       if (gstCstm != '' && gstCstm.length > 0) {
         if (gstCstm >= 0 && gstCstm <= 100) {
           // Disable dropdown
-          debugger;
           $("#" + key + "gst_percentage" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
 
           let gstPerc = gstCstm / 100;
-          console.log(key + 'product_total_price' + ln);
-          console.log(unformat2Number(document.getElementById(key + 'product_total_price' + ln).value));
+          // console.log(key + 'product_total_price' + ln);
+          // console.log(unformat2Number(document.getElementById(key + 'product_total_price' + ln).value));
           totalGST = (productTotalPrice  + totalWHT) * gstPerc;
           productTotalPrice = productTotalPrice + totalGST;
         }
@@ -1189,6 +1189,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
           totalGST = (document.getElementById(key + 'product_list_price' + ln).value) * gstPerc;
         }
         productTotalPrice = productTotalPrice + totalGST;
+        // document.getElementById(key + 'product_list_price' + ln).value=productTotalPrice + totalGST;
       }
     }
     else if (taxType == 'PRA') {
@@ -1490,21 +1491,29 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
   var prodPrice_lessTaxType;
 
   if (key == "product_") {
-    if (typeof productTotalPrice != 'undefined') {
-
-
+    if (typeof productTotalPrice != 'undefined') {      
       // reducing productTotalPrice calculated so far form taxation;
       if (whtCustom !== '' && whtCustom >= 0 && whtCustom <= 100) {
         whtTaxPercentage = (productTotalPrice * whtCustom) / 100;
         pmtAfterWHT = productTotalPrice - whtTaxPercentage;
       }
       else {
-        whtTaxPercentage = (productTotalPrice * wht) / 100;
+        debugger;
+        whtTaxPercentage = (productTotalPrice * wht) / 100; 
         pmtAfterWHT = productTotalPrice - whtTaxPercentage;
+        whtpercentage=wht / 100;
+        totalpricewht=unformat2Number(document.getElementById(key+'product_total_price'+ln).value)-(unformat2Number(document.getElementById(key+'product_total_price'+ln).value)*whtpercentage);
+        after_subtracting_gst=totalpricewht-totalGST;
+        total_profit=after_subtracting_gst-unformat2Number(document.getElementById(key+'per_unit_cost'+ln).value);
+        // console.log(total_profit);
+        document.getElementById(key+'product_profit_margin'+ln).value= Math.trunc(total_profit);
       }
-
-
+      
       if (taxType == 'GST') {
+    
+        // profitmarginaftercalculation=(unformat2Number(document.getElementById(key+'product_total_price'+ln).value) *  (unformat2Number(document.getElementById(key+'wht_amt'+ln).value)*100)-totalGST)- unformat2Number(document.getElementById(key+'per_unit_cost'+ln).value);
+        // console.log(profitmarginaftercalculation);
+        // document.getElementById(key+'product_profit_margin'+ln).value= $().val(profitmarginaftercalculation);
         totalTaxType = totalGST;
       }
       if (taxType == 'PRA') {
