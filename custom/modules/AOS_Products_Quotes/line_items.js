@@ -401,8 +401,8 @@ function insertProductLine(tableid, groupid) {
 
   var p5 = x3.insertCell(3);
   p5.style = "padding:20px 5px 0px 5px";
-  p5.innerHTML = "<span style='vertical-align: top;' class='product_profit_margin_pkr_label'>"+ SUGAR.language.get(module_sugar_grp1, 'LBL_PRODUCT_PROFIT_MARGIN_PKR') +"</span><br>";
-  p5.innerHTML += "<input style='width:100px;' type='text' name='product_product_profit_margin_pkr[" + prodln + "]' id='product_product_profit_margin_pkr" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_profit_margin_pkr'>";
+  p5.innerHTML = "<span style='vertical-align: top;' class='product_gst_label'>GST</span><br>";
+  p5.innerHTML += "<input style='width:100px;' type='text' name='product_product_gst[" + prodln + "]' id='product_product_gst" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_profit_gst'>";
 
   var h = x.insertCell(4);
   h.innerHTML = "<input type='hidden' name='product_currency[" + prodln + "]' id='product_currency" + prodln + "' value=''><input type='hidden' name='product_deleted[" + prodln + "]' id='product_deleted" + prodln + "' value='0'><input type='hidden' name='product_id[" + prodln + "]' id='product_id" + prodln + "' value=''><button type='button' id='product_delete_line" + prodln + "' class='button product_delete_line' value='" + SUGAR.language.get(module_sugar_grp1, 'LBL_REMOVE_PRODUCT_LINE') + "' tabindex='116' onclick='markLineDeleted(" + prodln + ",\"product_\")'><span class=\"suitepicon suitepicon-action-clear\"></span></button><br>";
@@ -1023,8 +1023,8 @@ function calculateLine(ln, key) {
       var productSalePrice = profitMargin;
       document.getElementById(key+'product_profit_margin'+ln).value=productSalePrice-$("#" + key + "per_unit_cost" + ln).val();
       document.getElementById(key+'product_profit_margin'+ln).value=productSalePrice-$("#" + key + "per_unit_cost" + ln).val();
-      $("#" + key + "product_list_price" + ln).val(format2Number(productSalePrice));
-      $("#" + key + "product_total_price_tax_excl" + ln).val(format2Number(productSalePrice));
+      $("#" + key + "product_list_price" + ln).val(format2Number(productSalePrice.toFixed(2)));
+      $("#" + key + "product_total_price_tax_excl" + ln).val(format2Number(productSalePrice.toFixed(2)));
     }
   }
   else if (per_unit_cost != '') {
@@ -1058,7 +1058,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         
       }
       productUnitPrice = listPrice - discount;
-      document.getElementById(key+'product_total_price_tax_excl'+ln).value=productUnitPrice;
+      document.getElementById(key+'product_total_price_tax_excl'+ln).value=productUnitPrice.toFixed(2);
       document.getElementById(key+'product_total_price'+ln).value=productUnitPrice;
       document.getElementById(key + 'product_unit_price' + ln).value = format2Number(listPrice - discount);
     }
@@ -1071,7 +1071,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       }
       discount = (discount/100) * listPrice;
       productUnitPrice = listPrice - discount;
-      document.getElementById(key+'product_total_price_tax_excl'+ln).value=productUnitPrice;
+      document.getElementById(key+'product_total_price_tax_excl'+ln).value=productUnitPrice.toFixed(2);
       document.getElementById(key+'product_total_price'+ln).value=productUnitPrice;
       document.getElementById(key + 'product_unit_price' + ln).value = format2Number(listPrice - discount);
     }
@@ -1125,8 +1125,6 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     if (whtCustom >= 0 && whtCustom <= 100) {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
       totalWHT = (productTotalPrice * whtCustom) / 100;
-      console.log(totalWHT);
-
       whtCustom = parseFloat(whtCustom);
       whtCustom = (100 - whtCustom) / 100;
 
@@ -1498,18 +1496,16 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         pmtAfterWHT = productTotalPrice - whtTaxPercentage;
       }
       else {
-        debugger;
         whtTaxPercentage = (productTotalPrice * wht) / 100; 
         pmtAfterWHT = productTotalPrice - whtTaxPercentage;
-        // console.log(pmtAfterWHT);
         whtpercentage=wht / 100;
-        console.log(whtpercentage);
+        after_wht_added=unformat2Number(document.getElementById(key+'product_total_price'+ln).value)-(unformat2Number(document.getElementById(key+'product_total_price'+ln).value)*((100-wht) / 100));
+        // console.log();
+        document.getElementById(key + 'vat_amt' + ln).value = format2Number(after_wht_added.toFixed(2));
         totalpricewht=unformat2Number(document.getElementById(key+'product_total_price'+ln).value)-(unformat2Number(document.getElementById(key+'product_total_price'+ln).value)*whtpercentage);
-        console.log(totalpricewht);
         after_subtracting_gst=totalpricewht-totalGST;
-        console.log(after_subtracting_gst);
+        document.getElementById(key+'product_gst'+ln).value=totalGST*productQty;
         total_profit=after_subtracting_gst-unformat2Number(document.getElementById(key+'per_unit_cost'+ln).value * productQty);
-        console.log(total_profit);
         document.getElementById(key+'product_profit_margin'+ln).value= Math.trunc(total_profit);
       }
       
@@ -1538,12 +1534,12 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         if (selected_currency != 'Rupees: Rs') {
           let currency_rate = +document.getElementById('currency_rate').value;
           if (currency_rate == '') {
-            document.getElementById(key + 'product_profit_margin_pkr' + ln).removeAttribute('readonly');
-            document.getElementById(key + 'product_profit_margin_pkr' + ln).value = '';
+            document.getElementById(key + 'product_gst' + ln).removeAttribute('readonly');
+            // document.getElementById(key + 'product_gst' + ln).value = '';
           } else {
-            document.getElementById(key + 'product_profit_margin_pkr' + ln).setAttribute('readonly', 'readonly');
+            document.getElementById(key + 'product_gst' + ln).setAttribute('readonly', 'readonly');
             if (conversionRateCheck) {
-              document.getElementById(key + 'product_profit_margin_pkr' + ln).value = format2Number(profitMarginVal);
+              // document.getElementById(key + 'product_gst' + ln).value = format2Number(profitMarginVal);
             }
             else {
               marginInPKR = profitMarginVal * currency_rate;
@@ -1619,7 +1615,7 @@ function calculateTotal(key)
       if (input[j].id.indexOf('product_qty') != -1) {
         qty = unformat2Number(input[j].value);
       }
-      if (input[j].id.indexOf('product_list_price') != -1)
+      if (input[j].id.indexOf('product_total_price') != -1)
       {
         list = unformat2Number(input[j].value);
       }
@@ -1631,7 +1627,7 @@ function calculateTotal(key)
       {
         dis_amt = unformat2Number(input[j].value);
       }
-      if (input[j].id.indexOf('vat_amt') != -1)
+      if (input[j].id.indexOf('product_gst') != -1)
       {
         product_vat_amt = unformat2Number(input[j].value);
       }
@@ -1647,18 +1643,22 @@ function calculateTotal(key)
       head[row[i].parentNode.id] = 0;
     }
 
-    if (qty !== 0 && list !== null && deleted != 1) {
-      tot_amt += list * qty;
-    } else if (qty !== 0 && unit !== 0 && deleted != 1) {
-      tot_amt += unit * qty;
-    }    
+    
+      tot_amt += list ;
+    // if (qty !== 0 && list !== null && deleted != 1) {
+    // } 
+    // // else if (qty !== 0 && unit !== 0 && deleted != 1) {
+    // //   tot_amt += unit * qty;
+    // // }    
 
-    if (dis_amt !== 0 && deleted != 1) {
+    // if (dis_amt !== 0 && deleted != 1) {
       dis_tot += dis_amt * qty;
-    }
-    if (product_vat_amt !== 0 && deleted != 1) {
+      // console.log(dis_tot);
+    // }
+    // if (product_vat_amt !== 0 && deleted != 1) {
       tax += product_vat_amt;
-    }
+      // console.log(tax);
+    // }
   }
 
   for(var h in head){
@@ -1667,7 +1667,7 @@ function calculateTotal(key)
     }
   }
 
-  subtotal = tot_amt + dis_tot;
+  subtotal = list;
 
   set_value(key+'total_amt',tot_amt);
   set_value(key+'subtotal_amount',subtotal);
@@ -1677,19 +1677,20 @@ function calculateTotal(key)
 
   var shippingtax = get_value(key+'shipping_tax');
 
-  var shippingtax_amt = shipping * (shippingtax/100);
+  // var shippingtax_amt = shipping * (shippingtax/100);
 
-  set_value(key+'shipping_tax_amt',shippingtax_amt);
+  set_value(key+'shipping_tax_amt','');
 
-  tax += shippingtax_amt;
+  // tax += shippingtax_amt;
 
   set_value(key+'tax_amount',tax);
 
-  set_value(key+'subtotal_tax_amount',subtotal + tax);
-  set_value(key+'total_amount',subtotal + tax + shipping);
+  set_value(key+'subtotal_tax_amount',subtotal);
+  set_value(key+'total_amount',subtotal);
 }
 
 function set_value(id, value){
+
   if(document.getElementById(id) !== null)
   {
     document.getElementById(id).value = format2Number(value);
