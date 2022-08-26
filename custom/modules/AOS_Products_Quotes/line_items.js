@@ -1501,11 +1501,15 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         debugger;
         whtTaxPercentage = (productTotalPrice * wht) / 100; 
         pmtAfterWHT = productTotalPrice - whtTaxPercentage;
+        // console.log(pmtAfterWHT);
         whtpercentage=wht / 100;
+        console.log(whtpercentage);
         totalpricewht=unformat2Number(document.getElementById(key+'product_total_price'+ln).value)-(unformat2Number(document.getElementById(key+'product_total_price'+ln).value)*whtpercentage);
+        console.log(totalpricewht);
         after_subtracting_gst=totalpricewht-totalGST;
-        total_profit=after_subtracting_gst-unformat2Number(document.getElementById(key+'per_unit_cost'+ln).value);
-        // console.log(total_profit);
+        console.log(after_subtracting_gst);
+        total_profit=after_subtracting_gst-unformat2Number(document.getElementById(key+'per_unit_cost'+ln).value * productQty);
+        console.log(total_profit);
         document.getElementById(key+'product_profit_margin'+ln).value= Math.trunc(total_profit);
       }
       
