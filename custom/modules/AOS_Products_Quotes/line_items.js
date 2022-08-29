@@ -1668,10 +1668,10 @@ function calculateTotal(key)
     }
   }
 
-  subtotal = unit + dis_tot;
+  subtotal = (unit*qty) + dis_tot;
   total=list;
 
-  set_value(key+'total_amt',unit);
+  set_value(key+'total_amt',unit*qty);
   set_value(key+'subtotal_amount',subtotal);
   set_value(key+'discount_amount',dis_tot);
 
