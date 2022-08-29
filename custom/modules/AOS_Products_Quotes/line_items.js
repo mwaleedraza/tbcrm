@@ -1619,7 +1619,7 @@ function calculateTotal(key)
       {
         list = unformat2Number(input[j].value);
       }
-      if (input[j].id.indexOf('product_unit_price') != -1)
+      if (input[j].id.indexOf('product_per_unit_cost') != -1)
       {
         unit = unformat2Number(input[j].value);
       }
@@ -1644,6 +1644,7 @@ function calculateTotal(key)
     }
 
     
+    // console.log(unit);
       tot_amt += list ;
     // if (qty !== 0 && list !== null && deleted != 1) {
     // } 
@@ -1667,9 +1668,10 @@ function calculateTotal(key)
     }
   }
 
-  subtotal = list;
+  subtotal = unit + dis_tot;
+  total=list;
 
-  set_value(key+'total_amt',tot_amt);
+  set_value(key+'total_amt',unit);
   set_value(key+'subtotal_amount',subtotal);
   set_value(key+'discount_amount',dis_tot);
 
@@ -1685,8 +1687,8 @@ function calculateTotal(key)
 
   set_value(key+'tax_amount',tax);
 
-  set_value(key+'subtotal_tax_amount',subtotal);
-  set_value(key+'total_amount',subtotal);
+  set_value(key+'subtotal_tax_amount',list);
+  set_value(key+'total_amount',list);
 }
 
 function set_value(id, value){
