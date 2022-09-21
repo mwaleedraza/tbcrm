@@ -82,8 +82,8 @@ class TasksViewEdit extends ViewEdit
         */
         $usersArr = array();
         $user = $db->query("SELECT id,user_name FROM users WHERE deleted = 0 ORDER BY user_name ASC");
-        while ($rows = $db->fetchByAssoc($user)) {
-            array_push($usersArr, $rows);
+        while ($t_userrows = $db->fetchByAssoc($user)) {
+            array_push($usersArr, $t_userrows);
         }
 	
 
