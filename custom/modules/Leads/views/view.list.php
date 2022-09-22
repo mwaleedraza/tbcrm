@@ -43,7 +43,7 @@ class LeadsViewList extends ViewList
         echo $_REQUEST['orderBy'];
         if (empty($_REQUEST['orderBy'])) {
         $_REQUEST['orderBy'] = 'date_entered';
-        $_REQUEST['sortOrder'] = 'ASC';
+        $_REQUEST['sortOrder'] = 'DESC';
     }
         parent::listViewPrepare();
     }
