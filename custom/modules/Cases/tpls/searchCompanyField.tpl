@@ -56,6 +56,7 @@
       if(account_id==''){
           $('#SAVE').hide();
       }else if(contact_id!='' && product_id!=''){
+      }else if(product_id!=''){
         $('#SAVE').show();
       }
   });

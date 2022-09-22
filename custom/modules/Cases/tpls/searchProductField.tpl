@@ -29,7 +29,7 @@
         let product_id =$('#product_id').val();
         if(product_id==null || product_id==''){
           $('#SAVE').hide();
-        }else if(account_id!='' && contact_id!=''){
+        }else if(account_id!=''){
           $('#SAVE').show();
         }
       });

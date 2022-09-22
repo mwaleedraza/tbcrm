@@ -27,7 +27,7 @@
       let contact_id =$('#contact_id').val();
       let product_id =$('#product_id').val();
       if(contact_id==''){
-        $('#SAVE').hide();
+        
       }else if(account_id!='' && product_id!=''){
         debugger;
         $('#SAVE').show();
