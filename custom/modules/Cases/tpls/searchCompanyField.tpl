@@ -47,7 +47,17 @@
     $(document).ready(function(){
       // Initialize Select2
       $('#account_id').select2();
-      
     });
+    
+    $( "#account_id" ).change(function() {
+      let account_id =$('#account_id').val();
+      let contact_id =$('#contact_id').val();
+      let product_id =$('#product_id').val();
+      if(account_id==''){
+          $('#SAVE').hide();
+      }else if(contact_id!='' && product_id!=''){
+        $('#SAVE').show();
+      }
+  });
   </script>
 {/literal}

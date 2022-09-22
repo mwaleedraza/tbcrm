@@ -10,7 +10,7 @@
 
 <!-- Products dropdown -->
 <select id="product_id" name="product_id">
-  <option>-- Select Product--</option>
+  <option value="">-- Select Product--</option>
   {foreach from=$PRODUCTS_DATA key=index item=data}
     <option value="{$data.id}">{$data.name}</option>
   {/foreach}
@@ -22,7 +22,17 @@
     $(document).ready(function(){
       // Initialize Select2
       $('#product_id').select2();
-      
+
+      $( "#product_id" ).change(function() {
+        let account_id =$('#account_id').val();
+        let contact_id =$('#contact_id').val();
+        let product_id =$('#product_id').val();
+        if(product_id==null || product_id==''){
+          $('#SAVE').hide();
+        }else if(account_id!='' && contact_id!=''){
+          $('#SAVE').show();
+        }
+      });
     });
   </script>
 {/literal}
