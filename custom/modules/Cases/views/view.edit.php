@@ -106,7 +106,7 @@ class CasesViewEdit extends ViewEdit
             Getting all users to assign to tpl
         */
         $usersArr = array();
-        $user = $db->query("SELECT `id`,`user_name` FROM `users` WHERE deleted = 0 ORDER BY user_name ASC");
+        $user = $db->query("SELECT `id`,`last_name` FROM `users` WHERE deleted = 0 ORDER BY last_name ASC");
         while ($rows = $db->fetchByAssoc($user)) {
             array_push($usersArr, $rows);
         }
