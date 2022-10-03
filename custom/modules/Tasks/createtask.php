@@ -8,7 +8,7 @@ $leadbean=BeanFactory::getBean('Leads',$id);
 $leaddata=[
     'title'=>$leadbean->last_name,
     'contact'=>$leadbean->contacts_id,
-    'account'=>$leadbean->account_id,
+    'account'=>$leadbean->company_id,
     'type'=>$leadbean->sugarfield_type,
     'description'=>$leadbean->description,
 ];
