@@ -66,6 +66,13 @@ array (
     'label' => 'LBL_LIST_STATUS',
     'default' => true,
   ),
+  'SUGARFIELD_TYPE' => 
+  array (
+    'type' => 'enum',
+    'label' => 'LBL_SUGARFIELD_TYPE',
+    'width' => '10%',
+    'default' => true,
+  ),
   'DATE_ENTERED' => 
   array (
     'width' => '10%',
