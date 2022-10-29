@@ -38,7 +38,12 @@
  */
 
 $(document).ready(function () {
-  
+  document.getElementById('total_amt').setAttribute('readonly', 'readonly');
+  document.getElementById('subtotal_amount').setAttribute('readonly', 'readonly');
+  document.getElementById('discount_amount').setAttribute('readonly', 'readonly');
+  document.getElementById('tax_amount').setAttribute('readonly', 'readonly');
+  document.getElementById('subtotal_tax_amount').setAttribute('readonly', 'readonly');
+  document.getElementById('subtotal_tax_amount').setAttribute('readonly', 'readonly');
 
   $.getScript('custom/modules/AOS_Products_Quotes/app-assets/vendors/js/forms/select/select2.full.min.js');
   
@@ -294,8 +299,8 @@ function insertProductLine(tableid, groupid) {
 
 
   var c = z.insertCell(2);
-  c.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_wht_amt_label'>Unit Price</span><br>";
-  c.innerHTML += "<input type='text' name='product_product_list_price[" + prodln + "]' id='product_product_list_price" + prodln + "' maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_list_price' readonly><input type='hidden' name='product_product_cost_price[" + prodln + "]' id='product_product_cost_price" + prodln + "' value=''  />";
+  c.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_wht_amt_label'>Unit Price</span>   <span style='vertical-align: top;margin-top: 10px; margin-left:25px; ' class='product_product_cost_price_label'> Price By Quantity</span> <br>";
+  c.innerHTML += "<input type='text' name='product_product_list_price[" + prodln + "]' id='product_product_list_price" + prodln + "' maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_list_price' readonly>  <input name='product_product_cost_price[" + prodln + "]' id='product_product_cost_price" + prodln + "' value='' readonly='readonly' />";
   c.style.padding = "0px 5px";
 
   if (typeof currencyFields !== 'undefined'){
@@ -306,14 +311,15 @@ function insertProductLine(tableid, groupid) {
   }
 
   var d = z.insertCell(3);
-  d.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_wht_amt_label'>Discount</span><br>";
-  d.innerHTML += "<input type='text' name='product_product_discount[" + prodln + "]' id='product_product_discount" + prodln + "'  maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_discount_text'><input type='hidden' name='product_product_discount_amount[" + prodln + "]' id='product_product_discount_amount" + prodln + "' value=''  />";
-  d.innerHTML += "<select tabindex='116' name='product_discount[" + prodln + "]' id='product_discount" + prodln + "' onchange='calculateLine(" + prodln + ",\"product_\");' class='product_discount_amount_select'>" + discount_hidden + "</select>";
+  d.innerHTML = "<br>";
+  // d.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_wht_amt_label'>Discount</span><br>";
+  // d.innerHTML += "<input type='text' name='product_product_discount[" + prodln + "]' id='product_product_discount" + prodln + "'  maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_discount_text'><input type='hidden' name='product_product_discount_amount[" + prodln + "]' id='product_product_discount_amount" + prodln + "' value=''  />";
+  // d.innerHTML += "<select tabindex='116' name='product_discount[" + prodln + "]' id='product_discount" + prodln + "' onchange='calculateLine(" + prodln + ",\"product_\");' class='product_discount_amount_select'>" + discount_hidden + "</select>";
   d.style.padding = "0px 5px";
 
   var e = z.insertCell(4);
-  e.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_wht_amt_label'>Total Price</span><br>";
-  e.innerHTML += "<input type='text' name='product_product_total_price[" + prodln + "]' id='product_product_total_price_tax_excl" + prodln + "' maxlength='50' value='' title='' tabindex='116' readonly='readonly' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_total_price' >";
+  // e.innerHTML = "<span style='vertical-align: top;margin-top: 10px' class='product_wht_amt_label'>Total Price</span><br>";
+  e.innerHTML += "<input type='hidden' name='product_product_total_price[" + prodln + "]' id='product_product_total_price_tax_excl" + prodln + "' maxlength='50' value='' title='' tabindex='116' readonly='readonly' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_total_price' >";
   e.style.padding = "0px 5px";
 
   var f = z.insertCell(5);
@@ -334,11 +340,27 @@ function insertProductLine(tableid, groupid) {
   if (typeof currencyFields !== 'undefined') {
     currencyFields.push("product_vat_amt" + prodln);
   }
-
+// 3rd row WHT CUSTOM HWHT , CAlculated WHT and Total With Holding TAX and discount
   var p = x1.insertCell(1);
   p.style = "padding:20px 5px 0px 5px";
-  p.innerHTML = "<span style='vertical-align: top;' class='product_wht_custom_label'>"+ SUGAR.language.get(module_sugar_grp1, 'LBL_WHT_CUSTOM') +"</span><br>";
+  p.innerHTML = "<span style='vertical-align: top;' class='product_wht_custom_label'>"+ SUGAR.language.get(module_sugar_grp1, 'LBL_WHT_CUSTOM') +"</span> <span style='vertical-align: top; margin-left:20px' class='product_calculated_wht_label'> Calculated WHT</span> </span> <span style='vertical-align: top; margin-left:20px' class='Price_included_wht_label'> Price After WHT </span>";
+  // p.innerHTML += "<span style='vertical-align: top; margin-left:25px' class='Price_included_wht_label'> Discount</span>";
+  p.innerHTML += "<br>";
   p.innerHTML += "<input tabindex='116' style='width:100px' name='product_wht_custom[" + prodln + "]' id='product_wht_custom" + prodln + "' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_wht_custom' placeholder='Custom WHT'>";
+  p.innerHTML += "<input tabindex='116' style='width:100px; margin-left:5px; ' name='product_calculated_wht[" + prodln + "]' id='product_calculated_wht" + prodln + "' class='product_calculated_wht' placeholder='Calculated WHT' readonly='readonly'>";
+  p.innerHTML += "<input tabindex='116' style='width:100px; margin-left:5px; ' name='Price_included_wht[" + prodln + "]' id='Price_included_wht" + prodln + "' class='Price_included_wht' placeholder='Price Included WHT' readonly='readonly'>";
+  // p.innerHTML += "<input type='text' style='margin-left: 40px;' name='product_product_discount[" + prodln + "]' id='product_product_discount" + prodln + "'  maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_discount_text'><input type='' name='product_product_discount_amount[" + prodln + "]' id='product_product_discount_amount" + prodln + "' value=''  />";
+  // p.innerHTML += "<select tabindex='116' name='product_discount[" + prodln + "]' id='product_discount" + prodln + "' onchange='calculateLine(" + prodln + ",\"product_\");' class='product_discount_amount_select'>" + discount_hidden + "</select>";
+
+  // custom for discount
+  var j = x1.insertCell(2);
+  j.innerHTML += "<br>";
+  j.innerHTML += "<span style='vertical-align: top; margin-left:35px' class='Price_included_wht_label'> Discount</span>";
+  j.innerHTML += "<br>";
+  j.innerHTML += "<input type='text' style='margin-left: 40px;' name='product_product_discount[" + prodln + "]' id='product_product_discount" + prodln + "'  maxlength='50' value='' title='' tabindex='116' onblur='calculateLine(" + prodln + ",\"product_\");' onblur='calculateLine(" + prodln + ",\"product_\");' class='product_discount_text'><input type='' name='product_product_discount_amount[" + prodln + "]' id='product_product_discount_amount" + prodln + "' value=''  />";
+  j.innerHTML += "<select tabindex='116' name='product_discount[" + prodln + "]' id='product_discount" + prodln + "' onchange='calculateLine(" + prodln + ",\"product_\");' class='product_discount_amount_select'>" + discount_hidden + "</select>";
+
+
 
   var x2 = tablebody.insertRow(-1);
   x2.id = 'product_line_taxation' + prodln;
@@ -377,7 +399,8 @@ function insertProductLine(tableid, groupid) {
 
   var g = x3.insertCell(0);
   g.style = "padding:20px 5px 0px 5px";
-  g.innerHTML = "<span style='vertical-align: top;' class='product_total_price_label'>"+ SUGAR.language.get(module_sugar_grp1, 'LBL_TOTAL_PRICE') +"</span><br>";
+  // g.innerHTML = "<span style='vertical-align: top;' class='product_total_price_label'>"+ SUGAR.language.get(module_sugar_grp1, 'LBL_TOTAL_PRICE') +"</span><br>";
+  g.innerHTML = "<span style='vertical-align: top;' class='product_total_price_label'>Total Price</span><br>";
   g.innerHTML += "<input type='text' style='width:100px;' name='product_product_total_price[" + prodln + "]' id='product_product_total_price" + prodln + "' maxlength='50' value='' title='' tabindex='116' readonly='readonly' class='product_total_price'><input type='hidden' name='product_group_number[" + prodln + "]' id='product_group_number" + prodln + "' value='" + groupid + "'>";
 
   if (typeof currencyFields !== 'undefined'){
@@ -386,8 +409,9 @@ function insertProductLine(tableid, groupid) {
 
   var p2 = x3.insertCell(1);
   p2.style = 'padding: 20px 5px 0px 5px;';
-  p2.innerHTML = "<span style='vertical-align: top;' class='product_vat_amt_label'>WHT Tax</span><br>";
-  p2.innerHTML += "<input style='width:100px;' type='text' name='product_vat_amt[" + prodln + "]' id='product_vat_amt" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_vat_amt'>";
+  p2.innerHTML = "<br>";
+  // p2.innerHTML = "<span style='vertical-align: top;' class='product_vat_amt_label'>WHT Tax</span><br>";
+  p2.innerHTML += "<input style='width:100px;' type='hidden' name='product_vat_amt[" + prodln + "]' id='product_vat_amt" + prodln + "' maxlength='250' value='' title='' tabindex='116' readonly='readonly' class='product_vat_amt'>";
 
   // var p3 = x3.insertCell(2);
   // p3.style = "padding:20px 5px 0px 5px";
@@ -856,32 +880,32 @@ function insertGroup()
   footer_cell.innerHTML="<input type='button' tabindex='116' class='button add_product_line' value='"+SUGAR.language.get(module_sugar_grp1, 'LBL_ADD_PRODUCT_LINE')+"' id='"+productTable.id+"addProductLine' onclick='insertProductLine(\""+productTable.id+"\",\""+groupn+"\")' />";
   footer_cell.innerHTML+=" <input type='button' tabindex='116' class='button add_service_line' value='"+SUGAR.language.get(module_sugar_grp1, 'LBL_ADD_SERVICE_LINE')+"' id='"+serviceTable.id+"addServiceLine' onclick='insertServiceLine(\""+serviceTable.id+"\",\""+groupn+"\")' />";
   if(enable_groups){
-    footer_cell.innerHTML+="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_TOTAL_AMT')+":</label><input name='group_total_amt[]' id='"+ table.id +"total_amt' class='group_total_amt' maxlength='26' value='' title='' tabindex='120' type='text' readonly></span>";
+    footer_cell.innerHTML+="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_TOTAL_AMT')+":</label><input name='group_total_amt[]' id='"+ table.id +"total_amt' class='group_total_amt' maxlength='26' value='' title='' tabindex='120' type='text' readonly='readonly'></span>";
 
     var footer_row2=tablefooter.insertRow(-1);
     var footer_cell2 = footer_row2.insertCell(0);
     footer_cell2.scope="row";
     footer_cell2.colSpan="20";
-    footer_cell2.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_DISCOUNT_AMOUNT')+":</label><input name='group_discount_amount[]' id='"+ table.id +"discount_amount' class='group_discount_amount' maxlength='26' value='' title='' tabindex='120' type='text' readonly></label>";
+    footer_cell2.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_DISCOUNT_AMOUNT')+":</label><input name='group_discount_amount[]' id='"+ table.id +"discount_amount' class='group_discount_amount' maxlength='26' value='' title='' tabindex='120' type='text' readonly='readonly'></label>";
 
     var footer_row3=tablefooter.insertRow(-1);
     var footer_cell3 = footer_row3.insertCell(0);
     footer_cell3.scope="row";
     footer_cell3.colSpan="20";
-    footer_cell3.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_SUBTOTAL_AMOUNT')+":</label><input name='group_subtotal_amount[]' id='"+ table.id +"subtotal_amount' class='group_subtotal_amount'  maxlength='26' value='' title='' tabindex='120' type='text' readonly></span>";
+    footer_cell3.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_SUBTOTAL_AMOUNT')+":</label><input name='group_subtotal_amount[]' id='"+ table.id +"subtotal_amount' class='group_subtotal_amount'  maxlength='26' value='' title='' tabindex='120' type='text' readonly='readonly'></span>";
 
     var footer_row4=tablefooter.insertRow(-1);
     var footer_cell4 = footer_row4.insertCell(0);
     footer_cell4.scope="row";
     footer_cell4.colSpan="20";
-    footer_cell4.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_TAX_AMOUNT')+":</label><input name='group_tax_amount[]' id='"+ table.id +"tax_amount' class='group_tax_amount' maxlength='26' value='' title='' tabindex='120' type='text' readonly></span>";
+    footer_cell4.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_TAX_AMOUNT')+":</label><input name='group_tax_amount[]' id='"+ table.id +"tax_amount' class='group_tax_amount' maxlength='26' value='' title='' tabindex='120' type='text' readonly='readonly'></span>";
 
     if(document.getElementById('subtotal_tax_amount') !== null){
       var footer_row5=tablefooter.insertRow(-1);
       var footer_cell5 = footer_row5.insertCell(0);
       footer_cell5.scope="row";
       footer_cell5.colSpan="20";
-      footer_cell5.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_SUBTOTAL_TAX_AMOUNT')+":</label><input name='group_subtotal_tax_amount[]' id='"+ table.id +"subtotal_tax_amount' class='group_subtotal_tax_amount' maxlength='26' value='' title='' tabindex='120' type='text' readonly></span>";
+      footer_cell5.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_SUBTOTAL_TAX_AMOUNT')+":</label><input name='group_subtotal_tax_amount[]' id='"+ table.id +"subtotal_tax_amount' class='group_subtotal_tax_amount' maxlength='26' value='' title='' tabindex='120' type='text' readonly='readonly'></span>";
 
       if (typeof currencyFields !== 'undefined'){
         currencyFields.push("" + table.id+ 'subtotal_tax_amount');
@@ -892,7 +916,7 @@ function insertGroup()
     var footer_cell6 = footer_row6.insertCell(0);
     footer_cell6.scope="row";
     footer_cell6.colSpan="20";
-    footer_cell6.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_GROUP_TOTAL')+":</label><input name='group_total_amount[]' id='"+ table.id +"total_amount' class='group_total_amount'  maxlength='26' value='' title='' tabindex='120' type='text' readonly></span>";
+    footer_cell6.innerHTML="<span class='totals'><label>"+SUGAR.language.get(module_sugar_grp1, 'LBL_GROUP_TOTAL')+":</label><input name='group_total_amount[]' id='"+ table.id +"total_amount' class='group_total_amount'  maxlength='26' value='' title='' tabindex='120' type='text' readonly='readonly'></span>";
 
     if (typeof currencyFields !== 'undefined'){
       currencyFields.push("" + table.id+ 'total_amt');
@@ -943,7 +967,7 @@ function markLineDeleted(ln, key)
   }
 
   calculateTotal(groupid);
-  calculateTotal();
+  // calculateTotal();
 }
 
 
@@ -961,7 +985,6 @@ function calculateLine(ln, key) {
     $("#" + key + "pra_percentage" + ln).val('5');
     $("#" + key + "service_wht_amt" + ln).val('3');
   }
-
 
   
   //Currency Calculation
@@ -1055,7 +1078,6 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       {
         document.getElementById(key + 'product_discount' + ln).value = listPrice;
         discount = listPrice;
-        
       }
       productUnitPrice = listPrice - discount;
       document.getElementById(key+'product_total_price_tax_excl'+ln).value=productUnitPrice.toFixed(2);
@@ -1074,6 +1096,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       document.getElementById(key+'product_total_price_tax_excl'+ln).value=productUnitPrice.toFixed(2);
       document.getElementById(key+'product_total_price'+ln).value=productUnitPrice;
       document.getElementById(key + 'product_unit_price' + ln).value = format2Number(listPrice - discount);
+      debugger;
     }
     else
     {
@@ -1096,6 +1119,12 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
 
   var productTotalPrice = productQty * productUnitPrice;
   productUnitPrice = productTotalPrice;
+
+  // calculated the price according to price and quantity
+  let priceByQualtity = productQty * listPrice;
+
+  // set value of product_product_cost_price 
+  $('#product_product_cost_price'+ln).val(priceByQualtity);
 
   // GST and PRA tax Calculation
   var taxType = $("#" + key + "tax_type" + ln).val();
@@ -1124,14 +1153,27 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
   if (whtCustom !== '') {
     if (whtCustom >= 0 && whtCustom <= 100) {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
-      totalWHT = (productTotalPrice * whtCustom) / 100;
-      whtCustom = parseFloat(whtCustom);
-      whtCustom = (100 - whtCustom) / 100;
+      // totalWHT = productQty * $("#" + key + "product_cost_price" + ln).val() * (whtCustom / 100);
 
-      productTotalPrice = productTotalPrice / whtCustom;
+      // // totalWHT = (productTotalPrice * whtCustom) / 100;
+      // whtCustom = parseFloat(whtCustom);
+      // whtCustom = (100 - whtCustom) / 100;
+
+      // totalWHT = productQty * $("#" + key + "product_cost_price" + ln).val() * (whtCustom / 100);
+      totalWHT = $("#" + key + "product_cost_price" + ln).val() * (whtCustom / 100);
+      let whtPercCalc = (100 - whtCustom) / 100;
+      productTotalPrice = productTotalPrice / whtPercCalc;
+
+
+      // productTotalPrice = productTotalPrice / whtCustom;
+      debugger;
       let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
       unformat2Number(unitPrice);
-      totalWHT = productTotalPrice - unitPrice;
+      // totalWHT = productTotalPrice - unitPrice;
+      $('#product_calculated_wht'+ln).val(totalWHT);
+      var Price_included_wht = Number($('#product_product_cost_price'+ln).val()) + Number($('#product_calculated_wht'+ln).val());
+      $('#Price_included_wht'+ln).val(Price_included_wht);
+        // product_vat_amt
       // productTotalPrice = productTotalPrice.toFixed(2);
     }
     else {
@@ -1145,18 +1187,26 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     if(wht>0)
     {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "auto", "filter": "" });
-      totalWHT = productQty * $("#" + key + "product_total_price_tax_excl" + ln).val() * (wht / 100);
+      // totalWHT = productQty * $("#" + key + "product_cost_price" + ln).val() * (wht / 100);
+      totalWHT = $("#" + key + "product_cost_price" + ln).val() * (wht / 100);
       let whtPercCalc = (100 - wht) / 100;
       productTotalPrice = productTotalPrice / whtPercCalc;
   
       let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
-
+      debugger;
       // totalWHT = productTotalPrice - unformat2Number(unitPrice);
       document.getElementById(key + 'vat_amt' + ln).value = format2Number(totalWHT);
+      // set WHT value in calculated WHT field
     }
+    $('#product_calculated_wht'+ln).val(totalWHT);
+    //calculate and set price Included with WHT
+    var Price_included_wht = Number($('#product_product_cost_price'+ln).val()) + Number($('#product_calculated_wht'+ln).val());
+    $('#Price_included_wht'+ln).val(Price_included_wht);
+    // Price_included_wht
   }
   
-  // taxation for product line
+  // taxation for product line 
+  // GST Calculation
   if (key == 'product_' && taxType != '') {
     if (taxType == 'GST') {
       if (gstCstm != '' && gstCstm.length > 0) {
@@ -1187,8 +1237,10 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
           totalGST = (document.getElementById(key + 'product_list_price' + ln).value) * gstPerc;
         }
         productTotalPrice = productTotalPrice + totalGST;
+        $('#product_product_total_price'+ln).val(productTotalPrice);
         // document.getElementById(key + 'product_list_price' + ln).value=productTotalPrice + totalGST;
       }
+      debugger;
     }
     else if (taxType == 'PRA') {
       
@@ -1200,6 +1252,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
           let praPerc = praCstm / 100;
           totalPRA = (productTotalPrice + totalWHT) * praPerc;
           productTotalPrice = productTotalPrice + totalPRA;
+          $('#product_product_total_price'+ln).val(productTotalPrice);
         }
         else {
           alert("Enter Value between 0 - 100");
@@ -1212,6 +1265,8 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         let praPerc = pra / 100;
         totalPRA = (productTotalPrice  + totalWHT) * praPerc;
         productTotalPrice = productTotalPrice + totalPRA;
+        $('#product_product_total_price'+ln).val(productTotalPrice);
+
       }
     }
     else if (taxType == 'Other') {
@@ -1569,11 +1624,11 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
   groupid = 'group' + groupid;
 
   calculateTotal(groupid);
-  calculateTotal();
+  // calculateTotal();
 
 }
 
-function calculateAllLines() {
+function calculateAllLines() {  
   $('.product_group').each(function(productGroupkey, productGroupValue) {
       $(productGroupValue).find('tbody').each(function(productKey, productValue) {
         calculateLine(productKey, "product_");
@@ -1586,110 +1641,233 @@ function calculateAllLines() {
     });
   });
 }
-
 /**
  * Calculate totals
  */
-function calculateTotal(key)
-{
-  if (typeof key === 'undefined') {  key = 'lineItems'; }
-  var row = document.getElementById(key).getElementsByTagName('tbody');
-  if(key == 'lineItems') key = '';
-  var length = row.length;
-  var head = {};
-  var tot_amt = 0;
-  var subtotal = 0;
-  var dis_tot = 0;
-  var tax = 0;
+ function calculateTotal(key)
+ {
+   if (typeof key === 'undefined') {  key = 'lineItems'; }
+   var row = document.getElementById(key).getElementsByTagName('tbody');
+   if(key == 'lineItems') key = '';
+   var length = row.length;
+   var head = {};
+   var tot_amt = 0;
+   var subtotal = 0;
+   var dis_tot = 0;
+   var tax = 0;
+ 
+   for (i=0; i < length; i++) {
+     var qty = 1;
+     var list = null;
+     var unit = 0;
+     var deleted = 0;
+     var dis_amt = 0;
+     var product_vat_amt = 0;
+ 
+     var input = row[i].getElementsByTagName('input');
+     for (j=0; j < input.length; j++) {
+       if (input[j].id.indexOf('product_qty') != -1) {
+         qty = unformat2Number(input[j].value);
+       }
+      //  for total price in totals(CUSTOM)
+       if (input[j].id.indexOf('Price_included_wht') != -1)
+       {
+         list = unformat2Number(input[j].value);
+       }
+       if (input[j].id.indexOf('product_unit_price') != -1)
+       {
+         unit = unformat2Number(input[j].value);
+       }
+       if (input[j].id.indexOf('product_discount_amount') != -1)
+       {
+         dis_amt = unformat2Number(input[j].value);
+       }
+      //  if (input[j].id.indexOf('vat_amt') != -1)
+      //  {
+      //    product_vat_amt = unformat2Number(input[j].value);
+      //  }
+      // custom working for gst value in total calculations
+      // product_product_gst0
+      if (input[j].id.indexOf('product_product_gst') != -1)
+       {
+         product_vat_amt = unformat2Number(input[j].value);
+       }
+       if (input[j].id.indexOf('deleted') != -1) {
+         deleted = input[j].value;
+       }
+     }
+     if(deleted != 1 && key !== ''){
+       head[row[i].parentNode.id] = 1;
+     } else if(key !== '' && head[row[i].parentNode.id] != 1){
+       head[row[i].parentNode.id] = 0;
+     }
+ 
+    //  no need of this calculation bcz we already take calculated total
+     if (qty !== 0 && list !== null && deleted != 1) {
+      //  tot_amt += list * qty;
+       tot_amt += list;
+     } else if (qty !== 0 && unit !== 0 && deleted != 1) {
+      //  tot_amt += unit * qty;
+       tot_amt += unit * qty;
+     }
+    // assign total amt
+    // tot_amt = list;
+ 
+     if (dis_amt !== 0 && deleted != 1) {
+       dis_tot += dis_amt * qty;
+     }
+     if (product_vat_amt !== 0 && deleted != 1) {
+       tax += product_vat_amt;
+     }
+   }
+ 
+   for(var h in head){
+     if (head[h] != 1 && document.getElementById(h + '_head') !== null) {
+       document.getElementById(h + '_head').style.display = "none";
+     }
+   }
+ 
+   subtotal = tot_amt + dis_tot;
+    debugger;
+   set_value(key+'total_amt',tot_amt);
+   set_value(key+'subtotal_amount',subtotal);
+   set_value(key+'discount_amount',dis_tot);
 
-  for (i=0; i < length; i++) {
-    var qty = 1;
-    var list = null;
-    var unit = 0;
-    var deleted = 0;
-    var dis_amt = 0;
-    var product_vat_amt = 0;
+  //  client pricing
+  document.getElementById('total_amt').setAttribute('readonly', 'readonly');
+  document.getElementById('subtotal_amount').setAttribute('readonly', 'readonly');
+  document.getElementById('discount_amount').setAttribute('readonly', 'readonly');
+  document.getElementById('tax_amount').setAttribute('readonly', 'readonly');
 
-    var input = row[i].getElementsByTagName('input');
-    for (j=0; j < input.length; j++) {
-      if (input[j].id.indexOf('product_qty') != -1) {
-        qty = unformat2Number(input[j].value);
-      }
-      if (input[j].id.indexOf('product_total_price') != -1)
-      {
-        list = unformat2Number(input[j].value);
-      }
-      if (input[j].id.indexOf('product_per_unit_cost') != -1)
-      {
-        unit = unformat2Number(input[j].value);
-      }
-      if (input[j].id.indexOf('product_discount_amount') != -1)
-      {
-        dis_amt = unformat2Number(input[j].value);
-      }
-      if (input[j].id.indexOf('product_gst') != -1)
-      {
-        product_vat_amt = unformat2Number(input[j].value);
-      }
-      if (input[j].id.indexOf('deleted') != -1) {
-        deleted = input[j].value;
-      }
+  set_value('total_amt',tot_amt);
+  set_value('subtotal_amount',subtotal);
+  set_value('discount_amount',dis_tot);
+  set_value('tax_amount',tax);
 
-    }
+   var shipping = get_value(key+'shipping_amount');
+ 
+   var shippingtax = get_value(key+'shipping_tax');
+ 
+  //  var shippingtax_amt = shipping * (shippingtax/100);
+ 
+  //  set_value(key+'shipping_tax_amt',shippingtax_amt);
+ 
+  //  tax += shippingtax_amt;
+  //  tax += shippingtax_amt;
+ 
+   set_value(key+'tax_amount',tax);
+ 
+   set_value(key+'subtotal_tax_amount',subtotal + tax);
+   set_value(key+'total_amount',subtotal + tax + shipping);
+ }
 
-    if(deleted != 1 && key !== ''){
-      head[row[i].parentNode.id] = 1;
-    } else if(key !== '' && head[row[i].parentNode.id] != 1){
-      head[row[i].parentNode.id] = 0;
-    }
+
+
+ 
+// /**
+//  * Calculate totals
+//  */
+// function calculateTotal(key)
+// {
+//   if (typeof key === 'undefined') {  key = 'lineItems'; }
+//   var row = document.getElementById(key).getElementsByTagName('tbody');
+//   if(key == 'lineItems') key = '';
+//   var length = row.length;
+//   var head = {};
+//   var tot_amt = 0;
+//   var subtotal = 0;
+//   var dis_tot = 0;
+//   var tax = 0;
+
+//   for (i=0; i < length; i++) {
+//     var qty = 1;
+//     var list = null;
+//     var unit = 0;
+//     var deleted = 0;
+//     var dis_amt = 0;
+//     var product_vat_amt = 0;
+
+//     var input = row[i].getElementsByTagName('input');
+//     for (j=0; j < input.length; j++) {
+//       if (input[j].id.indexOf('product_qty') != -1) {
+//         qty = unformat2Number(input[j].value);
+//       }
+//       if (input[j].id.indexOf('product_total_price') != -1)
+//       {
+//         list = unformat2Number(input[j].value);
+//       }
+//       if (input[j].id.indexOf('product_per_unit_cost') != -1)
+//       {
+//         unit = unformat2Number(input[j].value);
+//       }
+//       if (input[j].id.indexOf('product_discount_amount') != -1)
+//       {
+//         dis_amt = unformat2Number(input[j].value);
+//       }
+//       if (input[j].id.indexOf('product_gst') != -1)
+//       {
+//         product_vat_amt = unformat2Number(input[j].value);
+//       }
+//       if (input[j].id.indexOf('deleted') != -1) {
+//         deleted = input[j].value;
+//       }
+//       debugger;
+//     }
+//     debugger;
+
+//     if(deleted != 1 && key !== ''){
+//       head[row[i].parentNode.id] = 1;
+//     } else if(key !== '' && head[row[i].parentNode.id] != 1){
+//       head[row[i].parentNode.id] = 0;
+//     }
 
     
-    // console.log(unit);
-      tot_amt += list ;
-    // if (qty !== 0 && list !== null && deleted != 1) {
-    // } 
-    // // else if (qty !== 0 && unit !== 0 && deleted != 1) {
-    // //   tot_amt += unit * qty;
-    // // }    
+//     // console.log(unit);
+//       tot_amt += list ;
+//     // if (qty !== 0 && list !== null && deleted != 1) {
+//     // } 
+//     // // else if (qty !== 0 && unit !== 0 && deleted != 1) {
+//     // //   tot_amt += unit * qty;
+//     // // }    
 
-    // if (dis_amt !== 0 && deleted != 1) {
-      dis_tot += dis_amt * qty;
-      // console.log(dis_tot);
-    // }
-    // if (product_vat_amt !== 0 && deleted != 1) {
-      tax += product_vat_amt;
-      // console.log(tax);
-    // }
-  }
+//     // if (dis_amt !== 0 && deleted != 1) {
+//       dis_tot += dis_amt * qty;
+//       // console.log(dis_tot);
+//     // }
+//     // if (product_vat_amt !== 0 && deleted != 1) {
+//       tax += product_vat_amt;
+//       // console.log(tax);
+//     // }
+//   }
 
-  for(var h in head){
-    if (head[h] != 1 && document.getElementById(h + '_head') !== null) {
-      document.getElementById(h + '_head').style.display = "none";
-    }
-  }
+//   for(var h in head){
+//     if (head[h] != 1 && document.getElementById(h + '_head') !== null) {
+//       document.getElementById(h + '_head').style.display = "none";
+//     }
+//   }
 
-  subtotal = (unit*qty) + dis_tot;
-  total=list;
+//   subtotal = (unit*qty) + dis_tot;
+//   total=list;
 
-  set_value(key+'total_amt',unit*qty);
-  set_value(key+'subtotal_amount',subtotal);
-  set_value(key+'discount_amount',dis_tot);
+//   set_value(key+'total_amt',unit*qty);
+//   set_value(key+'subtotal_amount',subtotal);
+//   set_value(key+'discount_amount',dis_tot);
 
-  var shipping = get_value(key+'shipping_amount');
+//   var shipping = get_value(key+'shipping_amount');
 
-  var shippingtax = get_value(key+'shipping_tax');
+//   var shippingtax = get_value(key+'shipping_tax');
 
-  // var shippingtax_amt = shipping * (shippingtax/100);
+//   // var shippingtax_amt = shipping * (shippingtax/100);
 
-  set_value(key+'shipping_tax_amt','');
+//   set_value(key+'shipping_tax_amt','');
 
-  // tax += shippingtax_amt;
+//   // tax += shippingtax_amt;
 
-  set_value(key+'tax_amount',tax);
+//   set_value(key+'tax_amount',tax);
 
-  set_value(key+'subtotal_tax_amount',list);
-  set_value(key+'total_amount',list);
-}
+//   set_value(key+'subtotal_tax_amount',list);
+//   set_value(key+'total_amount',list);
+// }
 
 function set_value(id, value){
 
@@ -1765,7 +1943,6 @@ function Quantity_format2Number(ln)
       str = str.replace('~',dec_sep);
     }
   }
-
   document.getElementById('product_product_qty' + ln).value=str;
 }
 
@@ -1884,6 +2061,8 @@ function getProductOption(lineId) {
             setDDVal('product_sub_sub_products' + lineIndex, productArr[lineIndex].sub_sub_products);
             // list_price
             $("#product_product_list_price" + lineIndex).val(format2Number(productArr[lineIndex].product_list_price));
+            // product_product_cost_price
+            // $("#product_product_cost_price" + lineIndex).val(format2Number(productArr[lineIndex].product_list_price));
             // discount_price
             $("#product_product_discount" + lineIndex).val(format2Number(productArr[lineIndex].product_discount));
             // discount_type
