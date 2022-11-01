@@ -98,7 +98,11 @@ array (
             'name' => 'serial_no',
             'label' => 'LBL_SERIAL_NO',
           ),
-          1 => '',
+          1 => 
+          array (
+            'name' => 'users_name',
+            'label' => 'LBL_USERS_NAME',
+          ),
         ),
         1 => 
         array (

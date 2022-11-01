@@ -7,7 +7,7 @@ array (
     array (
       'includes' => 
       array (
-	      0 => 
+        0 => 
         array (
           'file' => 'custom/modules/Tasks/js/getcompanycategory.js',
         ),
@@ -106,7 +106,11 @@ array (
               'required' => true,
             ),
           ),
-          1 => '',
+          1 => 
+          array (
+            'name' => 'users_name',
+            'label' => 'LBL_USERS_NAME',
+          ),
         ),
         3 => 
         array (

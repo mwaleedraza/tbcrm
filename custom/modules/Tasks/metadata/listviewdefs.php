@@ -38,6 +38,15 @@ array (
       0 => 'contact_id',
     ),
   ),
+  'USERS_NAME' => 
+  array (
+    'type' => 'relate',
+    'link' => true,
+    'label' => 'LBL_USERS_NAME',
+    'id' => 'USERS_ID',
+    'width' => '10%',
+    'default' => true,
+  ),
   'NAME' => 
   array (
     'width' => '40%',
@@ -83,18 +92,6 @@ array (
     'link' => false,
     'default' => true,
   ),
-  // 'SET_COMPLETE' => 
-  // array (
-  //   'width' => '1%',
-  //   'label' => 'LBL_LIST_CLOSE',
-  //   'link' => true,
-  //   'sortable' => false,
-  //   'default' => true,
-  //   'related_fields' => 
-  //   array (
-  //     0 => 'status',
-  //   ),
-  // ),
 );
 ;
 ?>
