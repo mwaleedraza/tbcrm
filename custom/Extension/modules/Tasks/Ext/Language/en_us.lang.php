@@ -9,6 +9,9 @@ $mod_strings = array(
     'LBL_OVERDUE_CRON_JOB' => 'Overdue Alarm',
     'LBL_RENEWAL' => 'Renewal Date',
     'LBL_ASSIGNEDBY_NAME'=>'Assigned By'
+    'LBL_USERS_ID'=>'Participient'
+    'LBL_USERS_NAME'=>'Participient'
+    'LBL_USERS_LINK'=>'Participient'
     );
 
 

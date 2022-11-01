@@ -29,6 +29,8 @@ class TasksViewList extends ViewList
                 $this->params['custom_where'] .= ' AND tasks.deleted = "0" ';
             }
         }
+        // also to show records to participient 
+        $this->params['custom_where'] .= ' OR tasks.users_id = "'.$current_user->id.'" ';
         parent::processSearchForm();
     }
      function listViewPrepare()
