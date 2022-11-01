@@ -1,4 +1,5 @@
 <?php
+// language file of task module
 $mod_strings = array(
     'LBL_SERIAL_NO' => 'Serial No',
     'LBL_CATEGORY' => 'Category',
@@ -8,11 +9,14 @@ $mod_strings = array(
     'LBL_ACCOUNTS_NAME' => 'Company Name',
     'LBL_OVERDUE_CRON_JOB' => 'Overdue Alarm',
     'LBL_RENEWAL' => 'Renewal Date',
-    'LBL_ASSIGNEDBY_NAME'=>'Assigned By'
-    'LBL_USERS_ID'=>'Participient'
-    'LBL_USERS_NAME'=>'Participient'
-    'LBL_USERS_LINK'=>'Participient'
-    );
+    'LBL_ASSIGNEDBY_NAME'=>'Assigned By',
+    'LBL_USERS_ID'=>'Participient Name',
+    'LBL_USERS_NAME'=>'Participient Name',
+    'LBL_USERS_LINK'=>'Participient Name',
+    
+);
+
+
 
 
 
