@@ -37,7 +37,7 @@
  * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
 
-$(document).ready(function () {
+ $(document).ready(function () {
   document.getElementById('total_amt').setAttribute('readonly', 'readonly');
   document.getElementById('subtotal_amount').setAttribute('readonly', 'readonly');
   document.getElementById('discount_amount').setAttribute('readonly', 'readonly');
@@ -1038,15 +1038,16 @@ function calculateLine(ln, key) {
   if (profitMargin >= 0 && profitMargin <= 100) {
     if (profitMargin == 0 ||profitMargin == '') {
       
-      $("#" + key + "product_list_price" + ln).val(per_unit_cost);
+      $("#" + key + "product_list_price" + ln).val( format2Number(per_unit_cost));
+
     }
     else {
       profitMarginpercentage =1- (profitMargin / 100);
       profitMargin=(per_unit_cost)/profitMarginpercentage;
       var productSalePrice = profitMargin;
-      document.getElementById(key+'product_profit_margin'+ln).value=productSalePrice-$("#" + key + "per_unit_cost" + ln).val();
+      document.getElementById(key+'product_profit_margin'+ln).value= format2Number(productSalePrice-$("#" + key + "per_unit_cost" + ln).val());
       // document.getElementById(key+'product_profit_margin'+ln).value=productSalePrice-$("#" + key + "per_unit_cost" + ln).val();
-      $("#" + key + "product_list_price" + ln).val(productSalePrice);
+      $("#" + key + "product_list_price" + ln).val(format2Number(productSalePrice));
       $("#" + key + "product_total_price_tax_excl" + ln).val(productSalePrice.toFixed(2));
     }
   }
@@ -1127,11 +1128,15 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     }
     else if(dis == 'Percentage')
     {
+      debugger;
       if(discount > 100)
       {
         document.getElementById(key + 'product_discount' + ln).value = 100;
         discount = 100;
       }
+      DIS_Price_included_wht = document.getElementById('Price_included_wht'+ln).value;
+      Discount_field = (discount/100) * DIS_Price_included_wht;
+      debugger;
       discount = (discount/100) * listPrice;
       productUnitPrice = listPrice - discount;
       document.getElementById(key+'product_total_price_tax_excl'+ln).value=productUnitPrice.toFixed(2);
@@ -1146,7 +1151,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     }
     document.getElementById(key + 'product_list_price' + ln).value = listPrice;
     //document.getElementById(key + 'product_discount' + ln).value = format2Number(unformat2Number(document.getElementById(key + 'product_discount' + ln).value));
-    document.getElementById(key + 'product_discount_amount' + ln).value = -discount, 6;
+    document.getElementById(key + 'product_discount_amount' + ln).value = Discount_field;
   }
 
   var productQty = 1;
@@ -1189,7 +1194,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
   var productPriceAfterWHT = 0;
 
 
-  // adding WHT
+  // adding WHT CUSTOM
   if (whtCustom !== '') {
     if (whtCustom >= 0 && whtCustom <= 100) {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "none", "filter": "grayscale(100%)" });
@@ -1200,7 +1205,8 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       // whtCustom = (100 - whtCustom) / 100;
 
       // totalWHT = productQty * $("#" + key + "product_cost_price" + ln).val() * (whtCustom / 100);
-      totalWHT = $("#" + key + "product_cost_price" + ln).val() * (whtCustom / 100);
+      // totalWHT = $("#" + key + "product_cost_price" + ln).val() * (whtCustom / 100);
+      totalWHT = Number( (100-whtCustom)/100);
       let whtPercCalc = (100 - whtCustom) / 100;
       productTotalPrice = productTotalPrice / whtPercCalc;
 
@@ -1209,9 +1215,10 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
       unformat2Number(unitPrice);
       // totalWHT = productTotalPrice - unitPrice;
+      document.getElementById(key + 'vat_amt' + ln).value = totalWHT;
       $('#product_calculated_wht'+ln).val(totalWHT);
-      var Price_included_wht = Number($('#product_product_cost_price'+ln).val()) + Number($('#product_calculated_wht'+ln).val());
-      $('#Price_included_wht'+ln).val(Price_included_wht);
+      var Price_included_wht = Number($('#product_product_cost_price'+ln).val()) / Number($('#product_calculated_wht'+ln).val());
+      $('#Price_included_wht'+ln).val(format2Number(Price_included_wht));
         // product_vat_amt
       // productTotalPrice = productTotalPrice.toFixed(2);
     }
@@ -1220,6 +1227,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     }
   }
   else {
+    // dropdown wht
     if (wht === '') {
       return 0;
     }
@@ -1227,10 +1235,11 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     {
       $("#" + key + "wht_amt" + ln).css({ "pointer-events": "auto", "filter": "" });
       // totalWHT = productQty * $("#" + key + "product_cost_price" + ln).val() * (wht / 100);
-      totalWHT = $("#" + key + "product_cost_price" + ln).val() * (wht / 100);
+      // totalWHT = $("#" + key + "product_cost_price" + ln).val() * (wht / 100);
+      totalWHT = Number( (100-wht)/100);
       let whtPercCalc = (100 - wht) / 100;
       productTotalPrice = productTotalPrice / whtPercCalc;
-  
+    debugger;
       let unitPrice = document.getElementById(key + 'product_list_price' + ln).value;
       // totalWHT = productTotalPrice - unformat2Number(unitPrice);
       document.getElementById(key + 'vat_amt' + ln).value = totalWHT;
@@ -1238,8 +1247,8 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     }
     $('#product_calculated_wht'+ln).val(totalWHT);
     //calculate and set price Included with WHT
-    var Price_included_wht = Number($('#product_product_cost_price'+ln).val()) + Number($('#product_calculated_wht'+ln).val());
-    $('#Price_included_wht'+ln).val(Price_included_wht);
+    var Price_included_wht = Number($('#product_product_cost_price'+ln).val()) / Number($('#product_calculated_wht'+ln).val());
+    $('#Price_included_wht'+ln).val(format2Number(Price_included_wht));
     // Price_included_wht
   }
   
@@ -1259,6 +1268,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
           totalGST = productTotalPrice*gstPerc;
           // productTotalPrice = productTotalPrice + totalGST;
           productTotalPrice = productTotalPrice + totalGST;
+          $('#product_product_total_price'+ln).val(format2Number(productTotalPrice));
         }
         else {
           alert("Enter Value between 0 - 100");
@@ -1280,7 +1290,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         debugger;
         // productTotalPrice*gstPerc
         productTotalPrice = productTotalPrice + totalGST;
-        $('#product_product_total_price'+ln).val(productTotalPrice);
+        $('#product_product_total_price'+ln).val(format2Number(productTotalPrice));
         // document.getElementById(key + 'product_list_price' + ln).value=productTotalPrice + totalGST;
       debugger;
     }
@@ -1294,8 +1304,10 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
           let praPerc = praCstm / 100;
           // totalPRA = (productTotalPrice + totalWHT) * praPerc;
           totalPRA = productTotalPrice*praPerc;
+          // set PRA VAlue in front end field
+          document.getElementById(key+'product_gst'+ln).value= totalPRA;
           productTotalPrice = productTotalPrice + totalPRA;
-          $('#product_product_total_price'+ln).val(productTotalPrice);
+          $('#product_product_total_price'+ln).val(format2Number(productTotalPrice));
         }
         else {
           alert("Enter Value between 0 - 100");
@@ -1305,14 +1317,15 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         debugger;
         // Enable dropdown
         $("#" + key + "pra_percentage" + ln).css({ "pointer-events": "auto", "filter": "" });
-
         praPerc = pra / 100;
         // totalPRA = (productTotalPrice  + totalWHT) * praPerc;
         totalPRA = productTotalPrice*praPerc;
         // productTotalPrice = productTotalPrice + totalPRA;
+        // set PRA VAlue in front end field
+        document.getElementById(key+'product_gst'+ln).value= totalPRA;
         productTotalPrice = productTotalPrice + totalPRA;
         debugger;
-        $('#product_product_total_price'+ln).val(productTotalPrice);
+        $('#product_product_total_price'+ln).val(format2Number(productTotalPrice));
 
       }
     }
@@ -1567,8 +1580,8 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
   // if(total_tax){
   //   productTotalPrice=productTotalPrice + totalvat;
   // }
-  document.getElementById(key + 'product_unit_price' + ln).value = productUnitPrice;
-  document.getElementById(key + 'product_total_price' + ln).value = productTotalPrice;
+  document.getElementById(key + 'product_unit_price' + ln).value = format2Number(productUnitPrice);
+  document.getElementById(key + 'product_total_price' + ln).value = format2Number(productTotalPrice);
   
   // totalvat = totalWHT;
   // if (totalvat) {
@@ -1594,8 +1607,22 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       debugger; 
       // reducing productTotalPrice calculated so far form taxation;
       if (whtCustom !== '' && whtCustom >= 0 && whtCustom <= 100) {
-        whtTaxPercentage = (productTotalPrice * whtCustom) / 100;
+        // whtTaxPercentage = (productTotalPrice * whtCustom) / 100;
+        // pmtAfterWHT = productTotalPrice - whtTaxPercentage;
+        whtTaxPercentage = (productTotalPrice * whtCustom) / 100; 
         pmtAfterWHT = productTotalPrice - whtTaxPercentage;
+        whtpercentage=whtCustom / 100;
+        after_wht_added=unformat2Number(document.getElementById(key+'product_total_price'+ln).value)-(unformat2Number(document.getElementById(key+'product_total_price'+ln).value)*((100-wht) / 100));
+        // console.log();
+        document.getElementById(key + 'vat_amt' + ln).value = format2Number(after_wht_added.toFixed(2));
+        totalpricewht=unformat2Number(document.getElementById(key+'product_total_price'+ln).value)-(unformat2Number(document.getElementById(key+'product_total_price'+ln).value)*whtpercentage);
+        after_subtracting_gst=totalpricewht-totalGST;
+
+        document.getElementById(key+'product_gst'+ln).value=format2Number(totalGST);
+        // calculete and set profit margin
+        total_profit=after_subtracting_gst-unformat2Number(document.getElementById(key+'per_unit_cost'+ln).value * productQty);
+        document.getElementById(key+'product_profit_margin'+ln).value=format2Number(total_profit);
+
       }
       else {
         whtTaxPercentage = (productTotalPrice * wht) / 100; 
@@ -1606,10 +1633,12 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
         document.getElementById(key + 'vat_amt' + ln).value = format2Number(after_wht_added.toFixed(2));
         totalpricewht=unformat2Number(document.getElementById(key+'product_total_price'+ln).value)-(unformat2Number(document.getElementById(key+'product_total_price'+ln).value)*whtpercentage);
         after_subtracting_gst=totalpricewht-totalGST;
-        document.getElementById(key+'product_gst'+ln).value=totalGST*productQty;
+        // document.getElementById(key+'product_gst'+ln).value=totalGST*productQty;
+        // calculate and set profit margin
+        document.getElementById(key+'product_gst'+ln).value=format2Number(totalGST);
         total_profit=after_subtracting_gst-unformat2Number(document.getElementById(key+'per_unit_cost'+ln).value * productQty);
         // document.getElementById(key+'product_profit_margin'+ln).value= Math.trunc(total_profit);
-        document.getElementById(key+'product_profit_margin'+ln).value= total_profit;
+        document.getElementById(key+'product_profit_margin'+ln).value=format2Number(total_profit);
         // also check hereaa
 
         debugger;
@@ -1801,7 +1830,8 @@ function calculateAllLines() {
      }
    }
  
-   subtotal = tot_amt + dis_tot;
+   subtotal = tot_amt - dis_tot;
+   debugger;
    set_value(key+'total_amt',tot_amt);
    set_value(key+'subtotal_amount',subtotal);
    set_value(key+'discount_amount',dis_tot);
@@ -2151,7 +2181,7 @@ function getProductOption(lineId) {
             // total tax amount
             $("#product_vat_amt" + lineIndex).val(productArr[lineIndex].vat_amt);
             // total amount
-            $("#product_product_total_price" + lineIndex).val(productArr[lineIndex].product_total_price);
+            $("#product_product_total_price" + lineIndex).val(format2Number(productArr[lineIndex].product_total_price));
             checkCustomTaxes(lineIndex);
           }
         }
@@ -2189,7 +2219,7 @@ function getProductOption(lineId) {
             // total tax amount
             $("#product_vat_amt" + lineIndex).val(productArr[lineIndex].vat_amt);
             // total amount
-            $("#product_product_total_price" + lineIndex).val(productArr[lineIndex].product_total_price);
+            $("#product_product_total_price" + lineIndex).val(format2Number(productArr[lineIndex].product_total_price));
             checkCustomTaxes(lineIndex);
           }
           
