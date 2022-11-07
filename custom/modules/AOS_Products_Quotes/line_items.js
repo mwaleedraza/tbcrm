@@ -1128,7 +1128,6 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     }
     else if(dis == 'Percentage')
     {
-      debugger;
       if(discount > 100)
       {
         document.getElementById(key + 'product_discount' + ln).value = 100;
@@ -1217,7 +1216,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       // totalWHT = productTotalPrice - unitPrice;
       document.getElementById(key + 'vat_amt' + ln).value = totalWHT;
       $('#product_calculated_wht'+ln).val(totalWHT);
-      var Price_included_wht = Number($('#product_product_cost_price'+ln).val()) / Number($('#product_calculated_wht'+ln).val());
+      var Price_included_wht = $('#product_product_cost_price'+ln).val() / $('#product_calculated_wht'+ln).val();
       $('#Price_included_wht'+ln).val(format2Number(Price_included_wht));
         // product_vat_amt
       // productTotalPrice = productTotalPrice.toFixed(2);
@@ -1247,8 +1246,14 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
     }
     $('#product_calculated_wht'+ln).val(totalWHT);
     //calculate and set price Included with WHT
-    var Price_included_wht = Number($('#product_product_cost_price'+ln).val()) / Number($('#product_calculated_wht'+ln).val());
-    $('#Price_included_wht'+ln).val(format2Number(Price_included_wht));
+    var Price_included_wht = $('#product_product_cost_price'+ln).val() / $('#product_calculated_wht'+ln).val();
+    if(isNaN(Price_included_wht)){
+        Price_included_wht = '0';
+      }
+      if (Price_included_wht === Infinity) {
+          Price_included_wht = '0';
+      }
+    $('#Price_included_wht'+ln).val(Price_included_wht);
     // Price_included_wht
   }
   
