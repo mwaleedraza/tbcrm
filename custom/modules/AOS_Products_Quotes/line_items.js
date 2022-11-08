@@ -1309,6 +1309,7 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
           let praPerc = praCstm / 100;
           // totalPRA = (productTotalPrice + totalWHT) * praPerc;
           totalPRA = productTotalPrice*praPerc;
+          debugger;
           // set PRA VAlue in front end field
           document.getElementById(key+'product_gst'+ln).value= totalPRA;
           productTotalPrice = productTotalPrice + totalPRA;
@@ -1612,6 +1613,10 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
       debugger; 
       // reducing productTotalPrice calculated so far form taxation;
       if (whtCustom !== '' && whtCustom >= 0 && whtCustom <= 100) {
+        if(document.getElementById('product_tax_type'+ln).value == 'PRA'){
+          totalGST = totalPRA;
+        }
+        debugger;
         // whtTaxPercentage = (productTotalPrice * whtCustom) / 100;
         // pmtAfterWHT = productTotalPrice - whtTaxPercentage;
         whtTaxPercentage = (productTotalPrice * whtCustom) / 100; 
@@ -1630,6 +1635,14 @@ if(document.getElementById(key + 'product_list_price' + ln).value !== null && do
 
       }
       else {
+        // for PRA TO SHOW IN GST FIED
+        // if(document.getElementById('product_tax_type'+ln).value = 'PRA'){
+        //   totalGST = totalPRA;
+        // }
+        if(document.getElementById('product_tax_type'+ln).value == 'PRA'){
+          totalGST = totalPRA;
+        }
+        debugger;
         whtTaxPercentage = (productTotalPrice * wht) / 100; 
         pmtAfterWHT = productTotalPrice - whtTaxPercentage;
         whtpercentage=wht / 100;
@@ -1822,7 +1835,7 @@ function calculateAllLines() {
     // tot_amt = list;
  
      if (dis_amt !== 0 && deleted != 1) {
-       dis_tot += dis_amt * qty;
+       dis_tot += dis_amt;
      }
      if (product_vat_amt !== 0 && deleted != 1) {
        tax += product_vat_amt;
