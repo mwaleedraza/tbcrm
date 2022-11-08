@@ -1850,9 +1850,9 @@ function calculateAllLines() {
  
    subtotal = tot_amt - dis_tot;
    debugger;
-   set_value(key+'total_amt',tot_amt);
-   set_value(key+'subtotal_amount',subtotal);
-   set_value(key+'discount_amount',dis_tot);
+   set_value(key+'total_amt', format2Number(tot_amt));
+   set_value(key+'subtotal_amount',format2Number(subtotal));
+   set_value(key+'discount_amount',format2Number(dis_tot));
 
   //  client pricing
   document.getElementById('total_amt').setAttribute('readonly', 'readonly');
@@ -1860,10 +1860,10 @@ function calculateAllLines() {
   document.getElementById('discount_amount').setAttribute('readonly', 'readonly');
   document.getElementById('tax_amount').setAttribute('readonly', 'readonly');
 
-  set_value('total_amt',tot_amt);
-  set_value('subtotal_amount',subtotal);
-  set_value('discount_amount',dis_tot);
-  set_value('tax_amount',tax);
+  set_value('total_amt', format2Number(tot_amt));
+  set_value('subtotal_amount', format2Number(subtotal));
+  set_value('discount_amount', format2Number(dis_tot));
+  set_value('tax_amount',format2Number(tax));
 
    var shipping = get_value(key+'shipping_amount');
  
@@ -1878,8 +1878,8 @@ function calculateAllLines() {
  
    set_value(key+'tax_amount',tax);
  
-   set_value(key+'subtotal_tax_amount',subtotal + tax);
-   set_value(key+'total_amount',subtotal + tax + shipping);
+   set_value(key+'subtotal_tax_amount', format2Number(subtotal + tax));
+   set_value(key+'total_amount', format2Number(subtotal + tax + shipping));
  }
 
 
