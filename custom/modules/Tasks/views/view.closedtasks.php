@@ -12,8 +12,8 @@ class TasksViewClosedTasks extends ViewList
 	public function processSearchForm(){
         global $current_user, $db;
         
-        $this->params['custom_where'] .= ' AND tasks.status = "Completed"';
-		$this->params['custom_where'] .= ' OR tasks.assigned_user_id != "'.$current_user->id.'" AND tasks.status = "Completed"';
+        $this->params['custom_where'] .= ' AND tasks.status = "Closed"';
+		$this->params['custom_where'] .= ' OR tasks.assigned_user_id != "'.$current_user->id.'" AND tasks.status = "Closed"';
 		// $this->params['custom_where'] .= ' AND tasks.assigned_user_id = "'.$current_user->id.'"';
 
 		parent::processSearchForm();
