@@ -30,7 +30,7 @@ class TasksViewList extends ViewList
             }
         }
         // also to show records to participient 
-        $this->params['custom_where'] .= ' OR tasks.leads_users_id   = "'.$current_user->id.'" ';
+        $this->params['custom_where'] .= ' OR tasks.users_id = "'. $current_user->id .'" ';
         parent::processSearchForm();
     }
      function listViewPrepare()
