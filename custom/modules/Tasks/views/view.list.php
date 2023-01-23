@@ -14,7 +14,7 @@ class TasksViewList extends ViewList
         global $current_user, $db;
  	    $roleBean=new ACLRole();
         $roles = $roleBean->getUserRoleNames($current_user->id);
-        $this->params['custom_where'] .= ' AND tasks.status != "Completed"';
+        // $this->params['custom_where'] .= ' AND tasks.status != "Completed"';
         if($current_user->is_admin==0)
         {
             if($roles[0]=='Manager')
@@ -35,6 +35,7 @@ class TasksViewList extends ViewList
             $this->params['custom_where'] .= 'AND tasks.status != "Completed" AND tasks.deleted=0 OR tasks.users_id = "'. $current_user->id .'" ';
         }
         
+        $this->params['custom_where'] .= ' AND tasks.status != "Completed"';
         parent::processSearchForm();
     }
      function listViewPrepare()
