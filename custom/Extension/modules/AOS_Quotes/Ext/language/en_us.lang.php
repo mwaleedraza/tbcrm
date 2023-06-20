@@ -3,7 +3,6 @@
 if (!defined('sugarEntry') || !sugarEntry) {
     die('Not A Valid Entry Point');
 }
-
 $mod_strings = array(
   'LBL_PO_TO_V' => 'PO To V',
   'LBL_PAYMENT'=> 'Payment',
@@ -55,7 +54,7 @@ $mod_strings = array(
   'LBL_BASE_COST' => 'Base Cost',
 
 
-  
+
   'LBL_PRODUCT_SKU' => 'SKU/Part Number',
   'LBL_PRODUCT_PRICE_AFTER_TAX' => 'Price After Tax',
   'LBL_PRODUCT_PROFIT_MARGIN' => 'Profit Margin',
@@ -82,6 +81,4 @@ $mod_strings = array(
   'LBL_TC_PRODUCT_TOTAL' => 'Products Total',
   'LBL_TC_SERVICE_TOTAL' => 'Service Total',
   'LBL_TC_GRAND_TOTAL' => 'Grand Total',
-
-
 );
