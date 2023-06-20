@@ -59,4 +59,26 @@ $mod_strings = array(
   'LBL_PRODUCT_PROFIT_MARGIN' => 'Profit Margin',
   'LBL_PRODUCT_PROFIT_MARGIN_PKR' => 'Profit Margin in PKR',
   'LBL_CONVERT_CURRENCY' => 'Convert Currency',
+  'LBL_TC_TOTAL_PRODUCT_COST_TO_COMPANY' => 'Total Products Cost To Company',
+  'LBL_TC_PRODUCT_PRICE_AFTER_TAX' => 'Total Products Price After Tax',
+  'LBL_TC_PRODUCT_MARGIN' => 'Total Products Product margin',
+  'LBL_TC_SERVICE_MARGIN' => 'Service Margin',
+  'LBL_TC_TOTAL_MARGIN' => 'Total Margin',
+  'LBL_TC_PRODUCT_TAX_AMT' => 'Products Tax Amount',
+  'LBL_TC_PRODUCT_PRICE_AFTER_PRA_GST' => 'Products Price After PRA or GST',
+  'LBL_TC_PRODUCT_WHT_VALUE' => 'Products WHT Value',
+  'LBL_TC_PRODUCT_WHT_CUSTOM' => 'Products WHT Custom',
+  'LBL_TC_PRODUCT_PRICE_AFTER_WHT' => 'Products Price After WHT',
+
+  'LBL_TC_SERVICE_TAX_AMT' => 'Service Tax Amount',
+  'LBL_TC_SERVICE_TAX_TYPE' => 'Service Tax Type',
+  'LBL_TC_SERVICE_PRICE_AFTER_PRA_GST' => 'Service Price After PRA or GST',
+  'LBL_TC_SERVICE_WHT_VALUE' => 'Service WHT Value',
+  'LBL_TC_SERVICE_WHT_CUSTOM' => 'Service WHT Custom',
+  'LBL_TC_SERVICE_PRICE_AFTER_WHT' => 'Service Price After WHT',
+  'LBL_TC_PRODUCT_TOTAL' => 'Products Total',
+  'LBL_TC_SERVICE_TOTAL' => 'Service Total',
+  'LBL_TC_GRAND_TOTAL' => 'Grand Total',
+
+
 );
