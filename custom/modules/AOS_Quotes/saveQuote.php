@@ -166,8 +166,8 @@ if($AOS_QuotesBean->save()){
     }
     $responseArr['status'] = '200';
     $responseArr['record_id'] = $AOS_QuotesBean->id;
-    header("Location: /index.php?module=AOS_Quotes&action=DetailView&record=".$AOS_QuotesBean->id);
-    // echo json_encode($responseArr);
+    // header("Location: /index.php?module=AOS_Quotes&action=DetailView&record=".$AOS_QuotesBean->id);
+    echo json_encode($responseArr);
 }
         // $sql1 = "INSERT INTO  aos_products_quotes(product_total, service_total, grand_total, total_product_cost_to_company, product_price_after_tax, product_margin, service_margin, total_margin , product_id, product_name, sub_products, product_qty, per_unit_cost, product_line_margin, per_unit_price, product_line_total, currency_id, currency_rate, convert_currency, service_id, service_description, service_line_total, name, quote_stage, valid_until, invoice_status, assigned_user_id, payment_term, approval_status, approval_issue, realted_company, client, sale, rfq_ref, prev_quote_no, payment, po_to_v, status, condition_c, user_id, medium, referencenumber, yourreferencenumber, pdftext, ourfirm) 
         //          VALUES ('$product_total', '$service_total',' $grand_total', '$total_product_cost_to_company', '$product_price_after_tax', '$product_margin', '$service_margin', '$total_margin', '$sn', '$productNames','$subProducts', '$quantities', '$unitCosts', '$margins', '$listPrices', '$totalPrices', '$currency_type', '$currency_rate', '$convert_currency', '$ssn', '$service_name', '$service_line_price',  '$name', '$quote_stage', '$valid_until', '$invoice_status', '$assigned_user_id', '$payment_term', '$approval_status', '$approval_issue', '$realted_company', '$client', '$sale', '$rfq_ref', '$prev_quote_no', '$payment', '$po_to_v', '$status', '$condition_c', '$user_id', '$medium', '$referencenumber', '$yourreferencenumber', '$pdftext', '$ourfirm')";

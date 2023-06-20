@@ -190,26 +190,67 @@ $(document).ready(function() {
 	});
 	// End of product costing row clone
 	//save total
-	$('.savetotal').click(function() {
-		var createQuoteFormData = $('#createQuote').serializeObject();
-		var createQuoteFormData = {
-			createQuoteFormData: createQuoteFormData
-		};
-		$.ajax({
-			url: "index.php?module=AOS_Quotes&action=saveQuote&sugar_body_only=true",
-			method: 'POST',
-			data: createQuoteFormData,
-			success: function(response) {
-				console.log(response);
-				if (response['status'] == '200' && record_id != '') {
-					window.location = "index.php?module=AOS_Quotes&action=DetailView&record=" + record_id;
+	$('.savetotal').click(function(e) {
+		var name = document.getElementById("name").value;
+		var expiration = document.getElementById("expiration").value;
+		var stage = document.getElementById("stage").value;
+		var lead_id = document.getElementById("lead_id").value;
+		var user_id = document.getElementById("user_id").value;
+
+		var nameInput = document.getElementById("name");
+		var expirationInput = document.getElementById("expiration");
+		var stageInput = document.getElementById("stage");
+		var leadIdInput = document.getElementById("lead_id");
+		var userIdInput = document.getElementById("user_id");
+
+		nameInput.addEventListener("input", removeBorder);
+		expirationInput.addEventListener("change", removeBorder);
+		stageInput.addEventListener("change", removeBorder);
+		leadIdInput.addEventListener("change", removeBorder);
+		userIdInput.addEventListener("change", removeBorder);
+		function removeBorder() {
+			this.style.border = "";
+		}
+		if (!name || !expiration || !stage || !lead_id || !user_id) {
+			e.preventDefault();
+			alert("Please fill in all required fields.");
+				if (!name) {
+					$('#name').css('border', '2px solid red');
 				}
+				if (!expiration) {
+					$('#expiration').css('border', '2px solid red');
+				}
+				if (!stage) {
+					$('#stage').css('border', '2px solid red');
+				}
+				if (!lead_id) {
+					$('.lead_id_box').css('border', '2px solid red');
+				}
+				if (!user_id) {
+					$('.user_id_box').css('border', '2px solid red');
+				}
+			}else {
 				debugger;
-			},
-			error: function(xhr, status, error) {
-				console.error('Error saving data:', error);
+				var createQuoteFormData = $('#createQuote').serializeObject();
+				var createQuoteFormData = {
+					createQuoteFormData: createQuoteFormData
+				};
+				$.ajax({
+					url: "index.php?module=AOS_Quotes&action=saveQuote&sugar_body_only=true",
+					method: 'POST',
+					data: createQuoteFormData,
+					success: function(response) {
+						console.log(response);
+						response  = JSON.parse(response);
+						if (response['status'] == '200' && response['record_id'] != '') {
+							window.location.href = "index.php?module=AOS_Quotes&action=DetailView&record="+response['record_id'];
+						}
+					},
+					error: function(xhr, status, error) {
+						console.error('Error saving data:', error);
+					}
+				});
 			}
-		});
 	});
 	$('#forms-container1').on('click', '.delete-form-btn', function() {
 		$(this).closest('.service-form').remove();

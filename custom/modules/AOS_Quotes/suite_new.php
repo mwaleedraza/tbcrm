@@ -155,7 +155,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-6 edit-view-field ">
                             <select id="billing_contact_id" name="billing_contact_id" data-select2-id="billing_contact_id" class="col-sm-6">
-                                <option>-- Select client --</option>
+                                <option value="">-- Select client --</option>
                             </select>
                         </div>
                     </div>
@@ -164,9 +164,9 @@
                         <div class="col-xs-12 col-sm-5 label">
                             <label class="fw-bold">Sale:</label>
                         </div>
-                        <div class="col-xs-12 col-sm-6 edit-view-field ">
+                        <div class="col-xs-12 col-sm-6 lead_id_box">
                             <select id="lead_id" name="lead_id" data-select2-id="lead_id" class="col-sm-6">
-                                <option>-- Select Sale--</option>
+                                <option value=''>-- Select Sale--</option>
                             </select>
                         </div>
                     </div>
@@ -243,9 +243,9 @@
                         <div class="col-xs-12 col-sm-5 label">
                             <label class="fw-bold">Verified By:</label>
                         </div>
-                        <div class="col-xs-12 col-sm-6 edit-view-field ">
+                        <div class="col-xs-12 col-sm-6 user_id_box">
                             <select id="user_id" name="user_id" data-select2-id="user_id" class="col-sm-6">
-                                <option>--Select--</option>
+                                <option value="">--Select--</option>
                             </select>
                         </div>
                     </div>
@@ -490,9 +490,13 @@
                             </div>
                             <div class="col-md-2" style="margin-right: 30px;">
                                 <label class="fw-bold">Value <select class="form-select" name="tc_service_tax_value" id="tc_service_tax_value" onchange="calculateserviceTax(),Total()">
-                                        <option value="" disabled selected>Select</option>
+                                <script>
+                                    getOptionHTML(SUGAR.language.get("app_list_strings", "tc_product_tax_value_dom"), "tc_service_tax_value", "{$BEAN->tc_service_tax_value}");
+                                    // setDDVal('stage', '{$BEAN->tc_service_tax_value}');
+                                </script>        
+                                <!-- <option value="" disabled selected>Select</option>
                                         <option value="17">17%</option>
-                                        <option value="5">5%</option>
+                                        <option value="5">5%</option> -->
                                     </select>
                                 </label>
                             </div>
