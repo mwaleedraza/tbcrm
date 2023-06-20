@@ -371,7 +371,7 @@ function fetchAllProducts(formCounterab) {
 		}
 	});
 }
-
+// fetch all subproducts
 function fetchAllSubProducts(formCounterab) {
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllSubProducts&sugar_body_only=true",
