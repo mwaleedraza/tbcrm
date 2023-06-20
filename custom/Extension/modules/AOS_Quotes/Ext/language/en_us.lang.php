@@ -54,6 +54,8 @@ $mod_strings = array(
   'LBL_PRODUCT_MARGIN' => 'Margin (%)',
   'LBL_BASE_COST' => 'Base Cost',
 
+
+  
   'LBL_PRODUCT_SKU' => 'SKU/Part Number',
   'LBL_PRODUCT_PRICE_AFTER_TAX' => 'Price After Tax',
   'LBL_PRODUCT_PROFIT_MARGIN' => 'Profit Margin',
@@ -69,6 +71,7 @@ $mod_strings = array(
   'LBL_TC_PRODUCT_WHT_VALUE' => 'Products WHT Value',
   'LBL_TC_PRODUCT_WHT_CUSTOM' => 'Products WHT Custom',
   'LBL_TC_PRODUCT_PRICE_AFTER_WHT' => 'Products Price After WHT',
+
 
   'LBL_TC_SERVICE_TAX_AMT' => 'Service Tax Amount',
   'LBL_TC_SERVICE_TAX_TYPE' => 'Service Tax Type',
