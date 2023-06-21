@@ -10,9 +10,8 @@ function addCode() {
         <div class="product-form" id="form_p">
             <div class="row">
             <div class="col-md-1">
-                <label class="fw-bold">S/N
+                <label class="fw-bold">S/N</label>
                 <input type="text" class="form-control" name="number" id="number${formCounterab}" placeholder="S/N">
-                </label>
             </div>
             <div class="col-md-2">
                 <label class="fw-bold">Product Name</label>
@@ -20,35 +19,32 @@ function addCode() {
                 </select>
             </div>
             <div class="col-md-2">
-                <label class="fw-bold">Sub-Product
+                <label class="fw-bold">Sub-Product</label>
                 <select class="form-control" name="sub_products" data-counter="${formCounterab}" id="sub_products${formCounterab}" class="col-sm-6">
                 </select>
-                </label>
+                
             </div>
             <div class="col-md-1">
-                <label class="fw-bold">Qty
+                <label class="fw-bold">Qty</label>
                 <input type="text" class="form-control" name="product_qty" id="product_qty${formCounterab}" placeholder="0">
-                </label>
+                
             </div>
             <div class="col-md-1">
-                <label class="fw-bold">Unit Cost
+                <label class="fw-bold">Unit Cost</label>
                 <input type="text" class="form-control" name="per_unit_cost" id="per_unit_cost${formCounterab}" placeholder="0">
-                </label>
+                
             </div>
             <div class="col-md-1">
-                <label class="fw-bold">Margin
+                <label class="fw-bold">Margin</label>
                 <input type="text" class="form-control" name="product_margin" id="product_margin${formCounterab}" placeholder="0">
-                </label>
             </div>
             <div class="col-md-1">
-                <label class="fw-bold">Unit Price
+                <label class="fw-bold">Unit Price</label>
                 <input type="text" class="form-control" name="product_unit_price" id="product_unit_price${formCounterab}" placeholder="0" readonly="readonly">
-                </label>
             </div>
             <div class="col-md-1">
-                <label class="fw-bold">Total
+                <label class="fw-bold">Total </label>
                 <input type="text" class="form-control" name="product_total_price" id="product_total_price${formCounterab}" placeholder="0" readonly="readonly">
-                </label>
             </div>
             <div class="col-md-1 align-self-end"> 
                 <button type="button" class="btn btn-danger delete-form-btn">-</button>  
@@ -59,7 +55,17 @@ function addCode() {
 
 	formContainer.insertAdjacentHTML("beforeend", newForm);
 	fetchAllProducts(formCounterab);
-	fetchAllSubProducts(formCounterab);
+	// fetchAllSubProducts(formCounterab);
+	// on change of product slect sub product (product_id)
+	$('.product_id').on('change',function(){
+		console.log(this);
+		fetchAllSubProducts(this);
+		// var billing_account_id = $('#billing_account_id').val();
+		// fetchAllClients(billing_account_id);
+	});
+	$('#product_id'+formCounterab).select2();
+	$('#sub_products'+formCounterab).select2();
+	// increment in counter of line items row
 	formCounterab++;
 }
 // End of product costing increment
@@ -230,7 +236,6 @@ $(document).ready(function() {
 					$('.user_id_box').css('border', '2px solid red');
 				}
 			}else {
-				debugger;
 				var createQuoteFormData = $('#createQuote').serializeObject();
 				var createQuoteFormData = {
 					createQuoteFormData: createQuoteFormData
@@ -289,6 +294,7 @@ $(document).ready(function() {
 			profitcal();
 		}
 	});
+	// fetch name by selecting of company name
 	$('#billing_account_id').on('change', function() {
 		var billing_account_id = $('#billing_account_id').val();
 		fetchAllClients(billing_account_id);
@@ -334,7 +340,6 @@ function fetchAllClients(billing_account_id){
 		method: 'GET',
 		data: {data:billing_account_id},
 		success: function(response) {
-			debugger;
 			$('#billing_contact_id').empty();
 			response = JSON.parse(response);
 			$.each(response, function(i, item) {
@@ -379,11 +384,16 @@ function fetchAllProducts(formCounterab) {
 	});
 }
 // fetch all subproducts
-function fetchAllSubProducts(formCounterab) {
+function fetchAllSubProducts(lineItemRow) {
+	// $('#product_id'+formCounterab).val();
+	var pid = lineItemRow.id;
+	var formCounterab = pid.slice(-1);
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllSubProducts&sugar_body_only=true",
 		method: 'GET',
+		data: {data:$('#'+pid).val()},
 		success: function(response) {
+			$('#sub_products' + formCounterab).empty();
 			response = JSON.parse(response);
 			$.each(response, function(i, item) {
 				$('#sub_products' + formCounterab).append("<option value='" + item.id + "'>" + item.name + "</option>");
