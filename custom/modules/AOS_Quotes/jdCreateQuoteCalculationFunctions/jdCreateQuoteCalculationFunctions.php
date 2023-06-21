@@ -171,7 +171,7 @@ $(document).ready(function() {
 	// $(document).ready(function() {
 	fetchAllUsers();
 	fetchAllCompanies();
-	fetchAllClients();
+	// fetchAllClients();
 	fetchAllLeads();
 	$('#assigned_user_id').select2();
 	$('#user_id').select2();
@@ -289,6 +289,10 @@ $(document).ready(function() {
 			profitcal();
 		}
 	});
+	$('#billing_account_id').on('change', function() {
+		var billing_account_id = $('#billing_account_id').val();
+		fetchAllClients(billing_account_id);
+	});
 });
 // fetch all users
 function fetchAllUsers() {
@@ -308,7 +312,7 @@ function fetchAllUsers() {
 	});
 }
 // fetch all Companies
-function fetchAllCompanies() {
+function fetchAllCompanies(billing_account_id) {
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllCompanies&sugar_body_only=true",
 		method: 'GET',
@@ -324,11 +328,14 @@ function fetchAllCompanies() {
 	});
 }
 // fetch all contacts
-function fetchAllClients() {
+function fetchAllClients(billing_account_id){
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllClients&sugar_body_only=true",
 		method: 'GET',
+		data: {data:billing_account_id},
 		success: function(response) {
+			debugger;
+			$('#billing_contact_id').empty();
 			response = JSON.parse(response);
 			$.each(response, function(i, item) {
 				$('#billing_contact_id').append("<option value='" + item.id + "'>" + item.last_name + "</option>");
