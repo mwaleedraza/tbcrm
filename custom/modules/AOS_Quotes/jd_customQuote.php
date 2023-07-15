@@ -1,7 +1,25 @@
 <?php
     require("custom/modules/AOS_Quotes/jdCreateQuoteCalculationFunctions/jdCreateQuoteCalculationFunctions.php");
 ?>
+<style>
+    #spinner-div {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 2;
+}
+</style>
 <script src="custom/include/UI/app-js/getOptionByHtml.js"></script>
+<!-- loader -->
+<div id="spinner-div" class="pt-5">
+    <div class="spinner-border text-primary" role="status">
+    </div>
+</div>
 <div>
     <form id="createQuote">
         <div class="panel panel-default">
@@ -363,7 +381,7 @@
                     <h4 style="background-color:DodgerBlue; color: white;">Product Costing</h4>
                     <!-- This div is for Product Costing -->
                     <div id="forms-container" class="border">
-                        <div class="product-form" id="form_s" style="display: none;">
+                        <div class="product-form" id="form_p" style="display: none;">
                             <!-- <div class="row"><div class="col-md-1"><label class="fw-bold">S/N
                                         <input type="text" class="form-control" name="number[]" id="number" placeholder="S/N" ></label></div><div class="col-md-2"><label class="fw-bold">Product Name
                                         <input type="text" class="form-control" name="product_id[]" id="product_id" placeholder="Product Name"></label></div><div class="col-md-2"><label class="fw-bold">Sub-Product
@@ -378,7 +396,7 @@
                             <br>
                         </div>
                         <div class="align-right" style="display: flex; justify-content: flex-end;">
-                            <button type="button" class="btn btn-primary add-form-btn" onclick="addCode(),calculatetotal()">+</button>
+                            <button type="button" class="btn btn-primary add-form-btn_p" onclick="addCode(),calculatetotal()">+</button>
                         </div>
                     </div>
                 </div>
@@ -387,7 +405,7 @@
                 <div class="row" style="padding-left: 73px; padding-right: 50px;">
                     <h4 style="background-color:DodgerBlue; color: white;">Service Costing</h4>
                     <div id="forms-container1" class="border">
-                        <div class="service-form" id="form_p" style="display: none;">
+                        <div class="service-form" id="form_s" style="display: none;">
                             <!-- <div class="row"><div class="col-md-1"><label class="fw-bold">S/N
                                         <input type="text" class="form-control" name="number[]" id="number" placeholder="S/N"></label></div><div class="col-md-2"><label class="fw-bold">Service Description
                                         <input type="text" class="form-control" name="item_description[]" id="item_description" placeholder="Service Description"></label></div><div class="col-md-2"><label class="fw-bold">Total
@@ -395,7 +413,7 @@
                             <br>
                         </div>
                         <div class="align-right" style="display: flex; justify-content: flex-end;">
-                            <button type="button" class="btn btn-primary add-form-btn" onclick="addSCode(),servicetotal()">+</button>
+                            <button type="button" class="btn btn-primary add-form-btn_s" onclick="addSCode(),servicetotal()">+</button>
                         </div>
                     </div>
                 </div>
@@ -505,7 +523,7 @@
                                 </label>
                             </div>
                             <div class="col-md-4">
-                                <label class="fw-bold">Price After GST/PRA <input type="text" class="form-control" name="tc_service_price_after_wht" id="tc_service_price_after_pra_gst" value readonly="readonly">
+                                <label class="fw-bold">Price After GST/PRA <input type="text" class="form-control" name="tc_service_price_after_pra_gst" id="tc_service_price_after_pra_gst" value readonly="readonly">
                                 </label>
                             </div>
                         </div>

@@ -15,6 +15,7 @@ function addCode() {
             </div>
             <div class="col-md-2">
                 <label class="fw-bold">Product Name</label>
+				<input name="AOS_Products_Quotes_Id" id="AOS_Products_Quotes_Id${formCounterab}" hidden>
                 <select class="product_id form-control" name="product_id" data-counter="${formCounterab}" id="product_id${formCounterab}">
                 </select>
             </div>
@@ -77,7 +78,9 @@ function addSCode() {
             <div class="row">
         <div class="col-md-1">
             <label class="fw-bold">S/N
-            <input type="text" class="form-control" name="number" id="number${formSCounterab}" placeholder="S/N">
+			<input name="AOS_Products_Quotes_service_Id" id="AOS_Products_Quotes_service_Id${formCounterab}" hidden>
+			<input type="checkbox" name="is_service" id="is_service${formSCounterab}">
+            <input type="text" class="form-control" name="number" id="number${formSCounterab}" placeholder="S/N" hidden>
             </label>
         </div>
         <div class="col-md-2">
@@ -99,6 +102,8 @@ function addSCode() {
         </div>`;
 
 	formContainer.insertAdjacentHTML("beforeend", newForm);
+	$('#is_service'+formSCounterab).attr('checked',true);
+	// $('#is_service'+formSCounterab).val('1');
 	formSCounterab++;
 }
 
@@ -197,6 +202,9 @@ $(document).ready(function() {
 	// End of product costing row clone
 	//save total
 	$('.savetotal').click(function(e) {
+		var CurrentUrl = window.location.href;
+		var split_url=CurrentUrl.split("record=")
+		var recordID = split_url[1];
 		var name = document.getElementById("name").value;
 		var expiration = document.getElementById("expiration").value;
 		var stage = document.getElementById("stage").value;
@@ -238,8 +246,11 @@ $(document).ready(function() {
 			}else {
 				var createQuoteFormData = $('#createQuote').serializeObject();
 				var createQuoteFormData = {
-					createQuoteFormData: createQuoteFormData
+					createQuoteFormData: createQuoteFormData,
+					recordID:recordID
 				};
+				// loader
+				$('#spinner-div').show();//Load button clicked show spinner
 				$.ajax({
 					url: "index.php?module=AOS_Quotes&action=saveQuote&sugar_body_only=true",
 					method: 'POST',
@@ -249,6 +260,7 @@ $(document).ready(function() {
 						response  = JSON.parse(response);
 						if (response['status'] == '200' && response['record_id'] != '') {
 							window.location.href = "index.php?module=AOS_Quotes&action=DetailView&record="+response['record_id'];
+							$('#spinner-div').hide();//Request is complete so hide spinner
 						}
 					},
 					error: function(xhr, status, error) {
@@ -299,12 +311,20 @@ $(document).ready(function() {
 		var billing_account_id = $('#billing_account_id').val();
 		fetchAllClients(billing_account_id);
 	});
+	// fetch data of record 
+	<?php
+		// var_dump($_SERVER['HTTP_REFERER']);
+		$record_id = explode("record=",$_SERVER['HTTP_REFERER']);
+		$recordID = $record_id['1'];
+	?>
+	fetchRecordData("<?php echo $recordID;?>");
 });
 // fetch all users
 function fetchAllUsers() {
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllUsers&sugar_body_only=true",
 		method: 'GET',
+		async:false,
 		success: function(response) {
 			response = JSON.parse(response);
 			$.each(response, function(i, item) {
@@ -322,6 +342,7 @@ function fetchAllCompanies(billing_account_id) {
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllCompanies&sugar_body_only=true",
 		method: 'GET',
+		async:false,
 		success: function(response) {
 			response = JSON.parse(response);
 			$.each(response, function(i, item) {
@@ -338,6 +359,7 @@ function fetchAllClients(billing_account_id){
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllClients&sugar_body_only=true",
 		method: 'GET',
+		async:false,
 		data: {data:billing_account_id},
 		success: function(response) {
 			$('#billing_contact_id').empty();
@@ -355,6 +377,7 @@ function fetchAllClients(billing_account_id){
 function fetchAllLeads() {
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllLeads&sugar_body_only=true",
+		async:false,
 		method: 'GET',
 		success: function(response) {
 			response = JSON.parse(response);
@@ -372,6 +395,7 @@ function fetchAllProducts(formCounterab) {
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllProducts&sugar_body_only=true",
 		method: 'GET',
+		async:false,
 		success: function(response) {
 			response = JSON.parse(response);
 			$.each(response, function(i, item) {
@@ -390,6 +414,7 @@ function fetchAllSubProducts(lineItemRow) {
 	var formCounterab = pid.slice(-1);
 	$.ajax({
 		url: "index.php?module=AOS_Quotes&action=fetchAllSubProducts&sugar_body_only=true",
+		async:false,
 		method: 'GET',
 		data: {data:$('#'+pid).val()},
 		success: function(response) {
@@ -474,7 +499,6 @@ function calculateserviceTax() {
 	if (customwht) {
 		priceafterwht = priceaftergst * (customwht / 100);
 	}
-
 	var Samount = document.getElementById("tc_service_tax_amt");
 	var SAgst = document.getElementById("tc_service_price_after_pra_gst");
 	var SAwht = document.getElementById("tc_service_price_after_wht");
@@ -570,5 +594,193 @@ function profitcal() {
 		total = 0;
 	}
 	Tmargin.value = total.toFixed(2);
+}
+
+// function to get all related records
+function fetchRecordData(id){
+	var recordID = {
+			id: id
+		};
+	$.ajax({
+		url: "index.php?module=AOS_Quotes&action=fetchQuoteData&sugar_body_only=true",
+		method: 'GET',
+		data: recordID,
+		async:false,
+		success: function(response) {
+			response = JSON.parse(response);
+			var name = response.AOS_Quotes[0]['name'];
+			var stage = response.AOS_Quotes[0]['stage'];
+			var expiration = response.AOS_Quotes[0]['expiration'];
+			var invoice_status = response.AOS_Quotes[0]['invoice_status'];
+			var assigned_user_id = response.AOS_Quotes[0]['assigned_user_id'];
+			var term = response.AOS_Quotes[0]['term'];
+			var approval_status = response.AOS_Quotes[0]['approval_status'];
+			var approval_issue = response.AOS_Quotes[0]['approval_issue'];
+			var billing_account_id = response.AOS_Quotes[0]['billing_account_id'];
+			var billing_contact_id = response.AOS_Quotes[0]['billing_contact_id'];
+			var lead_id = response.AOS_Quotes[0]['lead_id'];
+			var rfq_ref = response.AOS_Quotes[0]['rfq_ref'];
+			var prev_quote_no = response.AOS_Quotes[0]['prev_quote_no'];
+			var payment = response.AOS_Quotes[0]['payment'];
+			var po_to_v = response.AOS_Quotes[0]['po_to_v'];
+			var status = response.AOS_Quotes[0]['status'];
+			var condition_c = response.AOS_Quotes[0]['condition_c'];
+			var user_id = response.AOS_Quotes[0]['user_id'];
+			var medium = response.AOS_Quotes[0]['medium'];
+			var referencenumber = response.AOS_Quotes[0]['referencenumber'];
+			var yourreferencenumber = response.AOS_Quotes[0]['yourreferencenumber'];
+			var pdftext = response.AOS_Quotes[0]['pdftext'];
+			var ourfirm = response.AOS_Quotes[0]['ourfirm'];
+			var tc_product_tax_type = response.AOS_Quotes[0]['tc_product_tax_type'];
+			var tc_product_tax_value = response.AOS_Quotes[0]['tc_product_tax_value'];
+			var tc_product_tax_amt = response.AOS_Quotes[0]['tc_product_tax_amt'];
+			var tc_product_price_after_pra_gst = response.AOS_Quotes[0]['tc_product_price_after_pra_gst'];
+			var tc_product_wht_type = response.AOS_Quotes[0]['tc_product_wht_type'];
+			var tc_product_wht_value = response.AOS_Quotes[0]['tc_product_wht_value'];
+			var tc_product_wht_custom = response.AOS_Quotes[0]['tc_product_wht_custom'];
+			var tc_product_price_after_wht = response.AOS_Quotes[0]['tc_product_price_after_wht'];
+			var tc_service_tax_type = response.AOS_Quotes[0]['tc_service_tax_type'];
+			var tc_service_tax_value = response.AOS_Quotes[0]['tc_service_tax_value'];
+			var tc_service_tax_amt = response.AOS_Quotes[0]['tc_service_tax_amt'];
+			var tc_service_price_after_pra_gst = response.AOS_Quotes[0]['tc_service_price_after_pra_gst'];
+			var tc_service_wht_value = response.AOS_Quotes[0]['tc_service_wht_value'];
+			var tc_service_wht_custom = response.AOS_Quotes[0]['tc_service_wht_custom'];
+			var tc_service_price_after_wht = response.AOS_Quotes[0]['tc_service_price_after_wht'];
+			var product_total = response.AOS_Quotes[0]['product_total_price'];
+			var currency_id = response.AOS_Quotes[0]['currency_id'];
+			var currency_rate = response.AOS_Quotes[0]['currency_rate'];
+			var convert_currency = response.AOS_Quotes[0]['convert_currency'];
+			var tc_total_product_cost_to_company = response.AOS_Quotes[0]['tc_total_product_cost_to_company'];
+			var tc_product_price_after_tax = response.AOS_Quotes[0]['tc_product_price_after_tax'];
+			var tc_product_margin = response.AOS_Quotes[0]['tc_product_margin'];
+			var tc_service_margin = response.AOS_Quotes[0]['tc_service_margin'];
+			var tc_total_margin = response.AOS_Quotes[0]['tc_total_margin'];
+			var tc_product_total = response.AOS_Quotes[0]['tc_product_total'];
+			var tc_service_total = response.AOS_Quotes[0]['tc_service_total'];
+			var tc_grand_total = response.AOS_Quotes[0]['tc_grand_total'];
+			if (po_to_v === '1') {
+				$('#po_to_v').prop('checked', true);
+			}else{
+				$('#po_to_v').prop('checked', false);
+			}
+			if (condition_c === '1') {
+				$('#condition_c').prop('checked', true);
+			} else{
+				$('#condition_c').prop('checked', false);
+			}
+			if (convert_currency === '1') {
+				$('#convert_currency').prop('checked', true);
+			} else{
+				$('#convert_currency').prop('checked', false);
+			}
+			$("#invoice_status").val(invoice_status).change();
+			$("#assigned_user_id").val(assigned_user_id).change();
+			$("#term").val(term).change();
+			$("#approval_status").val(approval_status).change();
+			$("#approval_issue").val(approval_issue).change();
+			$("#billing_account_id").val(billing_account_id).change();
+			$("#billing_contact_id").val(billing_contact_id).change();
+			$("#lead_id").val(lead_id).change();
+			$("#payment").val(payment).change();
+			// $("#po_to_v").val(po_to_v);
+			$("#status").val(status).change();
+			// $("#condition_c").val(condition_c);
+			$("#user_id").val(user_id).change();
+			$("#medium").val(medium).change();
+			$("#ourfirm").val(ourfirm).change();
+			$("#tc_product_tax_type").val(tc_product_tax_type).change();
+			$("#tc_product_tax_value").val(tc_product_tax_value).change();
+			$("#tc_product_wht_value").val(tc_product_wht_value).change();
+			$("#tc_service_wht_value").val(tc_service_wht_value).change();
+
+			$("#name").val(name);
+			$("#stage").val(stage);
+			$("#expiration").val(expiration);
+			$("#rfq_ref").val(rfq_ref);
+			$("#prev_quote_no").val(prev_quote_no);
+			$("#referencenumber").val(referencenumber);
+			$("#yourreferencenumber").val(yourreferencenumber);
+			$("#pdftext").val(pdftext);
+			$("#tc_product_tax_amt").val(tc_product_tax_amt);
+			$("#tc_product_price_after_pra_gst").val(tc_product_price_after_pra_gst);
+			$("#tc_product_wht_custom").val(tc_product_wht_custom);
+			$("#tc_product_price_after_wht").val(tc_product_price_after_wht);
+			$("#tc_service_tax_type").val(tc_service_tax_type);
+			$("#tc_service_tax_value").val(tc_service_tax_value);
+			$("#tc_service_tax_amt").val(tc_service_tax_amt);
+			$("#tc_service_price_after_pra_gst").val(tc_service_price_after_pra_gst);
+			$("#tc_service_wht_custom").val(tc_service_wht_custom);
+			$("#tc_service_price_after_wht").val(tc_service_price_after_wht);
+			$("#product_total").val(product_total);
+			$("#currency_id").val(currency_id);
+			$("#currency_rate").val(currency_rate);
+			// $("#convert_currency").val(convert_currency);
+			$("#tc_total_product_cost_to_company").val(tc_total_product_cost_to_company);
+			$("#tc_product_price_after_tax").val(tc_product_price_after_tax);
+			$("#tc_product_margin").val(tc_product_margin);
+			$("#tc_service_margin").val(tc_service_margin);
+			$("#tc_total_margin").val(tc_total_margin);
+			
+			$("#product_total").val(tc_product_total);
+			$("#service_total").val(tc_service_total);
+			$("#grand_total").val(tc_grand_total);
+
+
+			// line items
+			var lineItemCount = response.aos_products_quotes.length;
+			for (var i = 0; i < lineItemCount; i++) {
+				$('.add-form-btn_p').click();
+				var item = response.aos_products_quotes[i];
+				var AOS_Products_Quotes_Id = item['id'];
+				var number = item['number'];
+				var product_id = item['product_id'];
+				var product_qty = item['product_qty'];
+				var sub_product = item['sub_products'];
+				var per_unit_cost = item['per_unit_cost'];
+				var product_margin = item['product_margin'];
+				var product_unit_price = item['product_unit_price'];
+				var product_total_price = item['product_total_price'];
+	
+				// set values
+				$("#number"+[i]).val(number);
+				$("#AOS_Products_Quotes_Id"+[i]).val(AOS_Products_Quotes_Id);
+				$("#product_id"+[i]).val(product_id).change();
+				$("#product_qty"+[i]).val(product_qty);
+				$("#sub_products"+[i]).val(sub_product).change();
+				$("#per_unit_cost"+[i]).val(per_unit_cost);
+				$("#product_margin"+[i]).val(product_margin);
+				$("#product_unit_price"+[i]).val(product_unit_price);
+				$("#product_total_price"+[i]).val(product_total_price);
+				// console.log(productId);
+			}
+			// line items services
+			var lineItemServicesCount = response.aos_products_quotes.length;
+			for (var i = 0; i < lineItemServicesCount; i++) {
+				var item = response.aos_products_quotes[i];
+				if(item['is_service']=="1"){
+					$('.add-form-btn_s').click();
+					var item = response.aos_products_quotes[i];
+					var AOS_Products_Quotes_Id = item['id'];
+					var number = item['number'];
+					var is_service = item['is_service'];
+					var item_description = item['item_description'];
+					var tc_service_total = item['tc_service_total'];
+					// set values
+					$("#numberS"+[i]).val(number);
+					$("#is_service"+[i]).val(is_service);
+					$('#AOS_Products_Quotes_service_Id').val(AOS_Products_Quotes_Id);
+					$("#item_description"+[i]).val(item_description);
+					$("#tc_service_total"+[i]).val(tc_service_total);
+				}
+			}
+			// $.each(response, function(i, item) {
+			// 	$('#assigned_user_id').append("<option value='" + item.id + "'>" + item.last_name + "</option>");
+			// 	$('#user_id').append("<option value='" + item.id + "'>" + item.last_name + "</option>");
+			// });
+		},
+		error: function(xhr, status, error) {
+			console.error('Error saving data:', error);
+		}
+	});
 }
 </script>
