@@ -314,8 +314,13 @@ $(document).ready(function() {
 	// fetch data of record 
 	<?php
 		// var_dump($_SERVER['HTTP_REFERER']);
-		$record_id = explode("record=",$_SERVER['HTTP_REFERER']);
-		$recordID = $record_id['1'];
+		if(isset($_SERVER['HTTP_REFERER'])) {
+			$record_id = explode("record=",$_SERVER['HTTP_REFERER']);
+			$recordID = $record_id['1'];
+		}else{
+			echo "Not Able to Get Record Details";
+			die;
+		}
 	?>
 	fetchRecordData("<?php echo $recordID;?>");
 });
