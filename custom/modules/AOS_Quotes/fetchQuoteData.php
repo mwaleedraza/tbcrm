@@ -7,7 +7,7 @@ $response = [];
 $id = $_REQUEST['id'];
 
 $AOS_QuotesArr = array();
-$query1 = "SELECT * FROM AOS_Quotes WHERE id = '$id'";
+$query1 = "SELECT * FROM aos_quotes WHERE id = '$id'";
 $AOS_Quotes = $db->query($query1);
 while ($rows = $db->fetchByAssoc($AOS_Quotes)) {
     array_push($AOS_QuotesArr, $rows);
