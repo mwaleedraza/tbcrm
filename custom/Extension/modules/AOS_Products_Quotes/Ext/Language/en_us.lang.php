@@ -14,6 +14,7 @@ $mod_strings = array(
   'LBL_SERVICE_PRA_PERCENTAGE' => 'SERVICE PRA',
   'LBL_SERVICE_PRA_CUSTOM_PERCENTAGE' => 'SERVICE CUSTOM PRA',
   'LBL_TC_SERVICE_TOTAL' => 'SERVICE Total',
+  'LBL_IS_SERVICE' => 'IS SERVICE',
 );
 
 // $mod_strings = array(
