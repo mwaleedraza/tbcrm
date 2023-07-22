@@ -4,7 +4,7 @@ if (!defined('sugarEntry') || !sugarEntry) {
     die('Not A Valid Entry Point');
 }
 
-global $sugar_config,$current_user,$app_list_strings,$beanList,$db;
+global $db,$bean;
 // declarations
 $responseArr = array();
 // $createQuoteFormData = $_POST['createQuoteFormData'];
@@ -132,60 +132,71 @@ if($recordID==''){
     $AOS_QuotesBean->tc_grand_total = $grand_total;
     $AOS_QuotesBean->tc_product_total = $product_total;
     $AOS_QuotesBean->tc_service_total = $service_total;
-    if($AOS_QuotesBean->save()){
+    $AOS_QuotesBean->save();
+    // var_dump($AOS_QuotesBean->lead_id);
+    //     echo json_encode($responseArr);
+    // die;
+    if($AOS_QuotesBean->id){
+        global $db,$bean;
         // products Line items saving
         if($product_id){
             for ($i=0; $i < count($product_id); $i++) {
-                // echo $product_id[$i];
-                if($AOS_Products_Quotes_Id[$i] ==''){
-                    $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
-                }else{
-                    $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id[$i]);
-                }
-                $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
-                $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
-                $AOS_Products_QuotesBEAN->number = $sn[$i];
-                // fetch product name
-                $fetchProduct_nameQuery = "SELECT name FROM aos_products where deleted =0 AND  id='".$product_id[$i]."'";
-                $fetchProduct_nameQueryResult = $GLOBALS['db']->query($fetchProduct_nameQuery);
-                while ($row = $GLOBALS['db']->fetchByAssoc($fetchProduct_nameQueryResult)) {
-                    $productName = $row['name'];
-                }
-                $AOS_Products_QuotesBEAN->name = $productName;
-                $AOS_Products_QuotesBEAN->product_id = $product_id[$i];
-                $AOS_Products_QuotesBEAN->sub_products = $sub_products[$i] ;
-                $AOS_Products_QuotesBEAN->product_qty = $product_qty[$i];
-                $AOS_Products_QuotesBEAN->per_unit_cost = $per_unit_cost[$i];
-                $AOS_Products_QuotesBEAN->product_unit_price = $product_unit_price[$i];
-                $AOS_Products_QuotesBEAN->product_total_price = $product_total_price[$i];
-                $AOS_Products_QuotesBEAN->product_margin = $product_margin[$i];
+                if($is_service[$i]!='on'){
+                    if($AOS_Products_Quotes_Id[$i] ==''){
+                        $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
+                    }else{
+                        $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id[$i]);
+                    }
+                    $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
+                    $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
+                    $AOS_Products_QuotesBEAN->number = $sn[$i];
+                    // fetch product name
+                    $fetchProduct_nameQuery = "SELECT name FROM aos_products where deleted = '0' AND  id='".$product_id[$i]."'";
+                    $fetchProduct_nameQueryResult = $GLOBALS['db']->query($fetchProduct_nameQuery);
+                    while ($row = $GLOBALS['db']->fetchByAssoc($fetchProduct_nameQueryResult)) {
+                        $productName = $row['name'];
+                    }
+                    $AOS_Products_QuotesBEAN->name = $productName;
+                    $AOS_Products_QuotesBEAN->product_id = $product_id[$i];
+                    $AOS_Products_QuotesBEAN->sub_products = $sub_products[$i];
+                    $AOS_Products_QuotesBEAN->product_qty = $product_qty[$i];
+                    $AOS_Products_QuotesBEAN->per_unit_cost = $per_unit_cost[$i];
+                    $AOS_Products_QuotesBEAN->product_unit_price = $product_unit_price[$i];
+                    $AOS_Products_QuotesBEAN->product_total_price = $product_total_price[$i];
+                    $AOS_Products_QuotesBEAN->product_margin = $product_margin[$i];
 
-                // $AOS_Products_QuotesBEAN->number = $number[$i];
-                // $AOS_Products_QuotesBEAN->item_description = $item_description[$i];
-                // $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total[$i];
-
-                if($AOS_Products_QuotesBEAN->save()){
-                    $productName = '';
-                    $responseArr['products'] = 'saved';
+                    // $AOS_Products_QuotesBEAN->number = $number[$i];
+                    // $AOS_Products_QuotesBEAN->item_description = $item_description[$i];
+                    // $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total[$i];
+                    if (!empty($AOS_Products_QuotesBEAN)){
+                        // echo 'AOS_Products_QuotesBEAN';
+                        // echo $i;
+                        if($AOS_Products_QuotesBEAN->save()){
+                            $responseArr['products'] = 'saved';
+                            $productName = '';
+                        }
+                    }
                 }
             }
         }
         if($is_service){
             for ($i=0; $i < count($is_service); $i++) {
-                if($AOS_Products_Quotes_Id[$i] ==''){
-                    $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
-                }else{
-                    $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id[$i]);
-                }
-                $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
-                // $AOS_Products_QuotesBEAN->name = $AOS_QuotesBean->tc_service_total;
-                $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
-                $AOS_Products_QuotesBEAN->number = $sn[$i];
-                $AOS_Products_QuotesBEAN->is_service = $is_service[$i];
-                $AOS_Products_QuotesBEAN->item_description = $item_description[$i];
-                $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total[$i];
-                if($AOS_Products_QuotesBEAN->save()){
-                    $responseArr['services'] = 'saved';
+                if($is_service[$i]=='on'){
+                    if($AOS_Products_Quotes_Id[$i] ==''){
+                        $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
+                    }else{
+                        $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id[$i]);
+                    }
+                    $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
+                    $AOS_Products_QuotesBEAN->name = $name;
+                    $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
+                    $AOS_Products_QuotesBEAN->number = $sn[$i];
+                    $AOS_Products_QuotesBEAN->is_service = $is_service[$i];
+                    $AOS_Products_QuotesBEAN->item_description = $item_description[$i];
+                    $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total[$i];
+                    if($AOS_Products_QuotesBEAN->save()){
+                        $responseArr['services'] = 'saved';
+                    }
                 }
             }
         }
@@ -213,6 +224,8 @@ if($recordID==''){
         $responseArr['record_id'] = $AOS_QuotesBean->id;
         // header("Location: /index.php?module=AOS_Quotes&action=DetailView&record=".$AOS_QuotesBean->id);
         echo json_encode($responseArr);
+    } else{
+        echo 'quote not saved';
     }
         // $sql1 = "INSERT INTO  aos_products_quotes(product_total, service_total, grand_total, total_product_cost_to_company, product_price_after_tax, product_margin, service_margin, total_margin , product_id, product_name, sub_products, product_qty, per_unit_cost, product_line_margin, per_unit_price, product_line_total, currency_id, currency_rate, convert_currency, service_id, service_description, service_line_total, name, quote_stage, valid_until, invoice_status, assigned_user_id, payment_term, approval_status, approval_issue, realted_company, client, sale, rfq_ref, prev_quote_no, payment, po_to_v, status, condition_c, user_id, medium, referencenumber, yourreferencenumber, pdftext, ourfirm) 
         //          VALUES ('$product_total', '$service_total',' $grand_total', '$total_product_cost_to_company', '$product_price_after_tax', '$product_margin', '$service_margin', '$total_margin', '$sn', '$productNames','$subProducts', '$quantities', '$unitCosts', '$margins', '$listPrices', '$totalPrices', '$currency_type', '$currency_rate', '$convert_currency', '$ssn', '$service_name', '$service_line_price',  '$name', '$quote_stage', '$valid_until', '$invoice_status', '$assigned_user_id', '$payment_term', '$approval_status', '$approval_issue', '$realted_company', '$client', '$sale', '$rfq_ref', '$prev_quote_no', '$payment', '$po_to_v', '$status', '$condition_c', '$user_id', '$medium', '$referencenumber', '$yourreferencenumber', '$pdftext', '$ourfirm')";

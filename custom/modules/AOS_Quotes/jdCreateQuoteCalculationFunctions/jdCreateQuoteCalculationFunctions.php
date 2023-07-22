@@ -4,6 +4,8 @@
 <script>
 // Product part
 // This is for product costing increment
+var formCounterab = '0';
+var formSCounterab = '0';
 function addCode() {
 	var formContainer = document.getElementById("forms-container");
 	var newForm = `<div class="row">
@@ -78,7 +80,7 @@ function addSCode() {
             <div class="row">
         <div class="col-md-1">
             <label class="fw-bold">S/N
-			<input name="AOS_Products_Quotes_service_Id" id="AOS_Products_Quotes_service_Id${formCounterab}" hidden>
+			<input name="AOS_Products_Quotes_service_Id" id="AOS_Products_Quotes_service_Id${formSCounterab}" hidden>
 			<input type="checkbox" name="is_service" id="is_service${formSCounterab}">
             <input type="text" class="form-control" name="number" id="number${formSCounterab}" placeholder="S/N" hidden>
             </label>
@@ -163,6 +165,12 @@ function calculatetotal() {
 	return productsum;
 }
 $(document).ready(function() {
+	var CurrentUrl = window.location.href;
+	var split_url=CurrentUrl.split("record=")
+	var recordID = split_url[1];
+	// if(recordID){
+	// 	fetchRecordData(recordID);
+	// }
 	// End of the total of all row price for product costing
 	$('#forms-container').on('input', '.form-control', function() {
 		calculatePrice(this);
@@ -322,7 +330,9 @@ $(document).ready(function() {
 			die;
 		}
 	?>
-	fetchRecordData("<?php echo $recordID;?>");
+		if(recordID){
+			fetchRecordData(recordID);
+		}
 });
 // fetch all users
 function fetchAllUsers() {
@@ -435,8 +445,6 @@ function fetchAllSubProducts(lineItemRow) {
 	});
 }
 // End of service costing row clone
-
-
 //Product TAx part to calculate amount and price after gst/pra
 function calculateTax() {
 	//  var form = input.closest('.product-tax');
@@ -612,6 +620,7 @@ function fetchRecordData(id){
 		data: recordID,
 		async:false,
 		success: function(response) {
+		
 			response = JSON.parse(response);
 			var name = response.AOS_Quotes[0]['name'];
 			var stage = response.AOS_Quotes[0]['stage'];
@@ -680,6 +689,7 @@ function fetchRecordData(id){
 			}
 			$("#invoice_status").val(invoice_status).change();
 			$("#assigned_user_id").val(assigned_user_id).change();
+			debugger;
 			$("#term").val(term).change();
 			$("#approval_status").val(approval_status).change();
 			$("#approval_issue").val(approval_issue).change();
@@ -729,53 +739,57 @@ function fetchRecordData(id){
 			$("#product_total").val(tc_product_total);
 			$("#service_total").val(tc_service_total);
 			$("#grand_total").val(tc_grand_total);
-
-
+			
 			// line items
 			var lineItemCount = response.aos_products_quotes.length;
+			var p='0';
 			for (var i = 0; i < lineItemCount; i++) {
-				$('.add-form-btn_p').click();
 				var item = response.aos_products_quotes[i];
-				var AOS_Products_Quotes_Id = item['id'];
-				var number = item['number'];
-				var product_id = item['product_id'];
-				var product_qty = item['product_qty'];
-				var sub_product = item['sub_products'];
-				var per_unit_cost = item['per_unit_cost'];
-				var product_margin = item['product_margin'];
-				var product_unit_price = item['product_unit_price'];
-				var product_total_price = item['product_total_price'];
-	
-				// set values
-				$("#number"+[i]).val(number);
-				$("#AOS_Products_Quotes_Id"+[i]).val(AOS_Products_Quotes_Id);
-				$("#product_id"+[i]).val(product_id).change();
-				$("#product_qty"+[i]).val(product_qty);
-				$("#sub_products"+[i]).val(sub_product).change();
-				$("#per_unit_cost"+[i]).val(per_unit_cost);
-				$("#product_margin"+[i]).val(product_margin);
-				$("#product_unit_price"+[i]).val(product_unit_price);
-				$("#product_total_price"+[i]).val(product_total_price);
-				// console.log(productId);
+			
+				if(item['is_service']!="1"){
+					$('.add-form-btn_p').click();
+					var AOS_Products_Quotes_Id = item['id'];
+					var number = item['number'];
+					var product_id = item['product_id'];
+					var product_qty = item['product_qty'];
+					var sub_product = item['sub_products'];
+					var per_unit_cost = item['per_unit_cost'];
+					var product_margin = item['product_margin'];
+					var product_unit_price = item['product_unit_price'];
+					var product_total_price = item['product_total_price'];
+					// set values
+					$("#number"+[p]).val(number);
+					$("#AOS_Products_Quotes_Id"+[p]).val(AOS_Products_Quotes_Id);
+					$("#product_id"+[p]).val(product_id).change();
+					$("#product_qty"+[p]).val(product_qty);
+					$("#sub_products"+[p]).val(sub_product).change();
+					$("#per_unit_cost"+[p]).val(per_unit_cost);
+					$("#product_margin"+[p]).val(product_margin);
+					$("#product_unit_price"+[p]).val(product_unit_price);
+					$("#product_total_price"+[p]).val(product_total_price);
+					// console.log(productId);
+					p++;
+				}
 			}
 			// line items services
 			var lineItemServicesCount = response.aos_products_quotes.length;
-			for (var i = 0; i < lineItemServicesCount; i++) {
+			var j='0';
+			for (var i = 0; i < lineItemServicesCount; i++){
 				var item = response.aos_products_quotes[i];
 				if(item['is_service']=="1"){
 					$('.add-form-btn_s').click();
-					var item = response.aos_products_quotes[i];
 					var AOS_Products_Quotes_Id = item['id'];
 					var number = item['number'];
 					var is_service = item['is_service'];
 					var item_description = item['item_description'];
 					var tc_service_total = item['tc_service_total'];
 					// set values
-					$("#numberS"+[i]).val(number);
-					$("#is_service"+[i]).val(is_service);
-					$('#AOS_Products_Quotes_service_Id').val(AOS_Products_Quotes_Id);
-					$("#item_description"+[i]).val(item_description);
-					$("#tc_service_total"+[i]).val(tc_service_total);
+					$("#numberS"+[j]).val(number);
+					$("#is_service"+[j]).val(is_service);
+					$("#AOS_Products_Quotes_service_Id"+[j]).val(AOS_Products_Quotes_Id);
+					$("#item_description"+[j]).val(item_description);
+					$("#tc_service_total"+[j]).val(tc_service_total);
+					j++;
 				}
 			}
 			// $.each(response, function(i, item) {
