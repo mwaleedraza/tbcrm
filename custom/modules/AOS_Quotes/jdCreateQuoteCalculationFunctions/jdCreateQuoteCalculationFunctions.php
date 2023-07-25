@@ -18,7 +18,9 @@ function addCode() {
             <div class="col-md-2">
                 <label class="fw-bold">Product Name</label>
 				<input name="AOS_Products_Quotes_Id" id="AOS_Products_Quotes_Id${formCounterab}" hidden>
+				<input name="AOS_Products_Quotes_name" id="AOS_Products_Quotes_name${formCounterab}" hidden>
                 <select class="product_id form-control" name="product_id" data-counter="${formCounterab}" id="product_id${formCounterab}">
+				
                 </select>
             </div>
             <div class="col-md-2">
@@ -81,7 +83,8 @@ function addSCode() {
         <div class="col-md-1">
             <label class="fw-bold">S/N
 			<input name="AOS_Products_Quotes_service_Id" id="AOS_Products_Quotes_service_Id${formSCounterab}" hidden>
-			<input type="checkbox" name="is_service" id="is_service${formSCounterab}">
+			<input name="AOS_Products_Quotes_service_name" id="AOS_Products_Quotes_service_name${formCounterab}" hidden>
+			<input type="checkbox" name="is_service" id="is_service${formSCounterab}" hidden>
             <input type="text" class="form-control" name="number" id="number${formSCounterab}" placeholder="S/N" hidden>
             </label>
         </div>
@@ -257,6 +260,7 @@ $(document).ready(function() {
 					createQuoteFormData: createQuoteFormData,
 					recordID:recordID
 				};
+				debugger;
 				// loader
 				$('#spinner-div').show();//Load button clicked show spinner
 				$.ajax({
@@ -689,7 +693,6 @@ function fetchRecordData(id){
 			}
 			$("#invoice_status").val(invoice_status).change();
 			$("#assigned_user_id").val(assigned_user_id).change();
-			debugger;
 			$("#term").val(term).change();
 			$("#approval_status").val(approval_status).change();
 			$("#approval_issue").val(approval_issue).change();
@@ -749,6 +752,7 @@ function fetchRecordData(id){
 				if(item['is_service']!="1"){
 					$('.add-form-btn_p').click();
 					var AOS_Products_Quotes_Id = item['id'];
+					var AOS_Products_Quotes_name = item['name'];
 					var number = item['number'];
 					var product_id = item['product_id'];
 					var product_qty = item['product_qty'];
@@ -760,6 +764,7 @@ function fetchRecordData(id){
 					// set values
 					$("#number"+[p]).val(number);
 					$("#AOS_Products_Quotes_Id"+[p]).val(AOS_Products_Quotes_Id);
+					$("#AOS_Products_Quotes_name"+[p]).val(AOS_Products_Quotes_name);
 					$("#product_id"+[p]).val(product_id).change();
 					$("#product_qty"+[p]).val(product_qty);
 					$("#sub_products"+[p]).val(sub_product).change();
@@ -776,17 +781,19 @@ function fetchRecordData(id){
 			var j='0';
 			for (var i = 0; i < lineItemServicesCount; i++){
 				var item = response.aos_products_quotes[i];
-				if(item['is_service']=="1"){
+				if(item['is_service']=="1"){	
 					$('.add-form-btn_s').click();
 					var AOS_Products_Quotes_Id = item['id'];
+					var AOS_Products_Quotes_name = item['name'];
 					var number = item['number'];
 					var is_service = item['is_service'];
 					var item_description = item['item_description'];
 					var tc_service_total = item['tc_service_total'];
 					// set values
 					$("#numberS"+[j]).val(number);
-					$("#is_service"+[j]).val(is_service);
 					$("#AOS_Products_Quotes_service_Id"+[j]).val(AOS_Products_Quotes_Id);
+					$("#AOS_Products_Quotes_service_name"+[p]).val(AOS_Products_Quotes_name);
+					$("#is_service"+[j]).val(is_service);
 					$("#item_description"+[j]).val(item_description);
 					$("#tc_service_total"+[j]).val(tc_service_total);
 					j++;

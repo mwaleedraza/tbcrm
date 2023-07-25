@@ -73,6 +73,7 @@ $product_unit_price = $_POST['createQuoteFormData']['product_unit_price'];
 $product_total_price = $_POST['createQuoteFormData']['product_total_price'];
 // service line items
 $number = $_POST['createQuoteFormData']['number'];
+$AOS_Products_Quotes_service_Id = $_POST['createQuoteFormData']['AOS_Products_Quotes_service_Id'];
 $item_description = $_POST['createQuoteFormData']['item_description'];
 $is_service = $_POST['createQuoteFormData']['is_service'];
 $tc_service_total = $_POST['createQuoteFormData']['tc_service_total'];
@@ -154,9 +155,8 @@ if($recordID==''){
         // products Line items saving
         if($product_id){
             if(is_array($product_id)){
-                // echo 'arrrraauuyyy';
                 for ($i=0; $i < count($product_id); $i++) {
-                    if($is_service[$i]!='on'){
+                    // if($is_service[$i]!='on' || $is_service[$i]!='1'){
                         if($AOS_Products_Quotes_Id[$i] ==''){
                             $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
                         }else{
@@ -194,7 +194,7 @@ if($recordID==''){
                                 $productName = '';
                             }
                         }
-                    }
+                    // }
                 }
                 // // start of checking deleted records
                 // $aos_products_quotesArr = array();
@@ -213,8 +213,7 @@ if($recordID==''){
                 // }
                 // // end of checking deleted records
             } else{
-                // echo 'stringgg';
-                if($is_service!='on'){
+                // if($is_service!='on' || $is_service!='1'){
                     if($AOS_Products_Quotes_Id ==''){
                         $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
                     }else{
@@ -250,7 +249,7 @@ if($recordID==''){
                             $productName = '';
                         }
                     }
-                }
+                // }
                 // // start of checking deleted records
                 // $aos_products_quotesArr = array();
                 // $query2 = "SELECT id FROM aos_products_quotes WHERE parent_id = '$AOS_QuotesBean->id' AND deleted='0'";
@@ -270,33 +269,81 @@ if($recordID==''){
 
             }
         }
-        if($is_service){
-            if(is_array($product_id)){
-                for ($i=0; $i < count($is_service); $i++) {
-                    if($is_service[$i]=='on'){
-                        if($AOS_Products_Quotes_Id[$i] ==''){
+        // if($is_service){
+        //     if(is_array($product_id)){
+        //         for ($i=0; $i < count($is_service); $i++) {
+        //             if($is_service[$i]=='on' || $is_service[$i]=='1'){
+        //                 if($AOS_Products_Quotes_Id[$i] ==''){
+        //                     $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
+        //                 }else{
+        //                     $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id[$i]);
+        //                 }
+        //                 $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
+        //                 $AOS_Products_QuotesBEAN->name = $item_description[$i];
+        //                 $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
+        //                 $AOS_Products_QuotesBEAN->number = $sn[$i];
+        //                 $AOS_Products_QuotesBEAN->is_service = $is_service[$i];
+        //                 $AOS_Products_QuotesBEAN->item_description = $item_description[$i];
+        //                 $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total[$i];
+        //                 if($AOS_Products_QuotesBEAN->save()){
+        //                     $responseArr['services'] = 'saved';
+        //                 }
+        //             }
+        //         }
+        //     } else{
+        //         if($is_service=='on' || $is_service[$i]=='1'){
+        //             if($AOS_Products_Quotes_Id ==''){
+        //                 $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
+        //             }else{
+        //                 $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id);
+        //             }
+        //             $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
+        //             $AOS_Products_QuotesBEAN->name = $item_description;
+        //             $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
+        //             $AOS_Products_QuotesBEAN->number = $sn;
+        //             $AOS_Products_QuotesBEAN->is_service = $is_service;
+        //             $AOS_Products_QuotesBEAN->item_description = $item_description;
+        //             $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total;
+        //             if($AOS_Products_QuotesBEAN->save()){
+        //                 $responseArr['services'] = 'saved';
+        //             }
+        //         }
+        //     }
+        // }
+        // service line items
+        if($item_description){
+            if(is_array($item_description)){
+                for ($i=0; $i < count($item_description); $i++){
+                    if($is_service[$i]=='on' || $is_service[$i] == '1'){
+                        if($is_service[$i]=='on' || $is_service[$i] == '1'){
+                            $is_service[$i]='1';
+                        } else{
+                            $is_service[$i] = '0';
+                        }
+                        if($AOS_Products_Quotes_service_Id[$i] == ''){
                             $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
                         }else{
-                            $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id[$i]);
+                            $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_service_Id[$i]);
                         }
-                        $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
                         $AOS_Products_QuotesBEAN->name = $item_description[$i];
+                        $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
                         $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
-                        $AOS_Products_QuotesBEAN->number = $sn[$i];
+                        $AOS_Products_QuotesBEAN->number = $number[$i];
                         $AOS_Products_QuotesBEAN->is_service = $is_service[$i];
                         $AOS_Products_QuotesBEAN->item_description = $item_description[$i];
                         $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total[$i];
                         if($AOS_Products_QuotesBEAN->save()){
                             $responseArr['services'] = 'saved';
-                        }
+                        }   
+                        // $AOS_Products_QuotesBEAN->id;
                     }
                 }
             } else{
-                if($is_service=='on'){
-                    if($AOS_Products_Quotes_Id ==''){
+                if($is_service=='on' || $is_service=='1'){
+                    if($AOS_Products_Quotes_service_Id ==''){
                         $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
                     }else{
-                        $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id);
+                        $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_service_Id);
                     }
                     $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
                     $AOS_Products_QuotesBEAN->name = $item_description;
@@ -309,31 +356,9 @@ if($recordID==''){
                         $responseArr['services'] = 'saved';
                     }
                 }
+                // var_dump($AOS_Products_QuotesBEAN->id);
             }
         }
-                
-
-        // service line items
-        // if($item_description){
-        //     for ($i=0; $i < count($item_description); $i++){
-        //         // echo $product_id[$i];
-        //         // $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
-        //         if($AOS_Products_Quotes_Id[$i] ==''){
-        //             $AOS_Products_QuotesBEAN = BeanFactory::newBean('AOS_Products_Quotes');
-        //         }else{
-        //             $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_Id[$i]);
-        //         }
-        //         $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
-        //         $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
-        //         $AOS_Products_QuotesBEAN->number = $number[$i];
-        //         $AOS_Products_QuotesBEAN->item_description = $item_description[$i];
-        //         $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total[$i];
-        //         if($AOS_Products_QuotesBEAN->save()){
-        //             $responseArr['services'] = 'saved';
-        //         }   
-        //     }
-        // }
-        // die;
         $responseArr['status'] = '200';
         $responseArr['record_id'] = $AOS_QuotesBean->id;
         // header("Location: /index.php?module=AOS_Quotes&action=DetailView&record=".$AOS_QuotesBean->id);

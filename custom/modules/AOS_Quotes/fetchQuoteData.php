@@ -7,18 +7,18 @@ $response = [];
 $id = $_REQUEST['id'];
 
 $AOS_QuotesArr = array();
-$query1 = "SELECT * FROM aos_quotes WHERE id = '$id'";
+$query1 = "SELECT * FROM aos_quotes WHERE id = '$id' AND deleted='0' ";
 $AOS_Quotes = $db->query($query1);
-while ($rows = $db->fetchByAssoc($AOS_Quotes)) {
-    array_push($AOS_QuotesArr, $rows);
+while ($AOS_QuotesRows = $db->fetchByAssoc($AOS_Quotes)) {
+    array_push($AOS_QuotesArr, $AOS_QuotesRows);
 }
 
 // line items
 $aos_products_quotesArr = array();
-$query2 = "SELECT * FROM aos_products_quotes WHERE parent_id = '$id'";
+$query2 = "SELECT * FROM aos_products_quotes WHERE parent_id = '$id' AND deleted='0' ORDER BY `aos_products_quotes`.`date_entered` ASC";
 $aos_products_quotes = $db->query($query2);
-while ($rows = $db->fetchByAssoc($aos_products_quotes)) {
-    array_push($aos_products_quotesArr, $rows);
+while ($aos_products_quotesRows = $db->fetchByAssoc($aos_products_quotes)) {
+    array_push($aos_products_quotesArr, $aos_products_quotesRows);
 }
 
 // response to return
