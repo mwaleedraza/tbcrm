@@ -20,7 +20,7 @@ function addCode() {
 				<input name="AOS_Products_Quotes_Id" id="AOS_Products_Quotes_Id${formCounterab}" hidden>
 				<input name="AOS_Products_Quotes_name" id="AOS_Products_Quotes_name${formCounterab}" hidden>
                 <select class="product_id form-control" name="product_id" data-counter="${formCounterab}" id="product_id${formCounterab}">
-				
+
                 </select>
             </div>
             <div class="col-md-2">
@@ -52,7 +52,7 @@ function addCode() {
                 <input type="text" class="form-control" name="product_total_price" id="product_total_price${formCounterab}" placeholder="0" readonly="readonly">
             </div>
             <div class="col-md-1 align-self-end"> 
-                <button type="button" class="btn btn-danger delete-form-btn">-</button>  
+                <button type="button" class="prod_d btn btn-danger delete-form-btn" counter="${formCounterab}" onclick="deleted_line_item(this,'prod_d')">-</button>  
             </div>
             </div>
         </div>
@@ -83,7 +83,7 @@ function addSCode() {
         <div class="col-md-1">
             <label class="fw-bold">S/N
 			<input name="AOS_Products_Quotes_service_Id" id="AOS_Products_Quotes_service_Id${formSCounterab}" hidden>
-			<input name="AOS_Products_Quotes_service_name" id="AOS_Products_Quotes_service_name${formCounterab}" hidden>
+			<input name="AOS_Products_Quotes_service_name" id="AOS_Products_Quotes_service_name${formSCounterab}" hidden>
 			<input type="checkbox" name="is_service" id="is_service${formSCounterab}" hidden>
             <input type="text" class="form-control" name="number" id="number${formSCounterab}" placeholder="S/N" hidden>
             </label>
@@ -99,7 +99,7 @@ function addSCode() {
             </label>
         </div>
         <div class="col-md-1 align-self-end">
-            <button type="button" class="btn btn-danger delete-form-btn" onclick="servicetotal()">-</button>
+            <button type="button" class="serv_d btn btn-danger delete-form-btn" onclick="deleted_line_item(this,'serv_d')">-</button>
         </div>
         </div>
         </div>
@@ -612,7 +612,38 @@ function profitcal() {
 	}
 	Tmargin.value = total.toFixed(2);
 }
-
+function deleted_line_item(element,line_i){
+	if(line_i=='prod_d'){
+		var AOS_Products_Quotes_Id = element.attributes['data-AOS_Products_Quotes_Id'].textContent;
+		var AOS_Products_Quotes_Id_del = AOS_Products_Quotes_Id;
+	} else if(line_i=='serv_d'){
+		var aos_products_quotes_service_id = element.attributes['data-aos_products_quotes_service_id'].textContent;
+		var AOS_Products_Quotes_Id_del = aos_products_quotes_service_id;
+	}
+	debugger;
+	// var AOS_Products_Quotes_Id_del = $('#AOS_Products_Quotes_Id'+formCounterab).val();
+	var AOS_Products_Quotes_Id_del = {
+		AOS_Products_Quotes_Id_del: AOS_Products_Quotes_Id_del
+		};
+	$.ajax({
+		url: "index.php?module=AOS_Quotes&action=AOS_Products_Quotes_del&sugar_body_only=true",
+		method: 'POST',
+		data: AOS_Products_Quotes_Id_del,
+		async:false,
+		success: function(response) {
+			debugger;
+			var response = JSON.parse(response);
+			if(response['status']=='200'){
+				alert('deleted');
+			} else{
+				alert('ERROR');
+			}
+		},
+		error: function(xhr, status, error) {
+			console.error('Error saving data:', error);
+		}
+	});
+}
 // function to get all related records
 function fetchRecordData(id){
 	var recordID = {
@@ -748,6 +779,7 @@ function fetchRecordData(id){
 			var p='0';
 			for (var i = 0; i < lineItemCount; i++) {
 				var item = response.aos_products_quotes[i];
+
 			
 				if(item['is_service']!="1"){
 					$('.add-form-btn_p').click();
@@ -772,6 +804,8 @@ function fetchRecordData(id){
 					$("#product_margin"+[p]).val(product_margin);
 					$("#product_unit_price"+[p]).val(product_unit_price);
 					$("#product_total_price"+[p]).val(product_total_price);
+					//set data att in del button for remving row
+					$('.prod_d').attr('data-AOS_Products_Quotes_Id', AOS_Products_Quotes_Id);
 					// console.log(productId);
 					p++;
 				}
@@ -796,6 +830,8 @@ function fetchRecordData(id){
 					$("#is_service"+[j]).val(is_service);
 					$("#item_description"+[j]).val(item_description);
 					$("#tc_service_total"+[j]).val(tc_service_total);
+					//set data att in del button for remving row
+					$('.serv_d').attr('data-AOS_Products_Quotes_service_Id', AOS_Products_Quotes_Id);
 					j++;
 				}
 			}
