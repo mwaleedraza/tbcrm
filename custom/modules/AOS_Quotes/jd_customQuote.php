@@ -87,7 +87,7 @@
                         <div class="col-xs-12 col-sm-8 ">
                             <select name="invoice_status" id="invoice_status" title="">
                                 <script>
-                                    getOptionHTML(SUGAR.language.get("app_list_strings", "invoice_status_dom"), "invoice_status", "{$BEAN->invoice_status}");
+                                    getOptionHTML(SUGAR.language.get("app_list_strings", "quote_status_dom"), "invoice_status", "{$BEAN->invoice_status}");
                                     setDDVal('stage', '{$BEAN->invoice_status}');
                                 </script>
                                 <!-- <option label="Not Invoiced" value="Not Invoiced" selected="selected">Not Invoiced</option><option label="Invoiced" value="Invoiced">Invoiced</option> -->
@@ -153,7 +153,7 @@
         <!-- start of address information panel -->
         <div class="panel panel-default">
             <div class="panel-heading" style="background-color:gray;">
-                <span class="btn btn-block" data-toggle="collapse" data-target="#AddressInformation" style="text-align: left;">Address Information</span>
+                <span class="btn btn-block" data-toggle="collapse" data-target="#AddressInformation" style="text-align: left;">Customer Information</span>
             </div>
             <div class="panel-body" id="AddressInformation">
                 <br>
@@ -169,16 +169,16 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label">
-                            <label class="fw-bold">Client:</label>
+                            <label class="fw-bold">Contact:</label>
                         </div>
                         <div class="col-xs-12 col-sm-6 edit-view-field ">
                             <select id="billing_contact_id" name="billing_contact_id" data-select2-id="billing_contact_id" class="col-sm-6">
-                                <option value="">-- Select client --</option>
+                                <option value="">-- Select Contact --</option>
                             </select>
                         </div>
                     </div>
                     <!-- row-2 -->
-                    <div class="col-xs-12 col-sm-6 edit-view-row-item">
+                    <!-- <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label">
                             <label class="fw-bold">Sale: <span style="color:red"> * </span></label>
                         </div>
@@ -187,7 +187,7 @@
                                 <option value=''>-- Select Sale--</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label"></div>
                         <div class="col-xs-12 col-sm-6 edit-view-field "></div>
@@ -226,7 +226,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label">
-                            <label class="fw-bold">PO To V:</label>
+                            <label class="fw-bold">PO to Vendor:</label>
                         </div>
                         <div class="col-xs-12 col-sm-6 edit-view-field ">
                             <input type="hidden" name="po_to_v" value="0">
@@ -289,14 +289,14 @@
                             <input type="text" name="referencenumber" id="referencenumber" size="30" value="" title="">
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 edit-view-row-item">
+                    <!-- <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label">
                             <label class="fw-bold">Your Reference Number:</label>
                         </div>
                         <div class="col-xs-12 col-sm-6 edit-view-field ">
                             <input type="text" name="yourreferencenumber" id="yourreferencenumber" size="30" value="" title="">
                         </div>
-                    </div>
+                    </div> -->
                     <!-- row-8 -->
                     <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label">
