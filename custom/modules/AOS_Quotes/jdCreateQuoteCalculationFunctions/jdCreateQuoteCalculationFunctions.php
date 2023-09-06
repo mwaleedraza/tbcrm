@@ -25,7 +25,8 @@ function addCode() {
             </div>
             <div class="col-md-2">
                 <label class="fw-bold">Sub-Product</label>
-                <select class="form-control" name="sub_products" data-counter="${formCounterab}" id="sub_products${formCounterab}" class="col-sm-6">
+				<input name="sub_product_name" id="sub_product_name${formCounterab}" hidden>
+				<select class="form-control" name="sub_products" data-counter="${formCounterab}" id="sub_products${formCounterab}" class="col-sm-6">
                 </select>
                 
             </div>
@@ -63,8 +64,9 @@ function addCode() {
 	// fetchAllSubProducts(formCounterab);
 	// on change of product slect sub product (product_id)
 	$('.product_id').on('change',function(){
-		console.log(this);
+		// console.log(this);
 		fetchAllSubProducts(this);
+		debugger;
 		// var billing_account_id = $('#billing_account_id').val();
 		// fetchAllClients(billing_account_id);
 	});
@@ -194,12 +196,12 @@ $(document).ready(function() {
 	fetchAllUsers();
 	fetchAllCompanies();
 	// fetchAllClients();
-	fetchAllLeads();
+	// fetchAllLeads();
 	$('#assigned_user_id').select2();
 	$('#user_id').select2();
 	$('#billing_account_id').select2();
 	$('#billing_contact_id').select2();
-	$('#lead_id').select2();
+	// $('#lead_id').select2();
 	formCounterab = 0;
 	formSCounterab = 0;
 	$('#forms-container').on('click', '.delete-form-btn', function() {
@@ -219,24 +221,24 @@ $(document).ready(function() {
 		var name = document.getElementById("name").value;
 		var expiration = document.getElementById("expiration").value;
 		var stage = document.getElementById("stage").value;
-		var lead_id = document.getElementById("lead_id").value;
+		// var lead_id = document.getElementById("lead_id").value;
 		var user_id = document.getElementById("user_id").value;
 
 		var nameInput = document.getElementById("name");
 		var expirationInput = document.getElementById("expiration");
 		var stageInput = document.getElementById("stage");
-		var leadIdInput = document.getElementById("lead_id");
+		// var leadIdInput = document.getElementById("lead_id");
 		var userIdInput = document.getElementById("user_id");
 
 		nameInput.addEventListener("input", removeBorder);
 		expirationInput.addEventListener("change", removeBorder);
 		stageInput.addEventListener("change", removeBorder);
-		leadIdInput.addEventListener("change", removeBorder);
+		// leadIdInput.addEventListener("change", removeBorder);
 		userIdInput.addEventListener("change", removeBorder);
 		function removeBorder() {
 			this.style.border = "";
 		}
-		if (!name || !expiration || !stage || !lead_id || !user_id) {
+		if (!name || !expiration || !stage || !user_id) {
 			e.preventDefault();
 			alert("Please fill in all required fields.");
 				if (!name) {
@@ -248,9 +250,9 @@ $(document).ready(function() {
 				if (!stage) {
 					$('#stage').css('border', '2px solid red');
 				}
-				if (!lead_id) {
-					$('.lead_id_box').css('border', '2px solid red');
-				}
+				// if (!lead_id) {
+				// 	$('.lead_id_box').css('border', '2px solid red');
+				// }
 				if (!user_id) {
 					$('.user_id_box').css('border', '2px solid red');
 				}
@@ -267,7 +269,8 @@ $(document).ready(function() {
 					url: "index.php?module=AOS_Quotes&action=saveQuote&sugar_body_only=true",
 					method: 'POST',
 					data: createQuoteFormData,
-					success: function(response) {
+					success: function(response){
+						debugger;
 						console.log(response);
 						response  = JSON.parse(response);
 						if (response['status'] == '200' && response['record_id'] != '') {
@@ -392,23 +395,23 @@ function fetchAllClients(billing_account_id){
 		}
 	});
 }
-// fetch all leads
-function fetchAllLeads() {
-	$.ajax({
-		url: "index.php?module=AOS_Quotes&action=fetchAllLeads&sugar_body_only=true",
-		async:false,
-		method: 'GET',
-		success: function(response) {
-			response = JSON.parse(response);
-			$.each(response, function(i, item) {
-				$('#lead_id').append("<option value='" + item.id + "'>" + item.last_name + "</option>");
-			});
-		},
-		error: function(xhr, status, error) {
-			console.error('Error saving data:', error);
-		}
-	});
-}
+// // fetch all leads
+// function fetchAllLeads() {
+// 	$.ajax({
+// 		url: "index.php?module=AOS_Quotes&action=fetchAllLeads&sugar_body_only=true",
+// 		async:false,
+// 		method: 'GET',
+// 		success: function(response) {
+// 			response = JSON.parse(response);
+// 			$.each(response, function(i, item) {
+// 				$('#lead_id').append("<option value='" + item.id + "'>" + item.last_name + "</option>");
+// 			});
+// 		},
+// 		error: function(xhr, status, error) {
+// 			console.error('Error saving data:', error);
+// 		}
+// 	});
+// }
 // Fetch all products
 function fetchAllProducts(formCounterab) {
 	$.ajax({
@@ -667,7 +670,7 @@ function fetchRecordData(id){
 			var approval_issue = response.AOS_Quotes[0]['approval_issue'];
 			var billing_account_id = response.AOS_Quotes[0]['billing_account_id'];
 			var billing_contact_id = response.AOS_Quotes[0]['billing_contact_id'];
-			var lead_id = response.AOS_Quotes[0]['lead_id'];
+			// var lead_id = response.AOS_Quotes[0]['lead_id'];
 			var rfq_ref = response.AOS_Quotes[0]['rfq_ref'];
 			var prev_quote_no = response.AOS_Quotes[0]['prev_quote_no'];
 			var payment = response.AOS_Quotes[0]['payment'];
@@ -729,7 +732,7 @@ function fetchRecordData(id){
 			$("#approval_issue").val(approval_issue).change();
 			$("#billing_account_id").val(billing_account_id).change();
 			$("#billing_contact_id").val(billing_contact_id).change();
-			$("#lead_id").val(lead_id).change();
+			// $("#lead_id").val(lead_id).change();
 			$("#payment").val(payment).change();
 			// $("#po_to_v").val(po_to_v);
 			$("#status").val(status).change();
@@ -785,6 +788,7 @@ function fetchRecordData(id){
 					$('.add-form-btn_p').click();
 					var AOS_Products_Quotes_Id = item['id'];
 					var AOS_Products_Quotes_name = item['name'];
+					var sub_product_name = item['sub_product_name'];
 					var number = item['number'];
 					var product_id = item['product_id'];
 					var product_qty = item['product_qty'];
@@ -797,6 +801,7 @@ function fetchRecordData(id){
 					$("#number"+[p]).val(number);
 					$("#AOS_Products_Quotes_Id"+[p]).val(AOS_Products_Quotes_Id);
 					$("#AOS_Products_Quotes_name"+[p]).val(AOS_Products_Quotes_name);
+					$("#sub_product_name"+[p]).val(sub_product_name);
 					$("#product_id"+[p]).val(product_id).change();
 					$("#product_qty"+[p]).val(product_qty);
 					$("#sub_products"+[p]).val(sub_product).change();
