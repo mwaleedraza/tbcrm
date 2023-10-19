@@ -53,7 +53,7 @@ $rfq_ref = $_POST['createQuoteFormData']['rfq_ref'];
 $prev_quote_no = $_POST['createQuoteFormData']['prev_quote_no'];
 $payment = $_POST['createQuoteFormData']['payment'];
 $po_to_v = $_POST['createQuoteFormData']['po_to_v'];
-$status = $_POST['createQuoteFormData']['status'];
+// $status = $_POST['createQuoteFormData']['status'];
 $condition_c = $_POST['createQuoteFormData']['condition_c'];
 $user_id = $_POST['createQuoteFormData']['user_id'];
 $medium = $_POST['createQuoteFormData']['medium'];
@@ -64,8 +64,10 @@ $ourfirm = $_POST['createQuoteFormData']['ourfirm'];
 // Products line items 
 $sn = $_POST['createQuoteFormData']['sn'];
 $product_id = $_POST['createQuoteFormData']['product_id'];
+$AOS_Products_Quotes_name = $_POST['createQuoteFormData']['AOS_Products_Quotes_name'];
 $AOS_Products_Quotes_Id = $_POST['createQuoteFormData']['AOS_Products_Quotes_Id'];
 $sub_products = $_POST['createQuoteFormData']['sub_products'];
+$sub_product_name = $_POST['createQuoteFormData']['sub_product_name'];
 $product_qty = $_POST['createQuoteFormData']['product_qty'];
 $per_unit_cost = $_POST['createQuoteFormData']['per_unit_cost'];
 $product_margin = $_POST['createQuoteFormData']['product_margin'];
@@ -100,7 +102,7 @@ if($recordID==''){
     $AOS_QuotesBean->prev_quote_no = $prev_quote_no;
     $AOS_QuotesBean->payment = $payment;
     $AOS_QuotesBean->po_to_v = $po_to_v;
-    $AOS_QuotesBean->status = $status;
+    // $AOS_QuotesBean->status = $status;
     $AOS_QuotesBean->condition_c = $condition_c;
     $AOS_QuotesBean->user_id = $user_id;
     $AOS_QuotesBean->medium = $medium;
@@ -175,6 +177,7 @@ if($recordID==''){
                         $AOS_Products_QuotesBEAN->name = $productName;
                         $AOS_Products_QuotesBEAN->product_id = $product_id[$i];
                         $AOS_Products_QuotesBEAN->sub_products = $sub_products[$i];
+                        $AOS_Products_QuotesBEAN->sub_product_name = $sub_product_name[$i];
                         $AOS_Products_QuotesBEAN->product_qty = $product_qty[$i];
                         $AOS_Products_QuotesBEAN->per_unit_cost = $per_unit_cost[$i];
                         $AOS_Products_QuotesBEAN->product_unit_price = $product_unit_price[$i];

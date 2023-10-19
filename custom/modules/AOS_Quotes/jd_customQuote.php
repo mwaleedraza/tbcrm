@@ -234,7 +234,7 @@
                         </div>
                     </div>
                     <!-- row-5 -->
-                    <div class="col-xs-12 col-sm-6 edit-view-row-item">
+                    <!-- <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label">
                             <label class="fw-bold">Status:</label>
                         </div>
@@ -246,7 +246,7 @@
                                 </script>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label">
                             <label class="fw-bold">Condition:</label>
