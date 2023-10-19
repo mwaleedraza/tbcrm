@@ -387,7 +387,7 @@ function fetchAllClients(billing_account_id){
 			$('#billing_contact_id').empty();
 			response = JSON.parse(response);
 			$.each(response, function(i, item) {
-				$('#billing_contact_id').append("<option value='" + item.id + "'>" + item.last_name + "</option>");
+				$('#billing_contact_id').append("<option value='" + item.id + "'>" + item.first_name + ' ' + item.last_name + "</option>");
 			});
 		},
 		error: function(xhr, status, error) {
