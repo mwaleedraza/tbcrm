@@ -340,8 +340,8 @@
                         <div class="col-xs-12 col-sm-8 edit-view-field">
                             <select name="currency_id" id="currency_id" class="form-select">
                                 <!-- <option value="" disabled>Select</option> -->
-                                <option>PKR</option>
                                 <option>USD</option>
+                                <option>PKR</option>
                                 <option>POUND</option>
                                 <option>EURO</option>
                             </select>
