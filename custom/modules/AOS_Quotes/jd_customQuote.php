@@ -286,7 +286,7 @@
                             <label class="fw-bold">Reference Number:</label>
                         </div>
                         <div class="col-xs-12 col-sm-6 edit-view-field ">
-                            <input type="text" name="referencenumber" id="referencenumber" size="30" value="" title="">
+                            <input type="text" name="referencenumber" id="referencenumber" size="30" value="" title="" readonly>
                         </div>
                     </div>
                     <!-- <div class="col-xs-12 col-sm-6 edit-view-row-item">

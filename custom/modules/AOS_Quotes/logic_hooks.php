@@ -8,4 +8,8 @@ $hook_array = Array();
 $hook_array['process_record'] = Array();
 $hook_array['process_record'][] = Array(1, 'changeProductIdToName', 'custom/modules/AOS_Quotes/changeProductIdToName.php','changeProductIdToNameClass', 'changeProductIdToNameMethod'); 
 $hook_array['process_record'][] = Array(80, 'Date Format in ListView', 'custom/modules/AOS_Quotes/formatDate.php','FormatDate', 'formatDateMethod');
+
+$hook_array['before_save'] = array();
+$hook_array['before_save'][] = array(2, 'genrate Referance NO', 'custom/modules/AOS_Quotes/autoRefNoHook.php', 'autoRefNoClass', 'autoRefNoMethod');
+
 ?>
