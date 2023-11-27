@@ -189,10 +189,13 @@
                         </div>
                     </div> -->
                     <div class="col-xs-12 col-sm-6 edit-view-row-item">
-                        <div class="col-xs-12 col-sm-5 label"></div>
-                        <div class="col-xs-12 col-sm-6 edit-view-field "></div>
+                        <div class="col-xs-12 col-sm-5 label">
+                            <label class="fw-bold">Prod Shot Code:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 edit-view-field ">
+                            <input type="text" name="product_short_code" id="product_short_code" size="30" value="" title="">
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 edit-view-row-item"></div>
                     <!-- row-3 -->
                     <div class="col-xs-12 col-sm-6 edit-view-row-item">
                         <div class="col-xs-12 col-sm-5 label">

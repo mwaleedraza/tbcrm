@@ -24,6 +24,7 @@ $mod_strings = array(
   'LBL_PRODUCT_DISCOUNT_AMOUNT_USDOLLAR' => 'Margin Amount (Default Currency)',
   'LBL_MEDIUM' => 'Medium',
   'LBL_LEAD_NAME' => 'Sale',
+  'LBL_PRODUCT_SHORT_CODE' => 'Prod Shot Code',
   'LBL_REFERENCE_NUMBER' => 'Reference Number',
   'LBL_PDFTEXT' => 'PDF Text',
   'LBL_OURFIRM' => 'Our Firm',
@@ -81,4 +82,5 @@ $mod_strings = array(
   'LBL_TC_PRODUCT_TOTAL' => 'Products Total',
   'LBL_TC_SERVICE_TOTAL' => 'Service Total',
   'LBL_TC_GRAND_TOTAL' => 'Grand Total',
+
 );

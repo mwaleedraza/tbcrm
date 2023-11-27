@@ -57,6 +57,7 @@ $po_to_v = $_POST['createQuoteFormData']['po_to_v'];
 $condition_c = $_POST['createQuoteFormData']['condition_c'];
 $user_id = $_POST['createQuoteFormData']['user_id'];
 $medium = $_POST['createQuoteFormData']['medium'];
+$product_short_code = $_POST['createQuoteFormData']['product_short_code'];
 $referencenumber = $_POST['createQuoteFormData']['referencenumber'];
 $yourreferencenumber = $_POST['createQuoteFormData']['yourreferencenumber'];
 $pdftext= $_POST['createQuoteFormData']['pdftext'];
@@ -106,6 +107,7 @@ if($recordID==''){
     $AOS_QuotesBean->condition_c = $condition_c;
     $AOS_QuotesBean->user_id = $user_id;
     $AOS_QuotesBean->medium = $medium;
+    $AOS_QuotesBean->product_short_code = $product_short_code;
     $AOS_QuotesBean->referencenumber = $referencenumber;
     $AOS_QuotesBean->yourreferencenumber = $yourreferencenumber;
     $AOS_QuotesBean->pdftext = $pdftext;

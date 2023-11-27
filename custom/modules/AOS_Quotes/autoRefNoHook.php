@@ -5,11 +5,11 @@ if (!defined('sugarEntry'))
 class autoRefNoClass{
     function autoRefNoMethod($bean, $event, $arguments){
 		if(empty($bean->fetched_row)){
+            $product_short_code = $bean->product_short_code;
             $date = $bean->date_entered;
             $date = date("ymd", strtotime($date));
-            $textBox = '_____';
             $version = 'V1';
-            $refNo = $bean->number . '-' . $textBox . '-' . $date . '-' . $version;
+            $refNo = $bean->number . '-' . $product_short_code . '-' . $date . '-' . $version;
             $bean->referencenumber = $refNo;
         }
     }
