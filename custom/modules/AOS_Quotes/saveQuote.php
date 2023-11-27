@@ -77,6 +77,7 @@ $product_total_price = $_POST['createQuoteFormData']['product_total_price'];
 // service line items
 $number = $_POST['createQuoteFormData']['number'];
 $AOS_Products_Quotes_service_Id = $_POST['createQuoteFormData']['AOS_Products_Quotes_service_Id'];
+$AOS_Products_Quotes_service_name = $_POST['createQuoteFormData']['AOS_Products_Quotes_service_name'];
 $item_description = $_POST['createQuoteFormData']['item_description'];
 $is_service = $_POST['createQuoteFormData']['is_service'];
 $tc_service_total = $_POST['createQuoteFormData']['tc_service_total'];
@@ -330,7 +331,8 @@ if($recordID==''){
                         }else{
                             $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_service_Id[$i]);
                         }
-                        $AOS_Products_QuotesBEAN->name = $item_description[$i];
+                        $AOS_Products_QuotesBEAN->name = $AOS_Products_Quotes_service_name[$i];
+                        // $AOS_Products_QuotesBEAN->name = $item_description[$i];
                         $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
                         $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
                         $AOS_Products_QuotesBEAN->number = $number[$i];
@@ -351,7 +353,8 @@ if($recordID==''){
                         $AOS_Products_QuotesBEAN = BeanFactory::getBean('AOS_Products_Quotes',$AOS_Products_Quotes_service_Id);
                     }
                     $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
-                    $AOS_Products_QuotesBEAN->name = $item_description;
+                    $AOS_Products_QuotesBEAN->name = $AOS_Products_Quotes_service_name;
+                    // $AOS_Products_QuotesBEAN->name = $item_description;
                     $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
                     $AOS_Products_QuotesBEAN->number = $sn;
                     $AOS_Products_QuotesBEAN->is_service = $is_service;

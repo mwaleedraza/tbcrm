@@ -85,14 +85,19 @@ function addSCode() {
         <div class="col-md-1">
             <label class="fw-bold">S/N
 			<input name="AOS_Products_Quotes_service_Id" id="AOS_Products_Quotes_service_Id${formSCounterab}" hidden>
-			<input name="AOS_Products_Quotes_service_name" id="AOS_Products_Quotes_service_name${formSCounterab}" hidden>
-			<input type="checkbox" name="is_service" id="is_service${formSCounterab}" hidden>
+
+			<input type="checkbox" name="is_service" id="is_service${formSCounterab}" style="display:none">
             <input type="text" class="form-control" name="number" id="number${formSCounterab}" placeholder="S/N" hidden>
             </label>
         </div>
         <div class="col-md-2">
+            <label class="fw-bold">Name
+            <input type="text" class="form-control" name="AOS_Products_Quotes_service_name" id="AOS_Products_Quotes_service_name${formSCounterab}" placeholder="Name">
+            </label>
+        </div>
+		<div class="col-md-2">
             <label class="fw-bold">Service Description
-            <input type="text" class="form-control" name="item_description" id="item_description${formSCounterab}" placeholder="Service Description">
+            <textarea type="text" class="form-control" name="item_description" id="item_description${formSCounterab}" placeholder="Service Description"></textarea>
             </label>
         </div>
         <div class="col-md-2">
@@ -821,9 +826,10 @@ function fetchRecordData(id){
 			for (var i = 0; i < lineItemServicesCount; i++){
 				var item = response.aos_products_quotes[i];
 				if(item['is_service']=="1"){	
+					debugger;
 					$('.add-form-btn_s').click();
 					var AOS_Products_Quotes_Id = item['id'];
-					var AOS_Products_Quotes_name = item['name'];
+					var AOS_Products_Quotes_service_name = item['name'];
 					var number = item['number'];
 					var is_service = item['is_service'];
 					var item_description = item['item_description'];
@@ -831,7 +837,9 @@ function fetchRecordData(id){
 					// set values
 					$("#numberS"+[j]).val(number);
 					$("#AOS_Products_Quotes_service_Id"+[j]).val(AOS_Products_Quotes_Id);
-					$("#AOS_Products_Quotes_service_name"+[p]).val(AOS_Products_Quotes_name);
+					$("#AOS_Products_Quotes_service_name"+[j]).val(AOS_Products_Quotes_service_name);
+					// to show product name in service(remove)
+					// $("#AOS_Products_Quotes_service_name"+[p]).val(AOS_Products_Quotes_service_name);
 					$("#is_service"+[j]).val(is_service);
 					$("#item_description"+[j]).val(item_description);
 					$("#tc_service_total"+[j]).val(tc_service_total);
