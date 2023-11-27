@@ -684,6 +684,7 @@ function fetchRecordData(id){
 			var condition_c = response.AOS_Quotes[0]['condition_c'];
 			var user_id = response.AOS_Quotes[0]['user_id'];
 			var medium = response.AOS_Quotes[0]['medium'];
+			var product_short_code = response.AOS_Quotes[0]['product_short_code'];
 			var referencenumber = response.AOS_Quotes[0]['referencenumber'];
 			var yourreferencenumber = response.AOS_Quotes[0]['yourreferencenumber'];
 			var pdftext = response.AOS_Quotes[0]['pdftext'];
@@ -755,6 +756,7 @@ function fetchRecordData(id){
 			$("#expiration").val(expiration);
 			$("#rfq_ref").val(rfq_ref);
 			$("#prev_quote_no").val(prev_quote_no);
+			$("#product_short_code").val(product_short_code);
 			$("#referencenumber").val(referencenumber);
 			$("#yourreferencenumber").val(yourreferencenumber);
 			$("#pdftext").val(pdftext);
