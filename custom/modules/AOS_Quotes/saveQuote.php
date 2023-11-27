@@ -339,6 +339,7 @@ if($recordID==''){
                         $AOS_Products_QuotesBEAN->is_service = $is_service[$i];
                         $AOS_Products_QuotesBEAN->item_description = $item_description[$i];
                         $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total[$i];
+                        $AOS_Products_QuotesBEAN->product_total_price = $tc_service_total[$i];
                         if($AOS_Products_QuotesBEAN->save()){
                             $responseArr['services'] = 'saved';
                         }   
@@ -360,6 +361,7 @@ if($recordID==''){
                     $AOS_Products_QuotesBEAN->is_service = $is_service;
                     $AOS_Products_QuotesBEAN->item_description = $item_description;
                     $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total;
+                    $AOS_Products_QuotesBEAN->product_total_price = $tc_service_total;
                     if($AOS_Products_QuotesBEAN->save()){
                         $responseArr['services'] = 'saved';
                     }
