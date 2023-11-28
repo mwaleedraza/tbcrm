@@ -172,14 +172,15 @@ if($recordID==''){
                         }
                         $AOS_Products_QuotesBEAN->parent_id = $AOS_QuotesBean->id;
                         $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
-                        $AOS_Products_QuotesBEAN->number = $sn[$i];
                         // fetch product name
                         $fetchProduct_nameQuery = "SELECT name FROM aos_products where deleted = '0' AND  id='".$product_id[$i]."'";
                         $fetchProduct_nameQueryResult = $GLOBALS['db']->query($fetchProduct_nameQuery);
                         while ($row = $GLOBALS['db']->fetchByAssoc($fetchProduct_nameQueryResult)) {
                             $productName = $row['name'];
                         }
+                        // $AOS_Products_QuotesBEAN->number = $sn[$i];
                         $AOS_Products_QuotesBEAN->name = $productName;
+                        $AOS_Products_QuotesBEAN->number = $number[$i];
                         $AOS_Products_QuotesBEAN->product_id = $product_id[$i];
                         $AOS_Products_QuotesBEAN->sub_products = $sub_products[$i];
                         $AOS_Products_QuotesBEAN->sub_product_name = $sub_product_name[$i];
@@ -238,6 +239,7 @@ if($recordID==''){
                         $productName = $row['name'];
                     }
                     $AOS_Products_QuotesBEAN->name = $productName;
+                    $AOS_Products_QuotesBEAN->number = $number;
                     $AOS_Products_QuotesBEAN->product_id = $product_id;
                     $AOS_Products_QuotesBEAN->sub_products = $sub_products;
                     $AOS_Products_QuotesBEAN->product_qty = $product_qty;
@@ -359,7 +361,8 @@ if($recordID==''){
                     $AOS_Products_QuotesBEAN->name = $AOS_Products_Quotes_service_name;
                     // $AOS_Products_QuotesBEAN->name = $item_description;
                     $AOS_Products_QuotesBEAN->parent_type = 'AOS_Quotes';
-                    $AOS_Products_QuotesBEAN->number = $sn;
+                    // $AOS_Products_QuotesBEAN->number = $sn;
+                    $AOS_Products_QuotesBEAN->number = $number;
                     $AOS_Products_QuotesBEAN->is_service = $is_service;
                     $AOS_Products_QuotesBEAN->item_description = $item_description;
                     $AOS_Products_QuotesBEAN->tc_service_total = $tc_service_total;

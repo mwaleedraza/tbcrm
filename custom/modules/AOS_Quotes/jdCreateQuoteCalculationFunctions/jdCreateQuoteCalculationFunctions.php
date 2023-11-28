@@ -8,12 +8,13 @@ var formCounterab = '0';
 var formSCounterab = '0';
 function addCode() {
 	var formContainer = document.getElementById("forms-container");
+	var number_p = formCounterab+1;
 	var newForm = `<div class="row">
         <div class="product-form" id="form_p">
             <div class="row">
             <div class="col-md-1">
                 <label class="fw-bold">S/N</label>
-                <input type="text" class="form-control" name="number" id="number${formCounterab}" placeholder="S/N">
+                <input type="text" class="form-control" name="number" id="number${formCounterab}" value="${number_p}" >
             </div>
             <div class="col-md-2">
                 <label class="fw-bold">Product Name</label>
@@ -79,6 +80,7 @@ function addCode() {
 // This is for service costing increment
 function addSCode() {
 	var formContainer = document.getElementById("forms-container1");
+	var number_s = formSCounterab+1;
 	var newForm = `<div class="row">
         <div class="service-form" id="form_s">
             <div class="row">
@@ -87,7 +89,7 @@ function addSCode() {
 			<input name="AOS_Products_Quotes_service_Id" id="AOS_Products_Quotes_service_Id${formSCounterab}" hidden>
 
 			<input type="checkbox" name="is_service" id="is_service${formSCounterab}" style="display:none">
-            <input type="text" class="form-control" name="number" id="number${formSCounterab}" placeholder="S/N" hidden>
+            <input type="text" class="form-control" name="number" id="number${formSCounterab}" value="${number_s}" placeholder="S/N" hidden>
             </label>
         </div>
         <div class="col-md-2">
