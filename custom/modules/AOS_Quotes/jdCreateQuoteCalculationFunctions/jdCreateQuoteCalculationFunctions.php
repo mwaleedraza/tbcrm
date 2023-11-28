@@ -789,8 +789,6 @@ function fetchRecordData(id){
 			var p='0';
 			for (var i = 0; i < lineItemCount; i++) {
 				var item = response.aos_products_quotes[i];
-
-			
 				if(item['is_service']!="1"){
 					$('.add-form-btn_p').click();
 					var AOS_Products_Quotes_Id = item['id'];
@@ -836,6 +834,7 @@ function fetchRecordData(id){
 					var is_service = item['is_service'];
 					var item_description = item['item_description'];
 					var tc_service_total = item['tc_service_total'];
+					var product_total_price = item['product_total_price'];
 					// set values
 					$("#numberS"+[j]).val(number);
 					$("#AOS_Products_Quotes_service_Id"+[j]).val(AOS_Products_Quotes_Id);

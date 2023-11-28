@@ -11,6 +11,7 @@ $dictionary["AOS_Products_Quotes"]["fields"]["service_wht_amt"] = array (
 	'duplicate_merge_dom_value' => '0',
 	'audited' => false,
 	'reportable' => true,
+    'exportable' => true,
 	'unified_search' => false,
 	'merge_filter' => 'disabled',
 	'inline_edit' => '1',

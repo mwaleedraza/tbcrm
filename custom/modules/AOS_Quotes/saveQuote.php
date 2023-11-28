@@ -89,6 +89,8 @@ if($recordID==''){
 }else{
     $AOS_QuotesBean = BeanFactory::getBean('AOS_Quotes',$recordID);
 }
+    $quote_date = date("Y-m-d", strtotime($AOS_QuotesBean->date_entered));
+    $AOS_QuotesBean->jd_quote_date = $quote_date;
     $AOS_QuotesBean->name = $name;
     $AOS_QuotesBean->stage = $stage;
     $AOS_QuotesBean->expiration = $expiration;

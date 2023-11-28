@@ -7,10 +7,12 @@ class autoRefNoClass{
 		// if(empty($bean->fetched_row)){
             $product_short_code = $bean->product_short_code;
             $date = $bean->date_entered;
+            // $quote_date = date("y-m-d", strtotime($bean->date_entered));
             $date = date("ymd", strtotime($date));
             $version = 'V1';
             $refNo = $bean->number . '-' . $product_short_code . '-' . $date . '-' . $version;
             $bean->referencenumber = $refNo;
+            // $bean->jd_quote_date = $quote_date;
         // }
     }
 }

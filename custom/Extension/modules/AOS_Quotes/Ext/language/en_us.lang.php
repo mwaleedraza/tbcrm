@@ -7,6 +7,7 @@ $mod_strings = array(
   'LBL_PO_TO_V' => 'PO To V',
   'LBL_PAYMENT'=> 'Payment',
   'LBL_STATUS'=> 'Status',
+  'LBL_JD_QUOTE_DATE'=> 'Quote date',
   'LBL_CONDITION'=> 'Condition',
   'LBL_BILLING_ACCOUNT' => 'Related Company',
   'LBL_DISCOUNT_AMOUNT' => 'Discount',
