@@ -180,6 +180,7 @@ $(document).ready(function() {
 	var CurrentUrl = window.location.href;
 	var split_url=CurrentUrl.split("record=")
 	var recordID = split_url[1];
+	$('#copyright_data').hide();
 	// if(recordID){
 	// 	fetchRecordData(recordID);
 	// }
