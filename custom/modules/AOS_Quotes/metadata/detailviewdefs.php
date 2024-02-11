@@ -112,6 +112,11 @@ array (
           'newTab' => true,
           'panelDefault' => 'expanded',
         ),
+        'LBL_DETAILVIEW_PANEL1' => 
+        array (
+          'newTab' => true,
+          'panelDefault' => 'expanded',
+        ),
         'LBL_PANEL_ASSIGNMENT' => 
         array (
           'newTab' => true,
@@ -293,61 +298,50 @@ array (
             'label' => 'LBL_LINE_ITEMS',
           ),
         ),
+      ),
+      'lbl_detailview_panel1' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'tc_total_product_cost_to_company',
+            'label' => 'LBL_TC_TOTAL_PRODUCT_COST_TO_COMPANY',
+          ),
+        ),
         1 => 
         array (
           0 => 
           array (
-            'name' => 'total_amt',
-            'label' => 'LBL_TOTAL_AMT',
+            'name' => 'tc_product_price_after_tax',
+            'label' => 'LBL_TC_PRODUCT_PRICE_AFTER_TAX',
           ),
         ),
         2 => 
         array (
           0 => 
           array (
-            'name' => 'discount_amount',
-            'label' => 'LBL_DISCOUNT_AMOUNT',
+            'name' => 'tc_product_margin',
+            'label' => 'LBL_TC_PRODUCT_MARGIN',
           ),
         ),
         3 => 
         array (
           0 => 
           array (
-            'name' => 'subtotal_amount',
-            'label' => 'LBL_SUBTOTAL_AMOUNT',
+            'name' => 'tc_service_margin',
+            'label' => 'LBL_TC_SERVICE_MARGIN',
           ),
+          1 => '',
         ),
         4 => 
         array (
           0 => 
           array (
-            'name' => 'shipping_amount',
-            'label' => 'LBL_SHIPPING_AMOUNT',
+            'name' => 'tc_total_margin',
+            'label' => 'LBL_TC_TOTAL_MARGIN',
           ),
-        ),
-        5 => 
-        array (
-          0 => 
-          array (
-            'name' => 'shipping_tax_amt',
-            'label' => 'LBL_SHIPPING_TAX_AMT',
-          ),
-        ),
-        6 => 
-        array (
-          0 => 
-          array (
-            'name' => 'tax_amount',
-            'label' => 'LBL_TAX_AMOUNT',
-          ),
-        ),
-        7 => 
-        array (
-          0 => 
-          array (
-            'name' => 'total_amount',
-            'label' => 'LBL_GRAND_TOTAL',
-          ),
+          1 => '',
         ),
       ),
       'LBL_PANEL_ASSIGNMENT' => 
@@ -371,4 +365,17 @@ array (
   ),
 );
 ;
+// hide profit calculation from sales role
+global $current_user;
+// $roleName = '';
+$roleBean=new ACLRole();        
+$roles = $roleBean->getUserRoleNames($current_user->id);
+if(!empty($roles))
+$roleName=$roles['0'];
+var_dump($roleName);
+if(!empty($roleName)){
+  if($roleName == 'Sales'){
+    unset($viewdefs['AOS_Quotes']['DetailView']['panels']['lbl_detailview_panel1']);
+  }
+}
 ?>
