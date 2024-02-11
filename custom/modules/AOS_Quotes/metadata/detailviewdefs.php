@@ -372,7 +372,6 @@ $roleBean=new ACLRole();
 $roles = $roleBean->getUserRoleNames($current_user->id);
 if(!empty($roles))
 $roleName=$roles['0'];
-var_dump($roleName);
 if(!empty($roleName)){
   if($roleName == 'Sales'){
     unset($viewdefs['AOS_Quotes']['DetailView']['panels']['lbl_detailview_panel1']);
