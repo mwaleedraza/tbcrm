@@ -114,7 +114,7 @@ array (
         ),
         'LBL_DETAILVIEW_PANEL1' => 
         array (
-          'newTab' => true,
+          'newTab' => false,
           'panelDefault' => 'expanded',
         ),
         'LBL_PANEL_ASSIGNMENT' => 
@@ -365,16 +365,17 @@ array (
   ),
 );
 ;
-// hide profit calculation from sales role
-global $current_user;
-// $roleName = '';
-$roleBean=new ACLRole();        
-$roles = $roleBean->getUserRoleNames($current_user->id);
-if(!empty($roles))
-$roleName=$roles['0'];
-if(!empty($roleName)){
-  if($roleName == 'Sales'){
-    unset($viewdefs['AOS_Quotes']['DetailView']['panels']['lbl_detailview_panel1']);
-  }
-}
+// // hide profit calculation from sales role
+// global $current_user;
+// // $roleName = '';
+// $roleBean=new ACLRole();        
+// $roles = $roleBean->getUserRoleNames($current_user->id);
+// if(!empty($roles))
+// $roleName=$roles['0'];
+// var_dump($roleName);
+// if(!empty($roleName)){
+//   if($roleName == 'Sales'){
+//     unset($viewdefs['AOS_Quotes']['DetailView']['panels']['lbl_detailview_panel1']);
+//   }
+// }
 ?>
