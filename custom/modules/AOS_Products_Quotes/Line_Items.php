@@ -30,6 +30,12 @@ function custom_display_lines($focus, $field, $value, $view)
     $total_tax = (int)$sugar_config['aos']['lineItems']['totalTax'];
 
     $html = '';
+    $html .= '
+    <style>
+    .jd_quotes_table td {
+        border: 1px solid;
+      }
+    </style>';
 
     if ($view == 'EditView') {
 
@@ -100,7 +106,7 @@ function custom_display_lines($focus, $field, $value, $view)
             $result = $focus->db->query($sql);
             $sep = get_number_seperators();
 
-            $html .= "<table border='0' width='100%' cellpadding='0' cellspacing='0'>";
+            $html .= "<table class='jd_quotes_table' border='0' width='100%' cellpadding='0' cellspacing='0'>";
 
             $i = 0;
             $productCount = 0;
