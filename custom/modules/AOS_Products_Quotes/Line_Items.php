@@ -169,7 +169,7 @@ function custom_display_lines($focus, $field, $value, $view)
                 }
                 if ($line_item->product_id != '0' && $line_item->product_id != null) {
                     if ($productCount == 0) {
-                        $product .= "<tr>";
+                        $product .= "<tr style='background-color: lightblue;'>";
                         $product .= "<td width='5%' class='tabDetailViewDL' style='text-align: left;padding:2px;' scope='row'>&nbsp;</td>";
                         $product .= "<td width='10%' class='tabDetailViewDL' style='text-align: left;padding:2px;' scope='row'>".$mod_strings['LBL_PRODUCT_QUANITY']."</td>";
                         $product .= "<td width='12%' class='tabDetailViewDL' style='text-align: left;padding:2px;' scope='row'>".$mod_strings['LBL_PRODUCT_NAME']."</td>";
@@ -207,7 +207,7 @@ function custom_display_lines($focus, $field, $value, $view)
                     $product .= "</tr>";
                 } else {
                     if ($serviceCount == 0) {
-                        $service .= "<tr>";
+                        $product .= "<tr style='background-color: lightblue;'>";
                         $service .= "<td width='5%' class='tabDetailViewDL' style='text-align: left;padding:2px;' scope='row'>&nbsp;</td>";
                         $service .= "<td width='46%' class='dataLabel' style='text-align: left;padding:2px;' colspan='2' scope='row'>".$mod_strings['LBL_SERVICE_NAME']."</td>";
                         // $service .= "<td width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_SERVICE_LIST_PRICE']."</td>";
@@ -220,7 +220,7 @@ function custom_display_lines($focus, $field, $value, $view)
                         $service .= "</tr>";
                     }
 
-                    $service .= "<tr>";
+                    $product .= "<tr style='background-color: lightblue !important;'>";
                     $service .= "<td class='tabDetailViewDF' style='text-align: left; padding:2px;'>".++$serviceCount."</td>";
                     $service .= "<td class='tabDetailViewDF' style='padding:2px;' colspan='2'>".$line_item->name."</td>";
                     // $service .= "<td class='tabDetailViewDF' style='text-align: right; padding:2px;'>".currency_format_number($line_item->product_list_price, $params)."</td>";
