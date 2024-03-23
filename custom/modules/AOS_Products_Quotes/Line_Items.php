@@ -35,6 +35,9 @@ function custom_display_lines($focus, $field, $value, $view)
     .jd_quotes_table td {
         border: 1px solid;
       }
+    .jd_quotes_table jd_quotes_table_service_row{
+        border-spacing: 0 15px;
+    }
     </style>';
 
     if ($view == 'EditView') {
@@ -207,16 +210,18 @@ function custom_display_lines($focus, $field, $value, $view)
                     $product .= "</tr>";
                 } else {
                     if ($serviceCount == 0) {
-                        $product .= "<tr style='background-color: lightblue;'>";
-                        $service .= "<td width='5%' class='tabDetailViewDL' style='text-align: left;padding:2px;' scope='row'>&nbsp;</td>";
-                        $service .= "<td width='46%' class='dataLabel' style='text-align: left;padding:2px;' colspan='2' scope='row'>".$mod_strings['LBL_SERVICE_NAME']."</td>";
+                        $service .= "<tr style='height:10px' class=''>
+                        </tr>";
+                        $product .= "<tr style='background-color: lightblue !important;'>";
+                        $service .= "<td style='background-color: lightblue !important;' width='5%' class='tabDetailViewDL' style='text-align: left;padding:2px;' scope='row'>&nbsp;</td>";
+                        $service .= "<td style='background-color: lightblue !important;' width='46%' class='dataLabel' style='text-align: left;padding:2px;' colspan='2' scope='row'>".$mod_strings['LBL_SERVICE_NAME']."</td>";
                         // $service .= "<td width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_SERVICE_LIST_PRICE']."</td>";
                         // $service .= "<td width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_SERVICE_DISCOUNT']."</td>";
                         // $service .= "<td width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_SERVICE_PRICE']."</td>";
                         // $service .= "<td width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_VAT']."</td>";
-                        $service .= "<td width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_DESCRIPTION']."</td>";
+                        $service .= "<td style='background-color: lightblue !important;' width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_DESCRIPTION']."</td>";
                         // $service .= "<td width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_VAT_AMT']."</td>";
-                        $service .= "<td width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_TOTAL_PRICE']."</td>";
+                        $service .= "<td style='background-color: lightblue !important;' width='12%' class='dataLabel' style='text-align: right;padding:2px;' scope='row'>".$mod_strings['LBL_TOTAL_PRICE']."</td>";
                         $service .= "</tr>";
                     }
 
